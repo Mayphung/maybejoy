@@ -1,0 +1,127 @@
+# Cấu hình trình soạn thảo Pages CMS (app.pagescms.org)
+# May đăng nhập bằng GitHub → chọn repo maybejoy → viết bài.
+
+media:
+  input: src/assets/images
+  output: /assets/images
+
+content:
+  - name: posts
+    label: Bài viết
+    type: collection
+    path: src/bai-viet
+    filename: "{year}-{month}-{day}-{primary}.md"
+    view:
+      fields: [title, category, date, draft]
+      primary: title
+      sort: [date]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Tiêu đề
+        type: string
+        required: true
+      - name: date
+        label: Ngày đăng
+        type: date
+        required: true
+      - name: category
+        label: Chuyên mục
+        type: select
+        required: true
+        options:
+          values:
+            - value: bit-by-bit
+              label: Bit by Bit
+            - value: phu-nu-va-me
+              label: Phụ nữ & Mẹ
+      - name: excerpt
+        label: Đoạn giới thiệu ngắn (hiện ở danh sách bài)
+        type: text
+      - name: draft
+        label: Bản nháp (chưa đăng)
+        type: boolean
+        default: false
+      - name: body
+        label: Nội dung
+        type: rich-text
+
+  - name: about
+    label: Trang Về May
+    type: file
+    path: src/ve-may.md
+    fields:
+      - name: layout
+        type: string
+        hidden: true
+        default: page.njk
+      - name: title
+        label: Tiêu đề
+        type: string
+      - name: kicker
+        label: Dòng nhỏ phía trên
+        type: string
+      - name: nav
+        type: string
+        hidden: true
+        default: ve-may
+      - name: signoff
+        label: Lời chào cuối
+        type: string
+      - name: description
+        label: Mô tả (cho Google)
+        type: text
+      - name: body
+        label: Nội dung
+        type: rich-text
+
+  - name: settings
+    label: Cài đặt trang
+    type: file
+    path: src/_data/site.json
+    format: json
+    fields:
+      - name: name
+        type: string
+        hidden: true
+      - name: brand
+        label: Tên hiển thị góc trái
+        type: string
+      - name: url
+        type: string
+        hidden: true
+      - name: description
+        label: Mô tả trang (cho Google)
+        type: text
+      - name: categories
+        type: object
+        hidden: true
+        fields:
+          - { name: bit-by-bit, type: string }
+          - { name: phu-nu-va-me, type: string }
+      - name: bitByBitIntro
+        label: Lời mở đầu trang Bit by Bit (cách đoạn bằng một dòng trống)
+        type: text
+      - name: emailFormAction
+        label: Địa chỉ form email (MailerLite)
+        type: string
+      - name: coursePrice
+        label: Giá Emotion Course
+        type: string
+      - name: courseOldPrice
+        label: Giá gốc Emotion Course
+        type: string
+      - name: bankName
+        label: Ngân hàng
+        type: string
+      - name: bankAccountName
+        label: Chủ tài khoản
+        type: string
+      - name: bankAccountNumber
+        label: Số tài khoản
+        type: string
+      - name: contactEmail
+        label: Email liên hệ
+        type: string

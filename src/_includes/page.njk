@@ -1,0 +1,13 @@
+---
+layout: base.njk
+---
+<main>
+  <header class="post-head">
+    {% if kicker %}<div class="meta">{{ kicker }}</div>{% endif %}
+    <h1>{{ title }}</h1>
+  </header>
+  <div class="prose">
+    {{ content | safe }}
+  </div>
+  {% if signoff %}<p class="signoff">{{ signoff }}</p>{% endif %}
+</main>

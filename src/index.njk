@@ -1,0 +1,89 @@
+---
+layout: base.njk
+---
+<main>
+
+  <div class="hero">
+    <h1>Ôm mình thật chặt</h1>
+    <p>Ba việc mình vẫn đang tập mỗi ngày: buông, thở, về. Không có thứ tự đúng. Không cần làm hết cùng một lúc. Bắt đầu ở chỗ nào bạn thấy mình — ngay lúc này.</p>
+  </div>
+
+  <div class="breath">
+    <p>Có ngày mọi thứ chỉ dồn lại, không kịp gọi tên.</p>
+    <p>Không cần biết ngay mình đang cần buông, thở, hay về. Cứ đọc một chút, ở lại một chút — không có câu trả lời đúng.</p>
+  </div>
+
+  {% set bb = collections.posts | byCategory("bit-by-bit") | limit(2) %}
+  <div class="tier-label">Bit by Bit · từng chút một</div>
+  <p style="margin:-8px 0 26px; font-size:15.5px;">Mình ghi lại cách mình đi qua những ngày khó mà vẫn giữ lấy giấc mơ — không phải từ chỗ đã tới đích, mà từ ngay giữa đường.</p>
+  {% if bb.length %}
+  <div class="bb-grid">
+    {% for p in bb %}
+    <a class="bb-card" href="{{ p.url }}">
+      <div class="meta">{{ p.date | dateVi }}</div>
+      <h3>{{ p.data.title }}</h3>
+      <p>{{ p.data.excerpt }}</p>
+      <span class="more">Đọc tiếp →</span>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="empty-note">Bài đầu tiên đang được viết…</p>
+  {% endif %}
+  <div class="see-all"><a href="/bit-by-bit/" class="btn-line">Xem cả hành trình</a></div>
+
+  {% set pn = collections.posts | byCategory("phu-nu-va-me") | limit(4) %}
+  <div class="tier-label">Viết cho phụ nữ &amp; mẹ</div>
+  <div class="article-list">
+    {% for p in pn %}
+    <a class="article-row" href="{{ p.url }}"><span class="t">{{ p.data.title }}</span><span class="tag">{{ site.categories[p.data.category] }}</span></a>
+    {% endfor %}
+  </div>
+  <div class="see-all"><a href="/viet/" class="btn-line">Xem tất cả bài viết</a></div>
+
+  <div class="tier-label">Một cuốn nhỏ, sâu hơn một chút</div>
+  {% include "gift.njk" %}
+
+  <p class="bridge">Nếu tới đây bạn vẫn còn ở lại — thì có hai cách để mình đi cùng bạn sâu hơn một chút.</p>
+  <p class="bridge-sub">một cách bằng việc được dẫn đi từng bước, một cách bằng việc viết ra</p>
+
+  <div class="product-grid">
+    <div class="product-card">
+      <div class="format">Khoá học video · 14 tập</div>
+      <h3>Emotion Course</h3>
+      <p class="pain">Có lúc cảm xúc đến nhanh hơn bạn kịp nghĩ — nói ra một câu rồi hối hận, im lặng rồi ấm ức, hoặc chỉ đơn giản là mệt vì cứ phản ứng theo đúng một cách, dù biết vậy mà vẫn không đổi được.</p>
+      <div class="fit">Nếu bạn thích được nghe, được giải thích, rồi có người dẫn qua từng bước.</div>
+      <p class="mech">14 tập đi từ "ủa, tại sao não mình lại phản ứng như vậy?" đến những cách cụ thể để ở cùng cảm xúc khi nó tới: thở, đổi khung nhìn, EFT. Các tập nối tiếp nhau — để bạn không chỉ biết thêm một điều, mà có thể thử sống khác đi một chút, ngay trong ngày hôm đó.</p>
+      <a href="/emotion-course/" class="cta">Tìm hiểu Emotion Course</a>
+    </div>
+    <div class="product-card">
+      <div class="format">Chương trình viết · 5 tuần</div>
+      <h3>Soi Chiếu</h3>
+      <p class="pain">Có những cảm xúc bạn mang theo lâu đến mức không còn nhớ nó bắt đầu từ đâu — chỉ biết mỗi khi có chuyện, nó lại trồi lên đúng một kiểu quen thuộc. Bạn đã thử nói ra, thử quên đi, thử "thôi kệ" — nhưng nó không đi đâu cả.</p>
+      <div class="fit">Nếu bạn thường hiểu mình rõ hơn khi viết mọi thứ ra.</div>
+      <p class="mech">5 tuần, đi theo nhịp của riêng bạn. Một hình ảnh xuyên suốt: tâm trí như một căn nhà — mỗi tuần mở một cánh cửa, bước vào một phòng, xem thứ nào muốn giữ, thứ nào đã đến lúc đặt xuống.</p>
+      <a href="#qua-tang" class="cta soft">Sắp mở · nhận tin qua email</a>
+    </div>
+  </div>
+
+  <div class="tier-label" style="margin-top:90px;">Còn điều gì bạn đang lăn tăn?</div>
+  <div class="faq">
+    <div class="faq-item">
+      <p class="faq-q">Emotion Course có cần xem đúng thứ tự?</p>
+      <p class="faq-a">Có. 14 tập được xếp thành một hành trình: trước hết hiểu chuyện gì đang diễn ra trong não và cơ thể mình, rồi mới từng bước thử những cách để làm việc với cảm xúc. Tập sau dựa trên tập trước, nên cứ đi từ đầu nhé — không cần vội.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">Mình không giỏi viết, Soi Chiếu có hợp không?</p>
+      <p class="faq-a">Có. Đây không phải lớp học viết, không ai chấm điểm chữ nghĩa của bạn. Viết ngắn cũng được. Viết lộn xộn cũng được. Viết một câu rồi ngồi nhìn nó năm phút cũng được. Chỉ cần đó là điều thật.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">Mình khá bận, có theo kịp không?</p>
+      <p class="faq-a">Không cần "theo kịp." Mọi thứ ở đây là con đường mình vẽ sẵn để bạn dễ đi — đi nhanh, đi chậm, hay có tuần dừng lại một chút đều được.</p>
+    </div>
+  </div>
+
+  <div class="closing">
+    <p>Bạn không cần trở thành một phiên bản khác mới xứng đáng được yêu thương.<br>Có khi mình chỉ cần buông một chút. Thở một chút. Rồi tìm đường về lại với mình.<br>Mình ở đây, dù bạn bắt đầu từ đâu.</p>
+  </div>
+
+</main>

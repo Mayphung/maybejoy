@@ -1,0 +1,33 @@
+---
+layout: base.njk
+nav: viet
+---
+<main>
+  <article>
+    <header class="post-head">
+      <div class="meta">
+        <a href="{{ '/bit-by-bit/' if category == 'bit-by-bit' else '/viet/' }}">{{ site.categories[category] }}</a>
+        · {{ page.date | dateVi }}
+      </div>
+      <h1>{{ title }}</h1>
+    </header>
+    <div class="prose">
+      {{ content | safe }}
+    </div>
+    <p class="signoff">Ôm ôm,<br>May.</p>
+  </article>
+
+  {% set others = collections.posts | without(page.url) | limit(3) %}
+  {% if others.length %}
+  <div class="more-posts">
+    <div class="tier-label">Đọc tiếp</div>
+    <div class="article-list">
+      {% for p in others %}
+      <a class="article-row" href="{{ p.url }}"><span class="t">{{ p.data.title }}</span><span class="tag">{{ site.categories[p.data.category] }}</span></a>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  <div style="margin-top:80px;">{% include "gift.njk" %}</div>
+</main>

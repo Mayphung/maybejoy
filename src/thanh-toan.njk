@@ -1,0 +1,36 @@
+---
+layout: base.njk
+title: Thanh toán Emotion Course
+noindex: true
+---
+<main>
+  <header class="post-head">
+    <div class="meta">Emotion Course · {{ site.coursePrice }}</div>
+    <h1>Bước vào phòng</h1>
+  </header>
+  <div class="prose">
+    <p>Cảm ơn bạn đã chọn ngồi xuống với cảm xúc của mình. Chỉ còn ba bước nhỏ:</p>
+    <ol class="steps">
+      <li>Chuyển khoản <strong>{{ site.coursePrice }}</strong> theo thông tin bên dưới.</li>
+      <li>Ở phần nội dung chuyển khoản, ghi <strong>EC + email của bạn</strong> (ví dụ: <em>EC ten@gmail.com</em>).</li>
+      <li>Trong vòng 24 giờ, mình gửi đường dẫn vào khoá học qua email đó.</li>
+    </ol>
+
+    <div class="pay-box">
+      {% if site.bankAccountNumber %}
+      <dl>
+        <dt>Ngân hàng</dt><dd>{{ site.bankName }}</dd>
+        <dt>Chủ tài khoản</dt><dd>{{ site.bankAccountName }}</dd>
+        <dt>Số tài khoản</dt><dd>{{ site.bankAccountNumber }}</dd>
+        <dt>Số tiền</dt><dd>{{ site.coursePrice }}</dd>
+        <dt>Nội dung</dt><dd>EC + email của bạn</dd>
+      </dl>
+      {% else %}
+      <p style="margin:0; font-style:italic; color:var(--terracotta);">Thông tin chuyển khoản đang được cập nhật — bạn quay lại sau ít phút nhé.</p>
+      {% endif %}
+    </div>
+
+    <p>Nếu sau 24 giờ bạn chưa nhận được email, kiểm tra giúp mình hộp thư Quảng cáo/Spam{% if site.contactEmail %}, hoặc nhắn mình ở <a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a>{% endif %}.</p>
+  </div>
+  <p class="signoff">Ôm ôm,<br>May.</p>
+</main>

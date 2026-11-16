@@ -1,0 +1,11 @@
+<div class="gift-panel" id="qua-tang">
+  <div class="kicker">Miễn phí · gửi qua email</div>
+  <h3>Khi Sợ Hãi Điều Khiển Tình Yêu</h3>
+  <div class="subtitle">5 nỗi sợ · nhận ra · hiểu · rồi bước tiếp</div>
+  <p>Cuốn nhỏ này mình viết cho những người cứ yêu là cố thêm một chút, nhường thêm một chút, xin lỗi trước một chút — rồi có lúc ngồi lại và tự hỏi: mình yêu nhiều đến vậy, sao vẫn thấy chưa đủ? Mình đi cùng bạn qua năm nỗi sợ, gọi tên từng cái một. Không phải để sửa mình. Chỉ để hiểu mình hơn, rồi từ từ về lại với mình.</p>
+  <form class="gift-form" method="post" {% if site.emailFormAction %}action="{{ site.emailFormAction }}"{% else %}data-pending{% endif %}>
+    <input type="email" name="fields[email]" placeholder="Email của bạn" aria-label="Email của bạn" required>
+    <button type="submit">Gửi mình nhé!</button>
+  </form>
+  <div class="form-msg" aria-live="polite"></div>
+</div>
