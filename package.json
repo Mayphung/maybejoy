@@ -1,7 +1,7 @@
 {
   "name": "maybejoy",
   "version": "1.0.0",
-  "description": "maybejoy.com — Vở Bit by Bit của May",
+  "description": "mayphung.com — Vở Bit by Bit của May",
   "scripts": {
     "build": "eleventy",
     "dev": "eleventy --serve",

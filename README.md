@@ -1,4 +1,4 @@
-# maybejoy.com — Vở Bit by Bit của May
+# mayphung.com — Vở Bit by Bit của May
 
 ## Sửa chữ, đăng bài
 Vào **app.pagescms.org** → đăng nhập bằng GitHub → chọn **maybejoy**.
