@@ -1,33 +1,44 @@
 ---
 layout: base.njk
-nav: viet
+css: post
+bodyClass: p-post
 ---
-<main>
-  <article>
-    <header class="post-head">
-      <div class="meta">
-        <a href="{{ '/bit-by-bit/' if category == 'bit-by-bit' else '/viet/' }}">{{ site.categories[category] }}</a>
-        · {{ page.date | dateVi }}
-      </div>
-      <h1>{{ title }}</h1>
-    </header>
+{% from "macros.njk" import mform with context %}
+{% set navKey = category %}
+{% set cat = site.nav | navItem(category) %}
+<div class="wrap">
+  {% include "nav.njk" %}
+  <article class="article" id="noi-dung">
+    <div class="meta">{% if cat %}<a href="{{ cat.url }}">{{ cat.name }}</a> · {% endif %}{{ page.date | dateVi }} · {{ content | readMin }} phút đọc</div>
+    <h1>{{ title }}</h1>
+    {% if image %}<img class="cover" src="{{ image }}" alt="{{ imageAlt or '' }}">{% endif %}
     <div class="prose">
       {{ content | safe }}
     </div>
-    <p class="signoff">Ôm ôm,<br>May.</p>
+    {% if thuToiNay %}
+    <aside class="try" aria-label="Thử tối nay">
+      <div class="lbl">thử tối nay</div>
+      {{ thuToiNay | md | safe }}
+    </aside>
+    {% endif %}
+    <p class="signoff">— May</p>
   </article>
 
-  {% set others = collections.posts | without(page.url) | limit(3) %}
+  {% set others = collections.posts | byCategory(category) | without(page.url) | limit(4) %}
   {% if others.length %}
-  <div class="more-posts">
-    <div class="tier-label">Đọc tiếp</div>
-    <div class="article-list">
-      {% for p in others %}
-      <a class="article-row" href="{{ p.url }}"><span class="t">{{ p.data.title }}</span><span class="tag">{{ site.categories[p.data.category] }}</span></a>
-      {% endfor %}
-    </div>
-  </div>
+  <nav class="more" aria-label="Đọc tiếp">
+    <div class="kick" style="margin-bottom: 6px">Đọc tiếp trong {{ cat.name if cat else "vở" }}</div>
+    {% for p in others %}
+    <a href="{{ p.url }}"><span class="t">{{ p.data.title }}</span><span class="c">{{ p.content | readMin }} phút</span></a>
+    {% endfor %}
+  </nav>
   {% endif %}
 
-  <div style="margin-top:80px;">{% include "gift.njk" %}</div>
-</main>
+  <section class="post-sign">
+    <h2 class="script" style="font-size: 40px; line-height: 1.2; margin: 0 0 8px; color: #6E2A34">Bài mới, gửi tận hộp thư.</h2>
+    <p style="margin: 0 0 20px">Viết xong bài nào, May gửi bài đó. Không dồn, không giục.</p>
+    {{ mform("em-post", "Email của bạn", "Gửi cho mình") }}
+  </section>
+
+  {% include "foot.njk" %}
+</div>

@@ -1,7 +1,8 @@
 ---
 title: Khi Mình Hay Đổ Lỗi Cho Chính Mình — Và Học Cách Nhìn Lại Cho Đúng
 date: 2026-01-24
-category: phu-nu-va-me
+category: tung-chut-mot
+tamTrang: hoc
 excerpt: '"Chắc do mình dở." "Lại là lỗi của mình." Nghe thì quen. Nhưng mấy câu đó không giúp mình tốt hơn — vì chúng quá mơ hồ.'
 ---
 

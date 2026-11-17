@@ -1,13 +1,50 @@
-# Cấu hình trình soạn thảo Pages CMS (app.pagescms.org)
-# May đăng nhập bằng GitHub → chọn repo maybejoy → viết bài.
+# Trình soạn thảo của May — Pages CMS (app.pagescms.org)
+# Đăng nhập bằng GitHub → chọn repo maybejoy → sửa chữ, đăng bài. Bấm Save là web tự cập nhật sau 1–2 phút.
 
 media:
   input: src/assets/images
   output: /assets/images
 
 content:
-  - name: posts
-    label: Bài viết
+  # ---------- VIẾT ----------
+  - name: nhat-ky
+    label: "✏️ Từng chút một — trang ngắn (ghi chú, ảnh, câu tâm đắc)"
+    type: collection
+    path: src/nhat-ky
+    filename: "{year}-{month}-{day}-{primary}.md"
+    view:
+      fields: [chu, kieu, tamTrang, date]
+      primary: chu
+      sort: [date]
+      default: { sort: date, order: desc }
+    fields:
+      - { name: date, label: Ngày, type: date, required: true }
+      - name: kieu
+        label: Kiểu trang
+        type: select
+        required: true
+        options:
+          values:
+            - { value: ghi-chu, label: "Giấy note (chữ viết tay)" }
+            - { value: anh, label: "Ảnh polaroid + một dòng" }
+            - { value: cau, label: "Câu tâm đắc (nền đỏ đô)" }
+      - name: tamTrang
+        label: Hôm đó là ngày gì?
+        type: select
+        required: true
+        options:
+          values:
+            - { value: nhich, label: Ngày nhích được }
+            - { value: met, label: Ngày mệt }
+            - { value: bo, label: Ngày muốn bỏ }
+            - { value: hoc, label: Bài học nhỏ }
+      - { name: chu, label: "Chữ (ngắn thôi — với ảnh thì là dòng chú thích)", type: text, required: true }
+      - { name: anh, label: "Ảnh (chỉ cần khi chọn kiểu Ảnh)", type: image }
+      - { name: moTaAnh, label: "Tả ảnh trong một câu (cho người khiếm thị và Google)", type: string }
+      - { name: draft, label: Ẩn đi (chưa đăng), type: boolean, default: false }
+
+  - name: bai-viet
+    label: "📖 Bài viết dài"
     type: collection
     path: src/bai-viet
     filename: "{year}-{month}-{day}-{primary}.md"
@@ -15,113 +52,300 @@ content:
       fields: [title, category, date, draft]
       primary: title
       sort: [date]
-      default:
-        sort: date
-        order: desc
+      default: { sort: date, order: desc }
     fields:
-      - name: title
-        label: Tiêu đề
-        type: string
-        required: true
-      - name: date
-        label: Ngày đăng
-        type: date
-        required: true
+      - { name: title, label: Tiêu đề, type: string, required: true }
+      - { name: date, label: Ngày đăng, type: date, required: true }
       - name: category
         label: Chuyên mục
         type: select
         required: true
         options:
           values:
-            - value: bit-by-bit
-              label: Bit by Bit
-            - value: phu-nu-va-me
-              label: Phụ nữ & Mẹ
-      - name: excerpt
-        label: Đoạn giới thiệu ngắn (hiện ở danh sách bài)
-        type: text
-      - name: draft
-        label: Bản nháp (chưa đăng)
-        type: boolean
-        default: false
-      - name: body
-        label: Nội dung
-        type: rich-text
+            - { value: tung-chut-mot, label: Từng chút một }
+            - { value: me-cung-dang-hoc, label: Mẹ cũng đang học }
+      - name: tamTrang
+        label: "Nhãn trên tường (chỉ cho Từng chút một)"
+        type: select
+        options:
+          values:
+            - { value: nhich, label: Ngày nhích được }
+            - { value: met, label: Ngày mệt }
+            - { value: bo, label: Ngày muốn bỏ }
+            - { value: hoc, label: Bài học nhỏ }
+      - name: chapter
+        label: "Chương (chỉ cho Mẹ cũng đang học)"
+        type: select
+        options:
+          values:
+            - { value: "1", label: "Chương I — Hành trình làm mẹ" }
+            - { value: "2", label: "Chương II — Hiểu con" }
+            - { value: "3", label: "Chương III — Đồng hành cùng con" }
+      - { name: excerpt, label: "Đoạn giới thiệu ngắn (hiện ở danh sách và trên Google)", type: text }
+      - { name: image, label: Ảnh đầu bài, type: image }
+      - { name: imageAlt, label: Tả ảnh trong một câu, type: string }
+      - { name: thuToiNay, label: "Hộp 'thử tối nay' cuối bài (bỏ trống nếu không có)", type: text }
+      - { name: noiBat, label: "Ghim làm bài nổi bật ở Mẹ cũng đang học", type: boolean, default: false }
+      - { name: draft, label: Bản nháp (chưa đăng), type: boolean, default: false }
+      - { name: body, label: Nội dung, type: rich-text }
 
-  - name: about
-    label: Trang Về May
+  # ---------- CHỮ TRÊN CÁC TRANG ----------
+  - name: trang-chu
+    label: "🏠 Trang chủ (vở)"
+    type: file
+    path: src/_data/trangChu.json
+    format: json
+    fields:
+      - name: nhan
+        label: Nhãn vở
+        type: object
+        fields:
+          - { name: hoTen, label: Họ và tên, type: string }
+          - { name: lop, label: Lớp, type: string }
+          - { name: truong, label: Trường, type: string }
+          - { name: namHoc, label: Năm học, type: string }
+      - { name: anhThe, label: Ảnh thẻ, type: image }
+      - { name: anhTheMoTa, label: Tả ảnh thẻ, type: string }
+      - { name: anhTheChuThich, label: Chú thích dưới ảnh thẻ, type: string }
+      - { name: loiChao, label: Lời chào đầu vở, type: text }
+      - name: viecDau
+        label: Việc số 1 (đã tick sẵn)
+        type: object
+        fields:
+          - { name: viec, label: Việc, type: string }
+          - { name: ghiChu, label: Dòng nhỏ bên dưới, type: string }
+      - name: viecChuyenMuc
+        label: Bốn việc dẫn vào bốn chuyên mục
+        type: object
+        list: true
+        fields:
+          - name: chuyenMuc
+            label: Dẫn tới chuyên mục
+            type: select
+            options:
+              values:
+                - { value: tung-chut-mot, label: Từng chút một }
+                - { value: me-cung-dang-hoc, label: Mẹ cũng đang học }
+                - { value: mot-chuyen-thoi-me, label: Một chuyện thôi mẹ! }
+                - { value: o-xuong-may, label: Ở xưởng May }
+          - { name: viec, label: Việc, type: string }
+          - { name: ghiChu, label: Dòng nhỏ bên dưới, type: text }
+          - { name: ghiLe, label: "Ghi chú ngoài lề đỏ (có thể bỏ trống)", type: string }
+      - name: viecTheoDoi
+        label: Việc 'theo dõi May'
+        type: object
+        fields:
+          - { name: viec, label: Việc, type: string }
+          - { name: ghiChu, label: Dòng nhỏ bên dưới, type: string }
+      - name: baiTap
+        label: Bài tập về nhà (cuốn nhỏ miễn phí)
+        type: object
+        fields:
+          - { name: tenSach, label: Tên cuốn nhỏ, type: string }
+          - { name: phuDe, label: Dòng phụ trên bìa, type: string }
+          - { name: deBai, label: "Đề bài (*chữ nghiêng* đặt giữa hai dấu sao)", type: text }
+      - name: thoiKhoaBieu
+        label: Thời khoá biểu (mỗi dòng chỉ hiện khi đã có link mạng xã hội đó)
+        type: object
+        list: true
+        fields:
+          - { name: mon, label: Môn, type: string }
+          - { name: kieu, label: Dòng nhỏ, type: string }
+          - name: noi
+            label: Lớp ở đâu
+            type: select
+            options: { values: [TikTok, Facebook, YouTube] }
+          - { name: hoc, label: Học gì, type: string }
+      - { name: loiPhe, label: Lời phê, type: text }
+      - { name: nguoiPhe, label: Người phê, type: string }
+
+  - name: trang-tung-chut-mot
+    label: "📄 Trang Từng chút một — chữ đầu trang"
+    type: file
+    path: src/_data/tungChutMot.json
+    format: json
+    fields:
+      - { name: loiMoDau, label: Lời mở đầu, type: text }
+      - { name: ghiLe, label: Câu viết tay bên phải, type: string }
+
+  - name: trang-me
+    label: "📄 Trang Mẹ cũng đang học — chữ và các chương"
+    type: file
+    path: src/_data/meCungDangHoc.json
+    format: json
+    fields:
+      - { name: loiMoDau, label: Lời mở đầu, type: text }
+      - name: cachDoc
+        label: Ba lời hứa khi đọc
+        type: object
+        list: true
+        fields:
+          - { name: ten, label: Tên, type: string }
+          - { name: moTa, label: Mô tả, type: string }
+      - name: chuong
+        label: Các chương
+        type: object
+        list: true
+        fields:
+          - { name: so, label: "Số chương (1, 2, 3…) — phải khớp với ô Chương trong bài viết", type: string }
+          - { name: la, label: "Chữ nhỏ (vd: Chương I)", type: string }
+          - { name: ten, label: Tên chương, type: string }
+          - { name: moTa, label: Mô tả, type: text }
+          - { name: anh, label: Ảnh, type: image }
+          - { name: moTaAnh, label: Tả ảnh, type: string }
+      - { name: viDuThuToiNay, label: "Ví dụ 'thử tối nay' trên trang", type: text }
+
+  - name: trang-ke
+    label: "📄 Trang Một chuyện thôi mẹ! — video, sách, ngôi làng"
+    type: file
+    path: src/_data/motChuyen.json
+    format: json
+    fields:
+      - { name: loiMoDau, label: Lời mở đầu, type: text }
+      - name: videos
+        label: Truyện kể trên YouTube (thêm tập nào, hiện tập đó)
+        type: object
+        list: true
+        fields:
+          - { name: ten, label: Tên truyện, type: string }
+          - { name: link, label: Link YouTube, type: string }
+          - { name: ghiChu, label: "Dòng nhỏ (vd: 5 phút · cho bé sợ tối)", type: string }
+          - { name: anh, label: "Ảnh bìa video (có thể bỏ trống)", type: image }
+      - name: sach
+        label: Bộ sách Cappu & Lucia
+        type: object
+        fields:
+          - { name: tenBo, label: Tên bộ sách, type: string }
+          - { name: nxb, label: Nhà xuất bản, type: string }
+          - { name: tacGia, label: Dòng tác giả, type: string }
+          - { name: trangThai, label: "Con dấu trạng thái (vd: sắp phát hành · cuối 2026 — bỏ trống để ẩn)", type: string }
+          - { name: ghiChu, label: "Dòng viết tay dưới kệ sách (bỏ trống để ẩn)", type: string }
+          - { name: sapCo, label: Dòng 'sắp có thêm', type: string }
+          - name: cuon
+            label: Từng cuốn
+            type: object
+            list: true
+            fields:
+              - { name: ten, label: Tên sách, type: string }
+              - { name: noiSo, label: Nỗi sợ, type: string }
+              - { name: moTa, label: Mô tả, type: text }
+              - { name: bia, label: Bìa, type: image }
+              - { name: linkMua, label: "Link mua sách (có link mới hiện nút Mua)", type: string }
+      - name: ngoiLang
+        label: Ngôi làng
+        type: object
+        fields:
+          - { name: tieuDe, label: "Tiêu đề (*chữ nghiêng* giữa hai dấu sao)", type: string }
+          - { name: moTa, label: Mô tả, type: text }
+          - { name: tinhTrang, label: Dòng tình trạng, type: string }
+
+  - name: trang-xuong
+    label: "📄 Trang Ở xưởng May — các món"
+    type: file
+    path: src/_data/xuong.json
+    format: json
+    fields:
+      - { name: loiMoDau, label: Lời mở đầu, type: text }
+      - { name: ghiLe, label: Câu viết tay bên phải, type: string }
+      - name: banMay
+        label: Ảnh 'trên bàn may hôm nay'
+        type: object
+        list: true
+        fields:
+          - { name: anh, label: Ảnh, type: image }
+          - { name: moTa, label: Tả ảnh, type: string }
+      - { name: banMayGhiChu, label: Dòng viết tay cạnh ảnh, type: string }
+      - name: daXong
+        label: Đã may xong
+        type: object
+        list: true
+        fields: &mon
+          - { name: trangThai, label: "Trạng thái (dòng viết tay trên thẻ)", type: string }
+          - { name: loai, label: "Loại (vd: Khoá học video · 14 tập)", type: string }
+          - { name: ten, label: Tên món, type: string }
+          - { name: moTa, label: Mô tả, type: text }
+          - { name: nhanMac, label: "Nhãn mác (mỗi dòng một ý, **chữ đậm** giữa hai cặp sao)", type: text }
+          - { name: gia, label: "Giá (với Emotion Course, giá này dùng cho cả trang khoá học và thanh toán)", type: string }
+          - { name: giaGhiChu, label: Dòng nhỏ dưới giá, type: string }
+          - { name: ghiTay, label: "Dòng viết tay thay cho giá (nếu chưa có giá)", type: string }
+          - { name: nutChu, label: Chữ trên nút, type: string }
+          - { name: nutLink, label: "Nút dẫn tới đâu (bỏ trống để ẩn nút)", type: string }
+          - { name: nutPhu, label: Nút viền (thay vì nút đặc), type: boolean }
+          - { name: mauDa, label: "Thẻ màu đá (dành cho sách Cappu & Lucia)", type: boolean }
+          - { name: tenNghieng, label: Tên in nghiêng, type: boolean }
+          - name: bia
+            label: Ảnh bìa nhỏ trên thẻ
+            type: object
+            list: true
+            fields:
+              - { name: anh, label: Ảnh, type: image }
+              - { name: moTa, label: Tả ảnh, type: string }
+      - name: dangMay
+        label: Đang trên bàn may
+        type: object
+        list: true
+        fields: *mon
+      - name: nguoiMay
+        label: Người ngồi may
+        type: object
+        fields:
+          - { name: anh, label: Ảnh, type: image }
+          - { name: moTaAnh, label: Tả ảnh, type: string }
+          - { name: chuThich, label: Chú thích ảnh, type: string }
+          - { name: tieuDe, label: "Tiêu đề (*chữ nghiêng* giữa hai dấu sao)", type: string }
+          - { name: loi, label: Đoạn giới thiệu (cách đoạn bằng một dòng trống), type: text }
+          - { name: nhanMac, label: Nhãn mác, type: text }
+
+  - name: ve-may
+    label: "📄 Trang Về May"
     type: file
     path: src/ve-may.md
     fields:
-      - name: layout
-        type: string
-        hidden: true
-        default: page.njk
-      - name: title
-        label: Tiêu đề
-        type: string
-      - name: kicker
-        label: Dòng nhỏ phía trên
-        type: string
-      - name: nav
-        type: string
-        hidden: true
-        default: ve-may
-      - name: signoff
-        label: Lời chào cuối
-        type: string
-      - name: description
-        label: Mô tả (cho Google)
-        type: text
-      - name: body
-        label: Nội dung
-        type: rich-text
+      - { name: layout, type: string, hidden: true, default: page.njk }
+      - { name: permalink, type: string, hidden: true, default: /ve-may/ }
+      - { name: title, label: Tiêu đề, type: string }
+      - { name: kicker, label: Dòng nhỏ phía trên, type: string }
+      - { name: photo, label: Ảnh, type: image }
+      - { name: photoAlt, label: Tả ảnh, type: string }
+      - { name: photoCaption, label: Chú thích ảnh, type: string }
+      - { name: signoff, label: Lời ký cuối, type: string }
+      - { name: description, label: Mô tả (cho Google), type: text }
+      - { name: body, label: Nội dung, type: rich-text }
 
+  # ---------- CÀI ĐẶT ----------
   - name: settings
-    label: Cài đặt trang
+    label: "⚙️ Cài đặt: link mạng xã hội, email, chuyển khoản"
     type: file
     path: src/_data/site.json
     format: json
     fields:
-      - name: name
-        type: string
-        hidden: true
-      - name: brand
-        label: Tên hiển thị góc trái
-        type: string
-      - name: url
-        type: string
-        hidden: true
-      - name: description
-        label: Mô tả trang (cho Google)
-        type: text
-      - name: categories
+      - { name: url, type: string, hidden: true }
+      - { name: description, label: Mô tả trang (hiện trên Google), type: text }
+      - name: social
+        label: Mạng xã hội (dán link đầy đủ; bỏ trống thì nút tự ẩn)
         type: object
+        fields:
+          - { name: tiktok, label: TikTok, type: string }
+          - { name: facebook, label: Facebook, type: string }
+          - { name: youtube, label: YouTube, type: string }
+      - name: email
+        label: Form nhận email (MailerLite)
+        type: object
+        fields:
+          - { name: formAction, label: Địa chỉ form chung, type: string }
+          - { name: quaTangFormAction, label: "Địa chỉ form cuốn nhỏ miễn phí (bỏ trống = dùng form chung)", type: string }
+      - { name: contactEmail, label: Email liên hệ, type: string }
+      - { name: courseOldPrice, label: Giá gốc Emotion Course (gạch ngang), type: string }
+      - { name: bankName, label: Ngân hàng, type: string }
+      - { name: bankAccountName, label: Chủ tài khoản, type: string }
+      - { name: bankAccountNumber, label: "Số tài khoản (có số này thì nút mua mới hiện)", type: string }
+      - { name: bankVietQrId, label: "Mã ngân hàng cho VietQR (vd: VCB, TCB, MB…) — có thì hiện mã QR", type: string }
+      - name: nav
+        type: object
+        list: true
         hidden: true
         fields:
-          - { name: bit-by-bit, type: string }
-          - { name: phu-nu-va-me, type: string }
-      - name: bitByBitIntro
-        label: Lời mở đầu trang Bit by Bit (cách đoạn bằng một dòng trống)
-        type: text
-      - name: emailFormAction
-        label: Địa chỉ form email (MailerLite)
-        type: string
-      - name: coursePrice
-        label: Giá Emotion Course
-        type: string
-      - name: courseOldPrice
-        label: Giá gốc Emotion Course
-        type: string
-      - name: bankName
-        label: Ngân hàng
-        type: string
-      - name: bankAccountName
-        label: Chủ tài khoản
-        type: string
-      - name: bankAccountNumber
-        label: Số tài khoản
-        type: string
-      - name: contactEmail
-        label: Email liên hệ
-        type: string
+          - { name: key, type: string }
+          - { name: name, type: string }
+          - { name: url, type: string }
+          - { name: sub, type: string }

@@ -1,0 +1,14 @@
+{
+  "loiMoDau": "Không ai sinh ra đã biết làm mẹ. Đây là những gì mình đang học — về hành trình làm mẹ, về hiểu con, và về cách đứng bên con. Viết kỹ, viết dài, để bạn đọc lúc nhà đã yên.",
+  "cachDoc": [
+    { "ten": "Đọc chậm", "moTa": "Mỗi bài 10–15 phút. Không lướt được, và cũng không cần lướt." },
+    { "ten": "Thử tối nay", "moTa": "Cuối mỗi bài có một việc nhỏ để thử với con, ngay tối hôm đó." },
+    { "ten": "Không chấm mẹ nào", "moTa": "Mẹ nào cũng đang làm hết sức với những gì mình có. Kể cả bạn." }
+  ],
+  "chuong": [
+    { "so": "1", "la": "Chương I", "ten": "Hành trình làm mẹ", "moTa": "Những gì thay đổi bên trong một người phụ nữ khi trở thành mẹ — và những gì mình mang theo từ chính mẹ mình.", "anh": "/assets/images/me-dat-con.jpg", "moTaAnh": "Mẹ dắt con đi, nhìn từ phía sau" },
+    { "so": "2", "la": "Chương II", "ten": "Hiểu con", "moTa": "Đằng sau một cơn khóc, một lần bướng, một câu “tại mẹ” — con đang thật sự cần gì.", "anh": "/assets/images/be-om-goc-cay.jpg", "moTaAnh": "Đứa trẻ ôm gốc cây" },
+    { "so": "3", "la": "Chương III", "ten": "Đồng hành cùng con", "moTa": "Những cách nhỏ, cụ thể, dùng được ngay, để đứng bên con mà không cần làm một bà mẹ hoàn hảo.", "anh": "/assets/images/me-tap-xe-cho-con.jpg", "moTaAnh": "Mẹ giúp con tập xe" }
+  ],
+  "viDuThuToiNay": "Khi con nói: *“Tại mẹ không mua đồ chơi!”*\n\nThử giúp con nói lại: *“Con thất vọng vì không được đồ chơi.”*\n\nChậm. Khó. Nhưng mỗi lần như vậy, con học thêm một từ cho cảm xúc của mình."
+}

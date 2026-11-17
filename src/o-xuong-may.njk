@@ -1,0 +1,97 @@
+---
+layout: base.njk
+title: Ở xưởng May
+description: Những thứ May đã may xong và đang may — Emotion Course, sổ viết Soi Chiếu, sách Cappu & Lucia (NXB Kim Đồng) và tiểu thuyết Anne & Ren.
+permalink: /o-xuong-may/
+css: xuong
+bodyClass: p-xuong
+navKey: o-xuong-may
+---
+{% from "macros.njk" import mform with context %}
+{% set x = xuong %}
+{% macro tag(p, i) %}
+<div class="hang">
+  <svg class="string" width="60" height="60" viewBox="0 0 60 60" fill="none" stroke="#A8522B" stroke-width="2" aria-hidden="true"><path d="{{ 'M30 70 C 10 40, 50 30, 30 0' if i % 2 == 0 else 'M30 70 C 50 40, 10 30, 30 0' }}"/></svg>
+  <div class="tagc{% if p.mauDa %} stone{% endif %}">
+    <span class="hole"></span>
+    {% if p.trangThai %}<span class="status">{{ p.trangThai }}</span>{% endif %}
+    {% if p.loai %}<div class="kick" style="text-align: center">{{ p.loai }}</div>{% endif %}
+    <h3 class="serif tname{% if p.tenNghieng %} it{% endif %}">{{ p.ten }}</h3>
+    {% if p.bia and p.bia.length %}<div class="covers">{% for b in p.bia %}<img src="{{ b.anh }}" alt="{{ b.moTa }}" loading="lazy">{% endfor %}</div>{% endif %}
+    {% if p.moTa %}<p style="font-size: 15px; margin: 0; text-align: center">{{ p.moTa }}</p>{% endif %}
+    {% if p.nhanMac %}<div class="care">{{ p.nhanMac | mdInline | safe }}</div>{% endif %}
+    <div class="tag-foot">
+      {% if p.gia %}<div><div class="price{% if p.gia.length > 9 %} sm{% endif %}">{{ p.gia }}</div>{% if p.giaGhiChu %}<div style="font-size: 12px">{{ p.giaGhiChu }}</div>{% endif %}</div>
+      {% elif p.ghiTay %}<span class="hand" style="font-size: 19px; color: #A8522B">{{ p.ghiTay }}</span>
+      {% else %}<span></span>{% endif %}
+      {% if p.nutChu and p.nutLink %}<a class="btn{% if p.nutPhu %} ghost{% endif %}" href="{{ p.nutLink }}">{{ p.nutChu }}</a>{% endif %}
+    </div>
+  </div>
+</div>
+{% endmacro %}
+
+<div class="wrap">{% include "nav.njk" %}</div>
+<div class="measure" aria-hidden="true"></div>
+
+<div class="wrap">
+  <header class="g2 head" id="noi-dung">
+    <div>
+      <div class="kick" style="margin-bottom: 18px">Chuyên mục 04 · <span class="serif" style="text-transform: none; letter-spacing: 0; font-style: italic; font-size: 15px">khung cửi</span></div>
+      <h1 class="serif h1">Ở xưởng <span style="font-style: italic; color: #C1653A">May</span></h1>
+      <p style="font-size: 19px; max-width: 600px; margin: 0">{{ x.loiMoDau }}</p>
+    </div>
+    <div class="hand" style="font-size: 23px; color: #A8522B; transform: rotate(-3deg)">{{ x.ghiLe }}</div>
+  </header>
+
+  {% if x.banMay.length %}
+  <div class="desk">
+    {% set rots = ["-3", "2", "-1"] %}{% set wr = ["-4", "6", "-8"] %}
+    {% for b in x.banMay %}
+    <figure class="desk-pol" style="transform: rotate({{ rots[loop.index0 % 3] }}deg)"><div class="washi" style="transform: rotate({{ wr[loop.index0 % 3] }}deg)"></div><img src="{{ b.anh }}" alt="{{ b.moTa }}" loading="lazy"></figure>
+    {% endfor %}
+    <div class="hand" style="font-size: 22px; color: #A8522B; max-width: 220px; padding-bottom: 20px">{{ x.banMayGhiChu }}</div>
+  </div>
+  {% endif %}
+
+  {% if x.daXong.length %}
+  <section style="margin-bottom: 110px">
+    <div class="sec-h"><h2 class="serif">Đã may xong</h2><span class="hand">— mời mặc thử</span></div>
+    <div class="g3">{% for p in x.daXong %}{{ tag(p, loop.index0) }}{% endfor %}</div>
+  </section>
+  {% endif %}
+
+  {% if x.dangMay.length %}
+  <section style="margin-bottom: 110px">
+    <div class="sec-h"><h2 class="serif">Đang trên bàn may</h2><span class="hand">— chưa xong, nhưng đã thấy dáng</span></div>
+    <div class="g3{% if x.dangMay.length == 1 %} one{% endif %}">{% for p in x.dangMay %}{{ tag(p, loop.index0 + 1) }}{% endfor %}</div>
+  </section>
+  {% endif %}
+
+  <section id="bao-tin" class="g2 news">
+    <div>
+      <h2 class="serif" style="font-size: 34px; line-height: 1.25; margin: 0 0 10px; color: #6E2A34; font-weight: 500">Món mới ra lò, <span style="font-style: italic">May báo bạn trước.</span></h2>
+      <p style="margin: 0; font-size: 16px">Soi Chiếu mở bán, Anne &amp; Ren mở đọc sớm — ai để lại email sẽ biết đầu tiên.</p>
+    </div>
+    <div>{{ mform("em-xuong", "Email của bạn", "Báo mình nhé") }}</div>
+  </section>
+
+  {% set n = x.nguoiMay %}
+  <section class="g2 maker">
+    <div style="position: relative; max-width: 400px; width: 100%; margin: 0 auto">
+      <figure class="pol" style="transform: rotate(-3deg)">
+        <div class="washi"></div>
+        <img src="{{ n.anh }}" alt="{{ n.moTaAnh }}" loading="lazy">
+        <figcaption class="hand" style="font-size: 20px; margin-top: 10px">{{ n.chuThich }}</figcaption>
+      </figure>
+    </div>
+    <div>
+      <div class="kick" style="margin-bottom: 12px">Người ngồi may</div>
+      <h2 class="serif" style="font-size: 44px; line-height: 1.2; margin: 0 0 20px; color: #6E2A34; font-weight: 500">{{ n.tieuDe | mdInline | safe }}</h2>
+      <div class="maker-text">{{ n.loi | md | safe }}</div>
+      <div class="care" style="max-width: 420px; margin: 0 0 22px">{{ n.nhanMac | mdInline | safe }}</div>
+      <a class="tagline" href="/ve-may/">Đọc thêm về May →</a>
+    </div>
+  </section>
+
+  <div style="border-top: 1px solid #C9BCAC">{% include "foot.njk" %}</div>
+</div>

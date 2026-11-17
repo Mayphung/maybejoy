@@ -1,17 +1,22 @@
 ---
 layout: base.njk
 title: Thanh toán Emotion Course
+permalink: /thanh-toan/
 noindex: true
+css: post
+bodyClass: p-post
+navKey: o-xuong-may
 ---
-<main>
-  <header class="post-head">
-    <div class="meta">Emotion Course · {{ site.coursePrice }}</div>
-    <h1>Bước vào phòng</h1>
-  </header>
+{% set ec = xuong.daXong | findBy("ten", "Emotion Course") %}
+<div class="wrap">
+{% include "nav.njk" %}
+<main class="article" id="noi-dung">
+  <div class="meta"><a href="/emotion-course/">Emotion Course</a> · {{ ec.gia }}</div>
+  <h1>Bước vào phòng</h1>
   <div class="prose">
     <p>Cảm ơn bạn đã chọn ngồi xuống với cảm xúc của mình. Chỉ còn ba bước nhỏ:</p>
     <ol class="steps">
-      <li>Chuyển khoản <strong>{{ site.coursePrice }}</strong> theo thông tin bên dưới.</li>
+      <li>Chuyển khoản <strong>{{ ec.gia }}</strong> theo thông tin bên dưới.</li>
       <li>Ở phần nội dung chuyển khoản, ghi <strong>EC + email của bạn</strong> (ví dụ: <em>EC ten@gmail.com</em>).</li>
       <li>Trong vòng 24 giờ, mình gửi đường dẫn vào khoá học qua email đó.</li>
     </ol>
@@ -22,15 +27,21 @@ noindex: true
         <dt>Ngân hàng</dt><dd>{{ site.bankName }}</dd>
         <dt>Chủ tài khoản</dt><dd>{{ site.bankAccountName }}</dd>
         <dt>Số tài khoản</dt><dd>{{ site.bankAccountNumber }}</dd>
-        <dt>Số tiền</dt><dd>{{ site.coursePrice }}</dd>
+        <dt>Số tiền</dt><dd>{{ ec.gia }}</dd>
         <dt>Nội dung</dt><dd>EC + email của bạn</dd>
       </dl>
+      {% if site.bankVietQrId %}
+      <img class="qr" src="https://img.vietqr.io/image/{{ site.bankVietQrId }}-{{ site.bankAccountNumber }}-compact2.png?amount={{ ec.gia | digits }}&addInfo=EC&accountName={{ site.bankAccountName | urlencode }}" alt="Mã QR chuyển khoản {{ ec.gia }}" width="280" height="280" loading="lazy">
+      <p style="font-size: 14px; margin: 6px 0 0">Quét mã bằng app ngân hàng, rồi sửa nội dung thành <strong>EC + email của bạn</strong>.</p>
+      {% endif %}
       {% else %}
-      <p style="margin:0; font-style:italic; color:var(--terracotta);">Thông tin chuyển khoản đang được cập nhật — bạn quay lại sau ít phút nhé.</p>
+      <p style="margin:0; font-style:italic; color:var(--terracotta-dark);">Thông tin chuyển khoản đang được cập nhật — bạn quay lại sau ít phút nhé.</p>
       {% endif %}
     </div>
 
     <p>Nếu sau 24 giờ bạn chưa nhận được email, kiểm tra giúp mình hộp thư Quảng cáo/Spam{% if site.contactEmail %}, hoặc nhắn mình ở <a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a>{% endif %}.</p>
   </div>
-  <p class="signoff">Ôm ôm,<br>May.</p>
+  <p class="signoff">— May</p>
 </main>
+{% include "foot.njk" %}
+</div>

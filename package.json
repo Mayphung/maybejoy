@@ -1,10 +1,11 @@
 {
   "name": "maybejoy",
   "version": "1.0.0",
-  "description": "",
+  "description": "maybejoy.com — Vở Bit by Bit của May",
   "scripts": {
     "build": "eleventy",
-    "dev": "eleventy --serve"
+    "dev": "eleventy --serve",
+    "deploy": "eleventy && wrangler deploy"
   },
   "keywords": [],
   "author": "",
@@ -12,5 +13,11 @@
   "devDependencies": {
     "@11ty/eleventy": "^3.1.8"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "markdown-it": "^14.3.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
 }

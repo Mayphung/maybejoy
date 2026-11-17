@@ -1,0 +1,56 @@
+/* ===== Emotion Course ===== */
+body.p-course{background:var(--cream)}
+.course-hero{text-align:center;padding:80px 20px 90px;background:var(--burgundy);color:#FBF6EE;position:relative}
+.course-hero .kicker{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#F0B892;font-weight:500}
+.course-hero h1{font-family:'Lora',Georgia,serif;font-size:72px;line-height:1.1;font-weight:500;margin:16px 0 6px}
+.course-hero .hero-note{font-size:22px;color:#F0B892;margin-bottom:22px}
+.course-hero p{max-width:620px;margin:0 auto 26px;font-size:19px}
+.scroll-hint{color:#FBF6EE;font-size:14px;text-decoration:none;border-bottom:1.5px solid #F0B892}
+.scroll-hint:hover{color:#F0B892}
+.narrow{max-width:720px;margin:0 auto;padding:0 20px}
+.big-breath{padding:80px 0 30px;font-family:'Lora',Georgia,serif;font-size:26px;line-height:1.55;color:var(--burgundy)}
+.big-breath p{margin:0 0 .7em}
+.lift{font-style:italic;color:var(--terracotta-dark)}
+.door-line{border-left:3px solid var(--terracotta);padding:4px 0 4px 22px;margin-bottom:70px}
+.door-line p{margin:0;font-size:18px}
+.journey-intro{text-align:center;margin:30px 0 40px}
+.s-kicker{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--burgundy);font-weight:500;margin-bottom:10px}
+.journey-intro h2{font-family:'Lora',Georgia,serif;font-size:44px;font-weight:500;color:var(--burgundy);margin:0}
+.act{max-width:720px;margin:0 auto 26px;background:var(--paper-white);border:2px solid var(--burgundy);border-radius:10px;padding:28px 30px}
+.act-head{display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}
+.act-num{font-size:12px;letter-spacing:2px;color:var(--terracotta-dark);font-weight:600}
+.act-title{font-family:'Lora',Georgia,serif;font-size:26px;color:var(--burgundy);font-weight:600}
+.act .desc{margin:6px 0 14px;font-size:16px}
+.ep-list{list-style:none;padding:0;margin:0}
+.ep-list li{display:flex;gap:14px;align-items:baseline;padding:8px 0;border-top:1px dotted var(--line);font-size:16px}
+.ep-tag{font-family:'Patrick Hand',cursive;font-size:19px;color:var(--terracotta-dark);min-width:46px}
+.act--mystery{background:#362A24;color:#FBF6EE;border-color:#362A24}
+.act--mystery .act-title{color:#FBF6EE}
+.act--mystery .act-num,.act--mystery .ep-tag{color:#F0B892}
+.act--mystery .ep-list li{border-top-color:rgba(251,246,238,.2)}
+.mystery-note{font-family:'Patrick Hand',cursive;font-size:20px;color:#F0B892;margin:14px 0 0}
+.room-section{background:var(--cream-warm);padding:70px 20px;margin:70px 0}
+.room-section .inner{max-width:720px;margin:0 auto}
+.room-section p{font-size:18px;margin:0 0 1em}
+.voice{font-family:'Lora',Georgia,serif;font-style:italic;font-size:21px;line-height:1.65;color:var(--burgundy);margin-bottom:60px}
+.voice .signature{font-family:'Dancing Script',cursive;font-style:normal;font-size:32px;font-weight:700}
+.price-section{text-align:center;margin-bottom:70px;scroll-margin-top:20px}
+.price-box{background:var(--paper-white);border:2px solid var(--burgundy);border-radius:22px;padding:40px 34px;box-shadow:12px 14px 0 #E3D4C2}
+.founding{font-family:'Patrick Hand',cursive;font-size:22px;color:var(--terracotta-dark)}
+.old-price{text-decoration:line-through;color:#8A7A70;font-size:18px}
+.price-box .price{font-family:'Lora',Georgia,serif;font-size:52px;font-weight:700;color:var(--burgundy);line-height:1.1;margin-bottom:18px}
+.price-box ul{text-align:left;max-width:460px;margin:0 auto 26px;padding-left:1.2em;font-size:16px}
+.price-box .cta{min-height:52px;padding:0 34px;font-size:16px}
+.price-box .mform{margin:0 auto}
+.price-note{font-size:15px;margin-top:16px}
+.faq-item{border-top:1px solid var(--line);padding:18px 0}
+.faq-q{font-family:'Lora',Georgia,serif;font-size:19px;color:var(--burgundy);font-weight:600;margin:0 0 6px}
+.faq-a{margin:0;font-size:16px}
+.closing{text-align:center;font-family:'Lora',Georgia,serif;font-style:italic;font-size:21px;line-height:1.6;color:var(--burgundy);padding:60px 0 70px}
+@media (max-width:640px){
+  .course-hero h1{font-size:48px}
+  .big-breath{font-size:22px;padding-top:56px}
+  .journey-intro h2{font-size:34px}
+  .act{padding:22px 20px}
+  .price-box{padding:30px 20px}
+}

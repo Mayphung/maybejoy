@@ -1,11 +1,19 @@
 ---
 layout: base.njk
 title: Emotion Course
-description: Emotion Course — khoá học video 14 tập giúp bạn ở cùng cảm xúc thay vì bị nó dắt đi. Giá ra mắt 299.000đ.
+description: Emotion Course — khoá học video 14 tập của May, giúp bạn ở cùng cảm xúc thay vì bị nó dắt đi. Mua một lần, xem mãi mãi.
+permalink: /emotion-course/
+css: course
+bodyClass: p-course
+navKey: o-xuong-may
 ---
-<div class="course-hero">
+{% from "macros.njk" import mform with context %}
+{% set ec = xuong.daXong | findBy("ten", "Emotion Course") %}
+<div class="wrap">{% include "nav.njk" %}</div>
+<div class="course-hero" id="noi-dung">
   <div class="kicker">Khoá Học Video · 14 Tập</div>
   <h1>Emotion Course</h1>
+  <div class="hand hero-note">món đầu tiên may xong ở xưởng. mời mặc thử.</div>
   <p>Một căn phòng nhỏ, ấm, đủ an toàn để bạn ngồi xuống với chính cảm xúc của mình — không vội, không phán xét, không cần biết trước phải làm gì.</p>
   <a class="scroll-hint" href="#hanh-trinh">Cuộn xuống ↓</a>
 </div>
@@ -87,13 +95,18 @@ description: Emotion Course — khoá học video 14 tập giúp bạn ở cùng
       <div class="price-box">
         <div class="founding">Giá ra mắt</div>
         <div class="old-price">{{ site.courseOldPrice }}</div>
-        <div class="price">{{ site.coursePrice }}</div>
+        <div class="price">{{ ec.gia }}</div>
         <ul>
           <li>Trọn bộ 14 tập, xem không giới hạn thời gian</li>
           <li>Xem lại bao nhiêu lần tuỳ bạn</li>
           <li>Giá ra mắt dành cho những người bước vào sớm — sau đợt ra mắt, giá về {{ site.courseOldPrice }}</li>
         </ul>
-        <a href="/thanh-toan/" class="cta">Bước vào phòng</a>
+        {% if site.bankAccountNumber %}
+        <a href="/thanh-toan/" class="btn cta">Bước vào phòng</a>
+        {% else %}
+        <p class="hand" style="font-size: 21px; color: #A8522B; margin: 18px 0 10px">cửa phòng sắp mở. để lại email, May báo bạn đầu tiên.</p>
+        {{ mform("em-ec", "Email của bạn", "Báo mình nhé") }}
+        {% endif %}
       </div>
       <p class="price-note">Mua một lần, xem mãi mãi — không giới hạn ngày, không cần xem hết trong một tuần.</p>
     </div>
@@ -117,3 +130,4 @@ description: Emotion Course — khoá học video 14 tập giúp bạn ở cùng
     </div>
   </div>
 </main>
+<div class="wrap">{% include "foot.njk" %}</div>

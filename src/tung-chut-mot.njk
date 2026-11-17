@@ -1,0 +1,85 @@
+---
+layout: base.njk
+title: Từng chút một
+description: Nhật ký của một người phụ nữ rất bình thường, đang gỡ từng nút một để quay về với đời mình. Ngày nhích được, ngày mệt, ngày muốn bỏ — ghi hết.
+permalink: /tung-chut-mot/
+css: tcm
+bodyClass: p-tcm
+navKey: tung-chut-mot
+---
+{% from "macros.njk" import mform with context %}
+{% set moods = { "nhich": "Ngày nhích được", "met": "Ngày mệt", "bo": "Ngày muốn bỏ", "hoc": "Bài học nhỏ" } %}
+{% set rots = ["-1.6", "1.2", "-0.6", "2"] %}
+{% set heights = [340, 300, 260, 300, 280] %}
+{% set wall = collections.nhatKy | weave(collections.posts | byCategory("tung-chut-mot"), 7) %}
+<div class="wrap">
+  {% include "nav.njk" %}
+
+  <header class="g2 head" id="noi-dung">
+    <div>
+      <div class="kick" style="margin-bottom: 18px">Chuyên mục 01 · <span class="serif" style="text-transform: none; letter-spacing: 0; font-style: italic; font-size: 15px">nước chảy đá mòn</span></div>
+      <h1 class="script h1">Từng chút một</h1>
+      <p style="font-size: 19px; max-width: 640px; margin: 0">{{ tungChutMot.loiMoDau }}</p>
+    </div>
+    <div class="hand hide-s" style="font-size: 22px; color: #A8522B; transform: rotate(-3deg); padding-bottom: 10px">{{ tungChutMot.ghiLe }}</div>
+  </header>
+
+  <div class="chips" role="group" aria-label="Lọc theo kiểu ngày">
+    <span class="hand" style="font-size: 20px; margin-right: 6px">Hôm nay bạn là:</span>
+    <button class="chip on" type="button" data-mood="all" aria-pressed="true">Tất cả</button>
+    {% for k, label in moods %}<button class="chip" type="button" data-mood="{{ k }}" aria-pressed="false">{{ label }}</button>{% endfor %}
+  </div>
+
+  <div class="mas">
+    {% for it in wall %}
+    {% set d = it.data %}
+    {% set r = rots[loop.index0 % 4] %}
+    {% if d.title %}
+    <div class="cell" data-mood="{{ d.tamTrang or 'nhich' }}">
+      <a class="it page" href="{{ it.url }}" style="transform: rotate({{ r }}deg)">
+        <div class="mood">{{ moods[d.tamTrang or 'nhich'] }}</div>
+        <div style="font-size: 13px; line-height: 32px; color: #6E2A34">{{ it.date | dateDots }} · {{ it.content | readMin }} phút đọc</div>
+        <h2 class="serif" style="font-size: 25px; line-height: 32px; margin: 0 0 10px; color: #6E2A34; font-weight: 600">{{ d.title }}</h2>
+        {% if d.excerpt %}<p style="margin: 0 0 12px; font-size: 16px; line-height: 32px">{{ d.excerpt }}</p>{% endif %}
+        <span style="font-weight: 500; color: #6E2A34; border-bottom: 1.5px solid #C1653A; font-size: 14px">Đọc tiếp</span>
+      </a>
+    </div>
+    {% elif d.kieu == "anh" and d.anh %}
+    <div class="cell" data-mood="{{ d.tamTrang }}">
+      <figure class="it pol" style="transform: rotate({{ r }}deg)">
+        <div class="tape"></div>
+        <img src="{{ d.anh }}" alt="{{ d.moTaAnh }}" loading="lazy" style="height: {{ heights[loop.index0 % 5] }}px">
+        <figcaption><span class="hand" style="font-size: 21px">{{ d.chu }}</span><span class="mood">{{ moods[d.tamTrang] }}</span></figcaption>
+      </figure>
+    </div>
+    {% elif d.kieu == "cau" %}
+    <div class="cell" data-mood="{{ d.tamTrang }}">
+      <blockquote class="it quote" style="transform: rotate({{ r }}deg)">
+        <div class="mood" style="color: #F0B892; border-color: #F0B892">{{ moods[d.tamTrang] }}</div>
+        <p class="serif" style="font-style: italic; font-size: 27px; line-height: 38px; margin: 0">“{{ d.chu }}”</p>
+      </blockquote>
+    </div>
+    {% elif d.chu %}
+    <div class="cell" data-mood="{{ d.tamTrang }}">
+      <div class="it note{% if loop.index % 2 == 0 %} pink{% endif %}" style="transform: rotate({{ r }}deg)">
+        <span class="pin"></span>
+        <div class="mood">{{ moods[d.tamTrang] }}</div>
+        <p class="hand" style="font-size: 27px; line-height: 34px; margin: 0">{{ d.chu }}</p>
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+
+  <p class="hand" id="count-line" aria-live="polite" style="text-align: center; font-size: 22px; color: #A8522B; margin: 20px 0 0">Còn nhiều trang nữa. Đi từ từ.</p>
+
+  <section class="g2 join">
+    <div>
+      <h2 class="script" style="font-size: 48px; line-height: 56px; margin: 0 0 12px; color: #6E2A34">Nhích cùng May?</h2>
+      <p style="margin: 0">Mỗi khi có trang mới, May gửi qua email. Ngắn thôi — đọc xong trước khi nước sôi.</p>
+    </div>
+    <div>{{ mform("em-nhich", "Email của bạn", "Nhích cùng") }}</div>
+  </section>
+
+  {% include "foot.njk" %}
+</div>

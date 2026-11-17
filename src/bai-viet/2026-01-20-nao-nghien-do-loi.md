@@ -1,7 +1,13 @@
 ---
 title: Tại Sao Não Mình Nghiện Đổ Lỗi Như Nghiện Cà Phê?
 date: 2026-01-20
-category: phu-nu-va-me
+category: me-cung-dang-hoc
+chapter: 1
+image: /assets/images/me-om-con-cua-so.jpg
+imageAlt: Mẹ ôm con bên cửa sổ, nhìn từ phía sau
+thuToiNay: |
+  Khi sắp buột miệng: *"Tại con không nghe lời."*
+  Thử nói: *"Mẹ thấy mệt khi con không làm theo lời mẹ."*
 excerpt: Chào mừng bạn đến với trò chơi đổ lỗi — một trò chơi mà hầu như ai trong chúng ta cũng đang chơi, chỉ là không nhận ra.
 ---
 

@@ -1,0 +1,22 @@
+{
+  "loiMoDau": "Truyện kể trước giờ ngủ, sách đã in, và một thế giới nhỏ đang được dựng — cho bé từ 2 đến 6 tuổi, và cho bố mẹ ngồi cạnh.",
+  "videos": [],
+  "sach": {
+    "tenBo": "Bộ sách Phép thuật dũng cảm",
+    "nxb": "NXB Kim Đồng",
+    "tacGia": "Lời: May Phung · Tranh: Châu Phạm · cho bé từ 3 tuổi",
+    "trangThai": "sắp phát hành · cuối 2026",
+    "ghiChu": "sách đang ở nhà in. bìa là bản xem trước, bản in có thể khác chút xíu.",
+    "sapCo": "sắp có thêm: ba cuốn mới về tính kiên nhẫn.",
+    "cuon": [
+      { "ten": "Lucia và chiếc túi thần kì", "noiSo": "Tớ sợ đi học", "moTa": "Sắp đến ngày đầu tiên đi học, Lucia bỗng thấy tim đập nhanh. Dũng cảm không phải là không sợ, mà là biết lắng nghe và đối diện nỗi sợ ấy.", "bia": "/assets/images/sach-lucia-tui-than-ki.jpg", "linkMua": "" },
+      { "ten": "Cappu và những ngôi sao", "noiSo": "Tớ sợ bóng tối", "moTa": "Khi đèn tắt, Cappu bỗng thấy tim mình co lại. Rồi Cappu khám phá ra: bóng tối đến để vỗ về, và nhờ đó mới có những ngôi sao lấp lánh.", "bia": "/assets/images/sach-cappu-ngoi-sao.jpg", "linkMua": "" },
+      { "ten": "Lucia, Cappu và ngày Hè tuyệt vời", "noiSo": "Tớ sợ hồ bơi", "moTa": "Cappu run lên trước hồ bơi. Lucia không ép bạn can đảm ngay, mà kiên nhẫn ở bên, cùng bạn thử từng bước nhỏ.", "bia": "/assets/images/sach-lucia-cappu-ngay-he.jpg", "linkMua": "" }
+    ]
+  },
+  "ngoiLang": {
+    "tieuDe": "Một ngôi làng *chưa có tên.*",
+    "moTa": "Một cô bé hay nghĩ sống ở nông trại. Mười con mèo màu lạ trong nhà kho. Một chú chó già hiền. Và một ông kể chuyện mới dọn về ngọn đồi, nơi có hiệu sách và những cái cây biết nói.",
+    "tinhTrang": "tình trạng: đang vẽ nhân vật. mèo thì đủ rồi, tên thì chưa."
+  }
+}

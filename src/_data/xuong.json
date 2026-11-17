@@ -1,0 +1,80 @@
+{
+  "loiMoDau": "Những thứ May đã may xong — và vài thứ còn đang trên bàn. Món nào ở đây cũng là một thành phẩm: đọc được, xem được, dùng được.",
+  "ghiLe": "xưởng nhỏ. không có dây chuyền. may tay hết, từng mũi một.",
+  "banMay": [
+    { "anh": "/assets/images/so-buoc-day.jpg", "moTa": "Cuốn sổ buộc dây" },
+    { "anh": "/assets/images/day-gai-kep-go.jpg", "moTa": "Dây gai, kẹp gỗ và bìa giấy" },
+    { "anh": "/assets/images/kep-mau-sinh-to.jpg", "moTa": "Kẹp màu và dây gai bên ly sinh tố" }
+  ],
+  "banMayGhiChu": "trên bàn may hôm nay. (bừa một chút, nhưng có trật tự riêng.)",
+  "daXong": [
+    {
+      "trangThai": "mời mặc thử",
+      "loai": "Khoá học video · 14 tập",
+      "ten": "Emotion Course",
+      "moTa": "Ở cùng cảm xúc thay vì bị nó dắt đi — từ “sao não mình phản ứng vậy?” đến từng cách cụ thể.",
+      "nhanMac": "**Chất liệu:** 100% chuyện thật\n**Cách dùng:** xem theo thứ tự, không cần vội\n**Giặt:** xem lại khi cảm xúc ập tới",
+      "gia": "299.000đ",
+      "giaGhiChu": "giá ra mắt",
+      "nutChu": "Mặc thử",
+      "nutLink": "/emotion-course/",
+      "nutPhu": false,
+      "mauDa": false,
+      "bia": []
+    },
+    {
+      "trangThai": "sắp lên kệ",
+      "loai": "Sổ viết · 5 tuần",
+      "ten": "Soi Chiếu",
+      "moTa": "Tâm trí như một căn nhà. Mỗi tuần mở một cánh cửa, xem thứ nào muốn giữ, thứ nào đặt xuống.",
+      "nhanMac": "**Chất liệu:** 5 tuần, 5 căn phòng\n**Cách dùng:** viết thật, không cần viết hay\n**Bảo quản:** để chỗ dễ thấy",
+      "gia": "69k · 96k",
+      "giaGhiChu": "mời latte · tặng sách",
+      "nutChu": "Báo khi mở",
+      "nutLink": "#bao-tin",
+      "nutPhu": true,
+      "mauDa": false,
+      "bia": []
+    },
+    {
+      "trangThai": "sắp phát hành · cuối 2026",
+      "loai": "Sách tranh · NXB Kim Đồng",
+      "ten": "Cappu & Lucia",
+      "moTa": "Ba nỗi sợ đầu đời — đi học, bóng tối, hồ bơi — kể bằng hai người bạn nhỏ. Sắp có thêm ba cuốn về tính kiên nhẫn.",
+      "nhanMac": "**Chất liệu:** tranh, chữ, và giờ đi ngủ\n**Độ tuổi:** bé nhỏ, và bố mẹ\n**Cách dùng:** đọc to, đọc lại",
+      "gia": "",
+      "giaGhiChu": "",
+      "nutChu": "Xem sách",
+      "nutLink": "/mot-chuyen-thoi-me/#sach",
+      "nutPhu": true,
+      "mauDa": true,
+      "bia": [
+        { "anh": "/assets/images/sach-lucia-tui-than-ki.jpg", "moTa": "Bìa Lucia và chiếc túi thần kì" },
+        { "anh": "/assets/images/sach-cappu-ngoi-sao.jpg", "moTa": "Bìa Cappu và những ngôi sao" },
+        { "anh": "/assets/images/sach-lucia-cappu-ngay-he.jpg", "moTa": "Bìa Lucia, Cappu và ngày Hè tuyệt vời" }
+      ]
+    }
+  ],
+  "dangMay": [
+    {
+      "trangThai": "đang may · đã được 52.492 mũi (chữ)",
+      "loai": "Tiểu thuyết",
+      "ten": "Anne & Ren",
+      "tenNghieng": true,
+      "moTa": "Hai hệ thần kinh lẽ ra không hợp nhau. Vậy mà hợp đến lạ. Một cô gái không tin mình xứng đáng được yêu, và một người lạ chưa từng uống một ngụm cà phê.",
+      "nhanMac": "**Chất liệu:** cà phê, mưa đầu mùa, một chuyến Ấn Độ\n**Tình trạng:** đang sửa — phần khó nhất",
+      "ghiTay": "đọc sớm: sắp mở",
+      "nutChu": "Giữ chỗ đọc sớm",
+      "nutLink": "#bao-tin",
+      "nutPhu": true
+    }
+  ],
+  "nguoiMay": {
+    "anh": "/assets/images/may-quat-do.jpg",
+    "moTaAnh": "May cầm quạt đỏ che mặt",
+    "chuThich": "người ngồi may (đang trốn sau quạt)",
+    "tieuDe": "Mình là May. *Người viết, trước hết.*",
+    "loi": "Mình viết sách thiếu nhi cùng NXB Kim Đồng, đang viết một cuốn tiểu thuyết, và may vài thứ nhỏ cho những người phụ nữ đang đi qua một đoạn khó — vì chính mình từng cần chúng.\n\nKhông có món nào ở đây được làm ra để bán cho nhanh. Món nào cũng đã giúp mình trước.",
+    "nhanMac": "**Nhãn mác:** May\n**Chất liệu:** 100% người thật\n**Xuất xứ:** may tại Sài Gòn, lúc 5h sáng\n**Hướng dẫn:** đọc chậm, nhắn tin thoải mái"
+  }
+}

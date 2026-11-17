@@ -1,7 +1,8 @@
 ---
 title: 5 cách thói quen buổi sáng đã thay đổi cuộc đời mình
 date: 2025-07-25
-category: bit-by-bit
+category: tung-chut-mot
+tamTrang: nhich
 excerpt: Mình nôn nóng, dễ chán, mau nản, thích trì hoãn và hay thức khuya. Vậy mà một chút thời gian mỗi sáng, rỉ rả mỗi ngày một tẹo, đã thay đổi cuộc đời mình nhiều hơn mình tưởng.
 ---
 

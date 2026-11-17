@@ -1,13 +1,18 @@
 ---
 layout: base.njk
+css: post
+bodyClass: p-page
 ---
-<main>
-  <header class="post-head">
+<div class="wrap">
+  {% include "nav.njk" %}
+  <article class="article" id="noi-dung">
     {% if kicker %}<div class="meta">{{ kicker }}</div>{% endif %}
     <h1>{{ title }}</h1>
-  </header>
-  <div class="prose">
-    {{ content | safe }}
-  </div>
-  {% if signoff %}<p class="signoff">{{ signoff }}</p>{% endif %}
-</main>
+    {% if photo %}<figure class="lead-photo"><img src="{{ photo }}" alt="{{ photoAlt or '' }}">{% if photoCaption %}<figcaption>{{ photoCaption }}</figcaption>{% endif %}</figure>{% endif %}
+    <div class="prose">
+      {{ content | safe }}
+    </div>
+    {% if signoff %}<p class="signoff">{{ signoff }}</p>{% endif %}
+  </article>
+  {% include "foot.njk" %}
+</div>

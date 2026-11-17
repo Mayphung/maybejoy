@@ -1,0 +1,87 @@
+---
+layout: base.njk
+title: Mẹ cũng đang học
+description: Không ai sinh ra đã biết làm mẹ. Những bài viết dài, viết kỹ của May về hành trình làm mẹ, hiểu con và đồng hành cùng con — đọc lúc nhà đã yên.
+permalink: /me-cung-dang-hoc/
+css: me
+bodyClass: p-me
+navKey: me-cung-dang-hoc
+---
+{% from "macros.njk" import mform with context %}
+{% set m = meCungDangHoc %}
+{% set baiMe = collections.posts | byCategory("me-cung-dang-hoc") %}
+{% set noiBat = baiMe | featured %}
+<div class="wrap">
+  {% include "nav.njk" %}
+  <hr class="rule">
+
+  <header class="head" id="noi-dung">
+    <div class="kick" style="margin-bottom: 20px">Chuyên mục 02 · <span class="serif" style="text-transform: none; letter-spacing: 0; font-style: italic; font-size: 15px">hiên nhà</span></div>
+    <h1 class="serif h1">Mẹ <span style="font-style: italic">cũng đang</span> học</h1>
+    <p style="font-size: 19px; max-width: 640px; margin: 0 auto">{{ m.loiMoDau }}</p>
+    <div class="hand" style="font-size: 20px; color: #A8522B; margin-top: 18px">(nên đọc kèm một ly trà)</div>
+  </header>
+
+  <div class="g3 promises">
+    {% for c in m.cachDoc %}
+    <div style="display: flex; gap: 16px"><span class="serif" style="font-size: 34px; line-height: 1; color: #C1653A; font-style: italic">{{ loop.index }}</span><div><b style="font-weight: 600; color: #6E2A34">{{ c.ten }}</b><br><span style="font-size: 15px">{{ c.moTa }}</span></div></div>
+    {% endfor %}
+  </div>
+
+  {% if noiBat %}
+  <div class="kick" style="margin-bottom: 18px">Bài đọc mới nhất</div>
+  <a class="feat" href="{{ noiBat.url }}">
+    <img src="{{ noiBat.data.image or '/assets/images/me-om-con-cua-so.jpg' }}" alt="{{ noiBat.data.imageAlt or '' }}">
+    <div class="feat-body">
+      {% set ch = m.chuong | findBy("so", noiBat.data.chapter) %}
+      <div class="kick" style="margin-bottom: 14px">{% if ch %}{{ ch.ten }} · {% endif %}{{ noiBat.content | readMin }} phút đọc</div>
+      <h2 class="serif" style="font-size: 34px; line-height: 1.3; margin: 0 0 18px; color: #6E2A34; font-weight: 600">{{ noiBat.data.title }}</h2>
+      {% if noiBat.data.excerpt %}<p style="margin: 0 0 24px; font-size: 16px">{{ noiBat.data.excerpt }}</p>{% endif %}
+      <span style="font-weight: 500; color: #6E2A34; border-bottom: 1.5px solid #C1653A; align-self: flex-start; font-size: 14px">Đọc bài</span>
+    </div>
+  </a>
+  {% endif %}
+
+  <section style="margin-top: 110px" aria-labelledby="muc-luc">
+    <div style="text-align: center; margin-bottom: 50px">
+      <div class="kick" style="margin-bottom: 12px">Mục lục</div>
+      <h2 id="muc-luc" class="serif" style="font-size: 44px; line-height: 1.2; margin: 0; color: #6E2A34; font-weight: 500">Ba chương, <span style="font-style: italic">viết dần</span></h2>
+    </div>
+    <div class="g3">
+      {% for c in m.chuong %}
+      {% set bai = baiMe | byChapter(c.so) %}
+      <div>
+        {% if c.anh %}<img class="ch-img" src="{{ c.anh }}" alt="{{ c.moTaAnh }}" loading="lazy">{% endif %}
+        <div class="serif" style="font-size: 15px; color: #C1653A; font-style: italic">{{ c.la }}</div>
+        <h3 class="serif" style="font-size: 24px; margin: 4px 0 12px; color: #6E2A34; font-weight: 600">{{ c.ten }}</h3>
+        <p style="font-size: 15px; margin: 0 0 14px">{{ c.moTa }}</p>
+        <hr class="rule">
+        {% for b in bai | reverse %}
+        <a class="toc-row" href="{{ b.url }}"><span class="t">{{ b.data.title }}</span><span class="dots"></span><span class="m">{{ b.content | readMin }}′</span></a>
+        {% endfor %}
+        <div class="toc-row soon"><span class="t">{{ "Bài tiếp theo đang viết…" if bai.length else "Bài đầu tiên đang viết…" }}</span><span class="dots"></span><span class="m">—</span></div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="g2 try-sec">
+    <div>
+      <div class="kick" style="margin-bottom: 12px">Cuối mỗi bài đều có</div>
+      <h2 class="serif" style="font-size: 38px; line-height: 1.25; margin: 0 0 14px; color: #6E2A34; font-weight: 500">Một việc nhỏ, <span style="font-style: italic">thử tối nay.</span></h2>
+      <p style="margin: 0; font-size: 16px">Đọc xong là có cái để làm — không phải thêm một điều để lo.</p>
+    </div>
+    <div class="try" style="margin: 0">
+      <div class="lbl">thử tối nay</div>
+      {{ m.viDuThuToiNay | md | safe }}
+    </div>
+  </section>
+
+  <section class="signup">
+    <h2 class="serif" style="font-size: 36px; line-height: 1.25; margin: 0 0 12px; color: #6E2A34; font-weight: 500">Bài dài mới, gửi tận hộp thư.</h2>
+    <p style="margin: 0 auto 26px; max-width: 520px">Viết xong bài nào, May gửi bài đó. Không dồn, không giục.</p>
+    {{ mform("em-me", "Email của bạn", "Gửi cho mình", "chung", "margin: 0 auto; justify-content: center") }}
+  </section>
+
+  {% include "foot.njk" %}
+</div>

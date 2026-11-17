@@ -3,51 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-{% set pageTitle = (title + " · " + site.name) if title else (site.name + " · Ôm mình thật chặt") %}
-{% set pageDesc = excerpt or description or site.description %}
+{%- set pageTitle = (title + " — maybejoy") if title else "maybejoy — May · Bit by Bit, từng chút một" %}
+{%- set pageDesc = description or excerpt or site.description %}
+{%- set ogImage = (site.url + image) if image else (site.url + "/assets/images/og-maybejoy.jpg") %}
 <title>{{ pageTitle }}</title>
-<meta name="description" content="{{ pageDesc }}">
+<meta name="description" content="{{ pageDesc | striptags | truncate(170) }}">
 <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+<meta property="og:site_name" content="maybejoy">
 <meta property="og:type" content="{{ 'article' if layout == 'post.njk' else 'website' }}">
-<meta property="og:title" content="{{ title or site.name }}">
-<meta property="og:description" content="{{ pageDesc }}">
+<meta property="og:title" content="{{ title or 'maybejoy — May · Bit by Bit' }}">
+<meta property="og:description" content="{{ pageDesc | striptags | truncate(170) }}">
 <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+<meta property="og:image" content="{{ ogImage }}">
 <meta property="og:locale" content="vi_VN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#6E2A34">
 {% if noindex %}<meta name="robots" content="noindex">{% endif %}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap&subset=vietnamese" rel="stylesheet">
-<link rel="stylesheet" href="/assets/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Be+Vietnam+Pro:wght@300;400;500;600&family=Patrick+Hand&family=Dancing+Script:wght@500;600;700&display=swap&subset=vietnamese" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/base.css">
+{% if css %}<link rel="stylesheet" href="/assets/css/{{ css }}.css">{% endif %}
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+{% if page.url == "/" %}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"maybejoy","url":"{{ site.url }}","inLanguage":"vi","author":{"@type":"Person","name":"May Phung","alternateName":"Phương Phùng","url":"{{ site.url }}/ve-may/"}}</script>
+{% endif %}
+{% if layout == "post.njk" %}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":{{ title | dump | safe }},"datePublished":"{{ page.date | isoDate }}","inLanguage":"vi","image":"{{ ogImage }}","author":{"@type":"Person","name":"May Phung","url":"{{ site.url }}/ve-may/"},"mainEntityOfPage":"{{ site.url }}{{ page.url }}"}</script>
+{% endif %}
 </head>
-<body>
-
-<nav class="topnav">
-  <a class="brand" href="/">{{ site.brand }}</a>
-  <div class="links">
-    <a href="/" {% if page.url == "/" %}class="active"{% endif %}>Trang Chủ</a>
-    <a href="/bit-by-bit/" {% if nav == "bit-by-bit" %}class="active"{% endif %}>Bit by Bit</a>
-    <a href="/viet/" {% if nav == "viet" %}class="active"{% endif %}>Viết</a>
-    <a href="/ve-may/" {% if nav == "ve-may" %}class="active"{% endif %}>Về May</a>
-  </div>
-</nav>
-
+<body class="{{ bodyClass }}">
+<a class="skip" href="#noi-dung">Bỏ qua, vào nội dung</a>
 {{ content | safe }}
-
-<footer>
-  maybejoy.com · Buông Thở Về<br>
-  <a href="/emotion-course/">Emotion Course</a> · <a href="/viet/">Viết</a> · <a href="/ve-may/">Về May</a>
-</footer>
-
-<script>
-  // Lời nhắn khi form email chưa được kết nối (chỉ hiện khi chưa có emailFormAction)
-  document.querySelectorAll('form.gift-form[data-pending]').forEach(function (f) {
-    f.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var m = f.parentNode.querySelector('.form-msg');
-      if (m) m.textContent = 'Cảm ơn bạn! Phần gửi email đang được kết nối — mình sẽ mở lại ngay khi xong.';
-    });
-  });
-</script>
+<script src="/assets/js/site.js" defer></script>
 </body>
 </html>

@@ -1,89 +1,161 @@
 ---
 layout: base.njk
+css: home
+bodyClass: p-home
 ---
-<main>
+{% from "macros.njk" import mform with context %}
+{% set t = trangChu %}
+{% set check %}<svg class="tick" width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="#A8522B" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16 L12 24 L27 5"/></svg>{% endset %}
+{% set socialMap = { "TikTok": site.social.tiktok, "Facebook": site.social.facebook, "YouTube": site.social.youtube } %}
+<div class="vo">
+  {% include "nav.njk" %}
 
-  <div class="hero">
-    <h1>Ôm mình thật chặt</h1>
-    <p>Ba việc mình vẫn đang tập mỗi ngày: buông, thở, về. Không có thứ tự đúng. Không cần làm hết cùng một lúc. Bắt đầu ở chỗ nào bạn thấy mình — ngay lúc này.</p>
-  </div>
+  <main class="sheet" id="noi-dung">
+    <h1 class="sr-only">maybejoy — Vở Bit by Bit của May</h1>
 
-  <div class="breath">
-    <p>Có ngày mọi thứ chỉ dồn lại, không kịp gọi tên.</p>
-    <p>Không cần biết ngay mình đang cần buông, thở, hay về. Cứ đọc một chút, ở lại một chút — không có câu trả lời đúng.</p>
-  </div>
-
-  {% set bb = collections.posts | byCategory("bit-by-bit") | limit(2) %}
-  <div class="tier-label">Bit by Bit · từng chút một</div>
-  <p style="margin:-8px 0 26px; font-size:15.5px;">Mình ghi lại cách mình đi qua những ngày khó mà vẫn giữ lấy giấc mơ — không phải từ chỗ đã tới đích, mà từ ngay giữa đường.</p>
-  {% if bb.length %}
-  <div class="bb-grid">
-    {% for p in bb %}
-    <a class="bb-card" href="{{ p.url }}">
-      <div class="meta">{{ p.date | dateVi }}</div>
-      <h3>{{ p.data.title }}</h3>
-      <p>{{ p.data.excerpt }}</p>
-      <span class="more">Đọc tiếp →</span>
-    </a>
-    {% endfor %}
-  </div>
-  {% else %}
-  <p class="empty-note">Bài đầu tiên đang được viết…</p>
-  {% endif %}
-  <div class="see-all"><a href="/bit-by-bit/" class="btn-line">Xem cả hành trình</a></div>
-
-  {% set pn = collections.posts | byCategory("phu-nu-va-me") | limit(4) %}
-  <div class="tier-label">Viết cho phụ nữ &amp; mẹ</div>
-  <div class="article-list">
-    {% for p in pn %}
-    <a class="article-row" href="{{ p.url }}"><span class="t">{{ p.data.title }}</span><span class="tag">{{ site.categories[p.data.category] }}</span></a>
-    {% endfor %}
-  </div>
-  <div class="see-all"><a href="/viet/" class="btn-line">Xem tất cả bài viết</a></div>
-
-  <div class="tier-label">Một cuốn nhỏ, sâu hơn một chút</div>
-  {% include "gift.njk" %}
-
-  <p class="bridge">Nếu tới đây bạn vẫn còn ở lại — thì có hai cách để mình đi cùng bạn sâu hơn một chút.</p>
-  <p class="bridge-sub">một cách bằng việc được dẫn đi từng bước, một cách bằng việc viết ra</p>
-
-  <div class="product-grid">
-    <div class="product-card">
-      <div class="format">Khoá học video · 14 tập</div>
-      <h3>Emotion Course</h3>
-      <p class="pain">Có lúc cảm xúc đến nhanh hơn bạn kịp nghĩ — nói ra một câu rồi hối hận, im lặng rồi ấm ức, hoặc chỉ đơn giản là mệt vì cứ phản ứng theo đúng một cách, dù biết vậy mà vẫn không đổi được.</p>
-      <div class="fit">Nếu bạn thích được nghe, được giải thích, rồi có người dẫn qua từng bước.</div>
-      <p class="mech">14 tập đi từ "ủa, tại sao não mình lại phản ứng như vậy?" đến những cách cụ thể để ở cùng cảm xúc khi nó tới: thở, đổi khung nhìn, EFT. Các tập nối tiếp nhau — để bạn không chỉ biết thêm một điều, mà có thể thử sống khác đi một chút, ngay trong ngày hôm đó.</p>
-      <a href="/emotion-course/" class="cta">Tìm hiểu Emotion Course</a>
+    <!-- NHÃN VỞ + ẢNH THẺ -->
+    <div class="g-top">
+      <div class="label">
+        <div style="text-align: center; margin-bottom: 14px">
+          <div class="kick" style="letter-spacing: 6px">Vở</div>
+          <div class="script" style="font-size: 64px; line-height: 72px; color: #6E2A34; font-weight: 700">Bit by Bit</div>
+          <div class="hand" style="font-size: 20px; line-height: 24px; color: #A8522B">từng chút một</div>
+        </div>
+        <div class="field"><b>Họ và tên:</b><span>{{ t.nhan.hoTen }}</span></div>
+        <div class="field"><b>Lớp:</b><span>{{ t.nhan.lop }}</span></div>
+        <div class="field"><b>Trường:</b><span>{{ t.nhan.truong }}</span></div>
+        <div class="field"><b>Năm học:</b><span>{{ t.nhan.namHoc }}</span></div>
+      </div>
+      {% if t.anhThe %}
+      <div class="photo-col">
+        <figure class="pol" style="transform: rotate(5deg)">
+          <div class="tape"></div>
+          <img src="{{ t.anhThe }}" alt="{{ t.anhTheMoTa }}" width="1069" height="1200" fetchpriority="high">
+          <figcaption class="hand">{{ t.anhTheChuThich }}</figcaption>
+        </figure>
+      </div>
+      {% endif %}
     </div>
-    <div class="product-card">
-      <div class="format">Chương trình viết · 5 tuần</div>
-      <h3>Soi Chiếu</h3>
-      <p class="pain">Có những cảm xúc bạn mang theo lâu đến mức không còn nhớ nó bắt đầu từ đâu — chỉ biết mỗi khi có chuyện, nó lại trồi lên đúng một kiểu quen thuộc. Bạn đã thử nói ra, thử quên đi, thử "thôi kệ" — nhưng nó không đi đâu cả.</p>
-      <div class="fit">Nếu bạn thường hiểu mình rõ hơn khi viết mọi thứ ra.</div>
-      <p class="mech">5 tuần, đi theo nhịp của riêng bạn. Một hình ảnh xuyên suốt: tâm trí như một căn nhà — mỗi tuần mở một cánh cửa, bước vào một phòng, xem thứ nào muốn giữ, thứ nào đã đến lúc đặt xuống.</p>
-      <a href="#qua-tang" class="cta soft">Sắp mở · nhận tin qua email</a>
-    </div>
-  </div>
 
-  <div class="tier-label" style="margin-top:90px;">Còn điều gì bạn đang lăn tăn?</div>
-  <div class="faq">
-    <div class="faq-item">
-      <p class="faq-q">Emotion Course có cần xem đúng thứ tự?</p>
-      <p class="faq-a">Có. 14 tập được xếp thành một hành trình: trước hết hiểu chuyện gì đang diễn ra trong não và cơ thể mình, rồi mới từng bước thử những cách để làm việc với cảm xúc. Tập sau dựa trên tập trước, nên cứ đi từ đầu nhé — không cần vội.</p>
-    </div>
-    <div class="faq-item">
-      <p class="faq-q">Mình không giỏi viết, Soi Chiếu có hợp không?</p>
-      <p class="faq-a">Có. Đây không phải lớp học viết, không ai chấm điểm chữ nghĩa của bạn. Viết ngắn cũng được. Viết lộn xộn cũng được. Viết một câu rồi ngồi nhìn nó năm phút cũng được. Chỉ cần đó là điều thật.</p>
-    </div>
-    <div class="faq-item">
-      <p class="faq-q">Mình khá bận, có theo kịp không?</p>
-      <p class="faq-a">Không cần "theo kịp." Mọi thứ ở đây là con đường mình vẽ sẵn để bạn dễ đi — đi nhanh, đi chậm, hay có tuần dừng lại một chút đều được.</p>
-    </div>
-  </div>
+    <p class="hand intro">{{ t.loiChao }}</p>
 
-  <div class="closing">
-    <p>Bạn không cần trở thành một phiên bản khác mới xứng đáng được yêu thương.<br>Có khi mình chỉ cần buông một chút. Thở một chút. Rồi tìm đường về lại với mình.<br>Mình ở đây, dù bạn bắt đầu từ đâu.</p>
-  </div>
+    <!-- NGÀY THÁNG -->
+    <div style="text-align: center; margin: 64px 0 8px">
+      <div class="script h-date" id="hom-nay">Hôm nay</div>
+      <h2 class="script day-title">Việc hôm nay</h2>
+      <div class="hand" style="font-size: 18px; line-height: 24px; margin-top: 8px; color: #A8522B">(ô nào thích thì tick. không ai chấm đâu.)</div>
+    </div>
 
-</main>
+    <!-- DANH SÁCH VIỆC -->
+    <div class="tasks" style="margin-top: 32px">
+      <div class="item done" data-i="0" data-default="1">
+        <button class="box" type="button" aria-pressed="true" aria-label="Đánh dấu: {{ t.viecDau.viec }}">{{ check | safe }}</button>
+        <div>
+          <div class="task"><span>{{ t.viecDau.viec }}</span></div>
+          <div class="sub">{{ t.viecDau.ghiChu }}</div>
+        </div>
+        <div></div>
+      </div>
+
+      {% for v in t.viecChuyenMuc %}
+      {% set c = site.nav | navItem(v.chuyenMuc) %}
+      <div class="item" data-i="{{ loop.index }}">
+        {% if v.ghiLe %}<div class="margin-note">{{ v.ghiLe }}</div>{% endif %}
+        <button class="box" type="button" aria-pressed="false" aria-label="Đánh dấu: {{ v.viec }}">{{ check | safe }}</button>
+        <div>
+          <div class="task"><span>{{ v.viec }}</span></div>
+          <div class="sub">{{ v.ghiChu }}</div>
+          {% if c %}<a class="tag" href="{{ c.url }}">{{ c.name }} <span class="serif" style="font-weight: 300; font-style: italic">· {{ c.sub }}</span> →</a>{% endif %}
+        </div>
+        {% set key = v.chuyenMuc %}{% include "doodle.njk" %}
+      </div>
+      {% endfor %}
+
+      {% if site.social.tiktok or site.social.facebook or site.social.youtube %}
+      <div class="item" data-i="5">
+        <button class="box" type="button" aria-pressed="false" aria-label="Đánh dấu: {{ t.viecTheoDoi.viec }}">{{ check | safe }}</button>
+        <div>
+          <div class="task"><span>{{ t.viecTheoDoi.viec }}</span></div>
+          <div class="sub">{{ t.viecTheoDoi.ghiChu }}</div>
+          <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px">
+            {% for name, url in socialMap %}{% if url %}<a class="soc" href="{{ url }}" target="_blank" rel="me noopener" data-tick="5">{{ name }}</a>{% endif %}{% endfor %}
+          </div>
+        </div>
+        <div></div>
+      </div>
+      {% endif %}
+
+      <!-- việc của bạn -->
+      <div class="item mine" data-i="mine">
+        <div class="margin-note">việc của bạn đó →</div>
+        <div class="box dashed" aria-hidden="true">{{ check | safe }}</div>
+        <div>
+          <form class="mine-open" id="mine-form">
+            <label class="task" for="viec-cua-ban" style="display: block">Một việc thật nhỏ của bạn, hôm nay:</label>
+            <div style="display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap; margin-top: 8px; max-width: 640px">
+              <input id="viec-cua-ban" class="inp" type="text" placeholder="ví dụ: uống đủ nước…" maxlength="120" autocomplete="off">
+              <button class="btn" type="submit">Gạch!</button>
+            </div>
+          </form>
+          <div class="mine-done" hidden>
+            <div class="task"><span id="mine-text"></span></div>
+            <div class="sub">Thấy chưa, nhích rồi đó. <button type="button" id="mine-undo" class="linkbtn">viết việc khác</button></div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+
+    <!-- ĐẾM -->
+    <div class="count" aria-live="polite">
+      <span class="script" style="font-size: 30px; line-height: 40px; color: #6E2A34; font-weight: 700">Đã gạch <span id="done-n">1</span>/<span id="done-total">7</span>.</span>
+      <span class="hand" id="done-msg" style="font-size: 22px; line-height: 28px; color: #A8522B">Một việc cũng là đi.</span>
+    </div>
+
+    <!-- BÀI TẬP VỀ NHÀ -->
+    <section style="margin-top: 96px" id="bai-tap" aria-labelledby="bt-h">
+      <h2 class="script sec-h" id="bt-h"><span class="ul">Bài tập về nhà</span> <span class="hand">(không chấm điểm, không hạn nộp)</span></h2>
+      <div class="g-hw">
+        <div class="hide-s booklet">
+          <div style="font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #F0B892; line-height: 16px">Cuốn nhỏ · miễn phí</div>
+          <div class="serif" style="font-size: 22px; line-height: 28px; font-weight: 600">{{ t.baiTap.tenSach }}</div>
+          <div class="serif" style="font-style: italic; font-size: 12px; line-height: 18px; color: #F0B892">{{ t.baiTap.phuDe }}</div>
+        </div>
+        <div>
+          <p style="margin: 0 0 16px; max-width: 600px"><b style="font-weight: 600; color: #6E2A34">Đề bài:</b> {{ t.baiTap.deBai | mdInline | safe }}</p>
+          {{ mform("email-bt", "Email để nhận đề", "Nộp bài", "qua", "", "font-family: 'Be Vietnam Pro', sans-serif") }}
+        </div>
+      </div>
+    </section>
+
+    <!-- THỜI KHOÁ BIỂU -->
+    {% if site.social.tiktok or site.social.facebook or site.social.youtube %}
+    <section style="margin-top: 96px" id="thoi-khoa-bieu" aria-labelledby="tkb-h">
+      <h2 class="script sec-h" id="tkb-h" style="margin-bottom: 24px"><span class="ul">Thời khoá biểu</span> <span class="hand">(chọn lớp hợp với bạn)</span></h2>
+      <table class="tkb">
+        <thead><tr><th scope="col">Môn</th><th scope="col">Lớp ở đâu</th><th scope="col" class="c3">Học gì</th><th scope="col"><span class="hide-s">Vào lớp</span></th></tr></thead>
+        <tbody>
+          {% for r in t.thoiKhoaBieu %}{% if socialMap[r.noi] %}
+          <tr><td><b style="font-weight: 600; color: #6E2A34">{{ r.mon }}</b><br><span style="font-size: 13px">{{ r.kieu }}</span></td><td>{{ r.noi }}</td><td class="c3">{{ r.hoc }}</td><td><a href="{{ socialMap[r.noi] }}" target="_blank" rel="me noopener" style="font-weight: 500; display: inline-block; padding: 10px 0">Vào lớp →</a></td></tr>
+          {% endif %}{% endfor %}
+        </tbody>
+      </table>
+    </section>
+    {% endif %}
+
+    <!-- LỜI PHÊ -->
+    <div class="phe" style="margin-top: 96px">
+      <div class="phe-l">
+        <div class="kick" style="color: #A8522B">Điểm</div>
+        <div class="mark">10</div>
+      </div>
+      <div style="padding: 20px 26px">
+        <div class="kick" style="color: #A8522B; margin-bottom: 6px">Lời phê</div>
+        <div class="hand" style="font-size: 25px; line-height: 32px; color: #A8522B">{{ t.loiPhe }}</div>
+        <div class="hand" style="font-size: 18px; line-height: 24px; color: #6E2A34; margin-top: 10px; text-align: right">— {{ t.nguoiPhe }}</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 48px">{% include "foot.njk" %}</div>
+  </main>
+</div>

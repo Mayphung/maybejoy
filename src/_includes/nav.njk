@@ -1,0 +1,8 @@
+<nav class="nav" aria-label="Điều hướng chính">
+  <a class="brand" href="/"><span class="b1">may</span><span class="b2">· bit by bit</span></a>
+  <div class="navlinks">
+    {%- for c in site.nav %}
+    <a class="navl{% if navKey == c.key %} on{% endif %}" href="{{ c.url }}"{% if navKey == c.key %} aria-current="page"{% endif %}>{{ c.name }}</a>
+    {%- endfor %}
+  </div>
+</nav>

@@ -1,18 +1,45 @@
 {
-  "name": "maybejoy",
-  "brand": "may",
   "url": "https://maybejoy.com",
-  "description": "Ôm mình thật chặt — nơi May viết về cảm xúc, tình yêu, làm mẹ, và hành trình đi theo giấc mơ của mình, từng chút một.",
-  "categories": {
-    "bit-by-bit": "Bit by Bit",
-    "phu-nu-va-me": "Phụ nữ & Mẹ"
+  "description": "Vở Bit by Bit của May (Phương Phùng): viết về hành trình của một người phụ nữ, chuyện làm mẹ, truyện kể cho bé trước giờ ngủ, và những thứ May may xong. Từng chút một.",
+  "social": {
+    "tiktok": "https://www.tiktok.com/@may.be.joy",
+    "facebook": "",
+    "youtube": ""
   },
-  "bitByBitIntro": "Đây là nơi mình ghi lại, từng chút một, cách mình đi qua những ngày khó mà vẫn giữ lấy giấc mơ của mình. Không phải câu chuyện của một người đã tới đích. Chỉ là một người phụ nữ, mỗi ngày có vài tiếng đồng hồ của riêng mình, đang viết một cuốn tiểu thuyết, dựng một thế giới nhỏ cho trẻ con, và tập không bỏ cuộc giữa chừng.\n\nCó tuần đi được xa. Có tuần chỉ đứng yên. Cả hai đều được ghi lại ở đây — vì mình tin, từng chút một cũng là đi.",
-  "emailFormAction": "",
-  "coursePrice": "299.000đ",
+  "email": {
+    "formAction": "",
+    "quaTangFormAction": ""
+  },
+  "contactEmail": "",
   "courseOldPrice": "399.000đ",
   "bankName": "",
   "bankAccountName": "",
   "bankAccountNumber": "",
-  "contactEmail": ""
+  "bankVietQrId": "",
+  "nav": [
+    {
+      "key": "tung-chut-mot",
+      "name": "Từng chút một",
+      "url": "/tung-chut-mot/",
+      "sub": "nước chảy đá mòn"
+    },
+    {
+      "key": "me-cung-dang-hoc",
+      "name": "Mẹ cũng đang học",
+      "url": "/me-cung-dang-hoc/",
+      "sub": "hiên nhà"
+    },
+    {
+      "key": "mot-chuyen-thoi-me",
+      "name": "Một chuyện thôi mẹ!",
+      "url": "/mot-chuyen-thoi-me/",
+      "sub": "dưới gốc đa"
+    },
+    {
+      "key": "o-xuong-may",
+      "name": "Ở xưởng May",
+      "url": "/o-xuong-may/",
+      "sub": "khung cửi"
+    }
+  ]
 }
