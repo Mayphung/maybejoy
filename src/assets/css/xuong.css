@@ -5,6 +5,7 @@
 .desk{display:flex;gap:26px;align-items:flex-end;flex-wrap:wrap;margin:-20px 0 100px}
 .desk-pol{margin:0;background:#FFFDF9;padding:10px 10px 12px;box-shadow:0 12px 26px rgba(54,42,36,.16);width:230px;position:relative}
 .desk-pol img{display:block;width:100%;height:260px;object-fit:cover}
+.desk-note{font-size:22px;line-height:1.35;color:#A8522B;max-width:220px;padding-bottom:20px}
 .washi{position:absolute;width:84px;height:24px;background:rgba(193,101,58,.55);top:-11px;left:50%;margin-left:-42px;transform:rotate(-4deg);z-index:1}
 .sec-h{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:10px}
 .sec-h h2{font-size:40px;margin:0;color:#6E2A34;font-weight:500}
@@ -40,4 +41,5 @@
   .desk{gap:16px;margin-top:0}
   .desk-pol{width:calc(50% - 8px)}
   .desk-pol img{height:180px}
+  .desk-note{width:calc(50% - 8px);max-width:none;align-self:center;padding:0 0 0 4px;font-size:19px}
 }

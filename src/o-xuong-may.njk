@@ -48,7 +48,7 @@ navKey: o-xuong-may
     {% for b in x.banMay %}
     <figure class="desk-pol" style="transform: rotate({{ rots[loop.index0 % 3] }}deg)"><div class="washi" style="transform: rotate({{ wr[loop.index0 % 3] }}deg)"></div><img src="{{ b.anh }}" alt="{{ b.moTa }}" loading="lazy"></figure>
     {% endfor %}
-    <div class="hand" style="font-size: 22px; color: #A8522B; max-width: 220px; padding-bottom: 20px">{{ x.banMayGhiChu }}</div>
+    <div class="hand desk-note">{{ x.banMayGhiChu }}</div>
   </div>
   {% endif %}
 
