@@ -192,6 +192,7 @@ content:
           - { name: moTa, label: Mô tả, type: text }
           - { name: anh, label: Ảnh, type: image }
           - { name: moTaAnh, label: Tả ảnh, type: string }
+      - { name: hienThuToiNay, label: "Hiện phần 'thử tối nay' (trên trang này và cuối các bài)", type: boolean }
       - { name: thuToiNayGiaiThich, label: "Dòng giải thích phần 'thử tối nay'", type: text }
       - { name: viDuThuToiNay, label: "Ví dụ 'thử tối nay' trên trang", type: text }
 

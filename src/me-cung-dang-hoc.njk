@@ -72,6 +72,7 @@ navKey: me-cung-dang-hoc
     <div class="more-wrap"><button class="btn-more" type="button" id="me-more" hidden>Đọc tiếp</button></div>
   </section>
 
+  {% if m.hienThuToiNay %}
   <section class="g2 try-sec">
     <div>
       <h2 class="serif" style="font-size: 38px; line-height: 1.25; margin: 0 0 14px; color: #6E2A34; font-weight: 500">Một việc nhỏ, <span style="font-style: italic">thử tối nay.</span></h2>
@@ -82,6 +83,7 @@ navKey: me-cung-dang-hoc
       {{ m.viDuThuToiNay | md | safe }}
     </div>
   </section>
+  {% endif %}
 
   <section class="signup">
     <h2 class="serif" style="font-size: 36px; line-height: 1.25; margin: 0 0 26px; color: #6E2A34; font-weight: 500">Cùng May học nhé!</h2>

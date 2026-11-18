@@ -15,7 +15,7 @@ bodyClass: p-post
     <div class="prose">
       {{ content | safe }}
     </div>
-    {% if thuToiNay %}
+    {% if thuToiNay and meCungDangHoc.hienThuToiNay %}
     <aside class="try" aria-label="Thử tối nay">
       <div class="lbl">thử tối nay</div>
       {{ thuToiNay | md | safe }}
