@@ -26,11 +26,7 @@ navKey: tung-chut-mot
 
   {% set baiDai = collections.posts | byCategory("tung-chut-mot") %}
   {% if baiDai.length %}
-  <section class="index" aria-labelledby="bai-h">
-    <div class="index-top">
-      <h2 class="script" id="bai-h">Bài viết</h2>
-      <span class="hand">đọc dài, lúc rảnh</span>
-    </div>
+  <section class="index" aria-label="Bài viết mới">
     {% for p in baiDai | limit(8) %}
     <a class="toc" href="{{ p.url }}"><span class="t">{{ p.data.title }}</span><span class="dots"></span><span class="m">{{ p.date | dateDots }} · {{ p.content | readMin }} phút</span></a>
     {% endfor %}
