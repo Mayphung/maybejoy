@@ -1,6 +1,5 @@
 {
-  "loiMoDau": "Truyện kể trước giờ ngủ, những cuốn sách May đã viết, và một ngôi làng nhỏ đang được dựng — cho bé từ 2 đến 6 tuổi. Bố mẹ nằm cạnh nghe cùng cũng được.",
-  "videos": [],
+  "loiMoDau": "Truyện kể trước giờ ngủ, những cuốn sách May đã viết, và một ngôi làng nhỏ đang được dựng lên, cho bé từ 2 đến 6 tuổi. Ba mẹ nằm cạnh kể con nghe nhé!",
   "sach": {
     "tenBo": "Bộ sách Phép thuật dũng cảm",
     "nxb": "NXB Kim Đồng",
@@ -13,22 +12,19 @@
         "ten": "Lucia và chiếc túi thần kì",
         "noiSo": "Tớ sợ đi học",
         "moTa": "Sắp đến ngày đầu đi học, Lucia thấy lo, tim cứ đập nhanh khi nghĩ đến một nơi hoàn toàn mới. Lucia sẽ làm gì với nỗi sợ ấy?",
-        "bia": "/assets/images/sach-lucia-tui-than-ki.jpg",
-        "linkMua": ""
+        "bia": "/assets/images/sach-lucia-tui-than-ki.jpg"
       },
       {
         "ten": "Cappu và những ngôi sao",
         "noiSo": "Tớ sợ bóng tối",
         "moTa": "Đèn vừa tắt, căn phòng quen bỗng đầy hình thù lạ. Rồi Cappu nhận ra: trong bóng tối cũng có điều thú vị — và cả những ngôi sao đang chờ được nhìn thấy.",
-        "bia": "/assets/images/sach-cappu-ngoi-sao.jpg",
-        "linkMua": ""
+        "bia": "/assets/images/sach-cappu-ngoi-sao.jpg"
       },
       {
         "ten": "Lucia, Cappu và ngày Hè tuyệt vời",
         "noiSo": "Tớ sợ hồ bơi",
         "moTa": "Cappu sợ hồ bơi. Lucia không giục, cũng không bảo bạn đừng sợ. Cô bé chỉ ở bên, để Cappu tự thử từng chút một.",
-        "bia": "/assets/images/sach-lucia-cappu-ngay-he.jpg",
-        "linkMua": ""
+        "bia": "/assets/images/sach-lucia-cappu-ngay-he.jpg"
       }
     ]
   },
