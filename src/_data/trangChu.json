@@ -19,16 +19,12 @@
     {
       "nhan": "Môn yếu",
       "giaTri": "kiên nhẫn 😅"
-    },
-    {
-      "nhan": "Năm học",
-      "giaTri": "cả đời, không nghỉ hè"
     }
   ],
   "anhThe": "/assets/images/anh-the-bai-bien.jpg",
   "anhTheMoTa": "May trên bãi biển, nhìn ra xa",
-  "anhTheChuThich": "ảnh thẻ. (đang nghĩ xem mai nhích tiếp hướng nào)",
-  "loiChao": "Đây là vở của May. Mỗi ngày một trang, có hôm chỉ vài dòng: viết, làm mẹ, kể chuyện, may vá vài thứ. Có chuyện xong rồi, có chuyện còn dở. Bạn cứ lật xem, thấy ô nào hợp thì tick thử.",
+  "anhTheChuThich": "ảnh thẻ. (đang nghĩ xem mai nhích hướng nào)",
+  "loiChao": "Mỗi ngày một trang, có hôm chỉ vài dòng: viết, làm mẹ, kể chuyện, may vá vài thứ. Có chuyện xong rồi, có chuyện còn dở. Bạn cứ lật xem, thấy ô nào hợp thì tick thử.",
   "viecDau": {
     "viec": "Dậy sớm.",
     "ghiChu": "Hôm nay dậy được. Mai tính tiếp."
@@ -66,7 +62,7 @@
   },
   "thoiKhoaBieu": [
     {
-      "mon": "Nói chuyện thật",
+      "mon": "thủ thỉ tâm tình",
       "noi": "TikTok",
       "hoc": "Cảm xúc, tình yêu, và chuyện làm người lớn"
     },
