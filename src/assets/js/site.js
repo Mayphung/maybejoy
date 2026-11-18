@@ -145,7 +145,7 @@
   if (chips.length) {
     var cells = document.querySelectorAll('.mas .cell');
     var line = document.getElementById('count-line');
-    var lines = { all: 'Còn nhiều trang nữa. Đi từ từ.', bo: 'Ngày muốn bỏ cũng được ghi lại. Vì có những ngày như thế thật.' };
+    var lines = { all: '', bo: 'Ngày muốn bỏ cũng được ghi lại. Vì có những ngày như thế thật.' };
     chips.forEach(function (c) {
       c.addEventListener('click', function () {
         var m = c.dataset.mood, n = 0;
@@ -154,7 +154,7 @@
           var show = m === 'all' || cell.dataset.mood === m;
           cell.hidden = !show; if (show) n++;
         });
-        if (line) line.textContent = lines[m] || ('Đang xem ' + n + ' trang.');
+        if (line) line.textContent = m in lines ? lines[m] : ('Đang xem ' + n + ' trang.');
       });
     });
   }
