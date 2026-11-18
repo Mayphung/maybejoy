@@ -2,7 +2,8 @@
 title: 'bây giờ vs. ngày xưa'
 date: 2025-08-15
 category: me-cung-dang-hoc
-chapter: 2
+the:
+  - con-gap-chuyen
 excerpt: 'Tối qua đi ăn với Jun, một nhân tố chủ chốt trong phần “thanh xuân rực rỡ” của mình.'
 ---
 Tối qua đi ăn với Jun, một nhân tố chủ chốt trong phần “thanh xuân rực rỡ” của mình. Mình không thể nhớ nổi lần cuối cùng đi ăn riêng với Jun hay nhóm bạn bá đạo ấy lần cuối là khi nào. Vào đại học cái là quay cuồng xoay xở, yêu đương, sáp nhóm mới, rời nhóm cũ rồi dần xa nhau.

@@ -2,7 +2,8 @@
 title: 'A hug a day pushes the devils away'
 date: 2023-04-10
 category: me-cung-dang-hoc
-chapter: 3
+the:
+  - gan-nhau
 excerpt: 'Thầy Thích Nhất Hạnh có nói rằng nếu khi ôm ai đó đủ lâu và ta hít thở thật sâu, người đó sẽ cảm thấy hạnh phúc và sẽ sống lâu hơn một chút.'
 ---
 Thầy Thích Nhất Hạnh có nói rằng nếu khi ôm ai đó đủ lâu và ta hít thở thật sâu, người đó sẽ cảm thấy hạnh phúc và sẽ sống lâu hơn một chút.

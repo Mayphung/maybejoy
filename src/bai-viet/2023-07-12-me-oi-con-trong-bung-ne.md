@@ -2,7 +2,8 @@
 title: 'Mẹ ơi, con trong bụng nè!'
 date: 2023-07-12
 category: me-cung-dang-hoc
-chapter: 1
+the:
+  - me-tho
 excerpt: 'Kể từ tuần mang thai thứ 5 (ngay lúc tôi biết mình mang thai) lần đầu tiên tôi thực sự cảm nhận được “có một thứ gì đó lớn lao hơn ý muốn của bản thân mình”.'
 ---
 Kể từ tuần mang thai thứ 5 (ngay lúc tôi biết mình mang thai) lần đầu tiên tôi thực sự cảm nhận được “có một thứ gì đó lớn lao hơn ý muốn của bản thân mình”. Tôi không thể ăn uống thoải mái như trước. Ok, có đôi khi tôi vẫn lén ăn một chút những món mình yêu thích. Quẹt nhanh một chút mắm tôm. Ngấu nghiến miếng sashimi tươi rói. OK tôi biết có thể bạn mạnh mẽ và kỷ luật hơn tôi nhiều lần. Tôi thì không được như thế.

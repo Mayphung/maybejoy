@@ -2,7 +2,9 @@
 title: 'Bắt nạt học đường – xây đắp lá chắn gia đình'
 date: 2025-11-06
 category: me-cung-dang-hoc
-chapter: 3
+the:
+  - gan-nhau
+  - con-gap-chuyen
 excerpt: 'Sự thật đau lòng về kẻ bắt nạt Đây là điều có thể làm bạn ngạc nhiên: Kẻ bắt nạt thường là những đứa trẻ đang “đau” nhất .'
 ---
 ### Sự thật đau lòng về kẻ bắt nạt

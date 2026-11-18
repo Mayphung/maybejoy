@@ -2,7 +2,8 @@
 title: '“con yêu cơ thể con hơn”'
 date: 2025-07-07
 category: me-cung-dang-hoc
-chapter: 2
+the:
+  - con-gap-chuyen
 excerpt: 'Tối hai mẹ con nằm ôm nhau thủ thỉ, Lagi rúc vào mình rồi chợt nói: Con yêu mẹ nhất trên đời! Mẹ là số một. Con chỉ yêu cơ thể con hơn! Mình lặng một giây..'
 ---
 Tối hai mẹ con nằm ôm nhau thủ thỉ, Lagi rúc vào mình rồi chợt nói:

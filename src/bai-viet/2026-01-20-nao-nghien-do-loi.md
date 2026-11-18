@@ -2,7 +2,8 @@
 title: Tại Sao Não Mình Nghiện Đổ Lỗi Như Nghiện Cà Phê?
 date: 2026-01-20
 category: me-cung-dang-hoc
-chapter: 1
+the:
+  - me-tho
 image: /assets/images/me-om-con-cua-so.jpg
 imageAlt: Mẹ ôm con bên cửa sổ, nhìn từ phía sau
 thuToiNay: |

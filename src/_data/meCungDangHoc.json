@@ -7,39 +7,37 @@
     },
     {
       "ten": "Chuyện của con, chuyện của mẹ",
-      "moTa": "May viết về con, nhưng cũng viết về những gì diễn ra bên trong mẹ. Có những chuyện nhìn từ phía con sẽ khác. Nhìn lại mình cũng vậy."
+      "moTa": "Cuối bài có một việc nhỏ. Hợp thì thử, không hợp thì thôi."
     },
     {
       "ten": "Đọc thôi, chưa cần làm gì cả",
       "moTa": "Có điều đọc xong sẽ muốn thử. Có điều cần để đó nghĩ thêm. Có những thứ hợp với mình, và cũng có thứ không"
     }
   ],
-  "chuong": [
+  "thuToiNayGiaiThich": "Một gợi ý nhỏ để thử với con ",
+  "viDuThuToiNay": "Khi con nói: *“Tại mẹ không mua đồ chơi!”*\n\nThử gọi tên điều con đang cảm thấy: *“Con thất vọng vì không được mua đồ chơi, phải không?”*\n\nCon có thể vẫn khóc. Không sao. Mình đang giúp con tìm chữ cho điều con chưa nói được.",
+  "tieuDeDanhSach": "Tất cả bài, *chọn theo điều bạn đang cần*",
+  "the": [
     {
-      "so": "1",
-      "la": "Chương I",
-      "ten": "Hành trình làm mẹ",
-      "moTa": "Có con rồi, trong mình cũng đổi khác. Có điều học được từ con, có điều nhìn lại mới thấy mình đang lặp lại cách mẹ ngày xưa đối xử với mình.",
+      "key": "me-tho",
+      "ten": "Mẹ thở đã",
+      "moTa": "Chăm cảm xúc của mẹ trước. Mẹ ổn thì con mới ổn được.",
       "anh": "/assets/images/me-dat-con.jpg",
       "moTaAnh": "Mẹ dắt con đi, nhìn từ phía sau"
     },
     {
-      "so": "2",
-      "la": "Chương II",
-      "ten": "Hiểu con",
-      "moTa": "Một cơn khóc, một lần bướng, một câu “tại mẹ”. Đằng sau có thể là điều con chưa biết nói ra.",
+      "key": "con-gap-chuyen",
+      "ten": "Con đang gặp chuyện gì?",
+      "moTa": "Hiểu con qua não bộ và cảm xúc — đằng sau một cơn khóc, một lần bướng.",
       "anh": "/assets/images/be-om-goc-cay.jpg",
       "moTaAnh": "Đứa trẻ ôm gốc cây"
     },
     {
-      "so": "3",
-      "la": "Chương III",
-      "ten": "Đồng hành cùng con",
-      "moTa": "Những cách nhỏ thử được ngay trong nhà. Không phải lúc nào cũng hiệu quả, nhưng có thêm một cách khi cách cũ không ổn.",
+      "key": "gan-nhau",
+      "ten": "Gần nhau hơn",
+      "moTa": "Những cách nhỏ để kết nối mỗi ngày: một cái ôm, một lần lắng nghe.",
       "anh": "/assets/images/me-tap-xe-cho-con.jpg",
       "moTaAnh": "Mẹ giúp con tập xe"
     }
-  ],
-  "thuToiNayGiaiThich": "Một gợi ý nhỏ để thử với con ",
-  "viDuThuToiNay": "Khi con nói: *“Tại mẹ không mua đồ chơi!”*\n\nThử gọi tên điều con đang cảm thấy: *“Con thất vọng vì không được mua đồ chơi, phải không?”*\n\nCon có thể vẫn khóc. Không sao. Mình đang giúp con tìm chữ cho điều con chưa nói được."
+  ]
 }

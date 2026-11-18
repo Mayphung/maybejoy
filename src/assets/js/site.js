@@ -99,6 +99,25 @@
     count();
   }
 
+  /* ---------- Mẹ cũng đang học: lọc theo điều mẹ đang cần ---------- */
+  var tagBtns = document.querySelectorAll('.door-f[data-the], .chip-all[data-the]');
+  if (tagBtns.length) {
+    var rows = document.querySelectorAll('.me-row');
+    var tline = document.getElementById('the-line');
+    var pick = function (key) {
+      var n = 0;
+      tagBtns.forEach(function (b) { var on = b.dataset.the === key; b.setAttribute('aria-pressed', on); b.classList.toggle('on', on); });
+      rows.forEach(function (r) { var show = key === 'all' || (' ' + r.dataset.the + ' ').indexOf(' ' + key + ' ') > -1; r.hidden = !show; if (show) n++; });
+      if (tline) tline.textContent = key === 'all' ? '' : 'đang xem ' + n + ' bài';
+    };
+    tagBtns.forEach(function (b) {
+      b.addEventListener('click', function () {
+        var key = b.getAttribute('aria-pressed') === 'true' && b.dataset.the !== 'all' ? 'all' : b.dataset.the;
+        pick(key);
+      });
+    });
+  }
+
   /* ---------- Từng chút một: lọc theo kiểu ngày ---------- */
   var chips = document.querySelectorAll('.chip[data-mood]');
   if (chips.length) {

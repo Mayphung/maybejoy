@@ -2,7 +2,8 @@
 title: 'Cafe + sữa mẹ = eooooooo và câu chuyện não mẹ bỉm'
 date: 2025-11-03
 category: me-cung-dang-hoc
-chapter: 1
+the:
+  - me-tho
 excerpt: 'Lúc mình xem clip chồng H’Hen Niê lấy sữa mẹ pha cà phê đưa bạn uống, mình có quay qua ông béo: eooooooo ơi! Là một tín đồ cafe, mình cảm thấy việc này thật eoooooo!!!'
 ---
 Lúc mình xem clip chồng H’Hen Niê lấy sữa mẹ pha cà phê đưa bạn uống, mình có quay qua ông béo: eooooooo ơi! Là một tín đồ cafe, mình cảm thấy việc này thật eoooooo!!! Và mình quên vụ đó luôn cho đến vài ngày sau. Tự nhiên vụ này nổi rần rần. Mình đọc comment thì phần lớn là chỉ trích, mỉa mai, và phán xét, Tuấn Khôi, H’hen Niê, hành động của Tuấn Khôi, phản ứng của H’hen Niê và kể cả sự lựa chọn chồng của ẻm.

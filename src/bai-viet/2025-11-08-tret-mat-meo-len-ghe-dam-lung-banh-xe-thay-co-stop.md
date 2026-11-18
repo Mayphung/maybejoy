@@ -2,7 +2,8 @@
 title: 'Trét mắt mèo lên ghế, đâm lủng bánh xe thầy cô? Stop.'
 date: 2025-11-08
 category: me-cung-dang-hoc
-chapter: 2
+the:
+  - con-gap-chuyen
 excerpt: 'Đây không phải ‘just for fun’ như tụi con nghĩ. Não đang thử nghiệm chơi trò “ai quyền lực hơn”. Nhưng khi mục tiêu là thầy cô?'
 ---
 Đây không phải ‘just for fun’ như tụi con nghĩ.

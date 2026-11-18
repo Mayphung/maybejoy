@@ -2,7 +2,9 @@
 title: 'thời gian ở với con'
 date: 2025-01-19
 category: me-cung-dang-hoc
-chapter: 1
+the:
+  - gan-nhau
+  - me-tho
 excerpt: 'mình hay làm việc ngoài giờ làm việc, vì khách hàng của mình ở khắp các múi giờ khác nhau, nên để dễ chốt job, mình cố gắng nhớ múi giờ của những khách tiềm năng, và…'
 ---
 mình hay làm việc ngoài giờ làm việc,

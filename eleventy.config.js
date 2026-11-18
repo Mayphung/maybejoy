@@ -47,7 +47,7 @@ export default function (eleventyConfig) {
   );
 
   eleventyConfig.addFilter("byCategory", (posts, cat) => (posts || []).filter((p) => p.data.category === cat));
-  eleventyConfig.addFilter("byChapter", (posts, ch) => (posts || []).filter((p) => String(p.data.chapter) === String(ch)));
+  eleventyConfig.addFilter("byTag", (posts, tag) => (posts || []).filter((p) => (p.data.the || []).includes(tag)));
   eleventyConfig.addFilter("limit", (arr, n) => (arr || []).slice(0, n));
   eleventyConfig.addFilter("without", (arr, url) => (arr || []).filter((p) => p.url !== url));
   eleventyConfig.addFilter("byDate", (arr) => [...(arr || [])].sort((a, b) => b.date - a.date));

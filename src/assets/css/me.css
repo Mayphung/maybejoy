@@ -29,3 +29,35 @@ a.toc-row:hover .t{color:#A8522B}
   .h1{font-size:48px}
   .head{padding:50px 0 40px}
 }
+.doors{margin-bottom:34px}
+.door-f{display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-align:left;background:#FFFDF8;border:2px solid transparent;border-radius:10px;padding:0 0 18px;cursor:pointer;font:inherit;color:#362A24;box-shadow:0 10px 24px rgba(54,42,36,.08);overflow:hidden;transition:transform .2s ease,border-color .2s ease}
+.door-f:hover{transform:translateY(-4px)}
+.door-f[aria-pressed="true"]{border-color:#6E2A34}
+.door-f img{width:100%;height:190px;object-fit:cover;display:block;margin-bottom:8px}
+.door-f .dt{font-family:'Lora',Georgia,serif;font-size:23px;font-weight:600;color:#6E2A34;padding:0 20px;line-height:1.3}
+.door-f .dd{font-size:15px;line-height:1.6;padding:0 20px}
+.door-f .dn{font-size:13px;color:#A8522B;padding:0 20px;font-weight:500}
+.list-top{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:8px;border-bottom:1px solid var(--line);padding-bottom:14px}
+.chip-all{font-family:'Be Vietnam Pro',sans-serif;font-size:14px;min-height:40px;padding:0 18px;border:2px solid #6E2A34;border-radius:999px;background:transparent;color:#6E2A34;cursor:pointer;font-weight:500}
+.chip-all.on{background:#6E2A34;color:#FBF6EE}
+.list-top .hand{font-size:20px;color:#A8522B}
+.me-list{max-width:860px}
+.me-row{display:grid;grid-template-columns:minmax(0,1fr);gap:4px;padding:20px 0;border-bottom:1px solid var(--line);text-decoration:none;color:#362A24}
+.me-row[hidden]{display:none}
+.me-row .tags{display:flex;gap:8px;flex-wrap:wrap}
+.me-row .tg{font-size:11px;letter-spacing:1.2px;text-transform:uppercase;font-weight:600;color:#A8522B}
+.me-row .t{font-family:'Lora',Georgia,serif;font-size:22px;line-height:1.4;font-weight:500;color:#6E2A34}
+.me-row .e{font-size:15px;line-height:1.65}
+.me-row .m{font-size:13px;color:#7A6C64}
+.me-row:hover .t{color:#A8522B}
+@media (max-width:820px){.door-f img{height:150px}}
+@media (max-width:640px){
+  #ds-h{font-size:30px !important}
+  .doors{gap:12px}
+  .door-f{display:grid;grid-template-columns:96px 1fr;grid-template-rows:auto auto auto;column-gap:14px;row-gap:2px;padding:0;align-items:start}
+  .door-f img{grid-row:1/4;width:96px;height:100%;min-height:110px;margin:0}
+  .door-f .dt{font-size:19px;padding:12px 12px 0 0}
+  .door-f .dd{font-size:13.5px;line-height:1.5;padding:0 12px 0 0}
+  .door-f .dn{padding:0 12px 12px 0}
+  .door-f:hover{transform:none}
+}

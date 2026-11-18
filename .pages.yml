@@ -73,14 +73,15 @@ content:
             - { value: met, label: Ngày mệt }
             - { value: bo, label: Ngày muốn bỏ }
             - { value: hoc, label: Bài học nhỏ }
-      - name: chapter
-        label: "Chương (chỉ cho Mẹ cũng đang học)"
+      - name: the
+        label: "Thẻ (chỉ cho Mẹ cũng đang học — chọn 1 hoặc 2)"
         type: select
         options:
+          multiple: true
           values:
-            - { value: "1", label: "Chương I — Hành trình làm mẹ" }
-            - { value: "2", label: "Chương II — Hiểu con" }
-            - { value: "3", label: "Chương III — Đồng hành cùng con" }
+            - { value: me-tho, label: "Mẹ thở đã" }
+            - { value: con-gap-chuyen, label: "Con đang gặp chuyện gì?" }
+            - { value: gan-nhau, label: "Gần nhau hơn" }
       - { name: excerpt, label: "Đoạn giới thiệu ngắn (hiện ở danh sách và trên Google)", type: text }
       - { name: image, label: Ảnh đầu bài, type: image }
       - { name: imageAlt, label: Tả ảnh trong một câu, type: string }
@@ -180,14 +181,14 @@ content:
         fields:
           - { name: ten, label: Tên, type: string }
           - { name: moTa, label: Mô tả, type: string }
-      - name: chuong
-        label: Các chương
+      - { name: tieuDeDanhSach, label: "Tiêu đề danh sách bài (*chữ nghiêng* giữa hai dấu sao)", type: string }
+      - name: the
+        label: "Ba thẻ (đổi tên, mô tả, ảnh thoải mái; đừng đổi ô Mã)"
         type: object
         list: true
         fields:
-          - { name: so, label: "Số chương (1, 2, 3…) — phải khớp với ô Chương trong bài viết", type: string }
-          - { name: la, label: "Chữ nhỏ (vd: Chương I)", type: string }
-          - { name: ten, label: Tên chương, type: string }
+          - { name: key, label: "Mã (không dấu, khớp với ô Thẻ trong bài viết)", type: string }
+          - { name: ten, label: Tên thẻ, type: string }
           - { name: moTa, label: Mô tả, type: text }
           - { name: anh, label: Ảnh, type: image }
           - { name: moTaAnh, label: Tả ảnh, type: string }

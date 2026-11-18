@@ -2,7 +2,8 @@
 title: 'Crush thầy cô giáo? Đây, cách xử lý để 10 năm sau không cringe chết'
 date: 2025-11-10
 category: me-cung-dang-hoc
-chapter: 2
+the:
+  - con-gap-chuyen
 excerpt: 'Điều đầu tiên là: Não đang lừa cưng á! Não teen của cưng đang bị dopamine troll á.'
 ---
 Điều đầu tiên là: Não đang lừa cưng á!

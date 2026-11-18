@@ -2,7 +2,8 @@
 title: 'Con Bị Bạn Đánh – Não Của Con Đang Kêu Cứu Như Thế Nào?'
 date: 2025-10-30
 category: me-cung-dang-hoc
-chapter: 2
+the:
+  - con-gap-chuyen
 excerpt: 'Đợt hoá trị vừa rồi mình quá mệt và đuối nên đã lựa một phim HÀI HQ cho qua ngày, chọn ngay “True Beauty”. Ai ngờ đây là một bộ phim về bắt nạt học đường.'
 ---
 Đợt hoá trị vừa rồi mình quá mệt và đuối nên đã lựa một phim HÀI HQ cho qua ngày, chọn ngay “True Beauty”. Ai ngờ đây là một bộ phim về bắt nạt học đường. Nên xem vừa cười vừa khóc sưng cả mắt. Các em học sinh bị bắt nạt quá tội, quá khổ sở! Xong lại nhận được tin nhắn từ một người bạn:
