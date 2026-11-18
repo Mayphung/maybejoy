@@ -263,7 +263,6 @@ content:
           - { name: loai, label: "Loại (vd: Khoá học video · 14 tập)", type: string }
           - { name: ten, label: Tên món, type: string }
           - { name: moTa, label: Mô tả, type: text }
-          - { name: nhanMac, label: "Nhãn mác (mỗi dòng một ý, **chữ đậm** giữa hai cặp sao)", type: text }
           - { name: gia, label: "Giá (với Emotion Course, giá này dùng cho cả trang khoá học và thanh toán)", type: string }
           - { name: giaGhiChu, label: Dòng nhỏ dưới giá, type: string }
           - { name: ghiTay, label: "Dòng viết tay thay cho giá (nếu chưa có giá)", type: string }
@@ -299,7 +298,6 @@ content:
           - { name: chuThich, label: Chú thích ảnh, type: string }
           - { name: tieuDe, label: "Tiêu đề (*chữ nghiêng* giữa hai dấu sao)", type: string }
           - { name: loi, label: Đoạn giới thiệu (cách đoạn bằng một dòng trống), type: text }
-          - { name: nhanMac, label: Nhãn mác, type: text }
 
   - name: ve-may
     label: "📄 Trang Về May"
