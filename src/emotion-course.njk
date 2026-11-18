@@ -99,8 +99,8 @@ navKey: o-xuong-may
           <li>Xem lại không giới hạn thời gian</li>
           <li>Giá ra mắt cho những bạn đăng ký đợt đầu — sau đó trở về {{ site.courseOldPrice }}</li>
         </ul>
-        {% if site.bankAccountNumber %}
-        <a href="/thanh-toan/" class="btn cta">Bước vào phòng</a>
+        {% if banHang.nganHang.soTaiKhoan %}
+        <a href="/thanh-toan/?sp=emotion-course" class="btn cta">Bước vào phòng</a>
         {% else %}
         <p class="hand" style="font-size: 21px; color: #A8522B; margin: 18px 0 10px">May đang chuẩn bị phần thanh toán. để lại email, mở cửa là May báo.</p>
         {{ mform("em-ec", "Email của bạn", "Báo mình nhé") }}

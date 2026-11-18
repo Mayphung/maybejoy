@@ -1,0 +1,42 @@
+---
+layout: base.njk
+title: Phòng học Emotion Course
+permalink: /hoc/emotion-course/
+noindex: true
+css: post
+bodyClass: p-post p-hoc
+navKey: o-xuong-may
+---
+{% set k = khoaHoc.emotionCourse %}
+<div class="wrap">
+{% include "nav.njk" %}
+<main class="article hoc" id="noi-dung">
+  <div class="meta">Phòng học · Emotion Course</div>
+  <h1>Hành trình ôm ấp cảm xúc của mình</h1>
+  <p class="hoc-chao">{{ k.loiChao }}</p>
+  <div class="hoc-top">
+    <a class="btn" href="https://drive.google.com/file/d/{{ k.soTay.driveId }}/view" target="_blank" rel="noopener">Mở {{ k.soTay.ten | lower }} (PDF)</a>
+    <span class="hand" id="hoc-tien-do" aria-live="polite"></span>
+  </div>
+
+  <ol class="hoc-list">
+    {% for b in k.bai %}
+    <li class="hoc-bai" data-so="{{ b.so }}">
+      <details{% if loop.first %} open{% endif %}>
+        <summary>
+          <span class="so">{{ "Tập " + b.so if b.so else "Mở đầu" }}</span>
+          <span class="t">{{ b.ten | replace("Mở đầu: ", "") }}</span>
+          <span class="xong" aria-hidden="true">✓</span>
+        </summary>
+        <div class="hoc-video" data-src="https://drive.google.com/file/d/{{ b.driveId }}/preview"></div>
+        <label class="hoc-check"><input type="checkbox"> Mình xem xong tập này rồi</label>
+      </details>
+    </li>
+    {% endfor %}
+  </ol>
+
+  <p class="hoc-note">Video không chạy? Bạn thử tải lại trang, hoặc mở bằng Chrome/Safari bản mới. Vẫn không được thì trả lời email của May, May xem giúp.</p>
+  <p class="signoff">— May</p>
+</main>
+{% include "foot.njk" %}
+</div>

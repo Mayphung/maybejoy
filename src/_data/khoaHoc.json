@@ -1,0 +1,90 @@
+{
+  "emotionCourse": {
+    "loiChao": "Chào bạn, mừng bạn vào phòng. Mỗi tập là một bước nhỏ. Bạn cứ xem theo thứ tự, mỗi ngày một tập là vừa, xem xong thì mở sổ tay làm phần thực hành của tập đó.",
+    "soTay": {
+      "ten": "Sổ tay thực hành",
+      "driveId": "1q7jrjUqChQabtNVC4pqBMB3AQ3yWpb4D"
+    },
+    "bai": [
+      {
+        "so": 0,
+        "ten": "Mở đầu: Xuất hiện",
+        "driveId": "1hWCpGEC2gT0lOijkn3yqay_bhk-z05XR"
+      },
+      {
+        "so": 1,
+        "ten": "Hiểu về não bộ",
+        "driveId": "1pWP97dk0X9hHmF_T7GDAdBYwhb98aNEK"
+      },
+      {
+        "so": 2,
+        "ten": "Yếu tố kích thích",
+        "driveId": "187kx4ify3cb6jLD2vE87U-_NWHulCvKT"
+      },
+      {
+        "so": 3,
+        "ten": "Kỹ thuật thở",
+        "driveId": "1fisrxuy25jmq_4BZ5ckFxF6COiN7t9s2"
+      },
+      {
+        "so": 4,
+        "ten": "Kỹ thuật đổi góc nhìn",
+        "driveId": "10voZyHpJ5setJsK3sDCuqFz54cy77H6_"
+      },
+      {
+        "so": 5,
+        "ten": "Thay đổi trạng thái năng lượng",
+        "driveId": "1EXgrYqfs0P4LWal__n6udI_BNvfAQdJR"
+      },
+      {
+        "so": 6,
+        "ten": "Kỹ thuật lắng nghe cảm xúc",
+        "driveId": "1dSI1qrvc1yZfHrbVEKpdFFNgwHegU3en"
+      },
+      {
+        "so": 7,
+        "ten": "Con quỷ tư duy nạn nhân",
+        "driveId": "1_PNmcFZdrp1k3q0IHY7lerOtbXWwRlwW"
+      },
+      {
+        "so": 8,
+        "ten": "Con quỷ lợi ích thứ cấp",
+        "driveId": "1qT8tDBNhXvfjXP-mZjrvf328NJeQFGX4"
+      },
+      {
+        "so": 9,
+        "ten": "Con quỷ tự ti",
+        "driveId": "1YFUejtJchWv5KVDGQ_slnPxW-UCjvNB-"
+      },
+      {
+        "so": 10,
+        "ten": "Con quỷ phê phán",
+        "driveId": "1w1yIxF5H32FkhDAXS-XwDGNRJgCMYvNa"
+      },
+      {
+        "so": 11,
+        "ten": "Con quỷ nghĩ nhiều",
+        "driveId": "1MQWl2tTq5yaC-Zm3NCbocwn_x5dmBxYN"
+      },
+      {
+        "so": 12,
+        "ten": "Con quỷ trì hoãn",
+        "driveId": "1_C2I8HIG68jmPsipq5rPV90BkENfhz8S"
+      },
+      {
+        "so": 13,
+        "ten": "Kỹ thuật gõ huyệt (EFT)",
+        "driveId": "1lMyF9KQH-YVna34e5rESvAg-SyN1xKhb"
+      },
+      {
+        "so": 14,
+        "ten": "Dọn dẹp nhà kho ký ức",
+        "driveId": "1J8wmXVYY5cAaWuozKVMiuxgZUdXHApi8"
+      }
+    ]
+  },
+  "soiChieu": {
+    "loiChao": "Chào bạn, Soi Chiếu đây rồi. Năm tuần, năm căn phòng. Bạn tải sổ về, mở bằng máy tính hoặc iPad để gõ thẳng vào sổ, hoặc in ra viết tay đều được.",
+    "driveId": "1z5JHguJZm_vT7FBiPha5NQ0zXm8aitqu"
+  }
+}

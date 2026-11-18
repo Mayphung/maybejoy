@@ -1,12 +1,10 @@
-{#- Form nhận email. kind: "chung" (bài mới, sách mới…) hoặc "qua" (cuốn nhỏ miễn phí) -#}
+{#- Form nhận email, gửi về /api/dang-ky. kind: "chung" (bài mới, sách mới…) hoặc "qua" (cuốn nhỏ miễn phí) -#}
 {% macro mform(id, label, button, kind="chung", style="", inputStyle="") %}
-{%- set action = (site.email.quaTangFormAction if kind == "qua" else "") or site.email.formAction -%}
-<form class="mform" method="post" {% if action %}action="{{ action }}"{% else %}data-pending{% endif %} style="{{ style }}">
+<form class="mform" method="post" action="/api/dang-ky" style="{{ style }}">
   <label for="{{ id }}">{{ label }}
-    <input id="{{ id }}" type="email" name="fields[email]" placeholder="ten@gmail.com" autocomplete="email" required style="{{ inputStyle }}">
+    <input id="{{ id }}" type="email" name="email" placeholder="ten@gmail.com" autocomplete="email" required style="{{ inputStyle }}">
   </label>
-  <input type="hidden" name="ml-submit" value="1">
-  <input type="hidden" name="anticsrf" value="true">
+  <input type="hidden" name="loai" value="{{ kind }}">
   <button class="btn" type="submit">{{ button }}</button>
 </form>
 <div class="form-msg" aria-live="polite"></div>

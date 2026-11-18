@@ -5,28 +5,134 @@
     set: function (k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
   };
 
-  /* ---------- Form nhận email (MailerLite) ---------- */
+  /* ---------- Form nhận email ---------- */
   document.querySelectorAll('form.mform').forEach(function (f) {
     var msg = f.nextElementSibling && f.nextElementSibling.classList.contains('form-msg') ? f.nextElementSibling : null;
     f.addEventListener('submit', function (e) {
       e.preventDefault();
-      if (f.hasAttribute('data-pending')) {
-        if (msg) msg.textContent = 'Phần nhận email May đang nối nốt. Mấy hôm nữa bạn ghé lại nhé.';
-        return;
-      }
       var btn = f.querySelector('button[type=submit]');
       if (btn) btn.disabled = true;
-      fetch(f.action, { method: 'POST', body: new FormData(f), mode: 'no-cors' })
-        .then(function () {
+      var data = Object.fromEntries(new FormData(f));
+      fetch('/api/dang-ky', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(data) })
+        .then(function (r) { return r.json().catch(function () { return { ok: r.ok }; }); })
+        .then(function (r) {
+          if (!r.ok) throw new Error(r.loi || 'loi');
           f.hidden = true;
-          if (msg) msg.textContent = 'May nhận được rồi! Bạn nhớ xem hộp thư nhé, cả mục Quảng cáo.';
+          if (msg) msg.textContent = data.loai === 'qua'
+            ? (r.daGuiQua ? 'May gửi rồi đó! Bạn mở hộp thư nhé, xem cả mục Quảng cáo.' : 'May nhận được rồi! Cuốn nhỏ sẽ tới hộp thư của bạn sớm thôi.')
+            : 'May nhận được rồi! Có gì mới May nhắn bạn.';
         })
-        .catch(function () {
+        .catch(function (err) {
           if (btn) btn.disabled = false;
-          if (msg) msg.textContent = 'Mạng hơi chập chờn. Bạn thử lại giúp May nhé.';
+          if (msg) msg.textContent = err && err.message && err.message !== 'loi' && err.message !== 'Failed to fetch' ? err.message : 'Mạng hơi chập chờn. Bạn thử lại giúp May nhé.';
         });
     });
   });
+
+  /* ---------- Phòng học: video tải khi mở tập, nhớ tập đã xem ---------- */
+  var hoc = document.querySelector('.hoc-list');
+  if (hoc) {
+    var HK = 'mj-hoc-' + location.pathname;
+    var seen = store.get(HK) || {};
+    var bais = hoc.querySelectorAll('.hoc-bai');
+    var tienDo = document.getElementById('hoc-tien-do');
+    var capNhat = function () {
+      var n = 0;
+      bais.forEach(function (b) { var on = !!seen[b.dataset.so]; b.classList.toggle('da-xem', on); b.querySelector('.hoc-check input').checked = on; if (on) n++; });
+      if (tienDo) tienDo.textContent = n ? 'đã xem ' + n + '/' + bais.length + ' tập' : '';
+    };
+    var nap = function (d) {
+      var v = d.querySelector('.hoc-video');
+      if (v && !v.firstChild) {
+        var f = document.createElement('iframe');
+        f.src = v.dataset.src; f.allow = 'autoplay; fullscreen'; f.allowFullscreen = true; f.loading = 'lazy';
+        f.title = 'Video bài học';
+        v.appendChild(f);
+      }
+    };
+    bais.forEach(function (b) {
+      var d = b.querySelector('details');
+      if (d.open) nap(d);
+      d.addEventListener('toggle', function () { if (d.open) nap(d); });
+      b.querySelector('.hoc-check input').addEventListener('change', function (e) {
+        seen[b.dataset.so] = e.target.checked; store.set(HK, seen); capNhat();
+      });
+    });
+    capNhat();
+  }
+
+  /* ---------- Thanh toán ---------- */
+  var tt = document.getElementById('tt-form');
+  if (tt) {
+    var q = new URLSearchParams(location.search);
+    var want = q.get('sp') || '';
+    var opts = Array.prototype.slice.call(tt.querySelectorAll('.co-opt'));
+    var exact = opts.filter(function (o) { return o.querySelector('input').value === want; })[0];
+    var phong = exact ? exact.dataset.phong : (opts.some(function (o) { return o.dataset.phong === want; }) ? want : '');
+    if (phong) {
+      opts.forEach(function (o) { o.hidden = o.dataset.phong !== phong; });
+      var first = exact || opts.filter(function (o) { return !o.hidden; })[0];
+      first.querySelector('input').checked = true;
+      var ten = first.querySelector('.t').textContent;
+      document.getElementById('tt-meta').textContent = 'Ở xưởng May · ' + ten;
+      document.title = 'Thanh toán ' + ten + ' — May Phung';
+    }
+    var visible = opts.filter(function (o) { return !o.hidden; });
+    if (visible.length === 1) document.getElementById('tt-pick').classList.add('one');
+
+    var KEY = 'mj-don';
+    var showQr = function (d) {
+      tt.hidden = true;
+      document.getElementById('tt-qr').hidden = false;
+      document.querySelectorAll('[data-ma]').forEach(function (x) { x.textContent = d.ma; });
+      document.getElementById('tt-gia').textContent = d.giaChu;
+      var img = document.getElementById('tt-qr-img');
+      if (d.qr) img.src = d.qr; else img.hidden = true;
+      poll(d.ma, 0);
+    };
+    var showDone = function (link) {
+      document.getElementById('tt-qr').hidden = true;
+      tt.hidden = true;
+      document.getElementById('tt-xong').hidden = false;
+      document.getElementById('tt-vao').href = link;
+      try { sessionStorage.removeItem(KEY); } catch (e) {}
+    };
+    var poll = function (ma, n) {
+      fetch('/api/don/' + ma, { cache: 'no-store' })
+        .then(function (r) { return r.json(); })
+        .then(function (r) {
+          if (r.ok && r.trangThai === 'da-nhan' && r.link) return showDone(r.link);
+          if (n < 450) setTimeout(function () { poll(ma, n + 1); }, 4000);
+        })
+        .catch(function () { if (n < 450) setTimeout(function () { poll(ma, n + 1); }, 8000); });
+    };
+    try {
+      var saved = JSON.parse(sessionStorage.getItem(KEY) || 'null');
+      if (saved && saved.ma && Date.now() - saved.luc < 3 * 3600 * 1000) showQr(saved);
+    } catch (e) {}
+
+    tt.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var m = document.getElementById('tt-msg');
+      var email = document.getElementById('tt-email').value.trim();
+      var sp = (tt.querySelector('input[name=sp]:checked') || {}).value;
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { m.textContent = 'Email chưa đúng, bạn xem lại giúp May nhé.'; return; }
+      var btn = tt.querySelector('button[type=submit]');
+      btn.disabled = true; m.textContent = '';
+      fetch('/api/don', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ email: email, sp: sp }) })
+        .then(function (r) { return r.json(); })
+        .then(function (r) {
+          if (!r.ok) throw new Error(r.loi || '');
+          r.luc = Date.now();
+          try { sessionStorage.setItem(KEY, JSON.stringify(r)); } catch (e) {}
+          showQr(r);
+        })
+        .catch(function (err) {
+          btn.disabled = false;
+          m.textContent = (err && err.message) || 'Mạng hơi chập chờn. Bạn thử lại giúp May nhé.';
+        });
+    });
+  }
 
   /* ---------- Trang chủ: Việc hôm nay ---------- */
   var tasks = document.querySelector('.p-home .tasks');

@@ -41,7 +41,9 @@
       "nutLink": "#bao-tin",
       "nutPhu": true,
       "mauDa": false,
-      "tenNghieng": false
+      "tenNghieng": false,
+      "muaPhong": "soi-chieu",
+      "muaChu": "Mua sổ"
     },
     {
       "trangThai": "sắp phát hành · cuối 2026",

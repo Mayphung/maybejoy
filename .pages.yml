@@ -264,11 +264,13 @@ content:
           - { name: loai, label: "Loại (vd: Khoá học video · 14 tập)", type: string }
           - { name: ten, label: Tên món, type: string }
           - { name: moTa, label: Mô tả, type: text }
-          - { name: gia, label: "Giá (với Emotion Course, giá này dùng cho cả trang khoá học và thanh toán)", type: string }
+          - { name: gia, label: "Giá hiển thị (giá thu tiền thật nằm ở 💳 Bán hàng)", type: string }
           - { name: giaGhiChu, label: Dòng nhỏ dưới giá, type: string }
           - { name: ghiTay, label: "Dòng viết tay thay cho giá (nếu chưa có giá)", type: string }
           - { name: nutChu, label: Chữ trên nút, type: string }
           - { name: nutLink, label: "Nút dẫn tới đâu (bỏ trống để ẩn nút)", type: string }
+          - { name: muaPhong, label: "Bán qua web: emotion-course hoặc soi-chieu (có thì nút Mua thay cho nút trên)", type: string }
+          - { name: muaChu, label: Chữ trên nút Mua, type: string }
           - { name: nutPhu, label: Nút viền (thay vì nút đặc), type: boolean }
           - { name: mauDa, label: "Thẻ màu đá (dành cho sách Cappu & Lucia)", type: boolean }
           - { name: tenNghieng, label: Tên in nghiêng, type: boolean }
@@ -318,7 +320,7 @@ content:
 
   # ---------- CÀI ĐẶT ----------
   - name: settings
-    label: "⚙️ Cài đặt: link mạng xã hội, email, chuyển khoản"
+    label: "⚙️ Cài đặt: link mạng xã hội, email liên hệ"
     type: file
     path: src/_data/site.json
     format: json
@@ -332,18 +334,8 @@ content:
           - { name: tiktok, label: TikTok, type: string }
           - { name: facebook, label: Facebook, type: string }
           - { name: youtube, label: YouTube, type: string }
-      - name: email
-        label: Form nhận email (MailerLite)
-        type: object
-        fields:
-          - { name: formAction, label: Địa chỉ form chung, type: string }
-          - { name: quaTangFormAction, label: "Địa chỉ form cuốn nhỏ miễn phí (bỏ trống = dùng form chung)", type: string }
       - { name: contactEmail, label: Email liên hệ, type: string }
       - { name: courseOldPrice, label: Giá gốc Emotion Course (gạch ngang), type: string }
-      - { name: bankName, label: Ngân hàng, type: string }
-      - { name: bankAccountName, label: Chủ tài khoản, type: string }
-      - { name: bankAccountNumber, label: "Số tài khoản (có số này thì nút mua mới hiện)", type: string }
-      - { name: bankVietQrId, label: "Mã ngân hàng cho VietQR (vd: VCB, TCB, MB…) — có thì hiện mã QR", type: string }
       - name: nav
         type: object
         list: true
@@ -353,3 +345,72 @@ content:
           - { name: name, type: string }
           - { name: url, type: string }
           - { name: sub, type: string }
+
+  - name: ban-hang
+    label: "💳 Bán hàng: tài khoản nhận tiền, giá, quà tặng"
+    type: file
+    path: src/_data/banHang.json
+    format: json
+    fields:
+      - name: nganHang
+        label: Tài khoản nhận tiền
+        type: object
+        fields:
+          - { name: ten, label: Tên ngân hàng (hiện trên trang thanh toán), type: string }
+          - { name: maVietQr, label: "Mã ngân hàng cho mã QR (MB, VCB, TCB…)", type: string }
+          - { name: soTaiKhoan, label: "Số tài khoản (có số này thì nút mua mới hiện)", type: string }
+          - { name: chuTaiKhoan, label: Chủ tài khoản (viết hoa, không dấu, đúng như app ngân hàng), type: string }
+      - name: sanPham
+        label: "Các món bán (giá thu tiền thật, chỉ ghi số: 299000)"
+        type: object
+        list: true
+        fields:
+          - { name: ma, label: "Mã (đừng đổi)", type: string }
+          - { name: ten, label: Tên, type: string }
+          - { name: moTa, label: Mô tả ngắn trên trang thanh toán, type: string }
+          - { name: gia, label: Giá (số), type: number }
+          - { name: phong, label: "Mở phòng nào (đừng đổi)", type: string }
+      - name: phong
+        type: object
+        hidden: true
+        fields:
+          - { name: emotion-course, type: object, fields: [{ name: ten, type: string }, { name: duongDan, type: string }] }
+          - { name: soi-chieu, type: object, fields: [{ name: ten, type: string }, { name: duongDan, type: string }] }
+      - name: quaTang
+        label: Cuốn nhỏ miễn phí (gửi khi có người để lại email ở trang chủ)
+        type: object
+        fields:
+          - { name: ten, label: Tên cuốn, type: string }
+          - { name: link, label: "Link file (Google Drive, để chế độ ai có link cũng xem được)", type: string }
+
+  - name: phong-hoc
+    label: "🎓 Phòng học: video Emotion Course, file Soi Chiếu"
+    type: file
+    path: src/_data/khoaHoc.json
+    format: json
+    fields:
+      - name: emotionCourse
+        label: Emotion Course
+        type: object
+        fields:
+          - { name: loiChao, label: Lời chào đầu phòng học, type: text }
+          - name: soTay
+            label: Sổ tay
+            type: object
+            fields:
+              - { name: ten, label: Tên, type: string }
+              - { name: driveId, label: "Mã file Google Drive (phần giữa /d/ và /view)", type: string }
+          - name: bai
+            label: Các tập
+            type: object
+            list: true
+            fields:
+              - { name: so, label: Số tập, type: number }
+              - { name: ten, label: Tên tập, type: string }
+              - { name: driveId, label: "Mã file video trên Google Drive", type: string }
+      - name: soiChieu
+        label: Soi Chiếu
+        type: object
+        fields:
+          - { name: loiChao, label: Lời chào, type: text }
+          - { name: driveId, label: "Mã file PDF trên Google Drive", type: string }

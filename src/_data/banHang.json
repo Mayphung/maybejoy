@@ -1,0 +1,39 @@
+{
+  "nganHang": {
+    "ten": "MB Bank",
+    "maVietQr": "MB",
+    "soTaiKhoan": "",
+    "chuTaiKhoan": ""
+  },
+  "sanPham": [
+    {
+      "ma": "emotion-course",
+      "ten": "Emotion Course",
+      "moTa": "Trọn bộ video và sổ tay thực hành",
+      "gia": 299000,
+      "phong": "emotion-course"
+    },
+    {
+      "ma": "soi-chieu-latte",
+      "ten": "Soi Chiếu",
+      "moTa": "Sổ viết 5 tuần · mời May một ly latte",
+      "gia": 69000,
+      "phong": "soi-chieu"
+    },
+    {
+      "ma": "soi-chieu-sach",
+      "ten": "Soi Chiếu",
+      "moTa": "Sổ viết 5 tuần · tặng May một cuốn sách",
+      "gia": 96000,
+      "phong": "soi-chieu"
+    }
+  ],
+  "phong": {
+    "emotion-course": { "ten": "Emotion Course", "duongDan": "/hoc/emotion-course/" },
+    "soi-chieu": { "ten": "Soi Chiếu", "duongDan": "/hoc/soi-chieu/" }
+  },
+  "quaTang": {
+    "ten": "Khi Sợ Hãi Điều Khiển Tình Yêu",
+    "link": ""
+  }
+}

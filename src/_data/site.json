@@ -6,16 +6,8 @@
     "facebook": "",
     "youtube": ""
   },
-  "email": {
-    "formAction": "",
-    "quaTangFormAction": ""
-  },
   "contactEmail": "",
   "courseOldPrice": "399.000đ",
-  "bankName": "",
-  "bankAccountName": "",
-  "bankAccountNumber": "",
-  "bankVietQrId": "",
   "nav": [
     {
       "key": "tung-chut-mot",

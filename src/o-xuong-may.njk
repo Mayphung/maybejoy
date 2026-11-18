@@ -23,7 +23,8 @@ navKey: o-xuong-may
       {% if p.gia %}<div><div class="price{% if p.gia.length > 9 %} sm{% endif %}">{{ p.gia }}</div>{% if p.giaGhiChu %}<div style="font-size: 12px">{{ p.giaGhiChu }}</div>{% endif %}</div>
       {% elif p.ghiTay %}<span class="hand" style="font-size: 19px; color: #A8522B">{{ p.ghiTay }}</span>
       {% else %}<span></span>{% endif %}
-      {% if p.nutChu and p.nutLink %}<a class="btn{% if p.nutPhu %} ghost{% endif %}" href="{{ p.nutLink }}">{{ p.nutChu }}</a>{% endif %}
+      {% if p.muaPhong and banHang.nganHang.soTaiKhoan %}<a class="btn" href="/thanh-toan/?sp={{ p.muaPhong }}">{{ p.muaChu or "Mua" }}</a>
+      {% elif p.nutChu and p.nutLink %}<a class="btn{% if p.nutPhu %} ghost{% endif %}" href="{{ p.nutLink }}">{{ p.nutChu }}</a>{% endif %}
     </div>
   </div>
 </div>

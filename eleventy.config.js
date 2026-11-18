@@ -64,6 +64,7 @@ export default function (eleventyConfig) {
   });
   eleventyConfig.addFilter("findBy", (arr, key, val) => (arr || []).find((x) => String(x[key]) === String(val)));
   eleventyConfig.addFilter("featured", (posts) => (posts || []).find((p) => p.data.noiBat) || (posts || [])[0]);
+  eleventyConfig.addFilter("vnd", (n) => Number(n || 0).toLocaleString("vi-VN") + "đ");
   eleventyConfig.addFilter("digits", (s) => String(s || "").replace(/\D/g, ""));
   eleventyConfig.addFilter("navItem", (nav, key) => (nav || []).find((c) => c.key === key));
 

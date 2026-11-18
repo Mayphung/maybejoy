@@ -1,46 +1,71 @@
 ---
 layout: base.njk
-title: Thanh toán Emotion Course
+title: Thanh toán
 permalink: /thanh-toan/
 noindex: true
 css: post
 bodyClass: p-post
 navKey: o-xuong-may
 ---
-{% set ec = xuong.daXong | findBy("ten", "Emotion Course") %}
+{% set nh = banHang.nganHang %}
 <div class="wrap">
 {% include "nav.njk" %}
-<main class="article" id="noi-dung">
-  <div class="meta"><a href="/emotion-course/">Emotion Course</a> · {{ ec.gia }}</div>
-  <h1>Bước vào phòng</h1>
-  <div class="prose">
-    <p>Cảm ơn bạn đã đăng ký Emotion Course. Còn ba bước nhỏ nữa thôi:</p>
+<main class="article checkout" id="noi-dung">
+  <div class="meta" id="tt-meta">Ở xưởng May</div>
+  <h1 id="tt-h">Bước vào phòng</h1>
+
+  {% if not nh.soTaiKhoan %}
+  <div class="prose"><p class="hand" style="font-size: 22px; color: #A8522B">May đang hoàn tất phần chuyển khoản. Bạn quay lại sau ít phút nhé.</p></div>
+  {% else %}
+  {# Bước 1: chọn món, điền email #}
+  <form class="co-step" id="tt-form" novalidate>
+    <fieldset class="co-pick" id="tt-pick">
+      <legend class="sr-only">Chọn món</legend>
+      {% for s in banHang.sanPham %}
+      <label class="co-opt" data-phong="{{ s.phong }}">
+        <input type="radio" name="sp" value="{{ s.ma }}" data-gia="{{ s.gia }}"{% if loop.first %} checked{% endif %}>
+        <span class="t">{{ s.ten }}</span>
+        <span class="d">{{ s.moTa }}</span>
+        <span class="g">{{ s.gia | vnd }}</span>
+      </label>
+      {% endfor %}
+    </fieldset>
+    <label class="co-email" for="tt-email">Email nhận đường dẫn vào phòng
+      <input id="tt-email" type="email" name="email" placeholder="ten@gmail.com" autocomplete="email" required>
+    </label>
+    <p class="co-note">May gửi chìa khoá vào email này ngay khi nhận được tiền. Bạn gõ kỹ giúp May nhé.</p>
+    <button class="btn" type="submit">Tiếp tục</button>
+    <div class="form-msg" id="tt-msg" aria-live="polite"></div>
+  </form>
+
+  {# Bước 2: quét QR #}
+  <section class="co-step" id="tt-qr" hidden aria-live="polite">
     <ol class="steps">
-      <li>Chuyển khoản <strong>{{ ec.gia }}</strong> theo thông tin bên dưới.</li>
-      <li>Ở phần nội dung chuyển khoản, ghi <strong>EC + email của bạn</strong> (ví dụ: <em>EC ten@gmail.com</em>).</li>
-      <li>Trong vòng 24 giờ, May gửi đường dẫn vào khoá học qua email đó.</li>
+      <li>Mở app ngân hàng, quét mã bên dưới. Số tiền và nội dung đã điền sẵn. Đang xem bằng điện thoại? Bạn chụp màn hình mã QR, rồi trong app ngân hàng chọn quét mã từ ảnh.</li>
+      <li>Giữ nguyên nội dung chuyển khoản <strong class="co-ma" data-ma></strong>, để web nhận ra đơn của bạn.</li>
+      <li>Chuyển xong, cứ để trang này mở. Vài giây sau cửa tự mở.</li>
     </ol>
-
     <div class="pay-box">
-      {% if site.bankAccountNumber %}
+      <img class="qr" id="tt-qr-img" alt="Mã QR chuyển khoản" width="300" height="300">
       <dl>
-        <dt>Ngân hàng</dt><dd>{{ site.bankName }}</dd>
-        <dt>Chủ tài khoản</dt><dd>{{ site.bankAccountName }}</dd>
-        <dt>Số tài khoản</dt><dd>{{ site.bankAccountNumber }}</dd>
-        <dt>Số tiền</dt><dd>{{ ec.gia }}</dd>
-        <dt>Nội dung</dt><dd>EC + email của bạn</dd>
+        <dt>Ngân hàng</dt><dd>{{ nh.ten }}</dd>
+        <dt>Chủ tài khoản</dt><dd>{{ nh.chuTaiKhoan }}</dd>
+        <dt>Số tài khoản</dt><dd>{{ nh.soTaiKhoan }}</dd>
+        <dt>Số tiền</dt><dd id="tt-gia"></dd>
+        <dt>Nội dung</dt><dd><strong data-ma></strong></dd>
       </dl>
-      {% if site.bankVietQrId %}
-      <img class="qr" src="https://img.vietqr.io/image/{{ site.bankVietQrId }}-{{ site.bankAccountNumber }}-compact2.png?amount={{ ec.gia | digits }}&addInfo=EC&accountName={{ site.bankAccountName | urlencode }}" alt="Mã QR chuyển khoản {{ ec.gia }}" width="280" height="280" loading="lazy">
-      <p style="font-size: 14px; margin: 6px 0 0">Quét mã bằng app ngân hàng, rồi sửa nội dung chuyển khoản thành <strong>EC + email của bạn</strong> nhé.</p>
-      {% endif %}
-      {% else %}
-      <p style="margin:0; font-style:italic; color:var(--terracotta-dark);">Thông tin chuyển khoản đang được cập nhật — bạn quay lại sau ít phút nhé.</p>
-      {% endif %}
     </div>
+    <p class="hand co-wait" id="tt-wait">đang chờ tiền về<span class="dots">…</span></p>
+    <p class="co-note">Chuyển rồi mà 15 phút sau chưa thấy gì? Bạn trả lời email bất kỳ của May{% if site.contactEmail %} hoặc viết cho <a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a>{% endif %}, kèm mã đơn <strong data-ma></strong>. May mở cửa tay cho bạn.</p>
+  </section>
 
-    <p>Sau 24 giờ chưa thấy email, bạn xem giúp May mục Quảng cáo và Spam.{% if site.contactEmail %} Vẫn chưa có thì nhắn May ở <a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a>.{% endif %}</p>
-  </div>
+  {# Bước 3: xong #}
+  <section class="co-step" id="tt-xong" hidden>
+    <p class="co-done">May nhận được rồi. Cảm ơn bạn nhiều lắm!</p>
+    <p>Chìa khoá cũng đã gửi vào email của bạn (nhớ xem cả mục Quảng cáo). Giờ thì mời bạn vào:</p>
+    <a class="btn" id="tt-vao" href="#">Vào phòng</a>
+  </section>
+  {% endif %}
   <p class="signoff">— May</p>
 </main>
 {% include "foot.njk" %}
