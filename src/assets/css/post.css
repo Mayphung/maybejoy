@@ -23,3 +23,4 @@ body.p-post,body.p-page{background:var(--cream)}
 .arow .t{font-family:'Lora',Georgia,serif;font-size:19px;line-height:1.45}
 .arow .m{font-size:13px;color:var(--burgundy);white-space:nowrap}
 .arow:hover .t{color:var(--terracotta-dark)}
+.archive .year{font-family:"Patrick Hand",cursive;font-size:20px;color:var(--terracotta-dark);margin:18px 0 0}

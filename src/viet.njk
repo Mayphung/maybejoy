@@ -15,7 +15,10 @@ bodyClass: p-page
     {% if ds.length %}
     <section class="archive">
       <h2><a href="{{ c.url }}">{{ c.name }}</a> <span class="sub">· {{ c.sub }}</span></h2>
+      {% set lastY = "" %}
       {% for p in ds %}
+      {% set y = p.date | isoDate | truncate(4, true, "") %}
+      {% if y != lastY %}<div class="year">{{ y }}</div>{% set lastY = y %}{% endif %}
       <a class="arow" href="{{ p.url }}"><span class="t">{{ p.data.title }}</span><span class="m">{{ p.date | dateDots }} · {{ p.content | readMin }} phút</span></a>
       {% endfor %}
     </section>

@@ -57,7 +57,7 @@ export default function (eleventyConfig) {
     const out = [];
     const ps = [...(posts || [])];
     (notes || []).forEach((n, i) => {
-      if (i % every === 0 && ps.length) out.push(ps.shift());
+      if (i % every === 2 && ps.length) out.push(ps.shift());
       out.push(n);
     });
     return out.concat(ps);

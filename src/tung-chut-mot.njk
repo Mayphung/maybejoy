@@ -11,7 +11,7 @@ navKey: tung-chut-mot
 {% set moods = { "nhich": "Ngày nhích được", "met": "Ngày mệt", "bo": "Ngày muốn bỏ", "hoc": "Bài học nhỏ" } %}
 {% set rots = ["-1.6", "1.2", "-0.6", "2"] %}
 {% set heights = [340, 300, 260, 300, 280] %}
-{% set wall = collections.nhatKy | weave(collections.posts | byCategory("tung-chut-mot"), 7) %}
+{% set wall = collections.nhatKy | weave(collections.posts | byCategory("tung-chut-mot") | limit(3), 6) %}
 <div class="wrap">
   {% include "nav.njk" %}
 
@@ -31,7 +31,7 @@ navKey: tung-chut-mot
       <h2 class="script" id="bai-h">Bài viết</h2>
       <span class="hand">đọc dài, lúc rảnh</span>
     </div>
-    {% for p in baiDai | limit(5) %}
+    {% for p in baiDai | limit(8) %}
     <a class="toc" href="{{ p.url }}"><span class="t">{{ p.data.title }}</span><span class="dots"></span><span class="m">{{ p.date | dateDots }} · {{ p.content | readMin }} phút</span></a>
     {% endfor %}
     <a class="all" href="/viet/">Tất cả bài viết →</a>
