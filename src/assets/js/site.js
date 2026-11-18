@@ -144,17 +144,14 @@
   var chips = document.querySelectorAll('.chip[data-mood]');
   if (chips.length) {
     var cells = document.querySelectorAll('.mas .cell');
-    var line = document.getElementById('count-line');
-    var lines = { all: '', bo: 'Ngày muốn bỏ cũng được ghi lại. Vì có những ngày như thế thật.' };
     chips.forEach(function (c) {
       c.addEventListener('click', function () {
-        var m = c.dataset.mood, n = 0;
+        var m = c.dataset.mood;
         chips.forEach(function (x) { var on = x === c; x.classList.toggle('on', on); x.setAttribute('aria-pressed', on); });
         cells.forEach(function (cell) {
           var show = m === 'all' || cell.dataset.mood === m;
-          cell.hidden = !show; if (show) n++;
+          cell.hidden = !show;
         });
-        if (line) line.textContent = m in lines ? lines[m] : ('Đang xem ' + n + ' trang.');
       });
     });
   }
