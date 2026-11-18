@@ -154,8 +154,6 @@ content:
             type: select
             options: { values: [TikTok, Facebook, YouTube] }
           - { name: hoc, label: Học gì, type: string }
-      - { name: loiPhe, label: Lời phê, type: text }
-      - { name: nguoiPhe, label: Người phê, type: string }
 
   - name: trang-tung-chut-mot
     label: "📄 Trang Từng chút một — chữ đầu trang"

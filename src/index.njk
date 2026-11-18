@@ -111,7 +111,7 @@ bodyClass: p-home
     {% set moi = collections.moiNhat | limit(3) %}
     {% if moi.length %}
     <section style="margin-top: 96px" aria-labelledby="moi-h">
-      <h2 class="script sec-h" id="moi-h"><span class="ul">Trang mới nhất</span></h2>
+      <h2 class="script sec-h" id="moi-h"><span class="ul">Bài mới nhất</span></h2>
       <ul class="moi">
         {% for it in moi %}
         {% set c = site.nav | navItem(it.data.category or "tung-chut-mot") %}
@@ -156,19 +156,6 @@ bodyClass: p-home
     </section>
     {% endif %}
 
-    <!-- LỜI PHÊ -->
-    <div class="phe" style="margin-top: 96px">
-      <div class="phe-l">
-        <div class="kick" style="color: #A8522B">Điểm</div>
-        <div class="mark">10</div>
-      </div>
-      <div style="padding: 20px 26px">
-        <div class="kick" style="color: #A8522B; margin-bottom: 6px">Lời phê</div>
-        <div class="hand" style="font-size: 25px; line-height: 32px; color: #A8522B">{{ t.loiPhe }}</div>
-        <div class="hand" style="font-size: 18px; line-height: 24px; color: #6E2A34; margin-top: 10px; text-align: right">— {{ t.nguoiPhe }}</div>
-      </div>
-    </div>
-
-    <div style="margin-top: 48px">{% include "foot.njk" %}</div>
+    <div style="margin-top: 96px">{% include "foot.njk" %}</div>
   </main>
 </div>
