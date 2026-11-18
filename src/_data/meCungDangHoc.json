@@ -1,5 +1,5 @@
 {
-  "loiMoDau": "Không ai sinh ra đã biết làm mẹ. May cũng không. Có con rồi mới bắt đầu học: vì sao con khóc, vì sao mình dễ cáu, vì sao thương con nhiều đến thế mà vẫn kiệt sức. Đây là những điều May đang tìm hiểu và áp dụng với Lagi. ",
+  "loiMoDau": "Không ai sinh ra đã biết làm mẹ. Mình cũng vậy. Có con rồi, mình mới bắt đầu hiểu thêm bao nhiêu chuyện: chuyện sao con bướng, chuyện sao mình dễ cáu, và cả chuyện lớn lên cùng con. Đây là những điều May đang học, đang thử và điều chỉnh mỗi ngày cùng Lagi.",
   "cachDoc": [
     {
       "ten": "Có khi mẹ mệt",
@@ -14,8 +14,6 @@
       "moTa": "Có điều đọc xong sẽ muốn thử. Có điều cần để đó nghĩ thêm. Có những thứ hợp với mình, và cũng có thứ không"
     }
   ],
-  "thuToiNayGiaiThich": "Một gợi ý nhỏ để thử với con ",
-  "viDuThuToiNay": "Khi con nói: *“Tại mẹ không mua đồ chơi!”*\n\nThử gọi tên điều con đang cảm thấy: *“Con thất vọng vì không được mua đồ chơi, phải không?”*\n\nCon có thể vẫn khóc. Không sao. Mình đang giúp con tìm chữ cho điều con chưa nói được.",
   "tieuDeDanhSach": "Tất cả bài, *chọn theo điều bạn đang cần*",
   "the": [
     {
@@ -39,5 +37,7 @@
       "anh": "/assets/images/me-tap-xe-cho-con.jpg",
       "moTaAnh": "Mẹ giúp con tập xe"
     }
-  ]
+  ],
+  "thuToiNayGiaiThich": "Một gợi ý nhỏ để thử với con ",
+  "viDuThuToiNay": "Khi con nói: *“Tại mẹ không mua đồ chơi!”*\n\nThử gọi tên điều con đang cảm thấy: *“Con thất vọng vì không được mua đồ chơi, phải không?”*\n\nCon có thể vẫn khóc. Không sao. Mình đang giúp con tìm chữ cho điều con chưa nói được."
 }
