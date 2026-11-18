@@ -101,12 +101,6 @@ bodyClass: p-home
       </div>
     </div>
 
-    <!-- ĐẾM -->
-    <div class="count" aria-live="polite">
-      <span class="script" style="font-size: 30px; line-height: 40px; color: #6E2A34; font-weight: 700">Đã gạch <span id="done-n">1</span>/<span id="done-total">7</span>.</span>
-      <span class="hand" id="done-msg" style="font-size: 22px; line-height: 28px; color: #A8522B">Một việc cũng là đi.</span>
-    </div>
-
     <!-- TRANG MỚI NHẤT -->
     {% set moi = collections.moiNhat | limit(3) %}
     {% if moi.length %}

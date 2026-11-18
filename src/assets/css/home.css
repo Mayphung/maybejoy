@@ -36,7 +36,6 @@ button.box:hover{transform:rotate(-4deg) scale(1.06);border-color:#A8522B}
 .inp{min-height:44px;border:none;border-bottom:2px solid #362A24;border-radius:0;background:transparent;font-family:'Patrick Hand',cursive;font-size:24px;color:#362A24;padding:0 4px;outline:none;flex:1;min-width:0}
 .inp:focus{border-bottom-color:#A8522B}
 .linkbtn{background:none;border:none;color:#6E2A34;text-decoration:underline;cursor:pointer;font:inherit;padding:10px 4px}
-.count{margin:30px 0 0 64px;display:flex;gap:16px;align-items:baseline;flex-wrap:wrap}
 .sec-h{font-size:34px;line-height:44px;color:#6E2A34;font-weight:700;margin:0}
 .sec-h .ul{border-bottom:2.5px solid #6E2A34}
 .sec-h .hand{font-size:20px;color:#A8522B;font-weight:400}
@@ -62,7 +61,6 @@ button.box:hover{transform:rotate(-4deg) scale(1.06);border-color:#A8522B}
   .field{flex-wrap:wrap;gap:0 10px}
   .intro{font-size:21px;margin-top:36px}
   .h-date{font-size:30px}
-  .count{margin-left:0}
   .tkb .c3{display:none}
   .tkb th,.tkb td{padding:10px 10px}
 }

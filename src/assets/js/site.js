@@ -40,7 +40,8 @@
     var items = tasks.querySelectorAll('.item[data-i]:not(.mine)');
     var mine = tasks.querySelector('.item.mine');
     var total = items.length + (mine ? 1 : 0);
-    document.getElementById('done-total').textContent = total;
+    var totEl = document.getElementById('done-total');
+    if (totEl) totEl.textContent = total;
 
     function setDone(item, on) {
       item.classList.toggle('done', on);
@@ -54,8 +55,9 @@
       else if (n >= 3 && n < total - 1) m = 'Được mấy việc rồi. Nghỉ chút đi.';
       else if (n === total - 1) m = 'Còn một việc. Hay để mai cũng được.';
       else if (n >= total) m = 'Xong hết?! Hôm nay bạn giỏi thật.';
-      document.getElementById('done-n').textContent = n;
-      document.getElementById('done-msg').textContent = m;
+      var nEl = document.getElementById('done-n'), mEl = document.getElementById('done-msg');
+      if (nEl) nEl.textContent = n;
+      if (mEl) mEl.textContent = m;
     }
     function save() {
       var s = {};
