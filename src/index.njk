@@ -11,13 +11,12 @@ bodyClass: p-home
   {% include "nav.njk" %}
 
   <main class="sheet" id="noi-dung">
-    <h1 class="sr-only">May Phung — Vở Bit by Bit</h1>
+    <h1 class="sr-only">May Phung — Bit by Bit</h1>
 
     <!-- NHÃN VỞ + ẢNH THẺ -->
     <div class="g-top">
       <div class="label">
         <div style="text-align: center; margin-bottom: 14px">
-          <div class="kick" style="letter-spacing: 6px">Vở</div>
           <div class="script" style="font-size: 64px; line-height: 72px; color: #6E2A34; font-weight: 700">Bit by Bit</div>
           <div class="hand" style="font-size: 20px; line-height: 24px; color: #A8522B">từng chút một</div>
         </div>
@@ -43,7 +42,6 @@ bodyClass: p-home
     <div style="text-align: center; margin: 64px 0 8px">
       <div class="script h-date" id="hom-nay">Hôm nay</div>
       <h2 class="script day-title">Việc hôm nay</h2>
-      <div class="hand" style="font-size: 18px; line-height: 24px; margin-top: 8px; color: #A8522B">(ô nào thích thì tick. không ai chấm đâu.)</div>
     </div>
 
     <!-- DANH SÁCH VIỆC -->
@@ -99,7 +97,7 @@ bodyClass: p-home
           </form>
           <div class="mine-done" hidden>
             <div class="task"><span id="mine-text"></span></div>
-            <div class="sub">Thấy chưa, nhích rồi đó. <button type="button" id="mine-undo" class="linkbtn">viết việc khác</button></div>
+            <div class="sub">Thấy chưa, hôm nay đã có một việc xong. <button type="button" id="mine-undo" class="linkbtn">viết việc khác</button></div>
           </div>
         </div>
         <div></div>
@@ -114,12 +112,11 @@ bodyClass: p-home
 
     <!-- BÀI TẬP VỀ NHÀ -->
     <section style="margin-top: 96px" id="bai-tap" aria-labelledby="bt-h">
-      <h2 class="script sec-h" id="bt-h"><span class="ul">Bài tập về nhà</span> <span class="hand">(không chấm điểm, không hạn nộp)</span></h2>
+      <h2 class="script sec-h" id="bt-h"><span class="ul">Bài tập về nhà</span></h2>
       <div class="g-hw">
         <div class="hide-s booklet">
           <div style="font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #F0B892; line-height: 16px">Cuốn nhỏ · miễn phí</div>
           <div class="serif" style="font-size: 22px; line-height: 28px; font-weight: 600">{{ t.baiTap.tenSach }}</div>
-          <div class="serif" style="font-style: italic; font-size: 12px; line-height: 18px; color: #F0B892">{{ t.baiTap.phuDe }}</div>
         </div>
         <div>
           <p style="margin: 0 0 16px; max-width: 600px"><b style="font-weight: 600; color: #6E2A34">Đề bài:</b> {{ t.baiTap.deBai | mdInline | safe }}</p>
@@ -131,12 +128,12 @@ bodyClass: p-home
     <!-- THỜI KHOÁ BIỂU -->
     {% if site.social.tiktok or site.social.facebook or site.social.youtube %}
     <section style="margin-top: 96px" id="thoi-khoa-bieu" aria-labelledby="tkb-h">
-      <h2 class="script sec-h" id="tkb-h" style="margin-bottom: 24px"><span class="ul">Thời khoá biểu</span> <span class="hand">(chọn lớp hợp với bạn)</span></h2>
+      <h2 class="script sec-h" id="tkb-h" style="margin-bottom: 24px"><span class="ul">Thời khoá biểu</span></h2>
       <table class="tkb">
         <thead><tr><th scope="col">Môn</th><th scope="col">Lớp ở đâu</th><th scope="col" class="c3">Học gì</th><th scope="col"><span class="hide-s">Vào lớp</span></th></tr></thead>
         <tbody>
           {% for r in t.thoiKhoaBieu %}{% if socialMap[r.noi] %}
-          <tr><td><b style="font-weight: 600; color: #6E2A34">{{ r.mon }}</b><br><span style="font-size: 13px">{{ r.kieu }}</span></td><td>{{ r.noi }}</td><td class="c3">{{ r.hoc }}</td><td><a href="{{ socialMap[r.noi] }}" target="_blank" rel="me noopener" style="font-weight: 500; display: inline-block; padding: 10px 0">Vào lớp →</a></td></tr>
+          <tr><td><b style="font-weight: 600; color: #6E2A34">{{ r.mon }}</b></td><td>{{ r.noi }}</td><td class="c3">{{ r.hoc }}</td><td><a href="{{ socialMap[r.noi] }}" target="_blank" rel="me noopener" style="font-weight: 500; display: inline-block; padding: 10px 0">Vào lớp →</a></td></tr>
           {% endif %}{% endfor %}
         </tbody>
       </table>

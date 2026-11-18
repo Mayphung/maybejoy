@@ -85,3 +85,4 @@ a{color:var(--burgundy)}a:hover{color:var(--terracotta-dark)}
   .prose{font-size:17px}
   .hide-s{display:none !important}
 }
+.sub-line{font-style:italic;font-size:18px;line-height:1.4;color:var(--terracotta-dark);margin-bottom:12px}

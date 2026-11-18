@@ -11,7 +11,7 @@
     f.addEventListener('submit', function (e) {
       e.preventDefault();
       if (f.hasAttribute('data-pending')) {
-        if (msg) msg.textContent = 'Phần nhận email đang được nối, mấy hôm nữa bạn ghé lại giúp May nhé.';
+        if (msg) msg.textContent = 'Phần nhận email May đang nối nốt. Mấy hôm nữa bạn ghé lại nhé.';
         return;
       }
       var btn = f.querySelector('button[type=submit]');
@@ -19,7 +19,7 @@
       fetch(f.action, { method: 'POST', body: new FormData(f), mode: 'no-cors' })
         .then(function () {
           f.hidden = true;
-          if (msg) msg.textContent = 'Đã nhận! Kiểm tra hộp thư giúp May nhé (nhớ xem cả mục Quảng cáo).';
+          if (msg) msg.textContent = 'May nhận được rồi! Bạn nhớ xem hộp thư nhé, cả mục Quảng cáo.';
         })
         .catch(function () {
           if (btn) btn.disabled = false;
@@ -51,9 +51,9 @@
       var n = tasks.querySelectorAll('.item.done').length;
       var m = 'Một việc cũng là đi.';
       if (n === 0) m = 'Chưa gạch gì? Cũng được. Mai làm tiếp.';
-      else if (n >= 3 && n < total - 1) m = 'Đang nhích đều. Nghỉ chút đi.';
+      else if (n >= 3 && n < total - 1) m = 'Được mấy việc rồi. Nghỉ chút đi.';
       else if (n === total - 1) m = 'Còn một việc. Hay để mai cũng được.';
-      else if (n >= total) m = 'Xong hết?! Ai cho phép bạn giỏi vậy.';
+      else if (n >= total) m = 'Xong hết?! Hôm nay bạn giỏi thật.';
       document.getElementById('done-n').textContent = n;
       document.getElementById('done-msg').textContent = m;
     }
@@ -104,7 +104,7 @@
   if (chips.length) {
     var cells = document.querySelectorAll('.mas .cell');
     var line = document.getElementById('count-line');
-    var lines = { all: 'Còn nhiều trang nữa. Đi từ từ.', bo: 'Ngày muốn bỏ cũng được ghi lại. Vì hôm sau vẫn dậy.' };
+    var lines = { all: 'Còn nhiều trang nữa. Đi từ từ.', bo: 'Ngày muốn bỏ cũng được ghi lại. Vì có những ngày như thế thật.' };
     chips.forEach(function (c) {
       c.addEventListener('click', function () {
         var m = c.dataset.mood, n = 0;

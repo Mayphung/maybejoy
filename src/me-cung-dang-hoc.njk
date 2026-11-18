@@ -1,7 +1,7 @@
 ---
 layout: base.njk
 title: Mẹ cũng đang học
-description: Không ai sinh ra đã biết làm mẹ. Những bài viết dài, viết kỹ của May về hành trình làm mẹ, hiểu con và đồng hành cùng con — đọc lúc nhà đã yên.
+description: 'Những bài viết của May về chuyện làm mẹ, hiểu con và hiểu cả những điều mình mang theo từ ngày còn bé. Viết kỹ, để đọc lúc nhà đã yên.'
 permalink: /me-cung-dang-hoc/
 css: me
 bodyClass: p-me
@@ -16,10 +16,9 @@ navKey: me-cung-dang-hoc
   <hr class="rule">
 
   <header class="head" id="noi-dung">
-    <div class="kick" style="margin-bottom: 20px">Chuyên mục 02 · <span class="serif" style="text-transform: none; letter-spacing: 0; font-style: italic; font-size: 15px">hiên nhà</span></div>
+    <div class="serif sub-line">hiên nhà</div>
     <h1 class="serif h1">Mẹ <span style="font-style: italic">cũng đang</span> học</h1>
     <p style="font-size: 19px; max-width: 640px; margin: 0 auto">{{ m.loiMoDau }}</p>
-    <div class="hand" style="font-size: 20px; color: #A8522B; margin-top: 18px">(nên đọc kèm một ly trà)</div>
   </header>
 
   <div class="g3 promises">
@@ -44,7 +43,6 @@ navKey: me-cung-dang-hoc
 
   <section style="margin-top: 110px" aria-labelledby="muc-luc">
     <div style="text-align: center; margin-bottom: 50px">
-      <div class="kick" style="margin-bottom: 12px">Mục lục</div>
       <h2 id="muc-luc" class="serif" style="font-size: 44px; line-height: 1.2; margin: 0; color: #6E2A34; font-weight: 500">Ba chương, <span style="font-style: italic">viết dần</span></h2>
     </div>
     <div class="g3">
@@ -59,7 +57,7 @@ navKey: me-cung-dang-hoc
         {% for b in bai | reverse %}
         <a class="toc-row" href="{{ b.url }}"><span class="t">{{ b.data.title }}</span><span class="dots"></span><span class="m">{{ b.content | readMin }}′</span></a>
         {% endfor %}
-        <div class="toc-row soon"><span class="t">{{ "Bài tiếp theo đang viết…" if bai.length else "Bài đầu tiên đang viết…" }}</span><span class="dots"></span><span class="m">—</span></div>
+        <div class="toc-row soon"><span class="t">{{ "Bài tiếp theo May đang viết…" if bai.length else "Bài đầu tiên May đang viết…" }}</span><span class="dots"></span><span class="m">—</span></div>
       </div>
       {% endfor %}
     </div>
@@ -67,9 +65,8 @@ navKey: me-cung-dang-hoc
 
   <section class="g2 try-sec">
     <div>
-      <div class="kick" style="margin-bottom: 12px">Cuối mỗi bài đều có</div>
       <h2 class="serif" style="font-size: 38px; line-height: 1.25; margin: 0 0 14px; color: #6E2A34; font-weight: 500">Một việc nhỏ, <span style="font-style: italic">thử tối nay.</span></h2>
-      <p style="margin: 0; font-size: 16px">Đọc xong là có cái để làm — không phải thêm một điều để lo.</p>
+      <p style="margin: 0; font-size: 16px">{{ m.thuToiNayGiaiThich }}</p>
     </div>
     <div class="try" style="margin: 0">
       <div class="lbl">thử tối nay</div>
@@ -79,7 +76,7 @@ navKey: me-cung-dang-hoc
 
   <section class="signup">
     <h2 class="serif" style="font-size: 36px; line-height: 1.25; margin: 0 0 12px; color: #6E2A34; font-weight: 500">Bài dài mới, gửi tận hộp thư.</h2>
-    <p style="margin: 0 auto 26px; max-width: 520px">Viết xong bài nào, May gửi bài đó. Không dồn, không giục.</p>
+    <p style="margin: 0 auto 26px; max-width: 520px">May viết xong bài nào, gửi bài đó. Không dồn, không giục.</p>
     {{ mform("em-me", "Email của bạn", "Gửi cho mình", "chung", "margin: 0 auto; justify-content: center") }}
   </section>
 

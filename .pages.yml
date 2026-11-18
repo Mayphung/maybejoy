@@ -142,7 +142,6 @@ content:
         type: object
         fields:
           - { name: tenSach, label: Tên cuốn nhỏ, type: string }
-          - { name: phuDe, label: Dòng phụ trên bìa, type: string }
           - { name: deBai, label: "Đề bài (*chữ nghiêng* đặt giữa hai dấu sao)", type: text }
       - name: thoiKhoaBieu
         label: Thời khoá biểu (mỗi dòng chỉ hiện khi đã có link mạng xã hội đó)
@@ -150,7 +149,6 @@ content:
         list: true
         fields:
           - { name: mon, label: Môn, type: string }
-          - { name: kieu, label: Dòng nhỏ, type: string }
           - name: noi
             label: Lớp ở đâu
             type: select
@@ -167,6 +165,7 @@ content:
     fields:
       - { name: loiMoDau, label: Lời mở đầu, type: text }
       - { name: ghiLe, label: Câu viết tay bên phải, type: string }
+      - { name: moiDangKy, label: Lời mời đăng ký email cuối trang, type: text }
 
   - name: trang-me
     label: "📄 Trang Mẹ cũng đang học — chữ và các chương"
@@ -193,6 +192,7 @@ content:
           - { name: moTa, label: Mô tả, type: text }
           - { name: anh, label: Ảnh, type: image }
           - { name: moTaAnh, label: Tả ảnh, type: string }
+      - { name: thuToiNayGiaiThich, label: "Dòng giải thích phần 'thử tối nay'", type: text }
       - { name: viDuThuToiNay, label: "Ví dụ 'thử tối nay' trên trang", type: text }
 
   - name: trang-ke
@@ -237,7 +237,6 @@ content:
         fields:
           - { name: tieuDe, label: "Tiêu đề (*chữ nghiêng* giữa hai dấu sao)", type: string }
           - { name: moTa, label: Mô tả, type: text }
-          - { name: tinhTrang, label: Dòng tình trạng, type: string }
 
   - name: trang-xuong
     label: "📄 Trang Ở xưởng May — các món"
@@ -285,6 +284,12 @@ content:
         type: object
         list: true
         fields: *mon
+      - name: baoTin
+        label: Phần báo tin (email)
+        type: object
+        fields:
+          - { name: tieuDe, label: "Tiêu đề (*chữ nghiêng* giữa hai dấu sao)", type: string }
+          - { name: loi, label: Lời mời, type: text }
       - name: nguoiMay
         label: Người ngồi may
         type: object

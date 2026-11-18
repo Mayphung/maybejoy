@@ -14,11 +14,11 @@ navKey: o-xuong-may
   <div class="meta"><a href="/emotion-course/">Emotion Course</a> · {{ ec.gia }}</div>
   <h1>Bước vào phòng</h1>
   <div class="prose">
-    <p>Cảm ơn bạn đã chọn ngồi xuống với cảm xúc của mình. Chỉ còn ba bước nhỏ:</p>
+    <p>Cảm ơn bạn đã đăng ký Emotion Course. Còn ba bước nhỏ nữa thôi:</p>
     <ol class="steps">
       <li>Chuyển khoản <strong>{{ ec.gia }}</strong> theo thông tin bên dưới.</li>
       <li>Ở phần nội dung chuyển khoản, ghi <strong>EC + email của bạn</strong> (ví dụ: <em>EC ten@gmail.com</em>).</li>
-      <li>Trong vòng 24 giờ, mình gửi đường dẫn vào khoá học qua email đó.</li>
+      <li>Trong vòng 24 giờ, May gửi đường dẫn vào khoá học qua email đó.</li>
     </ol>
 
     <div class="pay-box">
@@ -32,14 +32,14 @@ navKey: o-xuong-may
       </dl>
       {% if site.bankVietQrId %}
       <img class="qr" src="https://img.vietqr.io/image/{{ site.bankVietQrId }}-{{ site.bankAccountNumber }}-compact2.png?amount={{ ec.gia | digits }}&addInfo=EC&accountName={{ site.bankAccountName | urlencode }}" alt="Mã QR chuyển khoản {{ ec.gia }}" width="280" height="280" loading="lazy">
-      <p style="font-size: 14px; margin: 6px 0 0">Quét mã bằng app ngân hàng, rồi sửa nội dung thành <strong>EC + email của bạn</strong>.</p>
+      <p style="font-size: 14px; margin: 6px 0 0">Quét mã bằng app ngân hàng, rồi sửa nội dung chuyển khoản thành <strong>EC + email của bạn</strong> nhé.</p>
       {% endif %}
       {% else %}
       <p style="margin:0; font-style:italic; color:var(--terracotta-dark);">Thông tin chuyển khoản đang được cập nhật — bạn quay lại sau ít phút nhé.</p>
       {% endif %}
     </div>
 
-    <p>Nếu sau 24 giờ bạn chưa nhận được email, kiểm tra giúp mình hộp thư Quảng cáo/Spam{% if site.contactEmail %}, hoặc nhắn mình ở <a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a>{% endif %}.</p>
+    <p>Sau 24 giờ chưa thấy email, bạn xem giúp May mục Quảng cáo và Spam.{% if site.contactEmail %} Vẫn chưa có thì nhắn May ở <a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a>.{% endif %}</p>
   </div>
   <p class="signoff">— May</p>
 </main>

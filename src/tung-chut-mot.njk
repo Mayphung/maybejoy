@@ -1,7 +1,7 @@
 ---
 layout: base.njk
 title: Từng chút một
-description: Nhật ký của một người phụ nữ rất bình thường, đang gỡ từng nút một để quay về với đời mình. Ngày nhích được, ngày mệt, ngày muốn bỏ — ghi hết.
+description: 'Nhật ký của May về những chuyện trong cuộc sống, gia đình, công việc và những ngày mình muốn bỏ cuộc. Có ngày nhích được, có ngày không.'
 permalink: /tung-chut-mot/
 css: tcm
 bodyClass: p-tcm
@@ -17,7 +17,7 @@ navKey: tung-chut-mot
 
   <header class="g2 head" id="noi-dung">
     <div>
-      <div class="kick" style="margin-bottom: 18px">Chuyên mục 01 · <span class="serif" style="text-transform: none; letter-spacing: 0; font-style: italic; font-size: 15px">nước chảy đá mòn</span></div>
+      <div class="serif sub-line">nước chảy đá mòn</div>
       <h1 class="script h1">Từng chút một</h1>
       <p style="font-size: 19px; max-width: 640px; margin: 0">{{ tungChutMot.loiMoDau }}</p>
     </div>
@@ -76,7 +76,7 @@ navKey: tung-chut-mot
   <section class="g2 join">
     <div>
       <h2 class="script" style="font-size: 48px; line-height: 56px; margin: 0 0 12px; color: #6E2A34">Nhích cùng May?</h2>
-      <p style="margin: 0">Mỗi khi có trang mới, May gửi qua email. Ngắn thôi — đọc xong trước khi nước sôi.</p>
+      <p style="margin: 0">{{ tungChutMot.moiDangKy }}</p>
     </div>
     <div>{{ mform("em-nhich", "Email của bạn", "Nhích cùng") }}</div>
   </section>

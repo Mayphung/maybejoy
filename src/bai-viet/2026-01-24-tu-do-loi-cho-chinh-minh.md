@@ -3,7 +3,7 @@ title: Khi Mình Hay Đổ Lỗi Cho Chính Mình — Và Học Cách Nhìn Lạ
 date: 2026-01-24
 category: tung-chut-mot
 tamTrang: hoc
-excerpt: '"Chắc do mình dở." "Lại là lỗi của mình." Nghe thì quen. Nhưng mấy câu đó không giúp mình tốt hơn — vì chúng quá mơ hồ.'
+excerpt: '“Chắc do mình dở.” “Lại là lỗi của mình.” Mình hay nói với mình như thế mỗi khi có chuyện không như ý. Nói xong vẫn chẳng biết sửa từ đâu — vì “mình dở” là một kết luận quá rộng.'
 ---
 
 Có những việc, chẳng ai trách mình cả. Nhưng trong đầu mình vẫn tự nói:

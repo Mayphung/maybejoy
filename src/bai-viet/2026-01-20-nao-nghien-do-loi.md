@@ -7,8 +7,8 @@ image: /assets/images/me-om-con-cua-so.jpg
 imageAlt: Mẹ ôm con bên cửa sổ, nhìn từ phía sau
 thuToiNay: |
   Khi sắp buột miệng: *"Tại con không nghe lời."*
-  Thử nói: *"Mẹ thấy mệt khi con không làm theo lời mẹ."*
-excerpt: Chào mừng bạn đến với trò chơi đổ lỗi — một trò chơi mà hầu như ai trong chúng ta cũng đang chơi, chỉ là không nhận ra.
+  Thử dừng một nhịp, nói điều đang xảy ra với mình: *"Mẹ đang mệt vì con chưa làm theo lời mẹ."*
+excerpt: 'Con làm đổ nước, và mình buột miệng: “Tại con!” — trước cả khi kịp nghĩ. Bài này thử nhìn xem vì sao mình dễ đổ lỗi đến thế.'
 ---
 
 > "Chúng ta không thể thay đổi điều mình chưa nhận ra. Và một khi đã nhận ra, chúng ta khó mà không thay đổi." — Sheryl Sandberg

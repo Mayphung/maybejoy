@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-{%- set pageTitle = (title + " — May Phung") if title else "May Phung — Vở Bit by Bit, từng chút một" %}
+{%- set pageTitle = (title + " — May Phung") if title else "May Phung — Bit by Bit, từng chút một" %}
 {%- set pageDesc = description or excerpt or site.description %}
 {%- set ogImage = (site.url + image) if image else (site.url + "/assets/images/og-maybejoy.jpg") %}
 <title>{{ pageTitle }}</title>
@@ -11,7 +11,7 @@
 <link rel="canonical" href="{{ site.url }}{{ page.url }}">
 <meta property="og:site_name" content="May Phung">
 <meta property="og:type" content="{{ 'article' if layout == 'post.njk' else 'website' }}">
-<meta property="og:title" content="{{ title or 'May Phung — Vở Bit by Bit' }}">
+<meta property="og:title" content="{{ title or 'May Phung — Bit by Bit, từng chút một' }}">
 <meta property="og:description" content="{{ pageDesc | striptags | truncate(170) }}">
 <meta property="og:url" content="{{ site.url }}{{ page.url }}">
 <meta property="og:image" content="{{ ogImage }}">

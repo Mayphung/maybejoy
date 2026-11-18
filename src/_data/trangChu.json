@@ -8,7 +8,7 @@
   "anhThe": "/assets/images/anh-the-bai-bien.jpg",
   "anhTheMoTa": "May trên bãi biển, nhìn ra xa",
   "anhTheChuThich": "ảnh thẻ. (đang nghĩ xem mai nhích tiếp hướng nào)",
-  "loiChao": "Đây là vở của May. Mỗi ngày một trang, mỗi trang vài việc nhỏ — viết, làm mẹ, kể chuyện, may vá vài thứ có ích. Bạn cứ lật xem. Và tick thử một ô.",
+  "loiChao": "Đây là vở của May. Mỗi ngày một trang, có hôm chỉ vài dòng: viết, làm mẹ, kể chuyện, may vá vài thứ. Có chuyện xong rồi, có chuyện còn dở. Bạn cứ lật xem, thấy ô nào hợp thì tick thử.",
   "viecDau": {
     "viec": "Dậy sớm.",
     "ghiChu": "Hôm nay dậy được. Mai tính tiếp."
@@ -16,42 +16,53 @@
   "viecChuyenMuc": [
     {
       "chuyenMuc": "tung-chut-mot",
-      "viec": "Nhích thêm một chút về phía giấc mơ.",
-      "ghiChu": "Nhật ký của một người phụ nữ rất bình thường: ngày nhích được, ngày mệt, ngày muốn bỏ. Ghi hết.",
+      "viec": "Nhích thêm một chút về phía điều mình muốn.",
+      "ghiChu": "Nhật ký của một người phụ nữ rất bình thường: ngày làm được, ngày mệt, ngày muốn bỏ. Cả những ngày chẳng có gì đáng kể, May cũng ghi.",
       "ghiLe": "việc này quan trọng nhất →"
     },
     {
       "chuyenMuc": "me-cung-dang-hoc",
       "viec": "Ôm con. Lâu hơn thường lệ một chút.",
-      "ghiChu": "Những gì mình đang học về làm mẹ: hiểu con, đứng bên con. Bài dài, viết kỹ, đọc lúc nhà đã yên.",
+      "ghiChu": "Những điều May đang học trên đường làm mẹ: hiểu con, hiểu mình, học cách ở bên con. Bài hơi dài, để dành lúc nhà đã yên.",
       "ghiLe": ""
     },
     {
       "chuyenMuc": "mot-chuyen-thoi-me",
       "viec": "Kể cho con một chuyện. (Rồi thêm một chuyện nữa.)",
-      "ghiChu": "Truyện kể trước giờ ngủ, sách Cappu & Lucia, và một ngôi làng có cây biết nói, mười con mèo màu lạ.",
-      "ghiLe": "9 giờ tối, câu quen nhất nhà →"
+      "ghiChu": "Truyện kể trước giờ ngủ, sách Cappu & Lucia, và một ngôi làng có cây biết nói cùng mười con mèo màu lạ.",
+      "ghiLe": ""
     },
     {
       "chuyenMuc": "o-xuong-may",
-      "viec": "Ghé xưởng xem May đang may gì.",
-      "ghiChu": "Emotion Course, Soi Chiếu, Anne & Ren — thứ đã may xong, và thứ còn trên bàn.",
+      "viec": "Ghé xem May đang may gì.",
+      "ghiChu": "Emotion Course, Soi Chiếu, Anne & Ren — có món đã xong, có món còn trên bàn.",
       "ghiLe": ""
     }
   ],
   "viecTheoDoi": {
     "viec": "Theo dõi May ở chỗ bạn hay lướt.",
-    "ghiChu": "Tốn của bạn hai giây. May vui cả ngày."
+    "ghiChu": "Gặp May ở đó thì ghé chào nhé."
   },
   "baiTap": {
     "tenSach": "Khi Sợ Hãi Điều Khiển Tình Yêu",
-    "phuDe": "5 nỗi sợ · nhận ra · hiểu · bước tiếp",
-    "deBai": "Đọc cuốn nhỏ *Khi Sợ Hãi Điều Khiển Tình Yêu*. Dành cho người cứ yêu là cố thêm một chút, nhường thêm một chút, xin lỗi trước một chút — rồi tự hỏi sao vẫn thấy chưa đủ."
+    "deBai": "Đọc cuốn nhỏ *Khi Sợ Hãi Điều Khiển Tình Yêu*. Dành cho người cứ yêu là cố thêm một chút, nhường thêm một chút, xin lỗi trước một chút — rồi tự hỏi: mình cố đến thế, sao vẫn thấy chưa đủ?"
   },
   "thoiKhoaBieu": [
-    { "mon": "Nói chuyện thật", "kieu": "video ngắn", "noi": "TikTok", "hoc": "Cảm xúc, tình yêu, chuyện làm người lớn" },
-    { "mon": "Viết dài", "kieu": "đọc lúc rảnh", "noi": "Facebook", "hoc": "Bài mới của Từng chút một và Mẹ cũng đang học" },
-    { "mon": "Kể chuyện", "kieu": "nghe trước giờ ngủ", "noi": "YouTube", "hoc": "Một chuyện thôi mẹ! — truyện cho bé 2–6 tuổi" }
+    {
+      "mon": "Nói chuyện thật",
+      "noi": "TikTok",
+      "hoc": "Cảm xúc, tình yêu, và chuyện làm người lớn"
+    },
+    {
+      "mon": "Viết dài",
+      "noi": "Facebook",
+      "hoc": "Bài mới của Từng chút một và Mẹ cũng đang học"
+    },
+    {
+      "mon": "Kể chuyện",
+      "noi": "YouTube",
+      "hoc": "Truyện cho bé 2–6 tuổi, nghe trước giờ ngủ"
+    }
   ],
   "loiPhe": "Chữ hơi xấu. Đi hơi chậm. Nhưng chưa bỏ buổi nào. Tuyên dương trước lớp.",
   "nguoiPhe": "Cô giáo: Cuộc Đời"

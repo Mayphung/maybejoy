@@ -1,7 +1,7 @@
 ---
 layout: base.njk
 title: Một chuyện thôi mẹ!
-description: Truyện kể trước giờ ngủ, bộ sách Cappu & Lucia (NXB Kim Đồng) và một ngôi làng nhỏ đang được dựng — cho bé từ 2 đến 6 tuổi, và cho bố mẹ ngồi cạnh.
+description: 'Truyện kể trước giờ ngủ, sách Cappu & Lucia của NXB Kim Đồng và một ngôi làng nhỏ May đang dựng — cho bé từ 2 đến 6 tuổi và bố mẹ.'
 permalink: /mot-chuyen-thoi-me/
 css: ke
 bodyClass: p-ke
@@ -50,7 +50,7 @@ footColor: "#A8522B"
   <div class="wrap" style="position: relative">
     {% include "nav.njk" %}
     <header class="head" id="noi-dung">
-      <div class="kick" style="margin-bottom: 18px">Chuyên mục 03 · <span class="serif" style="text-transform: none; letter-spacing: 0; font-style: italic; font-size: 15px">dưới gốc đa</span></div>
+      <div class="serif sub-line">dưới gốc đa</div>
       <h1 class="script h1">Một chuyện thôi mẹ!</h1>
       <div class="hand" style="font-size: 23px; color: #A8522B; margin-bottom: 24px">(câu này nói lúc 9 giờ tối. thường là lần thứ ba.)</div>
       <p style="font-size: 19px; max-width: 620px; margin: 0 auto">{{ k.loiMoDau }}</p>
@@ -64,22 +64,21 @@ footColor: "#A8522B"
   <div class="g3" style="margin: 30px 0 110px">
     <a class="door" href="#nghe-ke" style="background: #F2C14E">
       <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#6E2A34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="5" height="7" rx="2"/><rect x="16" y="14" width="5" height="7" rx="2"/></svg>
-      <span class="kick">Nghe</span><span class="serif" style="font-size: 26px; color: #6E2A34; font-weight: 600">Truyện kể trên YouTube</span><span style="font-size: 15px">Mở lên, tắt đèn, nằm nghe.</span>
+      <span class="serif" style="font-size: 26px; color: #6E2A34; font-weight: 600">Truyện kể trên YouTube</span><span style="font-size: 15px">Mở truyện, tắt đèn, nằm nghe cùng con.</span>
     </a>
     <a class="door" href="#sach" style="background: #C3DCE8">
       <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#6E2A34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5a2 2 0 0 1 2-2h6v18H5a2 2 0 0 1-2-2z"/><path d="M21 5a2 2 0 0 0-2-2h-6v18h6a2 2 0 0 0 2-2z"/></svg>
-      <span class="kick">Đọc</span><span class="serif" style="font-size: 26px; color: #6E2A34; font-weight: 600">Sách Cappu &amp; Lucia</span><span style="font-size: 15px">Ba nỗi sợ, ba cuốn sách, cùng {{ k.sach.nxb }}.</span>
+      <span class="serif" style="font-size: 26px; color: #6E2A34; font-weight: 600">Sách Cappu &amp; Lucia</span><span style="font-size: 15px">Ba câu chuyện về ba nỗi sợ của trẻ nhỏ, cùng {{ k.sach.nxb }}.</span>
     </a>
     <a class="door" href="#ngoi-lang" style="background: #B5CDA5">
       <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#6E2A34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/></svg>
-      <span class="kick">Đang dựng</span><span class="serif" style="font-size: 26px; color: #6E2A34; font-weight: 600">Một ngôi làng nhỏ</span><span style="font-size: 15px">Mười con mèo màu lạ đang chờ tên.</span>
+      <span class="serif" style="font-size: 26px; color: #6E2A34; font-weight: 600">Một ngôi làng nhỏ</span><span style="font-size: 15px">Mười con mèo màu lạ đang chờ tên.</span>
     </a>
   </div>
 
   <section id="nghe-ke" style="margin-bottom: 120px">
     <div class="sec-top">
       <div>
-        <div class="kick" style="margin-bottom: 10px">Nghe kể</div>
         <h2 class="serif" style="font-size: 44px; line-height: 1.2; margin: 0; color: #6E2A34; font-weight: 500">Tắt đèn. <span style="font-style: italic">Bật truyện.</span></h2>
       </div>
       {% if site.social.youtube %}<a class="btn3d" href="{{ site.social.youtube }}" target="_blank" rel="me noopener">Mở kênh YouTube</a>{% endif %}
@@ -99,7 +98,7 @@ footColor: "#A8522B"
       <div class="thumb" style="background: #F3C6C0; width: 200px; flex-shrink: 0"><svg style="position: absolute; top: 14px; right: 18px" width="22" height="22" viewBox="0 0 24 24" fill="#F2C14E" aria-hidden="true">{{ star | safe }}</svg>{{ playIcon | safe }}</div>
       <div>
         <div class="kick">Tập 01 · sắp lên sóng</div>
-        <p style="margin: 6px 0 0">Kênh truyện đang được chuẩn bị. Để lại email <a href="#bao-tin">ở cuối trang</a>, tập đầu lên sóng là May báo ngay.</p>
+        <p style="margin: 6px 0 0">May đang chuẩn bị những câu chuyện đầu tiên. Để lại email <a href="#bao-tin">ở cuối trang</a>, tập đầu có là May báo.</p>
       </div>
     </div>
     {% endif %}
@@ -142,10 +141,8 @@ footColor: "#A8522B"
   <div class="wrap">
     <div class="g2 village-grid">
       <div>
-        <div class="kick" style="margin-bottom: 10px">Đang dựng · từng chút một</div>
         <h2 class="serif village-h">{{ k.ngoiLang.tieuDe | mdInline | safe }}</h2>
         <p style="margin: 0 0 16px">{{ k.ngoiLang.moTa }}</p>
-        <div class="hand" style="font-size: 21px; color: #6E2A34; margin-bottom: 22px">{{ k.ngoiLang.tinhTrang }}</div>
         <div style="display: flex; gap: 18px; margin-bottom: 30px; flex-wrap: wrap">
           <figure class="mini-pol" style="transform: rotate(-3deg); width: 170px"><img src="/assets/images/meo-trong-hop.jpg" alt="Mèo con trong hộp giấy" loading="lazy" style="height: 150px"></figure>
           <figure class="mini-pol" style="transform: rotate(3deg); width: 170px"><img src="/assets/images/meo-trang-trong-rung.jpg" alt="Mèo trắng trong rừng" loading="lazy" style="height: 150px"></figure>
