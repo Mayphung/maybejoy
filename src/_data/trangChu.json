@@ -1,12 +1,12 @@
 {
   "nhan": [
     {
-      "nhan": "Họ và tên",
-      "giaTri": "May · Phương Phùng"
+      "nhan": "Học sinh",
+      "giaTri": "May Phung"
     },
     {
       "nhan": "Lớp",
-      "giaTri": "Làm mẹ — học mãi chưa tốt nghiệp"
+      "giaTri": "quẩy quậy tung đời với một em bé cưng"
     },
     {
       "nhan": "Trường",
@@ -14,11 +14,11 @@
     },
     {
       "nhan": "Môn giỏi",
-      "giaTri": "kể chuyện (có sách Kim Đồng làm chứng)"
+      "giaTri": "lang thang cafe đọc sách và tám"
     },
     {
       "nhan": "Môn yếu",
-      "giaTri": "kiên nhẫn (đang viết ba cuốn sách để tự học)"
+      "giaTri": "kiên nhẫn 😅"
     },
     {
       "nhan": "Năm học",
@@ -43,20 +43,17 @@
     {
       "chuyenMuc": "me-cung-dang-hoc",
       "viec": "Ôm con. Lâu hơn thường lệ một chút.",
-      "ghiChu": "Những điều May đang học trên đường làm mẹ: hiểu con, hiểu mình, học cách ở bên con. Bài hơi dài, để dành lúc nhà đã yên.",
-      "ghiLe": ""
+      "ghiChu": "Những điều May đang học trên đường làm mẹ: hiểu con, hiểu mình, học cách ở bên con. Bài hơi dài, để dành lúc nhà đã yên."
     },
     {
       "chuyenMuc": "mot-chuyen-thoi-me",
       "viec": "Kể cho con một chuyện. (Rồi thêm một chuyện nữa.)",
-      "ghiChu": "Truyện kể trước giờ ngủ, sách Cappu & Lucia, và một ngôi làng có cây biết nói cùng mười con mèo màu lạ.",
-      "ghiLe": ""
+      "ghiChu": "Truyện kể trước giờ ngủ, sách Cappu & Lucia, và một ngôi làng có cây biết nói cùng mười con mèo màu lạ."
     },
     {
       "chuyenMuc": "o-xuong-may",
       "viec": "Ghé xem May đang may gì.",
-      "ghiChu": "Emotion Course, Soi Chiếu, Anne & Ren — có món đã xong, có món còn trên bàn.",
-      "ghiLe": ""
+      "ghiChu": "Emotion Course, Soi Chiếu, Anne & Ren — có món đã xong, có món còn trên bàn."
     }
   ],
   "viecTheoDoi": {
