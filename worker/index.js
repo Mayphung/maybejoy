@@ -204,7 +204,8 @@ async function phongHoc(request, env, url) {
   const ten = url.pathname.split("/")[2] || "";
   if (!banHang.phong[ten]) return env.ASSETS.fetch(request);
   const p = banHang.phong[ten];
-  if (!env.TOKEN_SECRET) return new Response(trangKhoa(p.ten), { status: 403, headers: { "content-type": "text/html; charset=utf-8" } });
+  const xemTruoc = env.ADMIN_KEY && url.searchParams.get("xem") === env.ADMIN_KEY;
+  if (!env.TOKEN_SECRET && !xemTruoc) return new Response(trangKhoa(p.ten), { status: 403, headers: { "content-type": "text/html; charset=utf-8" } });
   const cookieName = `chia_${ten.replace(/-/g, "_")}`;
   let e = url.searchParams.get("e");
   let k = url.searchParams.get("k");
@@ -214,12 +215,14 @@ async function phongHoc(request, env, url) {
   }
   let email = "";
   try { email = e ? b64urlDecodeText(e) : ""; } catch { email = ""; }
-  if (email && k && (await kyTen(env, ten, email)) === k) {
+  const xem = url.searchParams.get("xem");
+  const laMay = !!(env.ADMIN_KEY && xem && xem === env.ADMIN_KEY);
+  if (laMay || (env.TOKEN_SECRET && email && k && (await kyTen(env, ten, email)) === k)) {
     const res = await env.ASSETS.fetch(new Request(new URL(url.pathname, url.origin), request));
     const out = new Response(res.body, res);
     out.headers.set("cache-control", "private, no-store");
     out.headers.set("x-robots-tag", "noindex");
-    if (url.searchParams.has("k")) {
+    if (!laMay && url.searchParams.has("k")) {
       out.headers.append("set-cookie", `${cookieName}=${encodeURIComponent(e + "." + k)}; Path=/hoc/${ten}/; Max-Age=${3650 * NGAY}; Secure; HttpOnly; SameSite=Lax`);
     }
     return out;
