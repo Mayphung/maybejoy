@@ -17,19 +17,19 @@
       {
         "ten": "Cappu và những ngôi sao",
         "noiSo": "Tớ sợ bóng tối",
-        "moTa": "Đèn vừa tắt, căn phòng quen bỗng đầy hình thù lạ. Rồi Cappu nhận ra: trong bóng tối cũng có điều thú vị — và cả những ngôi sao đang chờ được nhìn thấy.",
+        "moTa": "Đèn vừa tắt, căn phòng quen bỗng đầy hình thù lạ. Rồi Cappu nhận ra: trong bóng tối cũng có điều thú vị, và cả những ngôi sao đang chờ được nhìn thấy.",
         "bia": "/assets/images/sach-cappu-ngoi-sao.jpg"
       },
       {
         "ten": "Lucia, Cappu và ngày Hè tuyệt vời",
         "noiSo": "Tớ sợ hồ bơi",
-        "moTa": "Cappu sợ hồ bơi. Lucia không giục, cũng không bảo bạn đừng sợ. Cô bé chỉ ở bên, để Cappu tự thử từng chút một.",
+        "moTa": "Cappu sợ hồ bơi. Lucia không giục, cũng không bảo bạn đừng sợ. Cô bé chỉ ở bên, khuyến khích Cappu tự thử từng chút một.",
         "bia": "/assets/images/sach-lucia-cappu-ngay-he.jpg"
       }
     ]
   },
   "ngoiLang": {
     "tieuDe": "Một ngôi làng *chưa có tên.*",
-    "moTa": "Có một cô bé cứ nghĩ đến chuyện sống ở nông trại. Mười con mèo màu lạ trong nhà kho, một chú chó già hiền, và một ông kể chuyện mới dọn về ngọn đồi — nơi có hiệu sách và những cái cây biết nói. May đang vẽ từng nhân vật. Mèo thì đủ rồi, tên làng thì chưa."
+    "moTa": "Có một cô bé sống ở nông trại. Mười con mèo màu lạ trong nhà kho, một chú chó già hiền, và một ông kể chuyện mới dọn về ngọn đồi, nơi có hiệu sách và những cái cây biết nói. May đang tưởng tượng từng nhân vật. Mèo thì đủ rồi, tên làng thì chưa."
   }
 }
