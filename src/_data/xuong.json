@@ -1,6 +1,6 @@
 {
   "loiMoDau": "Những thứ May đã làm xong, và vài thứ còn nằm trên bàn: khoá học, sổ viết, sách thiếu nhi, tiểu thuyết. Món nào cũng làm từng chút một.",
-  "ghiLe": "xưởng nhỏ. không có dây chuyền. may tay hết, từng mũi một.",
+  "ghiLe": "xưởng nhỏ thủ công",
   "banMay": [
     {
       "anh": "/assets/images/so-buoc-day.jpg",
@@ -29,7 +29,7 @@
       "nutLink": "/emotion-course/",
       "nutPhu": false,
       "mauDa": false,
-      "bia": []
+      "tenNghieng": false
     },
     {
       "trangThai": "sắp lên kệ",
@@ -43,7 +43,7 @@
       "nutLink": "#bao-tin",
       "nutPhu": true,
       "mauDa": false,
-      "bia": []
+      "tenNghieng": false
     },
     {
       "trangThai": "sắp phát hành · cuối 2026",
@@ -51,12 +51,11 @@
       "ten": "Cappu & Lucia",
       "moTa": "Ba nỗi sợ thường gặp ở trẻ nhỏ: đi học, bóng tối, hồ bơi. Cappu và Lucia cũng có lúc sợ, lúc chưa dám — rồi tìm cách đi qua theo cách của mình.",
       "nhanMac": "**Chất liệu:** tranh, chữ và giờ đi ngủ\n**Độ tuổi:** bé nhỏ và bố mẹ\n**Cách dùng:** đọc to, đọc lại",
-      "gia": "",
-      "giaGhiChu": "",
       "nutChu": "Xem sách",
       "nutLink": "/mot-chuyen-thoi-me/#sach",
       "nutPhu": true,
       "mauDa": true,
+      "tenNghieng": false,
       "bia": [
         {
           "anh": "/assets/images/sach-lucia-tui-than-ki.jpg",
@@ -78,15 +77,19 @@
       "trangThai": "đang may · đã được 52.492 mũi (chữ)",
       "loai": "Tiểu thuyết",
       "ten": "Anne & Ren",
-      "tenNghieng": true,
       "moTa": "Một cô gái không tin mình xứng đáng được yêu. Một người lạ chưa từng uống một ngụm cà phê. Hai người chẳng có vẻ gì hợp nhau — rồi họ gặp. Chuyện sau đó, May vẫn đang viết.",
       "nhanMac": "**Chất liệu:** cà phê, mưa đầu mùa, một chuyến Ấn Độ\n**Tình trạng:** đang sửa — phần khó nhất",
-      "ghiTay": "",
       "nutChu": "Giữ chỗ đọc sớm",
       "nutLink": "#bao-tin",
-      "nutPhu": true
+      "nutPhu": true,
+      "mauDa": false,
+      "tenNghieng": true
     }
   ],
+  "baoTin": {
+    "tieuDe": "Món mới ra lò, *May báo bạn trước.*",
+    "loi": "Soi Chiếu sắp mở bán, Anne & Ren sắp mở đọc sớm. Để lại email, có tin là May báo."
+  },
   "nguoiMay": {
     "anh": "/assets/images/may-quat-do.jpg",
     "moTaAnh": "May cầm quạt đỏ che mặt",
@@ -94,9 +97,5 @@
     "tieuDe": "Mình là May. *Người viết, trước hết.*",
     "loi": "Mình viết sách thiếu nhi cùng NXB Kim Đồng, đang viết một cuốn tiểu thuyết, và làm vài thứ nhỏ cho những người phụ nữ đang đi qua một đoạn khó — những thứ mình từng cần mà không biết tìm ở đâu.\n\nMón nào ở đây cũng bắt đầu từ một chuyện May từng gặp. Làm ra, dùng thử, rồi sửa. Chưa chắc đã hoàn hảo, nhưng May muốn nó có ích trước khi đưa đến bạn.",
     "nhanMac": "**Nhãn mác:** May\n**Chất liệu:** 100% người thật\n**Xuất xứ:** may tại Sài Gòn, lúc 5h sáng\n**Hướng dẫn:** đọc chậm, nhắn tin thoải mái"
-  },
-  "baoTin": {
-    "tieuDe": "Món mới ra lò, *May báo bạn trước.*",
-    "loi": "Soi Chiếu sắp mở bán, Anne & Ren sắp mở đọc sớm. Để lại email, có tin là May báo."
   }
 }
