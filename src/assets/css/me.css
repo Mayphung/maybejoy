@@ -61,3 +61,8 @@ a.toc-row:hover .t{color:#A8522B}
   .door-f .dn{padding:0 12px 12px 0}
   .door-f:hover{transform:none}
 }
+.more-wrap{text-align:center;margin-top:32px}
+.btn-more{font-family:'Be Vietnam Pro',sans-serif;font-size:15px;font-weight:500;min-height:46px;padding:0 30px;border:2px solid #6E2A34;border-radius:999px;background:transparent;color:#6E2A34;cursor:pointer}
+.btn-more:hover{background:#6E2A34;color:#FBF6EE}
+.btn-more[hidden]{display:none}
+.me-row .tags{gap:0}.me-row .tg+.tg::before{content:"\00a0·\00a0"}

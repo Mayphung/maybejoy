@@ -99,23 +99,43 @@
     count();
   }
 
-  /* ---------- Mẹ cũng đang học: lọc theo điều mẹ đang cần ---------- */
+  /* ---------- Mẹ cũng đang học: lọc theo thẻ, hiện 5 bài mỗi lần ---------- */
   var tagBtns = document.querySelectorAll('.door-f[data-the], .chip-all[data-the]');
   if (tagBtns.length) {
-    var rows = document.querySelectorAll('.me-row');
+    var rows = Array.prototype.slice.call(document.querySelectorAll('.me-row'));
     var tline = document.getElementById('the-line');
+    var more = document.getElementById('me-more');
+    var STEP = 5, curKey = 'all', shown = STEP;
+    var match = function (r) { return curKey === 'all' || (' ' + r.dataset.the + ' ').indexOf(' ' + curKey + ' ') > -1; };
+    var render = function () {
+      var n = 0, total = 0;
+      rows.forEach(function (r) {
+        var ok = match(r);
+        if (ok) total++;
+        var show = ok && n < shown;
+        if (show) n++;
+        r.hidden = !show;
+      });
+      if (more) more.hidden = n >= total;
+      if (tline) tline.textContent = curKey === 'all' ? '' : 'có ' + total + ' bài';
+    };
     var pick = function (key) {
-      var n = 0;
+      curKey = key; shown = STEP;
       tagBtns.forEach(function (b) { var on = b.dataset.the === key; b.setAttribute('aria-pressed', on); b.classList.toggle('on', on); });
-      rows.forEach(function (r) { var show = key === 'all' || (' ' + r.dataset.the + ' ').indexOf(' ' + key + ' ') > -1; r.hidden = !show; if (show) n++; });
-      if (tline) tline.textContent = key === 'all' ? '' : 'đang xem ' + n + ' bài';
+      render();
     };
     tagBtns.forEach(function (b) {
       b.addEventListener('click', function () {
-        var key = b.getAttribute('aria-pressed') === 'true' && b.dataset.the !== 'all' ? 'all' : b.dataset.the;
-        pick(key);
+        pick(b.getAttribute('aria-pressed') === 'true' && b.dataset.the !== 'all' ? 'all' : b.dataset.the);
       });
     });
+    if (more) more.addEventListener('click', function () {
+      var first = shown;
+      shown += STEP; render();
+      var nxt = rows.filter(function (r) { return !r.hidden; })[first];
+      if (nxt) { var a = nxt; a.focus({ preventScroll: true }); }
+    });
+    render();
   }
 
   /* ---------- Từng chút một: lọc theo kiểu ngày ---------- */

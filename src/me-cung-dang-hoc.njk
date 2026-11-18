@@ -28,7 +28,7 @@ navKey: me-cung-dang-hoc
   </div>
 
   {% if noiBat %}
-  <div class="kick" style="margin-bottom: 18px">Bài đọc mới nhất</div>
+  <div class="kick" style="margin-bottom: 18px">Bài mới nhất</div>
   <a class="feat" href="{{ noiBat.url }}">
     <img src="{{ noiBat.data.image or '/assets/images/me-om-con-cua-so.jpg' }}" alt="{{ noiBat.data.imageAlt or '' }}">
     <div class="feat-body">
@@ -69,6 +69,7 @@ navKey: me-cung-dang-hoc
       </a>
       {% endfor %}
     </div>
+    <div class="more-wrap"><button class="btn-more" type="button" id="me-more" hidden>Đọc tiếp</button></div>
   </section>
 
   <section class="g2 try-sec">
