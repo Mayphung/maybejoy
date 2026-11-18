@@ -2,7 +2,7 @@
 title: 'chả còn cách nào khác'
 date: 2025-12-16
 category: tung-chut-mot
-tamTrang: hoc
+tamTrang: bo
 excerpt: 'Đang nửa đêm ngủ say, chợt tỉnh vì một giấc mơ, rồi cả đống ý tưởng hối thúc mình lê ra khỏi giường. Bất chấp mọi nỗ lực, mình không cách gì ngủ lại được.'
 ---
 Đang nửa đêm ngủ say, chợt tỉnh vì một giấc mơ, rồi cả đống ý tưởng hối thúc mình lê ra khỏi giường. Bất chấp mọi nỗ lực, mình không cách gì ngủ lại được.

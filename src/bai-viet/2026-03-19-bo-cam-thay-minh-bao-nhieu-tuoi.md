@@ -2,7 +2,7 @@
 title: 'Bồ cảm thấy mình bao nhiêu tuổi?'
 date: 2026-03-19
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: vui
 excerpt: 'Hả, là sao? Đây là điều tớ nghe mẹ nói suốt. Trong đầu mình, mình trẻ hơn tuổi thực tế. Mình hình như đã ngừng lớn.'
 ---
 - Hả, là sao?

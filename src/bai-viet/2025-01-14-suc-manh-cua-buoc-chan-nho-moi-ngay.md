@@ -2,7 +2,7 @@
 title: 'Sức mạnh của bước chân nhỏ mỗi ngày'
 date: 2025-01-14
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: hoc
 excerpt: 'Theo nghiên cứu “Habits—A Repeat Performance” của David T. Neal, Wendy Wood, và Jeffrey M. Quinn thì: Khoảng 45% hành động hàng ngày của tụi mình là thói quen.'
 ---
 Theo nghiên cứu “Habits—A Repeat Performance” của David T. Neal, Wendy Wood, và Jeffrey M. Quinn thì:

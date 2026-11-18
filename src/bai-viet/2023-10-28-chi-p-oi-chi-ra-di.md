@@ -2,7 +2,7 @@
 title: 'Chị P ơi chị ra đi!'
 date: 2023-10-28
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: vui
 excerpt: 'Mấy đứa nhỏ vừa đập đập cửa phòng tắm vừa nói, – chị đừng giận tụi em nữa, tụi em ko tranh nhau nữa.'
 ---
 Mấy đứa nhỏ vừa đập đập cửa phòng tắm vừa nói,

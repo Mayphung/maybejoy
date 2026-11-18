@@ -2,7 +2,7 @@
 title: 'Ra quyết định để mình không hối hận'
 date: 2025-01-16
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: hoc
 excerpt: 'Ước gì trường học đã dạy tụi mình những gì cần thiết nhất cho cuộc sống thực tế như là: làm sao làm chủ cảm xúc, não tụi mình hoạt động ra sao và ra quyết định như thê…'
 ---
 Ước gì trường học đã dạy tụi mình những gì cần thiết nhất cho cuộc sống thực tế như là: làm sao làm chủ cảm xúc, não tụi mình hoạt động ra sao và ra quyết định như thê nào là chuẩn xác! Thôi không sao, tụi mình đã có trường đời cùng hàng trăm ngàn cơ hội luyện tập, thử sai hàng ngày. Và sau hàng ngàn cơ hội luyện tập thử sai ấy, đây là những điều cốt lõi nhất May rút ra được để quyết định sáng suốt hơn!

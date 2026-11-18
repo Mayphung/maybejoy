@@ -2,7 +2,7 @@
 title: 'Tại sao vụ “cải tổ đầu năm” dễ đứt gánh?'
 date: 2025-01-05
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: hoc
 excerpt: 'Mình chắc chẳng phải người duy nhất có cảm giác cần “quyết tâm cải tổ” bản thân mỗi lẫn năm mới tết đến.'
 ---
 Mình chắc chẳng phải người duy nhất có cảm giác cần “quyết tâm cải tổ” bản thân mỗi lẫn năm mới tết đến. Cảm giác vừa phấn khích vừa mệt ngang khi thấy một danh sách dài những “mục tiêu quyết tâm thực hiện” vào năm sau luôn là một phần trong khoảng thời gian cuối năm cũ – đầu năm mới của mình.

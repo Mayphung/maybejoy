@@ -2,7 +2,7 @@
 title: 'Thật là chill'
 date: 2026-02-28
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: met
 excerpt: 'Đợt phát hiện bệnh, mình biết chắc cơ thể stress. Nghĩ mãi không ra sao lại thế nhỉ!'
 ---
 Đợt phát hiện bệnh, mình biết chắc cơ thể stress. Nghĩ mãi không ra sao lại thế nhỉ!

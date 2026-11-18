@@ -2,7 +2,7 @@
 title: 'ngừng gắng sức'
 date: 2024-08-03
 category: tung-chut-mot
-tamTrang: hoc
+tamTrang: met
 excerpt: 'mình nhớ viết, và muốn viết mỗi ngày, và mình ko muốn viết vội, nên cả tuần này chẳng viết gì, cảm giác ngồi viết một cái gì đó thật thơ thẩn, khi ngồi trong phòng họp…'
 ---
 mình nhớ viết,

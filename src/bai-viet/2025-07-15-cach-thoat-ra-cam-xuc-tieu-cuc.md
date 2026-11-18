@@ -2,7 +2,7 @@
 title: 'Cách thoát khỏi sự ì ạch ẩm ương, tâm trạng thất thường'
 date: 2025-07-15
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: met
 excerpt: 'Sáng đang vui vẻ vì đợt này hoá trị xong tinh thần mình tốt hơn trước, và ăn lại được sớm hơn một chút, ít nôn hơn, hí hửng bước lên cân và bang!!'
 ---
 Sáng đang vui vẻ vì đợt này hoá trị xong tinh thần mình tốt hơn trước, và ăn lại được sớm hơn một chút, ít nôn hơn, hí hửng bước lên cân và bang!! má ơi, sao cân sụt còn nhiều hơn đợt trước thế này!?!!! Không thể tin được!!!

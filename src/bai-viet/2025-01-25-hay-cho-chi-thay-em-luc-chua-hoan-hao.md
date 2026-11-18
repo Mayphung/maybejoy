@@ -2,7 +2,7 @@
 title: '“Hãy cho chị thấy em lúc chưa hoàn hảo”'
 date: 2025-01-25
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: hoc
 excerpt: 'Đây là một trong những lời bày tỏ tình cảm và động viên lãng mạn nhất mình từng nghe. Phải “hoàn hảo” là một trong những gánh nặng từ lâu mình phải buông tay.'
 ---
 Đây là một trong những lời bày tỏ tình cảm và động viên lãng mạn nhất mình từng nghe.

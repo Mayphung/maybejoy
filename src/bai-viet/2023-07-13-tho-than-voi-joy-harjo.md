@@ -2,7 +2,7 @@
 title: 'Thơ thẩn với Joy Harjo'
 date: 2023-07-13
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: hoc
 excerpt: '“We were never perfect. Ta chưa từng hoàn hảo. Yet, the journey we make together is perfect on this earth who was once a star and made the same mistakes as humans.'
 ---
 “We were never perfect. Ta chưa từng hoàn hảo.

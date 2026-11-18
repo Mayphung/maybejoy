@@ -2,7 +2,7 @@
 title: 'Những bàn tay nắm chặt'
 date: 2023-11-02
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: vui
 excerpt: 'một trong những điều mình thích nhất ở khu nhà mình, là thấy các cụ nắm tay nhau tung tăng trên phố, cùng nhau tập thể dục, đi bộ, hay đi ăn sáng cafe, nắm chặt tay…'
 ---
 một trong những điều mình thích nhất ở khu nhà mình,

@@ -2,7 +2,7 @@
 title: 'Có mặt cho chính mình'
 date: 2025-01-20
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: hoc
 excerpt: 'Mình đã luôn cảm thấy bị bỏ rơi. Mình đã luôn cảm thấy cần một người nào đó xuất hiện cho mình. Người có thể thay đổi hiện tại của mình.'
 ---
 Mình đã luôn cảm thấy bị bỏ rơi.

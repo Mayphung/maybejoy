@@ -2,7 +2,7 @@
 title: 'Ngôn ngữ Căng thẳng và Chill'
 date: 2025-11-24
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: vui
 excerpt: 'Sau thành công của bài Ngôn ngữ Tình yêu, thì chúng tôi quyết định sẽ lên bài về Ngôn ngữ Căng thẳng! Chủ đề rất hay, rất hữu ích.'
 ---
 Sau thành công của bài Ngôn ngữ Tình yêu, thì chúng tôi quyết định sẽ lên bài về Ngôn ngữ Căng thẳng! Chủ đề rất hay, rất hữu ích. Mỗi tội tôi không biết viết gì hay nói gì về nó cả, ít nhất là tại thời điểm hiện tại, khi mà tôi đã trễ hẹn với team mấy ngày trời.

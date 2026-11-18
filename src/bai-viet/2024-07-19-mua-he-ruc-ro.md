@@ -2,7 +2,7 @@
 title: 'mùa hè rực rỡ'
 date: 2024-07-19
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: vui
 excerpt: 'chắc chắn là như thế, tụi mình đã xuyên (gần hết) Việt, cafe ở mỗi nơi dừng chân, lội ruộng bùn đất tung toé, quan trọng nhất, là lần đầu tiên mình đã can đảm tắm biển,…'
 ---
 chắc chắn là như thế,

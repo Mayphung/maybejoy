@@ -2,7 +2,7 @@
 title: 'Làm sao vượt qua cảm giác quá tải?'
 date: 2025-01-04
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: hoc
 excerpt: 'Làm gì khi cảm thấy căng thẳng, quá tải, lộn xộn và rối trí? Đầu May rất loạn :)). Đó là điều đầu tiên phải thú nhận. Mình làm nhiều thứ khác nhau.'
 ---
 Làm gì khi cảm thấy căng thẳng, quá tải, lộn xộn và rối trí? Đầu May rất loạn :)). Đó là điều đầu tiên phải thú nhận.

@@ -2,7 +2,7 @@
 title: 'One thing at a time'
 date: 2026-03-17
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: hoc
 excerpt: 'Thật đáng ngạc nhiên là tới giờ, 42 tuổi, mình mới nhận ra mình không thể làm tất cả cùng một lúc. Và chuyện đó bình thường, chẳng sao cả.'
 ---
 Thật đáng ngạc nhiên là tới giờ, 42 tuổi, mình mới nhận ra mình không thể làm tất cả cùng một lúc. Và chuyện đó bình thường, chẳng sao cả.

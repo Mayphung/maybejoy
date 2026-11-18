@@ -2,7 +2,7 @@
 title: 'hội người viết Sài Gòn – Saigon writers club'
 date: 2025-11-26
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: vui
 excerpt: 'Hội được thành lập một cách ngẫu nhiên, ngẫu hứng không có chút kế hoạch nào, cũng không được công bố, và gồm 2 thành viên: Phương và Hường.'
 ---
 Hội được thành lập một cách ngẫu nhiên, ngẫu hứng không có chút kế hoạch nào, cũng không được công bố, và gồm 2 thành viên: Phương và Hường. Hai bà, một cách riêng lẻ, lấy hai biệt danh: May và Mayy, không hẹn mà trùng.

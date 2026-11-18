@@ -2,7 +2,7 @@
 title: 'Điều gì giá trị nhất trong thời buổi này?'
 date: 2025-08-01
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: hoc
 excerpt: 'Hôm qua, mình bắt Grab đến bệnh viện để hẹn lịch. Bác Grab lớn tuổi, hằn sâu vẻ khắc khổ, và kiệm lời. Mình thở phào.'
 ---
 Hôm qua, mình bắt Grab đến bệnh viện để hẹn lịch.

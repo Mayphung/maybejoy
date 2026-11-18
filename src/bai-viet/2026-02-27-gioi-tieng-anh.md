@@ -2,7 +2,7 @@
 title: 'Giỏi tiếng Anh'
 date: 2026-02-27
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: vui
 excerpt: 'Hôm qua, Turbo hóng mình họp online với khách hàng. Rồi ảnh phán: con chẳng hiểu ai nói cái gì cả.'
 ---
 Hôm qua, Turbo hóng mình họp online với khách hàng.

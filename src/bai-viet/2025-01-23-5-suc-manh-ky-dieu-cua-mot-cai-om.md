@@ -2,7 +2,7 @@
 title: '5 sức mạnh kỳ diệu của một cái Ôm!'
 date: 2025-01-23
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: hoc
 excerpt: 'Thầy Thích Nhất Hạnh có nói rằng nếu khi ôm ai đó đủ lâu và ta hít thở thật sâu, người đó sẽ cảm thấy hạnh phúc và sẽ sống lâu hơn một chút. 1.'
 ---
 Thầy Thích Nhất Hạnh có nói rằng nếu khi ôm ai đó đủ lâu và ta hít thở thật sâu, người đó sẽ cảm thấy hạnh phúc và sẽ sống lâu hơn một chút.

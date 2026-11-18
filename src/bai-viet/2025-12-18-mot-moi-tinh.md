@@ -2,7 +2,7 @@
 title: 'một mối tình'
 date: 2025-12-18
 category: tung-chut-mot
-tamTrang: hoc
+tamTrang: vui
 excerpt: 'Sau cả tháng chả đụng giọt cafe nào, cũng chẳng nhung nhớ, thì mình rơi vào vòng xoáy cuồng dại với cafe. Cafe ám ảnh mình gần như mọi lúc, mọi hoàn cảnh.'
 ---
 Sau cả tháng chả đụng giọt cafe nào, cũng chẳng nhung nhớ, thì mình rơi vào vòng xoáy cuồng dại với cafe.

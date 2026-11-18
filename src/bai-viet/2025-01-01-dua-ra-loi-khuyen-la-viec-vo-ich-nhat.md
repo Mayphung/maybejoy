@@ -2,7 +2,7 @@
 title: 'đưa ra lời khuyên là việc vô ích nhất'
 date: 2025-01-01
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: hoc
 excerpt: 'việc nhảy vào cho ý kiến khi có ai đó than thở thật cám dỗ hết sức!'
 ---
 việc nhảy vào cho ý kiến khi có ai đó than thở thật cám dỗ hết sức!

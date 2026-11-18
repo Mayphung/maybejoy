@@ -2,7 +2,7 @@
 title: 'Hào quang của tác giả'
 date: 2025-12-23
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: hoc
 excerpt: 'Hôm qua lần đầu “hội viết” tình cờ giao lưu với 1 tác giả, một cây viết trẻ, rất dễ thương. Ngồi trước mặt mình là hai nhân vật đã xuất bản trên dưới chục tác phẩm.'
 ---
 Hôm qua lần đầu “hội viết” tình cờ giao lưu với 1 tác giả, một cây viết trẻ, rất dễ thương. Ngồi trước mặt mình là hai nhân vật đã xuất bản trên dưới chục tác phẩm. Hai bạn hết sức, dùng đủ mọi chiêu có thể nghĩ ra để đốc thúc mình hoàn thành một vài thứ mình đang bắt đầu (và đã hơi kẹt).

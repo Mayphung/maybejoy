@@ -2,7 +2,7 @@
 title: '“tưới cây thì phải mang cây vào nhà rồi tưới chứ!”'
 date: 2024-02-26
 category: tung-chut-mot
-tamTrang: hoc
+tamTrang: vui
 excerpt: 'mình và mẹ Cua cười ngặt nghẽo khi nghe mẹ Mưa mắng căn hộ trên tầng khi họ tưới cây rồi nước rơi xuống chỗ mẹ Mưa đang phơi khô cá phèn và ti tỉ thứ gì đó nữa, người…'
 ---
 mình và mẹ Cua cười ngặt nghẽo khi nghe mẹ Mưa mắng căn hộ trên tầng khi họ tưới cây rồi nước rơi xuống chỗ mẹ Mưa đang phơi khô cá phèn và ti tỉ thứ gì đó nữa,

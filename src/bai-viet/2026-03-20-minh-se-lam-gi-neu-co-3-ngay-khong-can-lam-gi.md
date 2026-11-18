@@ -2,7 +2,7 @@
 title: 'mình sẽ làm gì nếu có 3 ngày không cần làm gì?'
 date: 2026-03-20
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: vui
 excerpt: 'hmmm căng à nha! mình nghĩ mình chắc sẽ phắn đi Đà Lạt, hay một miền biển nào đó vắng teo sạch sẽ. bất cứ chỗ nào có thể đi bộ hoặc đạp xe thơ thẩn.'
 ---
 hmmm căng à nha!

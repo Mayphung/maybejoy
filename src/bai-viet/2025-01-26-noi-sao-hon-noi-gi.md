@@ -2,7 +2,7 @@
 title: 'Nói sao hơn nói gì!'
 date: 2025-01-26
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: hoc
 excerpt: 'Mình có một kinh nghiệm nhớ đời hồi mới chập chững bước vào ngành quảng cáo. Vụ này là cơn bão đầu tiên đẩy mình ra khỏi sự nhút nhát tự ti cố hữu của mình.'
 ---
 Mình có một kinh nghiệm nhớ đời hồi mới chập chững bước vào ngành quảng cáo. Vụ này là cơn bão đầu tiên đẩy mình ra khỏi sự nhút nhát tự ti cố hữu của mình.

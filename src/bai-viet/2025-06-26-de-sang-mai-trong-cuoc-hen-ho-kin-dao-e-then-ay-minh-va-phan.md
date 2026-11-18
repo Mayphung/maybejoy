@@ -2,7 +2,7 @@
 title: 'Để sáng mai, trong cuộc hẹn hò kín đáo e thẹn ấy, mình và phân không ghét nhau!'
 date: 2025-06-26
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: vui
 excerpt: 'Mình đang làm một việc trước đây mình chẳng bao giờ làm. Hàng ngày mình theo dõi vụ ị Mình có ị mỗi ngày không? Phân nhìn thế nào?'
 ---
 Mình đang làm một việc trước đây mình chẳng bao giờ làm.

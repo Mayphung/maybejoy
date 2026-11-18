@@ -2,7 +2,7 @@
 title: 'Thói quen đầu tiên nào quan trọng nhất?'
 date: 2025-01-18
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: hoc
 excerpt: 'Tham Thì Thâm Nếu đã đọc những bài viết khác ở đây, chắc bạn cũng đã biết mình là người nghĩ nhiều, cầu toàn và hay…tham.'
 ---
 ### Tham Thì Thâm

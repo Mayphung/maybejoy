@@ -2,7 +2,7 @@
 title: '2 bước đơn giản để từ chối lịch thiệp'
 date: 2025-01-22
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: hoc
 excerpt: 'Tại sao nói không khó dữ ta ơi? Hầu hết tụi mình, dù it hay nhiều, trong một hoàn cảnh nào đó, đều gặp khó khăn khi nói không.'
 ---
 ### Tại sao nói không khó dữ ta ơi?

@@ -29,15 +29,16 @@ content:
             - { value: anh, label: "Ảnh polaroid + một dòng" }
             - { value: cau, label: "Câu tâm đắc (nền đỏ đô)" }
       - name: tamTrang
-        label: Hôm đó là ngày gì?
+        label: Ngày hôm nay…
         type: select
         required: true
         options:
           values:
-            - { value: nhich, label: Ngày nhích được }
-            - { value: met, label: Ngày mệt }
-            - { value: bo, label: Ngày muốn bỏ }
-            - { value: hoc, label: Bài học nhỏ }
+            - { value: nhich, label: Nhích được }
+            - { value: bo, label: Muốn bỏ }
+            - { value: met, label: Mệt }
+            - { value: vui, label: Vui ghê }
+            - { value: hoc, label: Học một chút }
       - { name: chu, label: "Chữ (ngắn thôi — với ảnh thì là dòng chú thích)", type: text, required: true }
       - { name: anh, label: "Ảnh (chỉ cần khi chọn kiểu Ảnh)", type: image }
       - { name: moTaAnh, label: "Tả ảnh trong một câu (cho người khiếm thị và Google)", type: string }
@@ -69,10 +70,11 @@ content:
         type: select
         options:
           values:
-            - { value: nhich, label: Ngày nhích được }
-            - { value: met, label: Ngày mệt }
-            - { value: bo, label: Ngày muốn bỏ }
-            - { value: hoc, label: Bài học nhỏ }
+            - { value: nhich, label: Nhích được }
+            - { value: bo, label: Muốn bỏ }
+            - { value: met, label: Mệt }
+            - { value: vui, label: Vui ghê }
+            - { value: hoc, label: Học một chút }
       - name: the
         label: "Thẻ (chỉ cho Mẹ cũng đang học — chọn 1 hoặc 2)"
         type: select

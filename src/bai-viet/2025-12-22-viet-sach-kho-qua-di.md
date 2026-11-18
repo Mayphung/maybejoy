@@ -2,7 +2,7 @@
 title: 'viết sách khó quá đi'
 date: 2025-12-22
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: bo
 excerpt: 'Mình đã nghĩ chẳng có gì quá khó khăn khi thể hiện ra bằng con chữ những gì mình đã trải qua, trong cái vụ ung thư này. Thế mà khó ghê!'
 ---
 Mình đã nghĩ chẳng có gì quá khó khăn khi thể hiện ra bằng con chữ những gì mình đã trải qua, trong cái vụ ung thư này. Thế mà khó ghê!

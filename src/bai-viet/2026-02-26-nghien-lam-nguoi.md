@@ -2,7 +2,7 @@
 title: 'Nghiện làm người'
 date: 2026-02-26
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: vui
 excerpt: 'Tết này tụi mình rong ruổi quê. Quê ông bà ngoại, quê béo, quê mình. Đã vậy còn được bonus thêm 1 đêm ngủ ở Hội An và một đêm ở Huế. Lại còn được ghé thăm chùa Từ Hiếu.'
 ---
 Tết này tụi mình rong ruổi quê. Quê ông bà ngoại, quê béo, quê mình.

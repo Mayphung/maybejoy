@@ -2,7 +2,7 @@
 title: 'mình sẽ viết gì khi ý cạn sức kiệt…'
 date: 2023-07-24
 category: tung-chut-mot
-tamTrang: hoc
+tamTrang: met
 excerpt: 'mà vẫn phải mò lên viết vì cam kết ngày nào cũng viết. mấy ngày nay cả mình và Latte đều đau.'
 ---
 mà vẫn phải mò lên viết vì cam kết ngày nào cũng viết.

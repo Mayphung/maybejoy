@@ -2,7 +2,7 @@
 title: 'Thật hạnh phúc khi…'
 date: 2025-07-04
 category: tung-chut-mot
-tamTrang: hoc
+tamTrang: vui
 excerpt: '– được đi bộ dưới ánh mặt trời ấm nóng cả người – nhìn ngắm những chiếc lá non xanh mơn mởn sau cơn mưa – chìm vào một giai điệu chẳng hiểu lời – vừa lang thang vừa ngâm…'
 ---
 – được đi bộ dưới ánh mặt trời ấm nóng cả người

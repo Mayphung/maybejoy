@@ -2,7 +2,7 @@
 title: 'EFT – Emotion Freeing Technique'
 date: 2025-01-07
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: hoc
 excerpt: 'Kỹ thuật Giải Phóng Cảm xúc (EFT), thường được gọi là “tapping” – nôm na nghĩa là “gõ nhẹ”, là một phương pháp trị liệu kết hợp các yếu tố của bấm huyệt truyền thống…'
 ---
 Kỹ thuật Giải Phóng Cảm xúc (EFT), thường được gọi là “tapping” – nôm na nghĩa là “gõ nhẹ”, là một phương pháp trị liệu kết hợp các yếu tố của bấm huyệt truyền thống Trung Quốc với tâm lý học hiện đại, được thiết kế để giải phóng một số cảm xúc tiêu cực và giảm bớt sự khó chịu về thể chất.

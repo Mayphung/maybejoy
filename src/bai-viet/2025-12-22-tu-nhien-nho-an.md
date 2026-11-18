@@ -2,7 +2,7 @@
 title: 'Tự nhiên nhớ Ấn'
 date: 2025-12-22
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: vui
 excerpt: 'Tháng 12 này lao xao nhớ Bồ Đề Đạo Tràng. Nhớ Lama Logya, nhớ Asanga Rinpoche, nhớ cái lạnh hanh gió bụi.'
 ---
 Tháng 12 này lao xao nhớ Bồ Đề Đạo Tràng.

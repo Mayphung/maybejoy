@@ -2,7 +2,7 @@
 title: 'Chọn lựa thực tế'
 date: 2025-08-09
 category: tung-chut-mot
-tamTrang: hoc
+tamTrang: met
 excerpt: 'Mình ghét phải thừa nhận rằng cơ thể bắt đầu cảm thấy khó hồi phục sau hoá trị hơn những lần trước. Và cũng không rõ đến ngày nào mình sẽ cảm thấy ổn hơn.'
 ---
 Mình ghét phải thừa nhận rằng cơ thể bắt đầu cảm thấy khó hồi phục sau hoá trị hơn những lần trước. Và cũng không rõ đến ngày nào mình sẽ cảm thấy ổn hơn.

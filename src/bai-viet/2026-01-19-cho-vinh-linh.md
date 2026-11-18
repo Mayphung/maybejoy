@@ -2,7 +2,7 @@
 title: 'Chợ Xóm Cát'
 date: 2026-01-19
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: vui
 excerpt: 'Tau một chén! O gằn giọng, với những ngón tay khô cong gầy gò đón lấy ly rượu bé xíu trong vắt rồi ực luôn 1 ngụm gọn gàng.'
 ---
 - Tau một chén!

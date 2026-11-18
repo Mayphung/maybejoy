@@ -2,7 +2,7 @@
 title: 'Chúng ta có thể quản lý thời gian không?'
 date: 2025-01-02
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: hoc
 excerpt: 'QUẢN LÝ (động từ): Trông nom, chịu trách nhiệm toàn việc* Thời gian tuyệt nhiên không phải thứ mình có thể quản lý được.'
 ---
 **QUẢN LÝ (động từ): Trông nom, chịu trách nhiệm toàn việc\***

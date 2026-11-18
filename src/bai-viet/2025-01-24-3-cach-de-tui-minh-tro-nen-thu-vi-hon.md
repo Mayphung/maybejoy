@@ -2,7 +2,7 @@
 title: '3 cách để tụi mình trở nên thú vị hơn'
 date: 2025-01-24
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: hoc
 excerpt: 'Mình đã từng thật nhút nhát, tự tin và rất ngại giao tiếp. Thật khó tin khi nhìn lại quãng đường ấy. Nhất là khi bây giờ mình đã mọc “nanh vuốt” ra rồi.'
 ---
 Mình đã từng thật nhút nhát, tự tin và rất ngại giao tiếp.

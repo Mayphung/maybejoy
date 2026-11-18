@@ -2,7 +2,7 @@
 title: 'Suy nghĩ nhiều – Tiêu cực lắm?'
 date: 2025-01-03
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: hoc
 excerpt: 'May là một người suy nghĩ rất rất nhiều. May đã luôn nghĩ rằng suy nghĩ nhiều là dấu hiệu của sự có trách nhiệm, trưởng thành và thông minh.'
 ---
 May là một người suy nghĩ rất rất nhiều. May đã luôn nghĩ rằng suy nghĩ nhiều là dấu hiệu của sự có trách nhiệm, trưởng thành và thông minh. Thế nhưng, trong hầu hết các trường hợp, May cảm thấy mình như một con thoi vụng về, đan dệt những sợi suy nghĩ không ngừng rối rắm trong tâm trí. Đôi khi, chính những sợi tơ mảnh ấy lại trở thành xiềng xích, trói buộc mình vào một vòng lặp vô tận của lo âu và mệt mỏi.

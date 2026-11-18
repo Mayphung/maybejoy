@@ -2,7 +2,7 @@
 title: 'Tui điên tới não phải làm sao???'
 date: 2025-01-17
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: hoc
 excerpt: 'Có những câu nói xuyên tim. Có những hành động làm mình nổi đóa. Có những chuyện điên đứ đừ! Cứ tưởng như mình sẽ mang cơn tức này trong mình mãi mãi về sau!'
 ---
 Có những câu nói xuyên tim.

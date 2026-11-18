@@ -2,7 +2,7 @@
 title: 'Thói quen nhỏ giải phóng năng lượng lớn'
 date: 2025-01-06
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: hoc
 excerpt: 'Morning routine của “người ta”: Nghe đồng hồ báo thức là bật dậy, biết ơn vì có thêm một ngày mới Vươn vai sảng khoái uống nước lọc Ra ngoài chạy bộ tận hưởng không khí…'
 ---
 ### Morning routine của “người ta”:

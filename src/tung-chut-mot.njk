@@ -8,7 +8,7 @@ bodyClass: p-tcm
 navKey: tung-chut-mot
 ---
 {% from "macros.njk" import mform with context %}
-{% set moods = { "nhich": "Ngày nhích được", "met": "Ngày mệt", "bo": "Ngày muốn bỏ", "hoc": "Bài học nhỏ" } %}
+{% set moods = { "nhich": "Nhích được", "bo": "Muốn bỏ", "met": "Mệt", "vui": "Vui ghê", "hoc": "Học một chút" } %}
 {% set rots = ["-1.6", "1.2", "-0.6", "2"] %}
 {% set heights = [340, 300, 260, 300, 280] %}
 {% set wall = collections.nhatKy | weave(collections.posts | byCategory("tung-chut-mot") | limit(3), 6) %}
@@ -35,7 +35,7 @@ navKey: tung-chut-mot
   {% endif %}
 
   <div class="chips" role="group" aria-label="Lọc theo kiểu ngày">
-    <span class="hand" style="font-size: 20px; margin-right: 6px">Hôm nay bạn là:</span>
+    <span class="hand" style="font-size: 20px; margin-right: 6px">Ngày hôm nay…</span>
     <button class="chip on" type="button" data-mood="all" aria-pressed="true">Tất cả</button>
     {% for k, label in moods %}<button class="chip" type="button" data-mood="{{ k }}" aria-pressed="false">{{ label }}</button>{% endfor %}
   </div>

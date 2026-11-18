@@ -2,7 +2,7 @@
 title: 'Bài này mình type VNI 😆'
 date: 2025-11-22
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: vui
 excerpt: 'Bữa tự nhiên nghĩ, mình type quá trời đất, mà sao chưa từng để ý tới việc học typing ta!'
 ---
 Bữa tự nhiên nghĩ, mình type quá trời đất, mà sao chưa từng để ý tới việc học typing ta!

@@ -2,7 +2,7 @@
 title: 'Chữa trị trì hoãn – thay “lười” bằng “yêu”'
 date: 2025-10-21
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: hoc
 excerpt: 'Tưởng gì chứ trì hoãn mình là chúa tể! Mình đã luôn ngầm so sánh và ghen tị với những người có thể liên tục hùng hục làm việc hay hướng tới mục tiêu một cách liên tục,…'
 ---
 Tưởng gì chứ trì hoãn mình là chúa tể!

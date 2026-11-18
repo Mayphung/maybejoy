@@ -2,7 +2,7 @@
 title: 'Nếu bây giờ có một ngày lê la ở Sing…'
 date: 2026-03-24
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: vui
 excerpt: 'chắc chắn mình sẽ bước vào Kinokuniya, hít hà mùi sách, chạm lướt một vòng trước tiên, xong mình sẽ dạo quanh Orchard Road, kiếm một quán cafe bé xinh, mình gọi Linh…'
 ---
 chắc chắn mình sẽ bước vào Kinokuniya, hít hà mùi sách, chạm lướt một vòng trước tiên,

@@ -2,7 +2,7 @@
 title: 'cái thú của việc viết bài'
 date: 2025-12-20
 category: tung-chut-mot
-tamTrang: hoc
+tamTrang: vui
 excerpt: 'là thực sự mình chẳng biết nó dẫn mình đi đâu ;)))). Mình phát hiện ra, nếu mình có khung trước, kiểu như dàn ý trước, viết theo yêu cầu, ý tứ chỉnh chu, mình viết chán…'
 ---
 là thực sự mình chẳng biết nó dẫn mình đi đâu ;)))).

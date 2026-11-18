@@ -2,7 +2,7 @@
 title: '8 tư tưởng cần thông suốt để sướng hơn'
 date: 2025-01-21
 category: tung-chut-mot
-tamTrang: nhich
+tamTrang: hoc
 excerpt: 'Bữa Mai nói mình, hay bà viết về chuyện học cách chấp nhận chồng đi, tui thấy cặp đôi hay không chấp nhận nhau. Mình bảo: trời ơi thì đây là chuyện khó nhất luôn mà!'
 ---
 **Bữa Mai nói mình, hay bà viết về chuyện học cách chấp nhận chồng đi, tui thấy cặp đôi hay không chấp nhận nhau.

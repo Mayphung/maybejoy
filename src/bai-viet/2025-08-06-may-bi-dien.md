@@ -2,7 +2,7 @@
 title: '“mày bị điên!”'
 date: 2025-08-06
 category: tung-chut-mot
-tamTrang: hoc
+tamTrang: vui
 excerpt: 'Bạn thốt lên như thế! Và mình đồng ý. Mình điên chắc luôn! Vì mình đang không sống theo cái “bình thường” mà bạn đang sống chút nào.'
 ---
 Bạn thốt lên như thế!
