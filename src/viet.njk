@@ -1,0 +1,26 @@
+---
+layout: base.njk
+title: Tất cả bài viết
+description: Tất cả bài viết dài của May trên mayphung.com — Từng chút một và Mẹ cũng đang học, mới nhất lên đầu.
+permalink: /viet/
+css: post
+bodyClass: p-page
+---
+<div class="wrap">
+  {% include "nav.njk" %}
+  <main class="article" id="noi-dung">
+    <h1>Tất cả bài viết</h1>
+    {% for c in site.nav %}
+    {% set ds = collections.posts | byCategory(c.key) %}
+    {% if ds.length %}
+    <section class="archive">
+      <h2><a href="{{ c.url }}">{{ c.name }}</a> <span class="sub">· {{ c.sub }}</span></h2>
+      {% for p in ds %}
+      <a class="arow" href="{{ p.url }}"><span class="t">{{ p.data.title }}</span><span class="m">{{ p.date | dateDots }} · {{ p.content | readMin }} phút</span></a>
+      {% endfor %}
+    </section>
+    {% endif %}
+    {% endfor %}
+  </main>
+  {% include "foot.njk" %}
+</div>

@@ -15,3 +15,11 @@ body.p-post,body.p-page{background:var(--cream)}
 .pay-box dt{color:var(--burgundy);font-weight:500}
 .pay-box dd{margin:0;font-weight:500}
 .pay-box .qr{display:block;margin:22px 0 0;border-radius:8px;max-width:100%;height:auto}
+.archive{margin:0 0 44px}
+.archive h2{font-family:'Lora',Georgia,serif;font-size:26px;font-weight:600;margin:0 0 8px;color:var(--burgundy)}
+.archive h2 a{text-decoration:none}
+.archive h2 .sub{font-style:italic;font-weight:400;font-size:17px;color:var(--terracotta-dark)}
+.arow{display:flex;justify-content:space-between;align-items:baseline;gap:6px 20px;flex-wrap:wrap;padding:12px 0;border-bottom:1px solid var(--line);text-decoration:none;color:var(--charcoal)}
+.arow .t{font-family:'Lora',Georgia,serif;font-size:19px;line-height:1.45}
+.arow .m{font-size:13px;color:var(--burgundy);white-space:nowrap}
+.arow:hover .t{color:var(--terracotta-dark)}

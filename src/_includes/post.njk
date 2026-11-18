@@ -31,6 +31,7 @@ bodyClass: p-post
     {% for p in others %}
     <a href="{{ p.url }}"><span class="t">{{ p.data.title }}</span><span class="c">{{ p.content | readMin }} phút</span></a>
     {% endfor %}
+    <a href="/viet/" style="border-bottom: none"><span class="c">Tất cả bài viết →</span></a>
   </nav>
   {% endif %}
 

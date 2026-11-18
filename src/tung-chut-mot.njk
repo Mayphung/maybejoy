@@ -24,6 +24,20 @@ navKey: tung-chut-mot
     <div class="hand hide-s" style="font-size: 22px; color: #A8522B; transform: rotate(-3deg); padding-bottom: 10px">{{ tungChutMot.ghiLe }}</div>
   </header>
 
+  {% set baiDai = collections.posts | byCategory("tung-chut-mot") %}
+  {% if baiDai.length %}
+  <section class="index" aria-labelledby="bai-h">
+    <div class="index-top">
+      <h2 class="script" id="bai-h">Bài viết</h2>
+      <span class="hand">đọc dài, lúc rảnh</span>
+    </div>
+    {% for p in baiDai | limit(5) %}
+    <a class="toc" href="{{ p.url }}"><span class="t">{{ p.data.title }}</span><span class="dots"></span><span class="m">{{ p.date | dateDots }} · {{ p.content | readMin }} phút</span></a>
+    {% endfor %}
+    <a class="all" href="/viet/">Tất cả bài viết →</a>
+  </section>
+  {% endif %}
+
   <div class="chips" role="group" aria-label="Lọc theo kiểu ngày">
     <span class="hand" style="font-size: 20px; margin-right: 6px">Hôm nay bạn là:</span>
     <button class="chip on" type="button" data-mood="all" aria-pressed="true">Tất cả</button>
