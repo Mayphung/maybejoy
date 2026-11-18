@@ -7,5 +7,5 @@
     {%- if site.social.youtube %}<a href="{{ site.social.youtube }}" rel="me noopener" target="_blank">YouTube</a>{% endif %}
     {%- if site.contactEmail %}<a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a>{% endif %}
   </div>
-  <span class="hand" style="font-size: 18px{% if footColor %}; color: {{ footColor }}{% endif %}">{{ footNote or "không pop-up. không đồng hồ đếm ngược. hứa." }}</span>
+  {% if footNote %}<span class="hand" style="font-size: 18px{% if footColor %}; color: {{ footColor }}{% endif %}">{{ footNote }}</span>{% endif %}
 </footer>

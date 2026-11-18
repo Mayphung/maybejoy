@@ -20,10 +20,7 @@ bodyClass: p-home
           <div class="script" style="font-size: 64px; line-height: 72px; color: #6E2A34; font-weight: 700">Bit by Bit</div>
           <div class="hand" style="font-size: 20px; line-height: 24px; color: #A8522B">từng chút một</div>
         </div>
-        <div class="field"><b>Họ và tên:</b><span>{{ t.nhan.hoTen }}</span></div>
-        <div class="field"><b>Lớp:</b><span>{{ t.nhan.lop }}</span></div>
-        <div class="field"><b>Trường:</b><span>{{ t.nhan.truong }}</span></div>
-        <div class="field"><b>Năm học:</b><span>{{ t.nhan.namHoc }}</span></div>
+        {% for f in t.nhan %}<div class="field"><b>{{ f.nhan }}:</b><span>{{ f.giaTri }}</span></div>{% endfor %}
       </div>
       {% if t.anhThe %}
       <div class="photo-col">
@@ -109,6 +106,25 @@ bodyClass: p-home
       <span class="script" style="font-size: 30px; line-height: 40px; color: #6E2A34; font-weight: 700">Đã gạch <span id="done-n">1</span>/<span id="done-total">7</span>.</span>
       <span class="hand" id="done-msg" style="font-size: 22px; line-height: 28px; color: #A8522B">Một việc cũng là đi.</span>
     </div>
+
+    <!-- TRANG MỚI NHẤT -->
+    {% set moi = collections.moiNhat | limit(3) %}
+    {% if moi.length %}
+    <section style="margin-top: 96px" aria-labelledby="moi-h">
+      <h2 class="script sec-h" id="moi-h"><span class="ul">Trang mới nhất</span></h2>
+      <ul class="moi">
+        {% for it in moi %}
+        {% set c = site.nav | navItem(it.data.category or "tung-chut-mot") %}
+        <li>
+          <a href="{{ it.url if it.data.title else c.url }}">
+            <span class="moi-t">{{ it.data.title or it.data.chu }}</span>
+            <span class="moi-m">{% if it.data.title %}{{ it.date | dateDots }} · {% endif %}{{ c.name }} →</span>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endif %}
 
     <!-- BÀI TẬP VỀ NHÀ -->
     <section style="margin-top: 96px" id="bai-tap" aria-labelledby="bt-h">

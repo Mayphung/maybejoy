@@ -97,13 +97,12 @@ content:
     format: json
     fields:
       - name: nhan
-        label: Nhãn vở
+        label: Nhãn vở (mỗi dòng một mục, thêm bớt tuỳ ý)
         type: object
+        list: true
         fields:
-          - { name: hoTen, label: Họ và tên, type: string }
-          - { name: lop, label: Lớp, type: string }
-          - { name: truong, label: Trường, type: string }
-          - { name: namHoc, label: Năm học, type: string }
+          - { name: nhan, label: "Nhãn (vd: Môn giỏi)", type: string }
+          - { name: giaTri, label: Nội dung, type: string }
       - { name: anhThe, label: Ảnh thẻ, type: image }
       - { name: anhTheMoTa, label: Tả ảnh thẻ, type: string }
       - { name: anhTheChuThich, label: Chú thích dưới ảnh thẻ, type: string }

@@ -1,10 +1,30 @@
 {
-  "nhan": {
-    "hoTen": "May",
-    "lop": "Người lớn — vẫn đang học",
-    "truong": "Đời",
-    "namHoc": "cả đời, không nghỉ hè"
-  },
+  "nhan": [
+    {
+      "nhan": "Họ và tên",
+      "giaTri": "May · Phương Phùng"
+    },
+    {
+      "nhan": "Lớp",
+      "giaTri": "Làm mẹ — học mãi chưa tốt nghiệp"
+    },
+    {
+      "nhan": "Trường",
+      "giaTri": "Đời, cơ sở Sài Gòn"
+    },
+    {
+      "nhan": "Môn giỏi",
+      "giaTri": "kể chuyện (có sách Kim Đồng làm chứng)"
+    },
+    {
+      "nhan": "Môn yếu",
+      "giaTri": "kiên nhẫn (đang viết ba cuốn sách để tự học)"
+    },
+    {
+      "nhan": "Năm học",
+      "giaTri": "cả đời, không nghỉ hè"
+    }
+  ],
   "anhThe": "/assets/images/anh-the-bai-bien.jpg",
   "anhTheMoTa": "May trên bãi biển, nhìn ra xa",
   "anhTheChuThich": "ảnh thẻ. (đang nghĩ xem mai nhích tiếp hướng nào)",

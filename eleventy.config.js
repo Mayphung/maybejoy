@@ -39,6 +39,13 @@ export default function (eleventyConfig) {
     api.getFilteredByGlob("src/nhat-ky/*.md").filter((p) => !p.data.draft).sort((a, b) => b.date - a.date)
   );
 
+  // Trang mới nhất cho trang chủ: bài dài + trang nhật ký ngắn, mới nhất lên đầu
+  eleventyConfig.addCollection("moiNhat", (api) =>
+    [...api.getFilteredByGlob("src/bai-viet/*.md"), ...api.getFilteredByGlob("src/nhat-ky/*.md")]
+      .filter((p) => !p.data.draft)
+      .sort((a, b) => b.date - a.date)
+  );
+
   eleventyConfig.addFilter("byCategory", (posts, cat) => (posts || []).filter((p) => p.data.category === cat));
   eleventyConfig.addFilter("byChapter", (posts, ch) => (posts || []).filter((p) => String(p.data.chapter) === String(ch)));
   eleventyConfig.addFilter("limit", (arr, n) => (arr || []).slice(0, n));
