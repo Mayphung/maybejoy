@@ -56,4 +56,3 @@ Phew! Nhẹ cả người!
 
 Còn bạn thì sao? Bạn có nghĩ mình có đôi chút phân biệt lẩn khuất nào không?
 
-[px-conversions](https://may.lat/admin/wp-content/uploads/2025/07/px-conversions.zip)

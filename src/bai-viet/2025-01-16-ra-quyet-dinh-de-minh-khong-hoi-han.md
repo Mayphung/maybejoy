@@ -69,4 +69,4 @@ Bạn có bao giờ cảm thấy có một tiếng nói bé xíu trong lòng má
 
 ![Ra quyết định để mình không hối hận](/assets/images/maylat/c02-ra-quyet-dinh-de-minh-khong-hoi-han.jpg)
 
-Tụi mình hãy nhớ rằng, mỗi quyết định, dù lớn hay nhỏ, đều là một cơ hội để ta học hỏi và trưởng thành. Đừng quá lo lắng về việc phải hoàn hảo, mà hãy tập trung cho việc tiến bộ mỗi ngày. Như cách May.lat ra đời vậy – từng bước nhỏ, tuy hơi vật vã nhưng đầy quyết tâm, tình yêu và đam mê!
+Tụi mình hãy nhớ rằng, mỗi quyết định, dù lớn hay nhỏ, đều là một cơ hội để ta học hỏi và trưởng thành. Đừng quá lo lắng về việc phải hoàn hảo, mà hãy tập trung cho việc tiến bộ mỗi ngày. Như cách mayphung.com ra đời vậy – từng bước nhỏ, tuy hơi vật vã nhưng đầy quyết tâm, tình yêu và đam mê!

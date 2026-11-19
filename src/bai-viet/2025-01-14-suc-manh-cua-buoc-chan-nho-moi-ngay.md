@@ -86,7 +86,7 @@ Mình chẳng thấy có gì phấn khích khi ngày nào cũng làm đi làm l�
 
 Khi mình mới tập xe. Ban đầu thì rất phấn khích nghĩ đến việc có thể tung tăng khắp nơi. Tập thì sợ, lúng túng và chán vì mãi chưa vững. Sau khi thành thạo thì chẳng còn nghĩ về nó, cứ cần gì thì xách xe đi thôi. Đối với mình mọi thói quen đều như vậy. Hiểu rõ thói quen này mang lại lợi ích gì. Vượt qua giai đoạn sợ, chán, mà không nản. Rồi đi đến nơi mình muốn đi với thói quen ấy.
 
-Nếu như mình đã không cố hết sức tập thói quen dậy sớm, thì những trang viết này chẳng bao giờ được hình thành. Vì buổi sáng sớm là quãng thời gian duy nhất. Mỗi tiếng một ngày. Mình chỉ có như thế cho May.lat. Và ta da!!! Here we are! Ước mơ của mình đây!
+Nếu như mình đã không cố hết sức tập thói quen dậy sớm, thì những trang viết này chẳng bao giờ được hình thành. Vì buổi sáng sớm là quãng thời gian duy nhất. Mỗi tiếng một ngày. Mình chỉ có như thế cho mayphung.com. Và ta da!!! Here we are! Ước mơ của mình đây!
 
 Mục đích của việc thay đổi thói quen này là để cuộc sống tốt đẹp hơn, chứ không phải để biến mình thành một cỗ máy hoàn hảo. Hành trình của mình vẫn đang tiếp diễn mỗi ngày. Mình vẫn đang học cách trân trọng từng bước chân nhỏ, từng khoảnh khắc trong cuộc sống.
 
