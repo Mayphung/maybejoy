@@ -24,10 +24,19 @@ a{color:var(--burgundy)}a:hover{color:var(--terracotta-dark)}
 .brand{display:flex;align-items:baseline;gap:10px;text-decoration:none}
 .brand .b1{font-family:'Lora',Georgia,serif;font-style:italic;font-size:30px;line-height:36px;color:var(--burgundy);font-weight:500}
 .brand .b2{font-family:'Patrick Hand',cursive;font-size:18px;line-height:22px;color:var(--terracotta-dark)}
-.navlinks{display:flex;gap:6px 24px;flex-wrap:wrap;align-items:center}
-.navl{color:var(--charcoal);text-decoration:none;font-size:14px;line-height:22px;padding:8px 2px;border-bottom:2px solid transparent}
-.navl:hover{color:var(--terracotta-dark)}
-.navl.on{color:var(--burgundy);border-bottom-color:var(--terracotta);font-weight:500}
+.navlinks{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.navl{display:inline-flex;align-items:center;justify-content:space-between;gap:10px;min-height:42px;padding:8px 14px 8px 16px;border:1.5px solid rgba(110,42,52,.32);border-radius:999px;background:var(--paper-white);color:var(--burgundy);text-decoration:none;font-size:14px;line-height:20px;font-weight:500;box-shadow:0 2px 0 rgba(110,42,52,.14);transition:background .2s ease,color .2s ease,transform .15s ease,box-shadow .15s ease,border-color .2s ease;-webkit-tap-highlight-color:transparent}
+.navl::after{content:"→";font-size:14px;line-height:1;color:var(--terracotta-dark);transition:transform .2s ease,color .2s ease}
+@media (hover:hover){.navl:hover{background:var(--burgundy);border-color:var(--burgundy);color:#FBF6EE;transform:translateY(-1px);box-shadow:0 4px 10px rgba(110,42,52,.22)}.navl:hover::after{color:#F3C9A8;transform:translateX(3px)}}
+.navl:active{transform:translateY(1px);box-shadow:0 0 0 rgba(110,42,52,.14)}
+.navl:focus-visible{outline:2px solid var(--terracotta);outline-offset:2px}
+.navl.on{background:var(--burgundy);border-color:var(--burgundy);color:#FBF6EE;box-shadow:none}
+.navl.on::after{content:"•";color:#F3C9A8}
+@media (max-width:700px){
+  .nav{flex-direction:column;align-items:stretch}
+  .navlinks{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:stretch}
+  .navl{border-radius:12px;min-height:48px;padding:8px 10px 8px 12px;gap:6px;font-size:13.5px;letter-spacing:-.1px}
+}
 
 /* nút */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 24px;background:var(--terracotta-dark);color:#FBF6EE;border:none;border-radius:999px;font-family:'Be Vietnam Pro',sans-serif;font-size:14px;font-weight:500;cursor:pointer;text-decoration:none;transition:background .2s ease,transform .2s ease}
