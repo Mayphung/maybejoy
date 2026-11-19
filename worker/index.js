@@ -103,6 +103,7 @@ async function guiKit(env, email, loai) {
   }
   console.log("Kit", JSON.stringify(ghi));
   await env.DB.put("kit:cuoi", JSON.stringify(ghi));
+  return ghi;
 }
 
 // ---------- xử lý ----------
@@ -115,7 +116,7 @@ async function dangKy(request, env, ctx) {
   const cu = (await env.DB.get(k, "json")) || { email, luc: Date.now(), loai: [] };
   if (!cu.loai.includes(loai)) cu.loai.push(loai);
   await env.DB.put(k, JSON.stringify(cu));
-  ctx.waitUntil(guiKit(env, email, loai));
+  const kit = await guiKit(env, email, loai);
   const coQua = loai === "qua" && !!banHang.quaTang.link && !!env.RESEND_API_KEY;
   if (coQua) {
     ctx.waitUntil(
@@ -126,7 +127,7 @@ async function dangKy(request, env, ctx) {
       })
     );
   }
-  return json({ ok: true, daGuiQua: coQua });
+  return json({ ok: true, daGuiQua: coQua, kit: kit ? kit.status ?? "loi" : "tat" });
 }
 
 async function taoDon(request, env) {
