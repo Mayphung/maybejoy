@@ -41,10 +41,10 @@
       "tieuDe": "Bạn yêu theo kiểu nào, và vì sao?",
       "moc": "Vì sao mình cứ lo khi người ấy im lặng, hay thấy ngột ngạt khi ai đó đến quá gần?",
       "thoiGian": "4 phút",
-      "moTa": "Trong tình yêu, mỗi người có một phản xạ cảm xúc riêng. Có người rất dễ lo. Có người cần nhiều khoảng trống. Có người vừa muốn gần vừa sợ bị tổn thương.\nNhững phản ứng này thường liên quan đến **phong cách gắn kết** (attachment style): cách hệ thần kinh của bạn phản ứng với sự gần gũi và mất kết nối.\nKhông có đúng, sai. Mỗi câu, chọn mức gần với bạn nhất. Đừng nghĩ lâu.",
-      "nguon": "Dựa trên nghiên cứu về gắn kết ở người trưởng thành (Bowlby, Ainsworth, Hazan & Shaver, Fraley) và cấu trúc các thang đo ECR / ECR-R.",
+      "moTa": "Trong tình yêu, mỗi người có một **phản xạ cảm xúc riêng**.\nCó người rất dễ lo lắng. Có người cần nhiều không gian. Có người vừa muốn gần vừa sợ bị tổn thương.\nNhững phản ứng này thường liên quan đến **phong cách gắn kết** (attachment style): cách hệ thần kinh của bạn phản ứng với sự gần gũi và mất kết nối trong các mối quan hệ thân mật.\nBài test này giúp bạn nhận ra pattern quen thuộc của mình trong tình yêu. Không có đúng – sai. Hãy chọn **phản ứng giống bạn nhất**.",
+      "nguon": "Dựa trên nghiên cứu về Attachment Theory của John Bowlby (1969), Mary Ainsworth (1978) và nghiên cứu về tình yêu trưởng thành của Hazan & Shaver (1987).",
       "luuY": "Bài này giúp bạn tự soi mình, không phải chẩn đoán tâm lý và không thay thế đánh giá của chuyên gia. Phong cách gắn kết có thể khác nhau theo từng mối quan hệ và thay đổi theo thời gian.",
-      "kieu": "thang",
+      "kieu": "chon",
       "mucThang": [
         "Hoàn toàn không đúng",
         "Hơi đúng",
@@ -283,16 +283,332 @@
           "dao": false
         }
       ],
-      "cau": [],
+      "cau": [
+        {
+          "hoi": "Bạn gửi tin nhắn cho người mình thích. Vài giờ sau vẫn chưa thấy trả lời.",
+          "chon": [
+            {
+              "chu": "Tôi bắt đầu lo lắng và kiểm tra điện thoại nhiều lần",
+              "kq": "lo"
+            },
+            {
+              "chu": "Tôi nghĩ chắc họ đang bận và tiếp tục việc của mình",
+              "kq": "an-toan"
+            },
+            {
+              "chu": "Tôi hơi khó chịu và quyết định rút lui một chút",
+              "kq": "ne"
+            },
+            {
+              "chu": "Tôi vừa lo vừa cố giả vờ rằng mình không quan tâm",
+              "kq": "canh-giac"
+            }
+          ]
+        },
+        {
+          "hoi": "Khi người bạn yêu nói họ cần thêm không gian riêng, bạn thường:",
+          "chon": [
+            {
+              "chu": "Cảm thấy hơi bị bỏ rơi",
+              "kq": "lo"
+            },
+            {
+              "chu": "Thấy điều đó hoàn toàn bình thường",
+              "kq": "an-toan"
+            },
+            {
+              "chu": "Thấy nhẹ nhõm vì bạn cũng thích có khoảng cách",
+              "kq": "ne"
+            },
+            {
+              "chu": "Vừa muốn kéo họ lại vừa muốn tránh xa",
+              "kq": "canh-giac"
+            }
+          ]
+        },
+        {
+          "hoi": "Khi xảy ra mâu thuẫn trong mối quan hệ, bạn thường:",
+          "chon": [
+            {
+              "chu": "Muốn giải quyết ngay vì sự im lặng khiến bạn bất an",
+              "kq": "lo"
+            },
+            {
+              "chu": "Có thể nói chuyện và tìm cách hiểu nhau",
+              "kq": "an-toan"
+            },
+            {
+              "chu": "Muốn rút lui để tự xử lý cảm xúc",
+              "kq": "ne"
+            },
+            {
+              "chu": "Lúc thì bùng nổ, lúc thì im lặng hoàn toàn",
+              "kq": "canh-giac"
+            }
+          ]
+        },
+        {
+          "hoi": "Khi bạn thật sự yêu ai đó, cảm giác quen thuộc nhất là:",
+          "chon": [
+            {
+              "chu": "Sợ sẽ mất họ",
+              "kq": "lo"
+            },
+            {
+              "chu": "Cảm thấy bình yên và ổn định",
+              "kq": "an-toan"
+            },
+            {
+              "chu": "Cảm thấy hơi ngột ngạt khi quá gần",
+              "kq": "ne"
+            },
+            {
+              "chu": "Vừa muốn gần vừa cảm thấy cảnh giác",
+              "kq": "canh-giac"
+            }
+          ]
+        },
+        {
+          "hoi": "Sau khi một mối quan hệ kết thúc, bạn thường:",
+          "chon": [
+            {
+              "chu": "Rất khó buông và nghĩ về người đó rất lâu",
+              "kq": "lo"
+            },
+            {
+              "chu": "Buồn nhưng dần hồi phục",
+              "kq": "an-toan"
+            },
+            {
+              "chu": "Quay lại cuộc sống bình thường khá nhanh",
+              "kq": "ne"
+            },
+            {
+              "chu": "Cảm thấy trống rỗng và bối rối",
+              "kq": "canh-giac"
+            }
+          ]
+        },
+        {
+          "hoi": "Khi bạn buồn hoặc stress, bạn thường:",
+          "chon": [
+            {
+              "chu": "Cần ai đó trấn an ngay",
+              "kq": "lo"
+            },
+            {
+              "chu": "Có thể chia sẻ và cũng tự chăm sóc mình",
+              "kq": "an-toan"
+            },
+            {
+              "chu": "Thích tự xử lý một mình",
+              "kq": "ne"
+            },
+            {
+              "chu": "Muốn chia sẻ nhưng lại sợ làm phiền",
+              "kq": "canh-giac"
+            }
+          ]
+        },
+        {
+          "hoi": "Bạn thường bị thu hút nhất bởi kiểu người nào?",
+          "chon": [
+            {
+              "chu": "Người khó đoán khiến bạn phải cố gắng",
+              "kq": "lo"
+            },
+            {
+              "chu": "Người ổn định và rõ ràng",
+              "kq": "an-toan"
+            },
+            {
+              "chu": "Người tôn trọng khoảng cách của bạn",
+              "kq": "ne"
+            },
+            {
+              "chu": "Người khiến bạn vừa an toàn vừa bất an",
+              "kq": "canh-giac"
+            }
+          ]
+        },
+        {
+          "hoi": "Khi ai đó nói với bạn: “Anh/Em yêu bạn”, phản ứng đầu tiên của bạn là:",
+          "chon": [
+            {
+              "chu": "Hạnh phúc nhưng sau đó bắt đầu lo lắng",
+              "kq": "lo"
+            },
+            {
+              "chu": "Cảm thấy tự nhiên và đáp lại",
+              "kq": "an-toan"
+            },
+            {
+              "chu": "Hơi lúng túng hoặc không thoải mái",
+              "kq": "ne"
+            },
+            {
+              "chu": "Xúc động nhưng vẫn có chút nghi ngờ",
+              "kq": "canh-giac"
+            }
+          ]
+        },
+        {
+          "hoi": "Khi cảm thấy cô đơn, bạn thường:",
+          "chon": [
+            {
+              "chu": "Tìm ai đó ngay để nói chuyện",
+              "kq": "lo"
+            },
+            {
+              "chu": "Cho phép mình cảm nhận rồi chủ động kết nối",
+              "kq": "an-toan"
+            },
+            {
+              "chu": "Ở một mình và làm việc khác",
+              "kq": "ne"
+            },
+            {
+              "chu": "Muốn kết nối nhưng lại ngại",
+              "kq": "canh-giac"
+            }
+          ]
+        },
+        {
+          "hoi": "Trong các mối quan hệ thân mật, bạn thường:",
+          "chon": [
+            {
+              "chu": "Cần nhiều sự đảm bảo rằng người kia vẫn yêu mình",
+              "kq": "lo"
+            },
+            {
+              "chu": "Cảm thấy khá ổn định và tin tưởng",
+              "kq": "an-toan"
+            },
+            {
+              "chu": "Thích giữ sự độc lập",
+              "kq": "ne"
+            },
+            {
+              "chu": "Vừa muốn gần vừa sợ bị tổn thương",
+              "kq": "canh-giac"
+            }
+          ]
+        },
+        {
+          "hoi": "Bạn nghĩ người khác thường nhìn nhận bạn là:",
+          "chon": [
+            {
+              "chu": "Người khá nhạy cảm",
+              "kq": "lo"
+            },
+            {
+              "chu": "Người đáng tin và ổn định",
+              "kq": "an-toan"
+            },
+            {
+              "chu": "Người rất độc lập",
+              "kq": "ne"
+            },
+            {
+              "chu": "Người khó đoán",
+              "kq": "canh-giac"
+            }
+          ]
+        },
+        {
+          "hoi": "Khi ai đó trở nên rất gần gũi với bạn về mặt cảm xúc:",
+          "chon": [
+            {
+              "chu": "Bạn sợ họ có thể rời đi",
+              "kq": "lo"
+            },
+            {
+              "chu": "Bạn thấy điều đó tự nhiên",
+              "kq": "an-toan"
+            },
+            {
+              "chu": "Bạn bắt đầu thấy hơi ngột ngạt",
+              "kq": "ne"
+            },
+            {
+              "chu": "Bạn vừa thích vừa lo",
+              "kq": "canh-giac"
+            }
+          ]
+        },
+        {
+          "hoi": "Khi một người bạn thích trở nên không rõ ràng (lúc gần lúc xa):",
+          "chon": [
+            {
+              "chu": "Bạn cố gắng nhiều hơn để giữ họ",
+              "kq": "lo"
+            },
+            {
+              "chu": "Bạn hỏi thẳng họ muốn gì",
+              "kq": "an-toan"
+            },
+            {
+              "chu": "Bạn rút lui",
+              "kq": "ne"
+            },
+            {
+              "chu": "Bạn cảm thấy rất bối rối",
+              "kq": "canh-giac"
+            }
+          ]
+        },
+        {
+          "hoi": "Niềm tin sâu bên trong của bạn về tình yêu:",
+          "chon": [
+            {
+              "chu": "Tình yêu dễ mất nếu mình không cố giữ",
+              "kq": "lo"
+            },
+            {
+              "chu": "Tình yêu có thể vừa an toàn vừa tự do",
+              "kq": "an-toan"
+            },
+            {
+              "chu": "Độc lập quan trọng hơn tình yêu",
+              "kq": "ne"
+            },
+            {
+              "chu": "Tình yêu thường đi kèm đau khổ",
+              "kq": "canh-giac"
+            }
+          ]
+        },
+        {
+          "hoi": "Câu nào quen thuộc nhất với bạn trong tình yêu?",
+          "chon": [
+            {
+              "chu": "“Mình có đủ để họ yêu không?”",
+              "kq": "lo"
+            },
+            {
+              "chu": "“Tình yêu có thể bình yên.”",
+              "kq": "an-toan"
+            },
+            {
+              "chu": "“Mình ổn nhất khi không quá gần.”",
+              "kq": "ne"
+            },
+            {
+              "chu": "“Mình muốn gần… nhưng cũng sợ.”",
+              "kq": "canh-giac"
+            }
+          ]
+        }
+      ],
       "ketQua": [
         {
           "ma": "lo",
           "ten": "Người Canh Giữ Tình Yêu",
           "phu": "Xu hướng gắn kết lo âu",
-          "moTa": "Bạn yêu rất sâu, và cũng rất nhạy với những dấu hiệu mất kết nối.",
+          "moTa": "Bạn yêu rất sâu, và cũng rất nhạy cảm với dấu hiệu mất kết nối.",
           "dau": [
             "lo khi người kia im lặng",
-            "cần được trấn an trong tình yêu",
+            "cần reassurance trong tình yêu",
             "khó buông sau chia tay"
           ],
           "loiNhan": "Bạn không “quá”. Hệ thần kinh của bạn chỉ đang rất sợ bị bỏ rơi.",
@@ -316,10 +632,10 @@
         {
           "ma": "canh-giac",
           "ten": "Trái Tim Cảnh Giác",
-          "phu": "Xu hướng sợ hãi – né tránh",
+          "phu": "Sợ hãi – né tránh",
           "moTa": "Bạn vừa khao khát sự gần gũi, vừa cảnh giác với nó.",
           "dau": [
-            "mở lòng rồi lại đóng lại",
+            "mở lòng rồi đóng lại",
             "khó tin tưởng người khác",
             "cảm xúc trong tình yêu rất mạnh"
           ],
@@ -337,19 +653,19 @@
             "xử lý xung đột khá bình tĩnh",
             "hồi phục tốt sau tổn thương"
           ],
-          "loiNhan": "Bạn không hoàn hảo. Bạn chỉ đã học được cách quay lại cân bằng nhanh hơn.",
+          "loiNhan": "Bạn không hoàn hảo. Bạn chỉ đã học được cách quay lại trạng thái cân bằng nhanh hơn.",
           "phanTich": "## Vì sao bạn yêu như vậy\nCó thể ngày nhỏ bạn đã có ít nhất một người đủ ổn định ở bên. Hoặc bạn đã tự đi một chặng đường dài để học được cảm giác an toàn. Cách nào cũng đáng quý.\nĐiều đó không có nghĩa bạn không bao giờ lo, hay không bao giờ muốn lùi lại. Chỉ là khi chuyện đó xảy ra, bạn quay về cân bằng nhanh hơn.\n## Kiểu người bạn hay gặp\nBạn có thể thương một người hay lo hoặc một người hay né mà không bị cuốn theo nhịp của họ. Nhiều khi, chính sự vững vàng của bạn là nơi người kia lần đầu thấy an toàn. Chỉ cần nhớ: bạn không có trách nhiệm chữa lành cho ai.\n## Để giữ và lan sự an toàn này\n- Tiếp tục nói nhu cầu rõ ràng, kể cả lúc đang mệt.\n- Khi căng thẳng nhiều, bạn vẫn có thể trượt về phía lo âu hoặc né tránh. Để ý điều đó bằng sự tử tế, không trách mình.\n- Nếu bạn là cha mẹ: cách bạn bình tĩnh quay lại với con sau mỗi lần nổi nóng chính là bài học gắn kết an toàn quý nhất.",
           "canGi": ""
         }
       ],
-      "ket": "Phong cách gắn kết không phải số phận. Nó là cách hệ thần kinh học yêu từ rất sớm, và nó có thể thay đổi.",
+      "ket": "Phong cách gắn kết không phải số phận. Nó là cách hệ thần kinh học cách yêu từ rất sớm, và điều tuyệt vời là nó có thể thay đổi.",
       "giuLienLac": {
         "tieuDe": "Muốn hiểu sâu hơn về kết quả của bạn?",
         "moTa": "May sẽ gửi cho bạn:",
         "ds": [
           "phân tích chi tiết phong cách gắn kết của bạn",
-          "vì sao bạn hay bị hút vào một kiểu người nhất định",
-          "những bước đầu để chuyển dần sang gắn kết an toàn"
+          "vì sao bạn thường bị hút vào một kiểu người nhất định",
+          "những bước đầu để chuyển sang gắn kết an toàn hơn"
         ]
       },
       "buocTiep": {
@@ -370,7 +686,7 @@
       "tieuDe": "Khi stress, bạn thật sự cần điều gì?",
       "moc": "Khi bị dồn ép, bạn nổ tung, đóng băng, hay lao đi sửa mọi thứ?",
       "thoiGian": "3 phút",
-      "moTa": "Mỗi người có một “ngôn ngữ căng thẳng” riêng: cách cơ thể và cảm xúc phản ứng khi bị dồn ép. Không có cách nào “đúng chuẩn”.\nBài này giúp bạn hiểu vì sao mình phản ứng như vậy, ngừng trách mình “yếu đuối, khó chiều”, và biết mình cần gì để nói ra rõ hơn.\nChọn phản ứng tự nhiên nhất của bạn. Đừng nghĩ lâu.",
+      "moTa": "Mỗi người cần **một** điều khác nhau khi stress. Không có cách nào là “đúng” hay “sai”.\nBài test này giúp bạn hiểu vì sao mình phản ứng như vậy khi căng thẳng, ngừng trách bản thân “yếu đuối / khó chiều”, và biết mình cần gì để nói ra rõ ràng hơn.\nChọn câu trả lời gần nhất với phản ứng tự nhiên của bạn. Đừng suy nghĩ quá lâu: câu trả lời đầu tiên thường chính xác nhất.",
       "nguon": "Dựa trên các phản ứng sinh tồn của hệ thần kinh khi căng thẳng: chiến, chạy, đóng băng, và “chăm sóc – kết nối” (tend-and-befriend).",
       "luuY": "Bài này giúp bạn tự soi mình, không phải chẩn đoán. Ngôn ngữ căng thẳng có thể khác nhau khi ở nhà và ở chỗ làm, và thay đổi theo từng giai đoạn.",
       "kieu": "chon",
@@ -392,15 +708,15 @@
               "kq": "no"
             },
             {
-              "chu": "Người tê cứng, đọc đi đọc lại tin nhắn, không trả lời được",
+              "chu": "Người tê cứng, đọc đi đọc lại tin nhắn, không reply được",
               "kq": "bang"
             },
             {
-              "chu": "“Để em lo!” rồi lập tức huy động cả nhóm, gọi điện khắp nơi",
+              "chu": "“Để em lo!” và lập tức huy động cả team, gọi điện khắp nơi",
               "kq": "sua"
             },
             {
-              "chu": "Mở Shopee, Facebook, YouTube “cho đỡ stress” 5 phút (rồi thành 1 tiếng)",
+              "chu": "Mở Shopee/Facebook/YouTube “cho đỡ stress” 5 phút (rồi thành 1 tiếng)",
               "kq": "te"
             },
             {
@@ -410,10 +726,10 @@
           ]
         },
         {
-          "hoi": "Người ấy nói: “Anh/em chẳng bao giờ dành thời gian cho mình!”. Bạn:",
+          "hoi": "Partner nói “Anh/em chẳng bao giờ dành thời gian cho mình!”. Bạn:",
           "chon": [
             {
-              "chu": "“Còn anh/em thì sao? Tuần trước còn…”",
+              "chu": "“Còn anh/em thì sao? Tuần trước anh/em còn...”",
               "kq": "no"
             },
             {
@@ -421,7 +737,7 @@
               "kq": "bang"
             },
             {
-              "chu": "“Để mình sắp xếp lại lịch, mai đi ăn tối nhé!”",
+              "chu": "“Để em/anh sắp xếp lại lịch, book chỗ ăn tối mai nhé!”",
               "kq": "sua"
             },
             {
@@ -429,78 +745,78 @@
               "kq": "te"
             },
             {
-              "chu": "“Đừng nghĩ vậy mà, mình vẫn vui vẻ mà!”",
+              "chu": "“Đừng nghĩ vậy mà, mình vẫn vui vẻ mà em/anh!”",
               "kq": "phu"
             }
           ]
         },
         {
-          "hoi": "Trong cuộc họp, sếp chỉ trích việc bạn làm trước mặt mọi người:",
+          "hoi": "Trong cuộc họp, sếp chỉ trích công việc của bạn trước mặt mọi người:",
           "chon": [
             {
-              "chu": "Mặt đỏ bừng, muốn cãi ngay “Đây không phải lỗi của tôi!”",
+              "chu": "Mặt đỏ bừng, muốn phản bác ngay: “Đây không phải lỗi của tôi!”",
               "kq": "no"
             },
             {
-              "chu": "Đông cứng, gật đầu máy móc, đầu óc trống rỗng",
+              "chu": "Đông cứng, gật đầu máy móc, trong đầu trống rỗng",
               "kq": "bang"
             },
             {
-              "chu": "“Em sẽ sửa ngay, để em họp với nhóm khắc phục!”",
+              "chu": "“Em sẽ sửa ngay, để em họp với team để khắc phục!”",
               "kq": "sua"
             },
             {
-              "chu": "Vẽ nguệch ngoạc, kiểm tra email, nhẩm xem còn bao lâu hết giờ",
+              "chu": "Vẽ nguệch ngoạc, check mail, tính nhẩm còn bao lâu hết giờ",
               "kq": "te"
             },
             {
-              "chu": "Mỉm cười “Vâng, em rút kinh nghiệm, lần sau sẽ tốt hơn ạ!”",
+              "chu": "Mỉm cười: “Vâng, em rút kinh nghiệm, lần sau sẽ tốt hơn ạ!”",
               "kq": "phu"
             }
           ]
         },
         {
-          "hoi": "Bố mẹ gọi điện than: “Con chẳng bao giờ về thăm nhà”:",
+          "hoi": "Mẹ/bố gọi điện phàn nàn: “Con chẳng bao giờ về thăm nhà”:",
           "chon": [
             {
-              "chu": "“Con bận lắm mẹ biết không? Mẹ cứ…” (giọng cao dần)",
+              "chu": "“Con bận lắm mẹ biết không? Mẹ cứ...” (giọng cao dần)",
               "kq": "no"
             },
             {
-              "chu": "“Dạ… vâng… con biết rồi…” (giọng nhỏ dần)",
+              "chu": "“Dạ... vâng... con biết rồi...” (giọng nhỏ dần)",
               "kq": "bang"
             },
             {
-              "chu": "“Cuối tuần này con về, con nấu món mẹ thích nha!”",
+              "chu": "“Con sẽ về cuối tuần này, con nấu món mẹ thích nha!”",
               "kq": "sua"
             },
             {
-              "chu": "“Dạ, alo mẹ? Nghe không rõ…” (vẫn đang xem phim)",
+              "chu": "“Dạ, alo mẹ? Nghe không rõ...” (vẫn đang xem Netflix)",
               "kq": "te"
             },
             {
-              "chu": "“Mẹ đừng buồn, con với mẹ vẫn thương nhau mà!”",
+              "chu": "“Mẹ đừng buồn, con với mẹ vẫn gắn bó mà!”",
               "kq": "phu"
             }
           ]
         },
         {
-          "hoi": "Bạn thân huỷ hẹn vào phút chót, trong khi bạn đã chuẩn bị cả tuần:",
+          "hoi": "Best friend hủy kèo last minute, bạn đã chuẩn bị cả tuần:",
           "chon": [
             {
-              "chu": "Nhắn: “Lúc nào cũng vậy! Chán lắm rồi!”",
+              "chu": "Nhắn tin: “Mày lúc nào cũng vậy! Tao chán rồi!”",
               "kq": "no"
             },
             {
-              "chu": "Seen. Không trả lời. Tắt điện thoại",
+              "chu": "Seen. Không reply. Tắt điện thoại",
               "kq": "bang"
             },
             {
-              "chu": "“Không sao, hay mình qua nhà bạn? Mình mang đồ ăn qua!”",
+              "chu": "“Không sao, hay tao qua nhà mày? Tao mang đồ ăn qua!”",
               "kq": "sua"
             },
             {
-              "chu": "Mở phim, đặt đồ ăn, đăng story “Me time”",
+              "chu": "Mở Netflix, order đồ ăn, post story “Me time”",
               "kq": "te"
             },
             {
@@ -510,10 +826,10 @@
           ]
         },
         {
-          "hoi": "Sau một ngày tồi tệ, về đến nhà bạn thường:",
+          "hoi": "Sau một ngày tồi tệ, bạn về nhà thường:",
           "chon": [
             {
-              "chu": "Kể với người thân, càng kể càng bực, tin nhắn thoại dài 5 phút",
+              "chu": "Kể với người thân và càng kể càng bức, voice message dài 5 phút",
               "kq": "no"
             },
             {
@@ -521,40 +837,40 @@
               "kq": "bang"
             },
             {
-              "chu": "Dọn nhà, nấu ăn, làm mọi thứ cho “có ích”",
+              "chu": "Dọn nhà, nấu ăn, làm mọi thứ để “productive”",
               "kq": "sua"
             },
             {
-              "chu": "Lướt TikTok đến 2 giờ sáng hoặc chơi game thâu đêm",
+              "chu": "Scroll TikTok đến 2h sáng hoặc chơi game thâu đêm",
               "kq": "te"
             },
             {
-              "chu": "Đăng story “Today is a good day!” với ảnh cười tươi",
+              "chu": "Post story “Today is a good day!” với ảnh cười tươi",
               "kq": "phu"
             }
           ]
         },
         {
-          "hoi": "Trong lúc cãi nhau, câu bạn hay nói nhất:",
+          "hoi": "Trong cãi vã, câu nói bạn hay dùng nhất:",
           "chon": [
             {
-              "chu": "“Tại sao lúc nào cũng…” / “Bao nhiêu lần rồi mà…”",
+              "chu": "“Tại sao lúc nào cũng...” / “Bao nhiêu lần rồi mà...”",
               "kq": "no"
             },
             {
-              "chu": "“Ừ.” / “Được rồi.” / “Tuỳ.”",
+              "chu": "“Ừ” / “Được rồi” / “Tùy anh/em”",
               "kq": "bang"
             },
             {
-              "chu": "“Để mình giải quyết.” / “Mình sẽ sửa.”",
+              "chu": "“Để em/anh giải quyết” / “Em/anh sẽ sửa”",
               "kq": "sua"
             },
             {
-              "chu": "“Thôi không nói nữa.” / “Mình đi đây.”",
+              "chu": "“Thôi không nói nữa” / “Em/anh đi đây”",
               "kq": "te"
             },
             {
-              "chu": "“Không có gì đâu mà.” / “Mọi chuyện sẽ ổn thôi.”",
+              "chu": "“Không có gì đâu mà” / “Mọi chuyện sẽ ổn thôi”",
               "kq": "phu"
             }
           ]
@@ -563,7 +879,7 @@
           "hoi": "Khi stress, cơ thể bạn thường:",
           "chon": [
             {
-              "chu": "Tim đập nhanh, mặt nóng, tay run, muốn hét lên hoặc đập phá",
+              "chu": "Tim đập nhanh, mặt nóng, tay run, muốn la hét hoặc đập phá",
               "kq": "no"
             },
             {
@@ -571,7 +887,7 @@
               "kq": "bang"
             },
             {
-              "chu": "Không ngồi yên được, phải làm gì đó, sắp xếp, dọn dẹp",
+              "chu": "Không thể ngồi yên, phải làm gì đó, sắp xếp, dọn dẹp",
               "kq": "sua"
             },
             {
@@ -579,16 +895,16 @@
               "kq": "te"
             },
             {
-              "chu": "Cười nhiều hơn, nói nhiều hơn, năng lượng “high” gượng gạo",
+              "chu": "Cười nhiều hơn, nói nhiều hơn, năng lượng “high” giả tạo",
               "kq": "phu"
             }
           ]
         },
         {
-          "hoi": "Người thân khóc với bạn về chuyện của họ:",
+          "hoi": "Người thân khóc với bạn về vấn đề của họ:",
           "chon": [
             {
-              "chu": "“Người đó làm vậy là sai rồi! Sao dám…”",
+              "chu": "“Thằng đó/con đó làm vậy là sai rồi! Sao nó dám...”",
               "kq": "no"
             },
             {
@@ -596,11 +912,11 @@
               "kq": "bang"
             },
             {
-              "chu": "“Để mình gọi điện, nói chuyện, giải quyết giúp!”",
+              "chu": "“Để anh/em gọi điện/nói chuyện/giải quyết giúp!”",
               "kq": "sua"
             },
             {
-              "chu": "Thỉnh thoảng “ừ”, trong đầu đang nghĩ chuyện khác",
+              "chu": "Thỉnh thoảng “ừ”, trong đầu nghĩ chuyện khác",
               "kq": "te"
             },
             {
@@ -610,26 +926,26 @@
           ]
         },
         {
-          "hoi": "Sau một trận xung đột, bạn thường:",
+          "hoi": "Sau khi cự lộn, bạn thường:",
           "chon": [
             {
-              "chu": "Nhắn tin dài để giải thích, hoặc còn giận thêm vài ngày",
+              "chu": "Nhắn tin dài giải thích, hoặc còn giận thêm vài ngày",
               "kq": "no"
             },
             {
-              "chu": "Thu mình lại, không nhắc nữa, mong mọi người quên đi",
+              "chu": "Tự co mình lại, không nhắc lại, hy vọng mọi người quên",
               "kq": "bang"
             },
             {
-              "chu": "Chủ động làm lành, mua quà, làm gì đó để “sửa”",
+              "chu": "Chủ động hàn gắn, mua quà, làm gì đó để “sửa chữa”",
               "kq": "sua"
             },
             {
-              "chu": "Biến mất một thời gian, cần khoảng trống để hồi lại",
+              "chu": "Biến mất một thời gian, cần khoảng không gian riêng tư để hồi phục",
               "kq": "te"
             },
             {
-              "chu": "Cư xử như chưa có gì xảy ra, vẫn vui vẻ",
+              "chu": "Hành động như không có gì xảy ra, vẫn vui vẻ",
               "kq": "phu"
             }
           ]
@@ -638,82 +954,82 @@
       "ketQua": [
         {
           "ma": "no",
-          "ten": "Người Nổ",
-          "phu": "Chiến / chạy",
-          "moTa": "Bạn xả căng thẳng ra ngoài: nói to, đổ lỗi, hoặc bỏ đi trong cơn giận. Nổ ra là cách cơ thể bạn giải phóng áp lực dồn nén, như nồi áp suất cần xả hơi.",
+          "ten": "Người Bùng Nổ",
+          "phu": "Exploder · chiến hoặc chạy",
+          "moTa": "Bạn giải phóng stress bằng cách nổ ra: la hét, đổ lỗi, hoặc bỏ đi. Đây là cơ chế “chiến hoặc chạy” cổ xưa.",
           "dau": [
             "tim đập nhanh, mặt nóng khi bị dồn ép",
             "nói những câu mình không thật sự muốn nói",
             "hối hận và tự trách sau cơn giận"
           ],
-          "canGi": "Một khoảng dừng trước khi phản ứng. Tập nói: “Mình cần 5 phút để bình tĩnh.”",
+          "canGi": "nhận diện dấu hiệu mình bị kích thích, thở sâu trước khi phản ứng, và tập nói “Tôi cần 5 phút bình tĩnh.”",
           "loiNhan": "Bạn không xấu tính. Trong bạn có một phần từng phải chiến đấu để được nhìn thấy.",
           "phanTich": "## Vì sao người khác hay làm ngược lại\nKhi bạn nổ, người bên cạnh thường thấy bị tấn công. Họ phản ứng bằng ngôn ngữ của chính họ: cãi lại, im lặng, hoặc bỏ đi. Thứ bạn cần lúc đó là được nghe, được hiểu. Thứ bạn nhận về lại là thêm một bức tường, và lửa càng to.\n## Nói ra nhu cầu thế nào\nNói lúc đã dịu, không phải lúc đang sôi: “Khi mình nổi nóng, điều giúp mình nhất là được nói hết mà không bị ngắt lời. Rồi mình cùng tìm cách.”\nVà hẹn trước một câu hiệu: khi một người nói “dừng 10 phút”, cả hai cùng ra chỗ khác, rồi quay lại.\n## Một bài tập nhỏ\nLần tới, khi thấy mặt nóng và tim đập nhanh, thở ra dài gấp đôi hít vào, ba lần. Rồi mới nói. Chỉ vậy thôi."
         },
         {
           "ma": "bang",
           "ten": "Người Đóng Băng",
-          "phu": "Đóng băng",
-          "moTa": "Bạn nuốt căng thẳng vào trong. Cơ thể tạm “tắt máy” để tự bảo vệ, như con vật nằm im trước nguy hiểm.",
+          "phu": "Imploder · đóng băng",
+          "moTa": "Bạn nuốt stress vào trong, đóng băng như động vật giả chết. Cơ thể tắt máy để tự bảo vệ.",
           "dau": [
             "im lặng, trả lời cụt lủn “ừ”, “không sao”",
             "đầu óc trống rỗng, người tê cứng",
             "cần rất lâu mới nói được mình đang cảm thấy gì"
           ],
-          "canGi": "Được phép cảm nhận từ từ. Tập nói: “Mình đang choáng ngợp, cho mình chút thời gian.”",
+          "canGi": "nhận diện khi đang đóng băng, cho phép mình cảm nhận từ từ, tập nói “Tôi đang choáng ngợp, cần thời gian.”",
           "loiNhan": "Bạn không vô cảm. Bạn từng học rằng im lặng thì an toàn hơn.",
           "phanTich": "## Vì sao người khác hay làm ngược lại\nKhi bạn im, người khác dễ nghĩ bạn không quan tâm, hoặc đang giận. Họ hỏi dồn, nói nhiều hơn, đòi bạn trả lời ngay. Mà càng bị dồn, bạn càng đông cứng.\n## Nói ra nhu cầu thế nào\nNói trước, vào lúc bình thường: “Khi căng thẳng, mình hay im lặng. Không phải vì không quan tâm, mà vì mình cần thời gian. Khi mình nói ‘cho mình chút’, mình hẹn nói tiếp sau một tiếng nhé.”\nMột câu ngắn vậy thôi là đủ biến im lặng thành một khoảng nghỉ có hẹn.\n## Một bài tập nhỏ\nKhi thấy người tê đi, cử động thật chậm: xoay cổ tay, ấn bàn chân xuống sàn, gọi tên một cảm giác trong cơ thể (“nặng ngực”, “nghẹn cổ”). Cảm giác được gọi tên sẽ bắt đầu chảy."
         },
         {
           "ma": "sua",
           "ten": "Người Sửa Chữa",
-          "phu": "Chăm sóc / kết nối",
-          "moTa": "Bạn đối phó căng thẳng bằng cách lao vào lo, giúp, giải quyết mọi thứ. Được làm gì đó có ích khiến bạn thấy yên lòng.",
+          "phu": "Fixer · chăm sóc, kiểm soát",
+          "moTa": "Bạn đối phó stress bằng cách kiểm soát và sửa chữa mọi thứ. Giúp người khác giúp bạn cảm thấy có giá trị.",
           "dau": [
             "“để mình lo” trước cả khi ai nhờ",
             "không ngồi yên được khi có chuyện",
             "kiệt sức mà vẫn chưa lo cho mình"
           ],
-          "canGi": "Không phải chuyện gì cũng cần sửa ngay. Tập hỏi: “Bạn cần mình nghe, hay cần mình giúp?”, và lo cho mình trước.",
+          "canGi": "thừa nhận không phải mọi thứ đều cần được sửa ngay, tự chăm sóc bản thân trước.",
           "loiNhan": "Bạn không cần phải có ích mới đáng được thương.",
           "phanTich": "## Vì sao người khác hay làm ngược lại\nBạn lo cho mọi người giỏi đến mức ai cũng quen để bạn lo. Khi chính bạn căng thẳng, người khác hoặc không nhận ra, hoặc lại nhờ bạn thêm. Và khi bạn lao vào sửa chuyện của họ, có người lại thấy bị kiểm soát, dù bạn chỉ muốn giúp.\n## Nói ra nhu cầu thế nào\nTập nói câu bạn hiếm khi nói: “Hôm nay mình không lo nổi nữa. Bạn làm giúp mình việc này được không?”\nVà trước khi giúp ai, hỏi một câu: “Bạn cần mình nghe, hay cần mình giúp?”\n## Một bài tập nhỏ\nMỗi ngày chọn một việc nhỏ để không làm, không sửa, không lo. Để nó dở dang, rồi để ý xem trong người thấy thế nào. Thường thì bầu trời vẫn ở nguyên chỗ cũ."
         },
         {
           "ma": "te",
-          "ten": "Người Tê Liệt",
-          "phu": "Trốn tránh",
-          "moTa": "Bạn trốn căng thẳng vào điện thoại, công việc, phim, mua sắm… bất cứ thứ gì để khỏi phải cảm nhận.",
+          "ten": "Người Trốn Chạy",
+          "phu": "Numb-er · tê liệt",
+          "moTa": "Bạn trốn stress vào điện thoại, công việc, rượu… bất cứ thứ gì để không phải cảm nhận.",
           "dau": [
             "lướt điện thoại tới khuya",
             "biến mất một thời gian khi có chuyện",
             "thấy nỗi buồn vẫn ở đó khi “tỉnh” lại"
           ],
-          "canGi": "Đặt giới hạn nhẹ nhàng cho những lối thoát, và tập ở lại với cảm xúc từng chút, vài phút mỗi lần.",
+          "canGi": "đặt giới hạn cho việc trốn, tập đối diện với cảm xúc từng chút một.",
           "loiNhan": "Bạn không lười. Tê đi từng là cách ít đau nhất mà bạn biết.",
           "phanTich": "## Vì sao người khác hay làm ngược lại\nKhi bạn biến vào điện thoại hay công việc, người bên cạnh thấy bị bỏ rơi. Họ trách, cằn nhằn, hoặc giành lấy “lối thoát” của bạn. Càng bị trách, bạn càng muốn trốn sâu hơn.\n## Nói ra nhu cầu thế nào\n“Khi có chuyện, mình cần chút thời gian một mình để hồi lại. Chín giờ tối nay mình nói chuyện tiếp nhé.” Hẹn giờ quay lại là chìa khoá: người kia yên tâm, còn bạn vẫn có khoảng trống.\n## Một bài tập nhỏ\nTrước khi mở điện thoại hay một tập phim mới, dừng lại 60 giây và hỏi: “Mình đang muốn khỏi phải cảm thấy điều gì?” Không cần trả lời đúng. Chỉ cần hỏi."
         },
         {
           "ma": "phu",
           "ten": "Người Phủ Nhận",
-          "phu": "Lạc quan gồng",
-          "moTa": "Bạn đeo nụ cười, nói “không sao đâu”, và cố tích cực với cả mình lẫn người khác, dù trong lòng không ổn.",
+          "phu": "Denier · lạc quan gồng",
+          "moTa": "Bạn đeo mặt nạ tích cực, phủ nhận mọi cảm xúc tiêu cực. Toxic positivity là lá chắn của bạn.",
           "dau": [
             "“mọi chuyện sẽ ổn thôi” là câu cửa miệng",
             "khó nói ra là mình đang buồn",
             "mệt vì lúc nào cũng phải vui"
           ],
-          "canGi": "Cho phép mình được không ổn. Tập nói: “Hôm nay mình không ổn lắm.”",
+          "canGi": "thừa nhận “Không ổn cũng không sao”, cho phép mình được yếu đuối.",
           "loiNhan": "Bạn không giả tạo. Bạn chỉ sợ, nếu thừa nhận nỗi đau, mọi thứ sẽ sụp.",
           "phanTich": "## Vì sao người khác hay làm ngược lại\nVì bạn lúc nào cũng trông ổn, chẳng ai nghĩ bạn cần giúp. Có khi người khác còn tìm đến bạn để được vui lên. Và khi ai đó thật lòng kể chuyện buồn, câu “sẽ ổn thôi” của bạn có thể làm họ thấy mình không được nghe.\n## Nói ra nhu cầu thế nào\nBắt đầu với người an toàn nhất: “Thật ra dạo này mình không ổn lắm. Mình chưa cần lời khuyên, chỉ muốn kể thôi.”\nVới người khác, thử thay “sẽ ổn thôi” bằng “chắc mệt lắm ha”. Bạn sẽ thấy họ mở lòng hơn, và bạn cũng vậy.\n## Một bài tập nhỏ\nViết ra ba câu bắt đầu bằng “Thật ra mình đang thấy…”. Không cần cho ai đọc. Chỉ cần để cảm xúc thật có chỗ ra."
         }
       ],
-      "ket": "Năm ngôn ngữ này không phải tính cách. Chúng là cách hệ thần kinh từng học để vượt qua. Đã học được thì cũng học lại được.",
+      "ket": "Không type nào xấu: đây đều là cơ chế sinh tồn, chỉ cần nhận diện và điều chỉnh. Ngôn ngữ căng thẳng có thể đổi tuỳ hoàn cảnh (công việc hay gia đình) và tuỳ thời điểm trong đời.",
       "giuLienLac": {
-        "tieuDe": "Bạn cần gì, và vì sao người khác hay làm ngược lại?",
-        "moTa": "Bạn vừa biết mình phản ứng thế nào khi stress. Câu hỏi khó hơn là: vì sao người quan tâm đến bạn lại hay làm đúng điều ngược lại? May gửi bạn:",
+        "tieuDe": "Vì sao người thương mình lại hay làm đúng điều ngược lại?",
+        "moTa": "Bạn vừa biết mình cần gì khi stress rồi. Câu hỏi khó hơn là: vì sao người thương mình lại hay làm ngược lại, và làm sao nói ra nhu cầu mà không gây căng thẳng thêm? May gửi bạn:",
         "ds": [
           "vì sao người khác hay phản ứng ngược với điều bạn cần",
-          "cách nói ra nhu cầu mà không làm căng thêm",
+          "cách nói ra nhu cầu mà không gây căng thẳng thêm",
           "một bài tập nhỏ cho đúng kiểu của bạn"
         ]
       },
@@ -726,7 +1042,7 @@
         "tieuDe": "Ngôn ngữ căng thẳng của bạn: {ten}",
         "moDau": "Cảm ơn bạn đã làm bài kiểm tra cùng May.\nKết quả của bạn: {ten} ({phu}).\n{loiNhan}"
       },
-      "nhanCanGi": "Điều bạn cần:"
+      "nhanCanGi": "Bạn cần học cách:"
     },
     {
       "ma": "yeu-thuong",
@@ -734,8 +1050,8 @@
       "ten": "Ngôn ngữ yêu thương",
       "tieuDe": "Bạn thấy được yêu nhất theo cách nào?",
       "moc": "Bạn cần được nghe, được ở bên, hay chỉ cần một cái ôm?",
-      "thoiGian": "3 phút",
-      "moTa": "Không có đúng, sai. Không phải để dán nhãn.\nBài này giúp bạn hiểu vì sao đôi khi được yêu rất nhiều mà vẫn thấy thiếu, và nhận ra điều mình thật sự cần, thay vì trách mình “đòi hỏi”.\nLàm theo cảm giác đầu tiên. Đừng nghĩ lâu.",
+      "thoiGian": "4 phút",
+      "moTa": "Không có đúng – sai. Không dùng để đánh giá. Không phải để dán nhãn.\nBài test này giúp bạn hiểu vì sao mình yêu theo cách đó, vì sao đôi khi yêu rất nhiều mà vẫn thấy thiếu, và nhận ra điều mình thật sự cần, thay vì trách mình hay người kia “quá đáng”.\nMỗi câu có hai lựa chọn. Chọn câu đúng với bạn nhất bây giờ, kể cả khi cả hai đều đúng. Làm theo cảm giác đầu tiên, đừng suy nghĩ lâu ❤️",
       "nguon": "Dựa trên khung 5 ngôn ngữ yêu thương của Gary Chapman.",
       "luuY": "Bài này giúp bạn tự soi mình, không phải một phép đo khoa học. Ai cũng cần cả năm ngôn ngữ; chỉ là có một hai thứ làm “bình yêu thương” của mình đầy nhanh nhất.",
       "kieu": "chon",
@@ -750,252 +1066,392 @@
       "cauThang": [],
       "cau": [
         {
-          "hoi": "Sau một ngày dài, điều làm bạn thấy được thương nhất:",
+          "hoi": "Câu nào đúng với bạn hơn?",
           "chon": [
             {
-              "chu": "Người ấy nói: “Hôm nay vất vả rồi, giỏi lắm.”",
+              "chu": "Tôi muốn nhận được những lời khen ngợi.",
               "kq": "loi"
             },
             {
-              "chu": "Người ấy cất điện thoại, ngồi nghe bạn kể hết chuyện",
-              "kq": "ben"
-            },
-            {
-              "chu": "Người ấy mang về món bạn thích mà không cần bạn nhắc",
-              "kq": "qua"
-            },
-            {
-              "chu": "Về đến nhà, cơm đã nấu, việc đã xong",
-              "kq": "lo"
-            },
-            {
-              "chu": "Một cái ôm thật lâu, chưa cần nói gì",
+              "chu": "Tôi thích được ôm.",
               "kq": "om"
             }
           ]
         },
         {
-          "hoi": "Khi người ấy đi xa vài ngày, điều làm bạn thấy gần nhất:",
+          "hoi": "Câu nào đúng với bạn hơn?",
           "chon": [
             {
-              "chu": "Tin nhắn “nhớ” giữa ngày",
-              "kq": "loi"
-            },
-            {
-              "chu": "Một cuộc gọi dài, không vội cúp máy",
+              "chu": "Tôi thích dành thời gian riêng tư với người đặc biệt của tôi.",
               "kq": "ben"
             },
             {
-              "chu": "Món quà nhỏ họ mang về, chứng tỏ họ đã nghĩ tới bạn",
+              "chu": "Tôi cảm thấy được yêu khi có ai đó giúp đỡ tôi.",
+              "kq": "lo"
+            }
+          ]
+        },
+        {
+          "hoi": "Câu nào đúng với bạn hơn?",
+          "chon": [
+            {
+              "chu": "Tôi thích khi mọi người tặng tôi quà.",
               "kq": "qua"
             },
             {
-              "chu": "Họ đã sắp xếp, dặn dò sẵn mọi thứ cho bạn ở nhà",
+              "chu": "Tôi thích dành thời gian thư giãn với bạn bè và người thân.",
+              "kq": "ben"
+            }
+          ]
+        },
+        {
+          "hoi": "Câu nào đúng với bạn hơn?",
+          "chon": [
+            {
+              "chu": "Tôi cảm thấy được yêu khi có người làm những việc để giúp đỡ tôi.",
               "kq": "lo"
             },
             {
-              "chu": "Cái ôm thật chặt lúc gặp lại",
+              "chu": "Tôi cảm thấy được yêu khi người khác chạm vào tôi.",
               "kq": "om"
             }
           ]
         },
         {
-          "hoi": "Sau một trận cãi nhau, điều giúp bạn mềm lại nhanh nhất:",
+          "hoi": "Câu nào đúng với bạn hơn?",
           "chon": [
             {
-              "chu": "Một lời xin lỗi rõ ràng, nói ra thành lời",
-              "kq": "loi"
+              "chu": "Tôi cảm thấy được yêu khi người tôi yêu hoặc ngưỡng mộ quàng tay lên tôi.",
+              "kq": "om"
             },
             {
-              "chu": "Ngồi xuống nói chuyện đến nơi đến chốn",
+              "chu": "Tôi cảm thấy mình được yêu khi tôi nhận được món quà từ người tôi yêu hoặc ngưỡng mộ.",
+              "kq": "qua"
+            }
+          ]
+        },
+        {
+          "hoi": "Câu nào đúng với bạn hơn?",
+          "chon": [
+            {
+              "chu": "Tôi thích đi đâu đó với bạn bè và người thân.",
               "kq": "ben"
             },
             {
-              "chu": "Một cử chỉ nhỏ: ly trà, bông hoa, món bạn thích",
-              "kq": "qua"
-            },
-            {
-              "chu": "Họ lặng lẽ làm điều bạn từng nhờ mà chưa làm",
-              "kq": "lo"
-            },
-            {
-              "chu": "Nắm tay, hoặc kéo bạn vào lòng",
+              "chu": "Tôi thích đập tay (hi-five) hoặc nắm tay những người đặc biệt đối với tôi.",
               "kq": "om"
             }
           ]
         },
         {
-          "hoi": "Điều làm bạn tủi thân nhất trong một mối quan hệ:",
+          "hoi": "Câu nào đúng với bạn hơn?",
           "chon": [
             {
-              "chu": "Làm bao nhiêu cũng không nghe được một lời ghi nhận",
-              "kq": "loi"
-            },
-            {
-              "chu": "Ngồi cạnh nhau mà mỗi người một cái điện thoại",
-              "kq": "ben"
-            },
-            {
-              "chu": "Ngày quan trọng của bạn trôi qua như mọi ngày",
+              "chu": "Biểu hiện của tình yêu (quà tặng) là rất quan trọng với tôi.",
               "kq": "qua"
             },
             {
-              "chu": "Bạn ốm mà vẫn phải tự lo hết mọi thứ",
+              "chu": "Tôi cảm thấy được yêu khi mọi người công nhận tôi.",
+              "kq": "loi"
+            }
+          ]
+        },
+        {
+          "hoi": "Câu nào đúng với bạn hơn?",
+          "chon": [
+            {
+              "chu": "Tôi thích ngồi gần những người mà tôi thích được ở bên cạnh.",
+              "kq": "om"
+            },
+            {
+              "chu": "Tôi thích mọi người nói với tôi rằng tôi đẹp gái / đẹp trai.",
+              "kq": "loi"
+            }
+          ]
+        },
+        {
+          "hoi": "Câu nào đúng với bạn hơn?",
+          "chon": [
+            {
+              "chu": "Tôi thích dành thời gian với bạn bè và người thân.",
+              "kq": "ben"
+            },
+            {
+              "chu": "Tôi thích nhận những món quà nhỏ từ bạn bè và người thân.",
+              "kq": "qua"
+            }
+          ]
+        },
+        {
+          "hoi": "Câu nào đúng với bạn hơn?",
+          "chon": [
+            {
+              "chu": "Những lời tán thành rất quan trọng đối với tôi.",
+              "kq": "loi"
+            },
+            {
+              "chu": "Tôi biết ai đó yêu tôi khi họ giúp tôi.",
+              "kq": "lo"
+            }
+          ]
+        },
+        {
+          "hoi": "Câu nào đúng với bạn hơn?",
+          "chon": [
+            {
+              "chu": "Tôi thích ở cùng, làm việc gì đó với bạn bè và những người thân yêu.",
+              "kq": "ben"
+            },
+            {
+              "chu": "Tôi thích mọi người nói chuyện tử tế với tôi.",
+              "kq": "loi"
+            }
+          ]
+        },
+        {
+          "hoi": "Câu nào đúng với bạn hơn?",
+          "chon": [
+            {
+              "chu": "Những điều ai đó làm sẽ ảnh hưởng đến tôi nhiều hơn những gì họ nói.",
               "kq": "lo"
             },
             {
-              "chu": "Lâu rồi không ai ôm mình",
+              "chu": "Những cái ôm làm cho tôi cảm thấy được gắn kết và trân trọng.",
               "kq": "om"
             }
           ]
         },
         {
-          "hoi": "Khi thương ai đó, bạn thường thể hiện bằng cách:",
+          "hoi": "Câu nào đúng với bạn hơn?",
           "chon": [
             {
-              "chu": "Nói ra, nhắn tin, khen, động viên",
+              "chu": "Tôi đánh giá cao lời khen ngợi và cố gắng tránh những lời chỉ trích.",
               "kq": "loi"
             },
             {
-              "chu": "Dành thời gian, rủ đi đâu đó chỉ hai người",
+              "chu": "Nhiều món quà nhỏ có ý nghĩa nhiều hơn với tôi so với một món quà lớn.",
+              "kq": "qua"
+            }
+          ]
+        },
+        {
+          "hoi": "Câu nào đúng với bạn hơn?",
+          "chon": [
+            {
+              "chu": "Tôi cảm thấy gần gũi với ai đó khi chúng tôi nói chuyện hoặc cùng nhau làm điều gì đó.",
               "kq": "ben"
             },
             {
-              "chu": "Để ý họ thích gì rồi mua tặng",
-              "kq": "qua"
-            },
-            {
-              "chu": "Làm giúp, lo giúp, gánh bớt việc",
-              "kq": "lo"
-            },
-            {
-              "chu": "Ôm, nắm tay, ngồi sát bên",
+              "chu": "Tôi cảm thấy gần gũi hơn với bạn bè và người thân khi họ chạm vào tôi.",
               "kq": "om"
             }
           ]
         },
         {
-          "hoi": "Kỷ niệm bạn nhớ mãi thường là:",
+          "hoi": "Câu nào đúng với bạn hơn?",
           "chon": [
             {
-              "chu": "Một câu nói ai đó dành cho bạn",
+              "chu": "Tôi muốn mọi người khen ngợi những thành tựu của tôi.",
               "kq": "loi"
             },
             {
-              "chu": "Một buổi đi chơi, một đêm nói chuyện tới sáng",
+              "chu": "Tôi biết ai đó yêu tôi khi họ làm mọi việc cho tôi dù họ không thích làm.",
+              "kq": "lo"
+            }
+          ]
+        },
+        {
+          "hoi": "Câu nào đúng với bạn hơn?",
+          "chon": [
+            {
+              "chu": "Tôi thích được chạm vào khi bạn bè và người thân yêu đi ngang qua.",
+              "kq": "om"
+            },
+            {
+              "chu": "Tôi thích mọi người lắng nghe tôi và thể hiện sự quan tâm chân thành đến những gì tôi đang nói.",
               "kq": "ben"
-            },
+            }
+          ]
+        },
+        {
+          "hoi": "Câu nào đúng với bạn hơn?",
+          "chon": [
             {
-              "chu": "Một món quà bạn vẫn còn giữ",
-              "kq": "qua"
-            },
-            {
-              "chu": "Lần ai đó lo cho bạn lúc khó khăn nhất",
+              "chu": "Tôi cảm thấy được yêu khi bạn bè và người thân giúp tôi trong công việc hoặc một dự án nào đó.",
               "kq": "lo"
             },
             {
-              "chu": "Một cái ôm đúng lúc",
+              "chu": "Tôi thực sự thích nhận quà tặng từ bạn bè và người thân.",
+              "kq": "qua"
+            }
+          ]
+        },
+        {
+          "hoi": "Câu nào đúng với bạn hơn?",
+          "chon": [
+            {
+              "chu": "Tôi thích mọi người khen ngợi ngoại hình của tôi.",
+              "kq": "loi"
+            },
+            {
+              "chu": "Tôi cảm thấy được yêu khi mọi người dành thời gian để hiểu cảm giác của tôi.",
+              "kq": "ben"
+            }
+          ]
+        },
+        {
+          "hoi": "Câu nào đúng với bạn hơn?",
+          "chon": [
+            {
+              "chu": "Tôi cảm thấy an toàn khi một người đặc biệt chạm vào tôi.",
+              "kq": "om"
+            },
+            {
+              "chu": "Sự giúp đỡ làm tôi cảm thấy được yêu thương.",
+              "kq": "lo"
+            }
+          ]
+        },
+        {
+          "hoi": "Câu nào đúng với bạn hơn?",
+          "chon": [
+            {
+              "chu": "Tôi đánh giá cao những thứ mà những người đặc biệt làm cho tôi.",
+              "kq": "lo"
+            },
+            {
+              "chu": "Tôi thích nhận quà tặng do người đặc biệt dành cho mình.",
+              "kq": "qua"
+            }
+          ]
+        },
+        {
+          "hoi": "Câu nào đúng với bạn hơn?",
+          "chon": [
+            {
+              "chu": "Tôi thực sự thích cảm giác khi ai đó dành cho tôi sự chú ý không rời.",
+              "kq": "ben"
+            },
+            {
+              "chu": "Tôi thực sự thích cảm giác tôi nhận được khi ai đó giúp tôi đưa ra quyết định.",
+              "kq": "lo"
+            }
+          ]
+        },
+        {
+          "hoi": "Câu nào đúng với bạn hơn?",
+          "chon": [
+            {
+              "chu": "Tôi cảm thấy được yêu khi một người mừng sinh nhật của tôi bằng một món quà.",
+              "kq": "qua"
+            },
+            {
+              "chu": "Tôi thấy được yêu khi một người mừng ngày sinh nhật của tôi qua những lời nói đầy ý nghĩa.",
+              "kq": "loi"
+            }
+          ]
+        },
+        {
+          "hoi": "Câu nào đúng với bạn hơn?",
+          "chon": [
+            {
+              "chu": "Tôi biết ai đó đang nghĩ đến tôi khi họ tặng tôi một món quà.",
+              "kq": "qua"
+            },
+            {
+              "chu": "Tôi cảm thấy được yêu khi ai đó giúp tôi việc nhà.",
+              "kq": "lo"
+            }
+          ]
+        },
+        {
+          "hoi": "Câu nào đúng với bạn hơn?",
+          "chon": [
+            {
+              "chu": "Tôi đánh giá cao khi ai đó kiên nhẫn lắng nghe và không cắt ngang tôi.",
+              "kq": "ben"
+            },
+            {
+              "chu": "Tôi đánh giá cao khi ai đó nhớ những ngày đặc biệt và tặng quà cho tôi.",
+              "kq": "qua"
+            }
+          ]
+        },
+        {
+          "hoi": "Câu nào đúng với bạn hơn?",
+          "chon": [
+            {
+              "chu": "Tôi rất thích khi biết những người thân yêu quan tâm giúp đỡ tôi trong công việc hàng ngày.",
+              "kq": "lo"
+            },
+            {
+              "chu": "Tôi thích những chuyến đi dài ngày cùng người đặc biệt của mình.",
+              "kq": "ben"
+            }
+          ]
+        },
+        {
+          "hoi": "Câu nào đúng với bạn hơn?",
+          "chon": [
+            {
+              "chu": "Tôi thích hôn hoặc được người gần gũi với tôi hôn.",
+              "kq": "om"
+            },
+            {
+              "chu": "Tôi thích nhận quà tặng mà không cần có lý do đặc biệt.",
+              "kq": "qua"
+            }
+          ]
+        },
+        {
+          "hoi": "Câu nào đúng với bạn hơn?",
+          "chon": [
+            {
+              "chu": "Tôi muốn được nghe rằng tôi được đánh giá cao.",
+              "kq": "loi"
+            },
+            {
+              "chu": "Tôi thích người đó nhìn tôi khi chúng tôi nói chuyện.",
+              "kq": "ben"
+            }
+          ]
+        },
+        {
+          "hoi": "Câu nào đúng với bạn hơn?",
+          "chon": [
+            {
+              "chu": "Quà tặng từ bạn bè hoặc người thân yêu luôn rất đặc biệt với tôi.",
+              "kq": "qua"
+            },
+            {
+              "chu": "Tôi cảm thấy tốt khi một người bạn hoặc người thân yêu chạm vào tôi.",
               "kq": "om"
             }
           ]
         },
         {
-          "hoi": "Khi bạn ốm, điều làm bạn thấy được thương nhất:",
+          "hoi": "Câu nào đúng với bạn hơn?",
           "chon": [
             {
-              "chu": "Nghe một câu “có mình đây rồi”",
-              "kq": "loi"
-            },
-            {
-              "chu": "Có người ngồi bên, không đi đâu cả",
-              "kq": "ben"
-            },
-            {
-              "chu": "Một món nhỏ ai đó mua cho, kèm mẩu giấy viết tay",
-              "kq": "qua"
-            },
-            {
-              "chu": "Có người nấu cháo, đưa đi khám, lo việc nhà thay",
+              "chu": "Tôi cảm thấy được yêu khi ai đó nhiệt tình làm một số công việc tôi đã nhờ.",
               "kq": "lo"
             },
             {
-              "chu": "Có người xoa lưng, đặt tay lên trán",
-              "kq": "om"
+              "chu": "Tôi cảm thấy được yêu khi họ cho biết tôi cần thiết ra sao.",
+              "kq": "loi"
             }
           ]
         },
         {
-          "hoi": "Ngày sinh nhật, điều làm bạn vui nhất:",
+          "hoi": "Câu nào đúng với bạn hơn?",
           "chon": [
             {
-              "chu": "Một tấm thiệp hay tin nhắn viết dài, thật lòng",
-              "kq": "loi"
-            },
-            {
-              "chu": "Cả ngày được ở bên người mình thương",
-              "kq": "ben"
-            },
-            {
-              "chu": "Một món quà cho thấy họ hiểu bạn",
-              "kq": "qua"
-            },
-            {
-              "chu": "Không phải làm gì, có người lo hết từ A tới Z",
-              "kq": "lo"
-            },
-            {
-              "chu": "Được ôm, được nắm tay suốt cả ngày",
+              "chu": "Tôi cần phải được chạm vào mỗi ngày.",
               "kq": "om"
-            }
-          ]
-        },
-        {
-          "hoi": "Câu nào nghe giống bạn nhất?",
-          "chon": [
+            },
             {
-              "chu": "“Nói ra cho mình nghe đi, mình cần nghe.”",
+              "chu": "Tôi cần những lời khuyến khích hàng ngày.",
               "kq": "loi"
-            },
-            {
-              "chu": "“Ở đây với mình một chút.”",
-              "kq": "ben"
-            },
-            {
-              "chu": "“Bạn nghĩ tới mình lúc đó à?”",
-              "kq": "qua"
-            },
-            {
-              "chu": "“Giá mà có ai làm giùm mình việc này.”",
-              "kq": "lo"
-            },
-            {
-              "chu": "“Ôm cái đã.”",
-              "kq": "om"
-            }
-          ]
-        },
-        {
-          "hoi": "Điều người ấy làm mà bạn thấy “thương ghê”:",
-          "chon": [
-            {
-              "chu": "Khoe bạn với người khác, nói điều tốt về bạn",
-              "kq": "loi"
-            },
-            {
-              "chu": "Nhớ từng chuyện nhỏ bạn kể vì đã nghe rất kỹ",
-              "kq": "ben"
-            },
-            {
-              "chu": "Bất ngờ mang về một thứ nho nhỏ cho bạn",
-              "kq": "qua"
-            },
-            {
-              "chu": "Thấy bạn mệt, tự làm việc nhà, tự đón con",
-              "kq": "lo"
-            },
-            {
-              "chu": "Đi ngang qua là chạm nhẹ vai, vuốt tóc bạn",
-              "kq": "om"
             }
           ]
         }
@@ -1004,7 +1460,7 @@
         {
           "ma": "loi",
           "ten": "Lời Yêu Thương",
-          "phu": "Words of affirmation",
+          "phu": "Words of Affirmation · lời khen ngợi, ngọt ngào, động viên",
           "moTa": "Bạn thấy được yêu khi tình cảm được nói ra thành lời: một câu khen, một lời cảm ơn, một tin nhắn “nhớ”.",
           "dau": [
             "vui cả ngày vì một câu ghi nhận",
@@ -1017,8 +1473,8 @@
         },
         {
           "ma": "ben",
-          "ten": "Thời Gian Bên Nhau",
-          "phu": "Quality time",
+          "ten": "Thời Gian Chất Lượng",
+          "phu": "Quality Time · ở cùng nhau trọn vẹn",
           "moTa": "Bạn thấy được yêu khi có người thật sự ở đó với bạn: cất điện thoại, nhìn vào mắt, nghe trọn vẹn.",
           "dau": [
             "quý một buổi đi dạo chậm hơn món quà đắt tiền",
@@ -1032,7 +1488,7 @@
         {
           "ma": "qua",
           "ten": "Quà Tặng",
-          "phu": "Receiving gifts",
+          "phu": "Receiving Gifts",
           "moTa": "Bạn thấy được yêu qua những món quà. Lớn nhỏ không quan trọng; quan trọng là có người đã nghĩ tới bạn.",
           "dau": [
             "giữ lại vé xem phim, mẩu giấy, món quà nhỏ",
@@ -1045,8 +1501,8 @@
         },
         {
           "ma": "lo",
-          "ten": "Hành Động Chăm Sóc",
-          "phu": "Acts of service",
+          "ten": "Sự Giúp Đỡ",
+          "phu": "Acts of Service",
           "moTa": "Bạn thấy được yêu khi có người làm giúp, lo giúp, gánh bớt cho bạn: nấu bữa cơm, sửa cái đèn, đón con thay.",
           "dau": [
             "thấy “để anh làm cho” ngọt hơn mọi lời hứa",
@@ -1060,7 +1516,7 @@
         {
           "ma": "om",
           "ten": "Cái Chạm",
-          "phu": "Physical touch",
+          "phu": "Physical Touch · vuốt ve, ôm, hôn, nắm tay",
           "moTa": "Bạn thấy được yêu qua cái chạm: nắm tay, ôm, tựa vai, một bàn tay đặt nhẹ lên lưng.",
           "dau": [
             "dịu lại nhờ một cái ôm hơn mọi lời nói",
@@ -1074,8 +1530,8 @@
       ],
       "ket": "Ai cũng cần cả năm ngôn ngữ. Hiểu ngôn ngữ chính của mình giúp bạn nói ra điều mình cần. Hiểu ngôn ngữ của người kia giúp bạn thương họ đúng cách.",
       "giuLienLac": {
-        "tieuDe": "Muốn hiểu sâu hơn không?",
-        "moTa": "Bạn vừa thấy mình được yêu theo cách nào. Câu hỏi thật sự là: vì sao lại là cách đó? May gửi bạn:",
+        "tieuDe": "Vì sao mình lại yêu theo cách đó?",
+        "moTa": "Bạn vừa biết mình đang yêu theo cách nào rồi. Nhưng câu hỏi thật sự là: vì sao mình lại yêu theo cách đó, và vì sao người kia cứ hay yêu sai cách với mình? May gửi bạn:",
         "ds": [
           "vì sao ngôn ngữ yêu thương này hình thành ở bạn",
           "vì sao người yêu bạn hay “yêu sai cách”",
@@ -1089,7 +1545,7 @@
       },
       "email": {
         "tieuDe": "Ngôn ngữ yêu thương của bạn: {ten}",
-        "moDau": "Cảm ơn bạn đã làm bài kiểm tra cùng May.\nNgôn ngữ yêu thương chính của bạn: {ten}.\n{loiNhan}"
+        "moDau": "Cảm ơn bạn đã làm bài quiz cùng May.\nNgôn ngữ yêu thương chính của bạn: {ten} ({phu}).\n{loiNhan}"
       },
       "nhanCanGi": ""
     }

@@ -167,11 +167,13 @@
     return s + '</svg>';
   }
   function cot(kq) {
-    var max = cau.length, s = '<div class="kt-bieu">';
+    var toiDa = {};
+    cau.forEach(function (c) { c.chon.forEach(function (o) { toiDa[o.kq] = (toiDa[o.kq] || 0) + 1; }); });
+    var s = '<div class="kt-bieu">';
     var xep = B.ketQua.slice().sort(function (a, b) { return kq.diem[b.ma] - kq.diem[a.ma]; });
     xep.forEach(function (r) {
       var n = kq.diem[r.ma] || 0;
-      s += '<div class="kt-cot' + (r.ma === kq.kq ? ' chinh' : '') + '"><span>' + esc(r.ten) + '</span><span class="bar"><i style="width:0" data-w="' + Math.round((n / max) * 100) + '%"></i></span><span class="n">' + n + '</span></div>';
+      s += '<div class="kt-cot' + (r.ma === kq.kq ? ' chinh' : '') + '"><span>' + esc(r.ten) + '</span><span class="bar"><i style="width:0" data-w="' + Math.round((n / (toiDa[r.ma] || cau.length)) * 100) + '%"></i></span><span class="n">' + n + '</span></div>';
     });
     return s + '</div>';
   }

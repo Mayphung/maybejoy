@@ -746,7 +746,7 @@ content:
           - { name: moTa, label: "Lời mở đầu (**chữ đậm**, mỗi dòng một đoạn)", type: text }
           - { name: nguon, label: "Dòng nhỏ: dựa trên nghiên cứu nào", type: text }
           - { name: luuY, label: "Lưu ý cuối trang", type: text }
-          - { name: kieu, label: "Kiểu bài: chon = chọn đáp án · thang = thang điểm 1–4 (đừng đổi)", type: string }
+          - { name: kieu, label: "Kiểu bài: chon = chọn đáp án · thang = thang điểm 1–4 (riêng bài Gắn kết: chon = bản 15 câu, thang = bản 36 câu)", type: string }
           - { name: nhanCanGi, label: "Nhãn trước ô 'điều bạn cần' (bỏ trống nếu không cần)", type: string }
           - { name: mucThang, label: "(Kiểu thang) bốn mức trả lời", type: string, list: true }
           - name: truc
