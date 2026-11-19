@@ -12,6 +12,7 @@
   };
   var thang = B.kieu === 'thang';
   var cau = thang ? B.cauThang : B.cau;
+  var PHIEN = B.kieu + ':' + cau.length + ':' + B.ketQua.map(function (r) { return r.ma; }).join(',');
   var $ = function (id) { return document.getElementById(id); };
   var moS = $('kt-mo'), lamS = $('kt-lam'), kqS = $('kt-kq');
   var hoi = $('kt-hoi'), chonEl = $('kt-chon'), lui = $('kt-lui'), soN = $('kt-n'), thanh = $('kt-thanh');
@@ -113,7 +114,8 @@
     B.ketQua.forEach(function (r) { d[r.ma] = 0; });
     tl.forEach(function (k) { if (k in d) d[k]++; });
     var xep = B.ketQua.map(function (r) { return r.ma; }).sort(function (a, b) { return d[b] - d[a]; });
-    return { kq: xep[0], phu: d[xep[1]] > 0 ? xep[1] : '', ngang: d[xep[0]] === d[xep[1]], diem: d, traLoi: tl.slice() };
+    var dau = xep.filter(function (k) { return d[k] === d[xep[0]]; });
+    return { kq: xep[0], phu: d[xep[1]] > 0 ? xep[1] : '', ngang: dau.length > 1 ? dau : null, diem: d, traLoi: tl.slice() };
   }
 
   function xong() {
@@ -121,6 +123,7 @@
     ketQua = cham();
     ketQua.luc = Date.now();
     ketQua.tenKq = (timKq(ketQua.kq) || {}).ten;
+    ketQua.ban = PHIEN;
     luu.dat(ketQua);
     gui('/api/kiem-tra', { bai: B.ma, buoc: 'xong', kq: ketQua.kq, phu: ketQua.phu || '', diem: ketQua.diem, doTinCay: ketQua.doTinCay || '', traLoi: ketQua.traLoi }).catch(function () {});
     hienKetQua(true);
@@ -210,7 +213,15 @@
     } else {
       h += cot(kq);
       var p = kq.phu && timKq(kq.phu);
-      if (p) h += '<p class="kt-phu2">' + esc(K.nhanPhu) + ' <b>' + esc(p.ten) + '</b>. ' + (kq.ngang ? esc(K.ngangNhau) : '') + '</p>';
+      if (kq.ngang && kq.ngang.length > 1) {
+        var ten = kq.ngang.map(function (k) { return '<b>' + esc((timKq(k) || {}).ten) + '</b>'; });
+        var ds = ten.length > 2 ? ten.slice(0, -1).join(', ') + ' và ' + ten[ten.length - 1] : ten.join(' và ');
+        h += '<p class="kt-phu2">' + esc(K.ngangNhau).replace('{ds}', ds) + '</p>';
+        kq.ngang.slice(1).forEach(function (k) {
+          var r2 = timKq(k);
+          if (r2) h += '<div class="kt-can"><b>' + esc(r2.ten) + '.</b> ' + chuNho(r2.moTa) + (r2.loiNhan ? '<br><i>' + esc(r2.loiNhan) + '</i>' : '') + '</div>';
+        });
+      } else if (p) h += '<p class="kt-phu2">' + esc(K.nhanPhu) + ' <b>' + esc(p.ten) + '</b>.</p>';
     }
     if (B.ket) h += '<p class="kt-ket">' + esc(B.ket) + '</p>';
 
@@ -222,7 +233,8 @@
     h += '<form class="kt-form" id="kt-form" novalidate' + (kq.daGui ? ' hidden' : '') + '><label>' + esc(K.oNhap) + '<input id="kt-lh" name="lienHe" type="text" inputmode="email" autocomplete="email" placeholder="' + esc(K.goiYNhap) + '" required></label><button class="btn" type="submit">' + esc(K.nutGui) + '</button></form>';
     h += '<p class="kt-nho"' + (kq.daGui ? ' hidden' : '') + '>' + esc(K.chuNho) + '</p>';
     h += '<p class="kt-tb" id="kt-tb" aria-live="polite"></p>';
-    h += '<div class="kt-sau" id="kt-sau"' + (kq.daGui ? '' : ' hidden') + '>' + phanTich(r.phanTich) + '</div>';
+    var themNgang = (kq.ngang || []).slice(1).map(function (k) { var r2 = timKq(k); return r2 ? '<h4 class="kt-them">' + esc(r2.ten) + '</h4>' + phanTich(r2.phanTich) : ''; }).join('');
+    h += '<div class="kt-sau" id="kt-sau"' + (kq.daGui ? '' : ' hidden') + '>' + phanTich(r.phanTich) + themNgang + '</div>';
     h += '</div>';
 
     var T = B.buocTiep || {};
@@ -258,7 +270,7 @@
       e.preventDefault();
       var v = $('kt-lh').value.trim();
       var so = v.replace(/[\s.\-()]/g, '');
-      var du = { bai: B.ma, kq: ketQua.kq, phu: ketQua.phu || '', diem: ketQua.diem };
+      var du = { bai: B.ma, kq: ketQua.kq, phu: ketQua.phu || '', ngang: !!(ketQua.ngang && ketQua.ngang.length > 1), diem: ketQua.diem };
       if (/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) du.email = v.toLowerCase();
       else if (/^(\+?84|0)\d{9,10}$/.test(so)) du.zalo = so;
       else { tb.textContent = K.loiNhap; return; }
@@ -311,6 +323,7 @@
   nutBat.addEventListener('click', batDau);
 
   var cu = luu.lay();
+  if (cu && cu.ban !== PHIEN) { luu.xoa(); cu = null; }
   if (cu && cu.kq && !/[?&]lam-lai/.test(location.search)) {
     ketQua = cu;
     hienKetQua(false);

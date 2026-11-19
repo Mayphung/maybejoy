@@ -714,7 +714,7 @@ content:
           - { name: nhanKetQua, label: "Nhãn trên kết quả", type: string }
           - { name: banCoThe, label: "Chữ trước danh sách 'Bạn có thể'", type: string }
           - { name: nhanPhu, label: "Nhãn kết quả gần thứ hai", type: string }
-          - { name: ngangNhau, label: "Câu khi hai kết quả ngang nhau", type: text }
+          - { name: ngangNhau, label: "Câu khi các kết quả ngang điểm ({ds} = tên các kết quả)", type: text }
           - { name: oNhap, label: "Nhãn ô email/Zalo", type: string }
           - { name: goiYNhap, label: "Chữ mờ trong ô", type: string }
           - { name: nutGui, label: "Nút gửi", type: string }

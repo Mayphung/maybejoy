@@ -246,13 +246,14 @@ function phanTichHtml(t) {
   return out + (ds ? "</ul>" : "");
 }
 
-async function guiPhanTich(env, bai, r, email) {
+async function guiPhanTich(env, bai, r, email, r2) {
   const v = { ten: r.ten, phu: r.phu || "", loiNhan: r.loiNhan || "" };
   const T = bai.buocTiep || {};
   const link = (x) => (String(x || "").startsWith("/") ? SITE + x : x);
   const html = khungEmail(
     doan(dien(bai.email?.moDau || "Kết quả của bạn: {ten}.", v)) +
       phanTichHtml(r.phanTich) +
+      (r2 ? `<h2 style="font-family:Georgia,serif;color:#6E2A34;font-size:22px;margin:34px 0 4px;border-top:1px dotted #6E2A34;padding-top:20px">Bạn cũng ngang điểm với: ${esc(r2.ten)}</h2>` + phanTichHtml(r2.phanTich) : "") +
       (T.link && T.nut ? `<p style="margin:26px 0 0">${esc(String(T.chu || "").replace(/\*/g, ""))}</p>` + nut(link(T.link), T.nut) : "") +
       `<p style="margin:18px 0 0;font-size:14px"><a href="${SITE}/kiem-tra/" style="color:#A8522B">Làm thêm bài kiểm tra khác của May</a></p>`
   );
@@ -281,7 +282,7 @@ async function kiemTraLienHe(request, env, ctx) {
     await env.DB.put(k, JSON.stringify(cu));
     if (env.RESEND_API_KEY) {
       daGui = true;
-      ctx.waitUntil(guiPhanTich(env, bai, r, email));
+      ctx.waitUntil(guiPhanTich(env, bai, r, email, body.ngang === true && phu ? kqKt(bai, phu) : null));
     }
   }
   if (coZalo && env.EMAIL_MAY) {
