@@ -62,3 +62,4 @@ body.p-post,body.p-page{background:var(--cream)}
 .hoc-check{display:flex;gap:10px;align-items:center;font-size:15px;margin:14px 0 22px;cursor:pointer}
 .hoc-check input{accent-color:var(--burgundy);width:18px;height:18px}
 .hoc-note{font-size:14px;color:#7A6C64;margin-top:26px}
+.hoc-chu{font-size:19px;color:var(--terracotta-dark);margin:0 0 6px}

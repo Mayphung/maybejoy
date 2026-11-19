@@ -146,6 +146,18 @@ async function xemDon(ma, env) {
   return json(out);
 }
 
+async function guiChiaKhoa(env, don) {
+  const link = await linkPhong(env, don.phong, don.email);
+  const phong = banHang.phong[don.phong];
+  return guiEmail(env, {
+    to: don.email,
+    subject: `Chìa khoá vào ${phong.ten} của bạn`,
+    html: khungEmail(
+      `<p>Chào bạn,</p><p>May đã nhận được ${tien(don.gia)} cho <strong>${esc(don.ten)}</strong> (mã đơn ${don.ma}). Cảm ơn bạn nhiều lắm.</p>${nut(link, "Vào " + phong.ten)}<p>Bạn giữ email này lại nhé: đường dẫn trên là chìa khoá riêng của bạn, dùng được mãi, trên máy nào cũng được.</p>`
+    ),
+  });
+}
+
 async function xacNhanDon(env, don, nguon) {
   if (don.trangThai === "da-nhan") return false;
   don.trangThai = "da-nhan";
@@ -155,15 +167,7 @@ async function xacNhanDon(env, don, nguon) {
   const ds = (await env.DB.get(`mua:${don.email}`, "json")) || [];
   if (!ds.includes(don.phong)) ds.push(don.phong);
   await env.DB.put(`mua:${don.email}`, JSON.stringify(ds));
-  const link = await linkPhong(env, don.phong, don.email);
-  const phong = banHang.phong[don.phong];
-  await guiEmail(env, {
-    to: don.email,
-    subject: `Chìa khoá vào ${phong.ten} của bạn`,
-    html: khungEmail(
-      `<p>Chào bạn,</p><p>May đã nhận được ${tien(don.gia)} cho <strong>${esc(don.ten)}</strong> (mã đơn ${don.ma}). Cảm ơn bạn nhiều lắm.</p>${nut(link, "Vào " + phong.ten)}<p>Bạn giữ email này lại nhé: đường dẫn trên là chìa khoá riêng của bạn, dùng được mãi, trên máy nào cũng được.</p>`
-    ),
-  });
+  await guiChiaKhoa(env, don);
   if (env.EMAIL_MAY) {
     await guiEmail(env, {
       to: env.EMAIL_MAY,
@@ -216,8 +220,16 @@ async function phongHoc(request, env, url) {
   let email = "";
   try { email = e ? b64urlDecodeText(e) : ""; } catch { email = ""; }
   const laMay = !!xemTruoc;
-  if (laMay || (env.TOKEN_SECRET && email && k && (await kyTen(env, ten, email)) === k)) {
-    const res = await env.ASSETS.fetch(new Request(new URL(url.pathname, url.origin), request));
+  const hopLe = !laMay && env.TOKEN_SECRET && email && k && (await kyTen(env, ten, email)) === k;
+  if (hopLe && (await env.DB.get(`thu-hoi:${ten}:${email.toLowerCase()}`))) {
+    return new Response(trangKhoa(p.ten, "Chìa khoá này đã ngừng dùng. Nếu bạn nghĩ có nhầm lẫn, trả lời email của May để May xem giúp nhé."), { status: 403, headers: { "content-type": "text/html; charset=utf-8", "x-robots-tag": "noindex", "set-cookie": `${cookieName}=; Path=/hoc/${ten}/; Max-Age=0; Secure; HttpOnly; SameSite=Lax` } });
+  }
+  if (laMay || hopLe) {
+    const res0 = await env.ASSETS.fetch(new Request(new URL(url.pathname, url.origin), request));
+    const chu = laMay ? "May đang xem trước phòng này" : `Phòng học của: ${email.toLowerCase()}`;
+    const res = new HTMLRewriter()
+      .on("[data-chu-phong]", { element(el) { el.removeAttribute("hidden"); el.setInnerContent(chu); } })
+      .transform(res0);
     const out = new Response(res.body, res);
     out.headers.set("cache-control", "private, no-store");
     out.headers.set("x-robots-tag", "noindex");
@@ -229,10 +241,10 @@ async function phongHoc(request, env, url) {
   return new Response(trangKhoa(p.ten), { status: 403, headers: { "content-type": "text/html; charset=utf-8", "x-robots-tag": "noindex" } });
 }
 
-function trangKhoa(ten) {
+function trangKhoa(ten, loiRieng) {
   return `<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>${esc(ten)} — May Phung</title>
 <style>body{margin:0;background:#F4EBE0;color:#362A24;font:17px/1.7 system-ui,sans-serif;display:grid;place-items:center;min-height:100vh;padding:20px}main{max-width:460px;background:#FFFDF8;padding:34px 30px;border-radius:12px}h1{font-family:Georgia,serif;color:#6E2A34;font-weight:500;margin:0 0 12px}a{color:#A8522B}</style></head>
-<body><main><h1>Phòng này cần chìa khoá</h1><p>Bạn mở <strong>${esc(ten)}</strong> bằng đường dẫn trong email May gửi sau khi thanh toán nhé. Mỗi người có một đường dẫn riêng.</p><p>Không tìm thấy email? Xem thử mục Quảng cáo, Spam, hoặc trả lời bất kỳ email nào của May để May gửi lại.</p><p><a href="/">← Về nhà May</a></p></main></body></html>`;
+<body><main><h1>Phòng này cần chìa khoá</h1>${loiRieng ? `<p>${esc(loiRieng)}</p>` : `<p>Bạn mở <strong>${esc(ten)}</strong> bằng đường dẫn trong email May gửi sau khi thanh toán nhé. Mỗi người có một đường dẫn riêng.</p><p>Không tìm thấy email? Xem thử mục Quảng cáo, Spam, hoặc trả lời bất kỳ email nào của May để May gửi lại.</p>`}<p><a href="/">← Về nhà May</a></p></main></body></html>`;
 }
 
 // ---------- trang quản lý ----------
@@ -267,21 +279,38 @@ async function quanLy(request, env, url) {
     if (!daVao) return html(trangDangNhap(), 403);
     if (body.hanhDong === "dang-xuat") return new Response(null, { status: 303, headers: { location: "/quan-ly/", "set-cookie": "qly=; Path=/; Max-Age=0; Secure; HttpOnly; SameSite=Lax" } });
     const don = await env.DB.get(`don:${String(body.ma || "")}`, "json");
-    if (don) await xacNhanDon(env, don, "May xác nhận tay");
+    if (don) {
+      const khoa = `thu-hoi:${don.phong}:${don.email}`;
+      if (body.hanhDong === "thu-hoi") await env.DB.put(khoa, String(Date.now()));
+      else if (body.hanhDong === "mo-lai") await env.DB.delete(khoa);
+      else if (body.hanhDong === "gui-lai" && don.trangThai === "da-nhan") await guiChiaKhoa(env, don);
+      else if (body.hanhDong === "xac-nhan") await xacNhanDon(env, don, "May xác nhận tay");
+    }
     return Response.redirect(`${url.origin}/quan-ly/`, 303);
   }
   if (!daVao) return html(trangDangNhap());
   const list = await env.DB.list({ prefix: "don:" });
   const dons = (await Promise.all(list.keys.map((x) => env.DB.get(x.name, "json")))).filter(Boolean).sort((a, b) => b.luc - a.luc);
   const dk = await env.DB.list({ prefix: "dk:" });
+  const daThuHoi = new Set((await env.DB.list({ prefix: "thu-hoi:" })).keys.map((x) => x.name));
+  const nutForm = (ma, hd, chu, hoi, mau) =>
+    `<form method="post" style="display:inline" onsubmit="return confirm('${hoi}')"><input type="hidden" name="ma" value="${ma}"><input type="hidden" name="hanhDong" value="${hd}"><button${mau ? ` style="background:${mau}"` : ""}>${chu}</button></form> `;
   const rows = dons
-    .map(
-      (d) => `<tr><td>${new Date(d.luc).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" })}</td><td><b>${d.ma}</b></td><td>${esc(d.ten)}<br><small>${tien(d.gia)}</small></td><td>${esc(d.email)}</td><td>${
-        d.trangThai === "da-nhan"
-          ? `✅ đã nhận<br><small>${esc(d.nguon || "")}</small>`
-          : `chờ tiền${d.ghiChu ? `<br><small>${esc(d.ghiChu)}</small>` : ""}<form method="post" onsubmit="return confirm('Đã thấy ${tien(d.gia)} với nội dung ${d.ma} trong tài khoản? Web sẽ gửi chìa khoá cho ${esc(d.email)}.')"><input type="hidden" name="ma" value="${d.ma}"><button>Đã nhận tiền</button></form>`
-      }</td></tr>`
-    )
+    .map((d) => {
+      let tt;
+      if (d.trangThai === "da-nhan") {
+        const bi = daThuHoi.has(`thu-hoi:${d.phong}:${d.email}`);
+        tt = (bi ? `⛔ đã thu hồi chìa khoá<br>` : `✅ đã nhận<br><small>${esc(d.nguon || "")}</small><br>`) +
+          (bi
+            ? nutForm(d.ma, "mo-lai", "Mở lại", `Mở lại chìa khoá cho ${esc(d.email)}?`)
+            : nutForm(d.ma, "gui-lai", "Gửi lại chìa khoá", `Gửi lại email chìa khoá cho ${esc(d.email)}?`, "#A8522B") +
+              nutForm(d.ma, "thu-hoi", "Thu hồi", `Thu hồi chìa khoá của ${esc(d.email)}? Người này sẽ không vào phòng được nữa.`, "#7A6C64"));
+      } else {
+        tt = `chờ tiền${d.ghiChu ? `<br><small>${esc(d.ghiChu)}</small>` : ""}<br>` +
+          nutForm(d.ma, "xac-nhan", "Đã nhận tiền", `Đã thấy ${tien(d.gia)} với nội dung ${d.ma} trong tài khoản? Web sẽ gửi chìa khoá cho ${esc(d.email)}.`);
+      }
+      return `<tr><td>${new Date(d.luc).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" })}</td><td><b>${d.ma}</b></td><td>${esc(d.ten)}<br><small>${tien(d.gia)}</small></td><td>${esc(d.email)}</td><td>${tt}</td></tr>`;
+    })
     .join("");
   const thieu = ["TOKEN_SECRET", "RESEND_API_KEY", "SEPAY_API_KEY"].filter((x) => !env[x]);
   const than = `<h1>Đơn hàng</h1>
