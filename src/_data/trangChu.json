@@ -38,7 +38,7 @@
     },
     {
       "chuyenMuc": "me-cung-dang-hoc",
-      "viec": "Ôm con, lâu hơn một chút..",
+      "viec": "Ôm con lâu hơn một chút.",
       "ghiChu": "Những điều May đang học: yêu con, hiểu mình, học cách ở bên con."
     },
     {
@@ -49,7 +49,7 @@
     {
       "chuyenMuc": "o-xuong-may",
       "viec": "Ghé xem May đang may gì.",
-      "ghiChu": "Khoảng Dừng Cảm Xúc, Soi Chiếu, Anne & Ren, có món đã xong, có món còn dang dở.."
+      "ghiChu": "Khoảng Dừng Cảm Xúc, Soi Chiếu, Anne & Ren, có món đã xong, có món còn dang dở."
     }
   ],
   "viecTheoDoi": {
@@ -58,7 +58,7 @@
   },
   "baiTap": {
     "tenSach": "Khi Sợ Hãi Điều Khiển Tình Yêu",
-    "deBai": "*Khi Sợ Hãi Điều Khiển Tình Yêu*. Dành cho người cứ yêu là cố thêm một chút, nhường thêm một chút, rồi tự hỏi: mình cố đến thế, sao thế chưa đủ?"
+    "deBai": "*Khi Sợ Hãi Điều Khiển Tình Yêu*. Dành cho người cứ yêu là cố thêm một chút, nhường thêm một chút, rồi tự hỏi: mình cố đến thế, sao vẫn chưa đủ?"
   },
   "thoiKhoaBieu": [
     {
@@ -89,11 +89,11 @@
     "vietViecKhac": "viết việc khác",
     "baiMoiNhat": "Bài mới nhất",
     "baiTap": "Nếu bạn thích làm bài tập",
-    "nhanCuonNho": "Cuốn nhỏ · miễn phí",
+    "nhanCuonNho": "Quà tặng · miễn phí",
     "deBai": "Đề bài:",
     "oEmail": "Email để nhận đề",
     "nutGui": "Gửi mình",
-    "thoiKhoaBieu": "Thời khoá biểu",
+    "thoiKhoaBieu": "Thời khóa biểu",
     "cotMon": "Môn",
     "cotNoi": "Lớp ở đâu",
     "cotHoc": "Học gì",

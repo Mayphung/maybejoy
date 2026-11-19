@@ -1,4 +1,4 @@
-{#- Form nhận email, gửi về /api/dang-ky. kind: "chung" (bài mới, sách mới…) hoặc "qua" (cuốn nhỏ miễn phí) -#}
+{#- Form nhận email, gửi về /api/dang-ky. kind: "chung" (bài mới, sách mới…) hoặc "qua" (sổ tay tặng miễn phí) -#}
 {% macro mform(id, label, button, kind="chung", style="", inputStyle="") %}
 <form class="mform" method="post" action="/api/dang-ky" data-kit="{{ site.kitFormId }}" style="{{ style }}">
   <label for="{{ id }}">{{ label }}

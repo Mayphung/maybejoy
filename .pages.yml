@@ -100,7 +100,7 @@ content:
     format: json
     fields:
       - name: nhan
-        label: Nhãn vở (mỗi dòng một mục, thêm bớt tuỳ ý)
+        label: Nhãn vở (mỗi dòng một mục, thêm bớt tùy ý)
         type: object
         list: true
         fields:
@@ -146,7 +146,7 @@ content:
           - { name: tenSach, label: Tên cuốn nhỏ, type: string }
           - { name: deBai, label: "Đề bài (*chữ nghiêng* đặt giữa hai dấu sao)", type: text }
       - name: thoiKhoaBieu
-        label: Thời khoá biểu (mỗi dòng chỉ hiện khi đã có link mạng xã hội đó)
+        label: Thời khóa biểu (mỗi dòng chỉ hiện khi đã có link mạng xã hội đó)
         type: object
         list: true
         fields:
@@ -175,7 +175,7 @@ content:
           - { name: deBai, label: "Chữ 'Đề bài'", type: string }
           - { name: oEmail, label: "Nhãn ô email", type: string }
           - { name: nutGui, label: "Nút gửi", type: string }
-          - { name: thoiKhoaBieu, label: "Tiêu đề thời khoá biểu", type: string }
+          - { name: thoiKhoaBieu, label: "Tiêu đề thời khóa biểu", type: string }
           - { name: cotMon, label: "Cột 1", type: string }
           - { name: cotNoi, label: "Cột 2", type: string }
           - { name: cotHoc, label: "Cột 3", type: string }
@@ -336,7 +336,7 @@ content:
         list: true
         fields: &mon
           - { name: trangThai, label: "Trạng thái (dòng viết tay trên thẻ)", type: string }
-          - { name: loai, label: "Loại (vd: Khoá học video · 14 tập)", type: string }
+          - { name: loai, label: "Loại (vd: Khóa học video · 14 tập)", type: string }
           - { name: ten, label: Tên món, type: string }
           - { name: moTa, label: Mô tả, type: text }
           - { name: gia, label: "Giá hiển thị (giá thu tiền thật nằm ở 💳 Bán hàng)", type: string }
@@ -507,10 +507,10 @@ content:
         label: "Email tự động ({phong} = tên phòng, {mon} = tên món, {gia} = giá, {ma} = mã đơn, {ten} = tên cuốn quà; xuống dòng = đoạn mới)"
         type: object
         fields:
-          - { name: chiaKhoaTieuDe, label: "Email chìa khoá: tiêu đề", type: string }
-          - { name: chiaKhoaMoDau, label: "Email chìa khoá: đoạn đầu", type: text }
-          - { name: chiaKhoaNut, label: "Email chìa khoá: chữ trên nút", type: string }
-          - { name: chiaKhoaKet, label: "Email chìa khoá: đoạn cuối", type: text }
+          - { name: chiaKhoaTieuDe, label: "Email chìa khóa: tiêu đề", type: string }
+          - { name: chiaKhoaMoDau, label: "Email chìa khóa: đoạn đầu", type: text }
+          - { name: chiaKhoaNut, label: "Email chìa khóa: chữ trên nút", type: string }
+          - { name: chiaKhoaKet, label: "Email chìa khóa: đoạn cuối", type: text }
           - { name: quaTieuDe, label: "Email quà tặng: tiêu đề", type: string }
           - { name: quaMoDau, label: "Email quà tặng: đoạn đầu", type: text }
           - { name: quaNut, label: "Email quà tặng: chữ trên nút", type: string }
@@ -563,12 +563,12 @@ content:
           - { name: soiChieuLoi, label: "Soi Chiếu: ghi chú khi nút lỗi", type: text }
 
   - name: khoang-dung
-    label: "🎓 Trang bán khoá Khoảng Dừng Cảm Xúc"
+    label: "🎓 Trang bán khóa Khoảng Dừng Cảm Xúc"
     type: file
     path: src/_data/khoangDung.json
     format: json
     fields:
-      - { name: ten, label: Tên khoá học, type: string }
+      - { name: ten, label: Tên khóa học, type: string }
       - { name: moTaNgan, label: Câu giới thiệu dưới tên, type: text }
       - { name: giaSau, label: "Giá sau giai đoạn khởi điểm (số, gạch ngang). Giá đang bán sửa ở 💳 Bán hàng", type: number }
       - { name: dongMeta, label: Mấy nhãn nhỏ dưới câu giới thiệu, type: string, list: true }
@@ -578,7 +578,7 @@ content:
       - { name: ghiChuMua, label: Dòng nhỏ dưới nút mua, type: text }
       - { name: moDau, label: "Câu mở đầu lớn (*chữ nghiêng*)", type: text }
       - { name: moDauThem, label: Đoạn sau câu mở đầu, type: text }
-      - { name: gioiThieu, label: "Đoạn giới thiệu khoá (**chữ đậm**)", type: text }
+      - { name: gioiThieu, label: "Đoạn giới thiệu khóa (**chữ đậm**)", type: text }
       - name: ngheQuen
         label: "Nghe quen không? (từng dòng)"
         type: object
@@ -646,7 +646,7 @@ content:
       - { name: veMayThucHanh, label: Đoạn về những thực hành của May, type: text }
       - { name: hop, label: Có thể hợp nếu, type: string, list: true }
       - { name: khongHop, label: Có thể chưa hợp nếu, type: text }
-      - { name: luuY, label: Lưu ý sức khoẻ tinh thần, type: text }
+      - { name: luuY, label: Lưu ý sức khỏe tinh thần, type: text }
       - { name: nhanDuoc, label: Bạn nhận được, type: string, list: true }
       - { name: hoanTien, label: Cam kết hoàn tiền, type: text }
       - name: hoiDap
@@ -658,12 +658,12 @@ content:
           - { name: dap, label: Trả lời, type: text }
       - { name: ket, label: Các đoạn kết, type: text, list: true }
       - name: chu
-        label: "Các chữ nhỏ khác trên trang ({ten} = tên khoá, {gia} = giá)"
+        label: "Các chữ nhỏ khác trên trang ({ten} = tên khóa, {gia} = giá)"
         type: object
         fields:
           - { name: nutMua, label: "Nút mua", type: string }
           - { name: nutChuaMo, label: "Nút khi chưa mở bán", type: string }
-          - { name: dongNho, label: "Dòng nhỏ trên tên khoá", type: string }
+          - { name: dongNho, label: "Dòng nhỏ trên tên khóa", type: string }
           - { name: sauDo, label: "Chữ 'sau đó' cạnh giá gạch", type: string }
           - { name: giaKhoiDiem, label: "Ghi tay cạnh giá", type: string }
           - { name: ngheQuenTieuDe, label: "Tiêu đề Nghe quen không", type: string }

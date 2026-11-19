@@ -27,7 +27,7 @@
           if (!r.ok) throw new Error(r.loi || 'loi');
           f.hidden = true;
           if (msg) msg.textContent = data.loai === 'qua'
-            ? (r.daGuiQua ? 'May gửi rồi đó! Bạn mở hộp thư nhé, xem cả mục Quảng cáo.' : 'May nhận được rồi! Cuốn nhỏ sẽ tới hộp thư của bạn sớm thôi.')
+            ? (r.daGuiQua ? 'May gửi rồi đó! Bạn mở hộp thư nhé (xem cả mục Quảng cáo).' : 'May nhận được rồi! Sổ tay sẽ tới hộp thư của bạn sớm thôi.')
             : 'May nhận được rồi! Có gì mới May nhắn bạn.';
         })
         .catch(function (err) {

@@ -1,6 +1,6 @@
 {
   "emotionCourse": {
-    "loiChao": "Chào bạn, mừng bạn vào phòng. Mỗi tập là một bước nhỏ. Bạn cứ xem theo thứ tự, mỗi ngày một tập là vừa, xem xong thì mở sổ tay làm phần thực hành của tập đó.",
+    "loiChao": "Chào bạn, mừng bạn vào lớp. Mỗi tập là một bước nhỏ. Bạn cứ xem theo thứ tự, mỗi ngày một tập là vừa. Xem xong tập nào thì mở workbook làm phần thực hành của tập đó.",
     "soTay": {
       "ten": "Workbook thực hành",
       "driveId": "1q7jrjUqChQabtNVC4pqBMB3AQ3yWpb4D"
@@ -84,7 +84,7 @@
     ]
   },
   "soiChieu": {
-    "loiChao": "Chào bạn, Soi Chiếu đây rồi. Năm tuần, năm căn phòng. Bạn tải sổ về, mở bằng máy tính hoặc iPad để gõ thẳng vào sổ, hoặc in ra viết tay đều được.",
+    "loiChao": "Chào bạn, mừng bạn đến với Soi Chiếu: năm tuần, năm căn phòng. Bạn tải sổ về, mở bằng máy tính hoặc iPad để gõ thẳng vào sổ, hoặc in ra viết tay đều được.",
     "driveId": "1z5JHguJZm_vT7FBiPha5NQ0zXm8aitqu"
   },
   "chu": {
@@ -92,10 +92,10 @@
     "tieuDe": "Khoảng Dừng Cảm Xúc",
     "moSoTay": "Mở workbook thực hành (PDF)",
     "daXem": "Mình xem xong tập này rồi",
-    "videoLoi": "Video không chạy? Bạn thử tải lại trang, hoặc mở bằng Chrome/Safari bản mới. Vẫn không được thì trả lời email của May, May xem giúp.",
+    "videoLoi": "Video không chạy? Bạn thử tải lại trang, hoặc mở bằng Chrome/Safari bản mới. Vẫn không được thì trả lời email của May, May xem giúp bạn.",
     "soiChieuDongNho": "Ở xưởng May · Soi Chiếu",
     "soiChieuTieuDe": "Soi Chiếu",
     "soiChieuNut": "Tải sổ Soi Chiếu (PDF)",
-    "soiChieuLoi": "Nút tải không chạy? Mở sổ trên Google Drive rồi bấm biểu tượng tải về."
+    "soiChieuLoi": "Nút tải không chạy? Bạn mở sổ trên Google Drive rồi bấm biểu tượng tải về nhé."
   }
 }

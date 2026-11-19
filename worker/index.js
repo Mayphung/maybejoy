@@ -4,7 +4,7 @@
 //   POST /api/don            tạo đơn, trả mã QR chuyển khoản
 //   GET  /api/don/:ma        trang thanh toán hỏi xem đơn đã nhận tiền chưa
 //   POST /api/sepay          SePay báo có tiền vào
-//   GET  /hoc/*              phòng học: chỉ mở khi có chìa khoá hợp lệ
+//   GET  /hoc/*              phòng học: chỉ mở khi có chìa khóa hợp lệ
 //   POST /api/kiem-tra       bài kiểm tra: đếm người bắt đầu / làm xong, lưu câu trả lời ẩn danh
 //   POST /api/kiem-tra/lien-he  người làm để lại email/Zalo: lưu lại, gửi phần phân tích
 //   GET  /quan-ly/           trang quản lý đơn cho May (cần mật khẩu riêng)
@@ -111,8 +111,8 @@ function guiQua(env, email) {
   const v = { ten: banHang.quaTang.ten };
   return guiEmail(env, {
     to: email,
-    subject: dien(E.quaTieuDe || "Cuốn nhỏ của bạn: {ten}", v),
-    html: khungEmail(doan(dien(E.quaMoDau, v)) + nut(banHang.quaTang.link, dien(E.quaNut || "Mở cuốn sách", v)) + doan(dien(E.quaKet, v))),
+    subject: dien(E.quaTieuDe || "May gửi bạn sổ tay {ten}", v),
+    html: khungEmail(doan(dien(E.quaMoDau, v)) + nut(banHang.quaTang.link, dien(E.quaNut || "Mở sổ tay", v)) + doan(dien(E.quaKet, v))),
   });
 }
 
@@ -158,7 +158,7 @@ async function guiChiaKhoa(env, don) {
   const v = { phong: banHang.phong[don.phong].ten, mon: don.ten, gia: tien(don.gia), ma: don.ma };
   return guiEmail(env, {
     to: don.email,
-    subject: dien(E.chiaKhoaTieuDe || "Chìa khoá vào {phong} của bạn", v),
+    subject: dien(E.chiaKhoaTieuDe || "Chìa khóa vào {phong} của bạn", v),
     html: khungEmail(doan(dien(E.chiaKhoaMoDau, v)) + nut(link, dien(E.chiaKhoaNut || "Vào {phong}", v)) + doan(dien(E.chiaKhoaKet, v))),
   });
 }
@@ -177,7 +177,7 @@ async function xacNhanDon(env, don, nguon) {
     await guiEmail(env, {
       to: env.EMAIL_MAY,
       subject: `🎉 Đơn mới: ${don.ten} · ${tien(don.gia)}`,
-      html: khungEmail(`<p>Có đơn mới vừa thanh toán xong.</p><p><strong>${esc(don.ten)}</strong> · ${tien(don.gia)}<br>Người mua: ${esc(don.email)}<br>Mã đơn: ${don.ma}<br>Xác nhận bởi: ${nguon}</p><p>Web đã tự gửi chìa khoá cho người mua.</p>`),
+      html: khungEmail(`<p>Có đơn mới vừa thanh toán xong.</p><p><strong>${esc(don.ten)}</strong> · ${tien(don.gia)}<br>Người mua: ${esc(don.email)}<br>Mã đơn: ${don.ma}<br>Xác nhận bởi: ${nguon}</p><p>Web đã tự gửi chìa khóa cho người mua.</p>`),
     });
   }
   return true;
@@ -269,7 +269,7 @@ async function guiPhanTich(env, bai, r, email, r2) {
   const html = khungEmail(
     doan(dien(bai.email?.moDau || "Kết quả của bạn: {ten}.", v)) +
       phanTichHtml(r.phanTich) +
-      (r2 ? `<h2 style="font-family:Georgia,serif;color:#6E2A34;font-size:22px;margin:34px 0 4px;border-top:1px dotted #6E2A34;padding-top:20px">Bạn cũng ngang điểm với: ${esc(r2.ten)}</h2>` + phanTichHtml(r2.phanTich) : "") +
+      (r2 ? `<h2 style="font-family:Georgia,serif;color:#6E2A34;font-size:22px;margin:34px 0 4px;border-top:1px dotted #6E2A34;padding-top:20px">Bạn cũng bằng điểm với: ${esc(r2.ten)}</h2>` + phanTichHtml(r2.phanTich) : "") +
       (T.link && T.nut ? `<p style="margin:26px 0 0">${esc(String(T.chu || "").replace(/\*/g, ""))}</p>` + nut(link(T.link), T.nut) : "") +
       `<p style="margin:18px 0 0;font-size:14px"><a href="${SITE}/kiem-tra/" style="color:#A8522B">Làm thêm bài kiểm tra khác của May</a></p>`
   );
@@ -305,7 +305,7 @@ async function kiemTraLienHe(request, env, ctx) {
     ctx.waitUntil(guiEmail(env, {
       to: env.EMAIL_MAY,
       subject: `Zalo mới từ bài kiểm tra: ${bai.ten}`,
-      html: khungEmail(`<p>Có người làm bài <strong>${esc(bai.ten)}</strong> và để lại Zalo, đợi May nhắn phần phân tích.</p><p>Zalo: <strong>${esc(zalo)}</strong><br>Kết quả: ${esc(r.ten)}${phu ? ` (gần thứ hai: ${esc(kqKt(bai, phu).ten)})` : ""}</p><p>Phần phân tích để gửi nằm trong 📝 Bài kiểm tra trên Pages CMS, hoặc xem trên trang <a href="${SITE}/quan-ly/">quản lý</a>.</p>`),
+      html: khungEmail(`<p>Có người làm bài <strong>${esc(bai.ten)}</strong> và để lại Zalo, đợi May nhắn phần phân tích.</p><p>Zalo: <strong>${esc(zalo)}</strong><br>Kết quả: ${esc(r.ten)}${phu ? ` (cũng khá giống: ${esc(kqKt(bai, phu).ten)})` : ""}</p><p>Phần phân tích để gửi nằm trong 📝 Bài kiểm tra trên Pages CMS, hoặc xem trên trang <a href="${SITE}/quan-ly/">quản lý</a>.</p>`),
     }));
   }
   return json({ ok: true, daGui });
@@ -354,7 +354,7 @@ async function phongHoc(request, env, url) {
   const laMay = !!xemTruoc;
   const hopLe = !laMay && env.TOKEN_SECRET && email && k && (await kyTen(env, ten, email)) === k;
   if (hopLe && (await env.DB.get(`thu-hoi:${ten}:${email.toLowerCase()}`))) {
-    return new Response(trangKhoa(p.ten, "Chìa khoá này đã ngừng dùng. Nếu bạn nghĩ có nhầm lẫn, trả lời email của May để May xem giúp nhé."), { status: 403, headers: { "content-type": "text/html; charset=utf-8", "x-robots-tag": "noindex", "set-cookie": `${cookieName}=; Path=/hoc/${ten}/; Max-Age=0; Secure; HttpOnly; SameSite=Lax` } });
+    return new Response(trangKhoa(p.ten, "Chìa khóa này đã ngừng dùng. Nếu bạn nghĩ có nhầm lẫn, trả lời email của May để May xem giúp nhé."), { status: 403, headers: { "content-type": "text/html; charset=utf-8", "x-robots-tag": "noindex", "set-cookie": `${cookieName}=; Path=/hoc/${ten}/; Max-Age=0; Secure; HttpOnly; SameSite=Lax` } });
   }
   if (laMay || hopLe) {
     const res0 = await env.ASSETS.fetch(new Request(new URL(url.pathname, url.origin), request));
@@ -376,7 +376,7 @@ async function phongHoc(request, env, url) {
 function trangKhoa(ten, loiRieng) {
   return `<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>${esc(ten)} — May Phung</title>
 <style>body{margin:0;background:#F4EBE0;color:#362A24;font:17px/1.7 system-ui,sans-serif;display:grid;place-items:center;min-height:100vh;padding:20px}main{max-width:460px;background:#FFFDF8;padding:34px 30px;border-radius:12px}h1{font-family:Georgia,serif;color:#6E2A34;font-weight:500;margin:0 0 12px}a{color:#A8522B}</style></head>
-<body><main><h1>Phòng này cần chìa khoá</h1>${loiRieng ? `<p>${esc(loiRieng)}</p>` : `<p>Bạn mở <strong>${esc(ten)}</strong> bằng đường dẫn trong email May gửi sau khi thanh toán nhé. Mỗi người có một đường dẫn riêng.</p><p>Không tìm thấy email? Xem thử mục Quảng cáo, Spam, hoặc trả lời bất kỳ email nào của May để May gửi lại.</p>`}<p><a href="/">← Về nhà May</a></p></main></body></html>`;
+<body><main><h1>Phòng này cần chìa khóa</h1>${loiRieng ? `<p>${esc(loiRieng)}</p>` : `<p>Bạn mở <strong>${esc(ten)}</strong> bằng đường dẫn trong email May gửi sau khi thanh toán nhé. Mỗi người có một đường dẫn riêng.</p><p>Không tìm thấy email? Xem thử mục Quảng cáo, Spam, hoặc trả lời bất kỳ email nào của May để May gửi lại.</p>`}<p><a href="/">← Về nhà May</a></p></main></body></html>`;
 }
 
 // ---------- trang quản lý ----------
@@ -441,14 +441,14 @@ async function quanLy(request, env, url) {
       let tt;
       if (d.trangThai === "da-nhan") {
         const bi = daThuHoi.has(`thu-hoi:${d.phong}:${d.email}`);
-        tt = (bi ? `⛔ đã thu hồi chìa khoá<br>` : `✅ đã nhận<br><small>${esc(d.nguon || "")}</small><br>`) +
+        tt = (bi ? `⛔ đã thu hồi chìa khóa<br>` : `✅ đã nhận<br><small>${esc(d.nguon || "")}</small><br>`) +
           (bi
-            ? nutForm(d.ma, "mo-lai", "Mở lại", `Mở lại chìa khoá cho ${esc(d.email)}?`)
-            : nutForm(d.ma, "gui-lai", "Gửi lại chìa khoá", `Gửi lại email chìa khoá cho ${esc(d.email)}?`, "#A8522B") +
-              nutForm(d.ma, "thu-hoi", "Thu hồi", `Thu hồi chìa khoá của ${esc(d.email)}? Người này sẽ không vào phòng được nữa.`, "#7A6C64"));
+            ? nutForm(d.ma, "mo-lai", "Mở lại", `Mở lại chìa khóa cho ${esc(d.email)}?`)
+            : nutForm(d.ma, "gui-lai", "Gửi lại chìa khóa", `Gửi lại email chìa khóa cho ${esc(d.email)}?`, "#A8522B") +
+              nutForm(d.ma, "thu-hoi", "Thu hồi", `Thu hồi chìa khóa của ${esc(d.email)}? Người này sẽ không vào phòng được nữa.`, "#7A6C64"));
       } else {
         tt = `chờ tiền${d.ghiChu ? `<br><small>${esc(d.ghiChu)}</small>` : ""}<br>` +
-          nutForm(d.ma, "xac-nhan", "Đã nhận tiền", `Đã thấy ${tien(d.gia)} với nội dung ${d.ma} trong tài khoản? Web sẽ gửi chìa khoá cho ${esc(d.email)}.`);
+          nutForm(d.ma, "xac-nhan", "Đã nhận tiền", `Đã thấy ${tien(d.gia)} với nội dung ${d.ma} trong tài khoản? Web sẽ gửi chìa khóa cho ${esc(d.email)}.`);
       }
       return `<tr><td>${new Date(d.luc).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" })}</td><td><b>${d.ma}</b></td><td>${esc(d.ten)}<br><small>${tien(d.gia)}</small></td><td>${esc(d.email)}</td><td>${tt}</td></tr>`;
     })
@@ -457,7 +457,7 @@ async function quanLy(request, env, url) {
   const dsEmail = (await Promise.all(dk.keys.slice(0, 50).map((x) => env.DB.get(x.name, "json")))).filter(Boolean).sort((a, b) => b.luc - a.luc);
   const than = `<h1>Đơn hàng</h1>
 <p class="links"><a href="/hoc/emotion-course/">Xem phòng Emotion Course</a><a href="/hoc/soi-chieu/">Xem phòng Soi Chiếu</a></p>
-${thieu.length ? `<p style="color:#A8522B">Máy chủ còn thiếu: ${thieu.join(", ")}</p>` : `<p>✅ Đủ khoá: thanh toán, gửi email, phòng học.</p>`}
+${thieu.length ? `<p style="color:#A8522B">Máy chủ còn thiếu: ${thieu.join(", ")}</p>` : `<p>✅ Đủ khóa: thanh toán, gửi email, phòng học.</p>`}
 <p>${dons.filter((d) => d.trangThai === "da-nhan").length} đơn đã thanh toán · ${dk.keys.length} email đăng ký
 </p>
 <table><tr><th>Lúc</th><th>Mã</th><th>Món</th><th>Email</th><th>Trạng thái</th></tr>${rows || '<tr><td colspan="5">Chưa có đơn nào.</td></tr>'}</table>
@@ -466,9 +466,9 @@ ${thieu.length ? `<p style="color:#A8522B">Máy chủ còn thiếu: ${thieu.join
 ${await (async () => {
   if (!banHang.quaTang.link || !env.RESEND_API_KEY) return "";
   const n = (await chuaNhanQua(env)).length;
-  return n ? `<form method="post" onsubmit="return confirm('Gửi cuốn ${esc(banHang.quaTang.ten)} cho ${n} người đã đăng ký nhận quà nhưng chưa nhận được?')"><input type="hidden" name="hanhDong" value="gui-qua-con-thieu"><p>${n} người đăng ký nhận cuốn quà từ trước khi có file, chưa nhận được thư. <button>Gửi cuốn quà cho ${n} người này</button></p></form>` : "<p>✅ Ai đăng ký nhận quà cũng đã được gửi.</p>";
+  return n ? `<form method="post" onsubmit="return confirm('Gửi sổ tay ${esc(banHang.quaTang.ten)} cho ${n} người đã đăng ký nhận quà nhưng chưa nhận được?')"><input type="hidden" name="hanhDong" value="gui-qua-con-thieu"><p>${n} người đăng ký nhận sổ tay từ trước khi có file, chưa nhận được thư. <button>Gửi sổ tay cho ${n} người này</button></p></form>` : "<p>✅ Ai đăng ký nhận quà cũng đã được gửi.</p>";
 })()}
-<table><tr><th>Lúc</th><th>Email</th><th>Ô nào</th></tr>${dsEmail.map((e) => `<tr><td>${new Date(e.luc).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" })}</td><td>${esc(e.email)}</td><td>${e.loai.map((l) => (l === "qua" ? "cuốn quà tặng" : l === "kiem-tra" ? "bài kiểm tra" : "nhận bài mới")).join(", ")}</td></tr>`).join("") || '<tr><td colspan="3">Chưa có ai.</td></tr>'}</table>
+<table><tr><th>Lúc</th><th>Email</th><th>Ô nào</th></tr>${dsEmail.map((e) => `<tr><td>${new Date(e.luc).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" })}</td><td>${esc(e.email)}</td><td>${e.loai.map((l) => (l === "qua" ? "sổ tay quà tặng" : l === "kiem-tra" ? "bài kiểm tra" : "nhận bài mới")).join(", ")}</td></tr>`).join("") || '<tr><td colspan="3">Chưa có ai.</td></tr>'}</table>
 ${await phanKiemTra(env)}
 <form method="post" style="margin-top:28px"><input type="hidden" name="hanhDong" value="dang-xuat"><button style="background:#7A6C64">Đăng xuất</button></form>`;
   return html(khungTrang("Quản lý đơn", than), 200, k ? { "set-cookie": await datPhien() } : {});
@@ -485,7 +485,7 @@ async function phanKiemTra(env) {
     const kq = (b.ketQua || []).map((r) => `${esc(r.ten)}: <b>${dem[`${b.ma}:${r.ma}`] || 0}</b>`).join("<br>");
     return `<tr><td><b>${esc(b.ten)}</b>${b.hien === false ? "<br><small>đang ẩn</small>" : ""}<br><a href="/kiem-tra/${b.ma}/">mở bài</a></td><td>${bd}</td><td>${xong}${pt(xong, bd)}</td><td>${lien}${pt(lien, xong)}</td><td>${kq}</td></tr>`;
   }).join("");
-  const dong = lh.slice(0, 100).map((x) => `<tr><td>${new Date(x.luc).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" })}</td><td>${esc(tenBai(x.bai))}</td><td>${esc(tenKq(x.bai, x.kq))}${x.phu ? `<br><small>gần thứ hai: ${esc(tenKq(x.bai, x.phu))}</small>` : ""}</td><td>${esc(x.email)}${x.zalo ? `${x.email ? "<br>" : ""}Zalo: ${esc(x.zalo)}` : ""}</td></tr>`).join("");
+  const dong = lh.slice(0, 100).map((x) => `<tr><td>${new Date(x.luc).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" })}</td><td>${esc(tenBai(x.bai))}</td><td>${esc(tenKq(x.bai, x.kq))}${x.phu ? `<br><small>cũng khá giống: ${esc(tenKq(x.bai, x.phu))}</small>` : ""}</td><td>${esc(x.email)}${x.zalo ? `${x.email ? "<br>" : ""}Zalo: ${esc(x.zalo)}` : ""}</td></tr>`).join("");
   return `${h2("Bài kiểm tra")}
 <p>Bắt đầu → làm xong → để lại email/Zalo. Câu trả lời được lưu ẩn danh.</p>
 <table><tr><th>Bài</th><th>Bắt đầu</th><th>Làm xong</th><th>Để lại liên hệ</th><th>Kết quả</th></tr>${hang}</table>
