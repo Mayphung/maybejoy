@@ -415,3 +415,95 @@ content:
         fields:
           - { name: loiChao, label: Lời chào, type: text }
           - { name: driveId, label: "Mã file PDF trên Google Drive", type: string }
+
+  - name: khoang-dung
+    label: "🎓 Trang bán khoá Khoảng Dừng Cảm Xúc"
+    type: file
+    path: src/_data/khoangDung.json
+    format: json
+    fields:
+      - { name: ten, label: Tên khoá học, type: string }
+      - { name: moTaNgan, label: Câu giới thiệu dưới tên, type: text }
+      - { name: giaSau, label: "Giá sau giai đoạn khởi điểm (số, gạch ngang). Giá đang bán sửa ở 💳 Bán hàng", type: number }
+      - { name: dongMeta, label: Mấy nhãn nhỏ dưới câu giới thiệu, type: string, list: true }
+      - { name: anhDau, label: Ảnh đầu trang, type: image }
+      - { name: anhDauMoTa, label: Tả ảnh đầu trang, type: string }
+      - { name: anhDauGhiTay, label: Dòng viết tay dưới ảnh, type: string }
+      - { name: ghiChuMua, label: Dòng nhỏ dưới nút mua, type: text }
+      - { name: moDau, label: "Câu mở đầu lớn (*chữ nghiêng*)", type: text }
+      - { name: moDauThem, label: Đoạn sau câu mở đầu, type: text }
+      - { name: gioiThieu, label: "Đoạn giới thiệu khoá (**chữ đậm**)", type: text }
+      - name: ngheQuen
+        label: "Nghe quen không? (từng dòng)"
+        type: object
+        list: true
+        fields:
+          - { name: nhan, label: "Nhãn nhỏ (vd: 1:04 sáng)", type: string }
+          - { name: chu, label: Nội dung, type: text }
+      - { name: khongPhaiLoiBan, label: Câu lớn trong khung đỏ, type: text }
+      - { name: khongPhaiLoiBanThem, label: Các đoạn trong khung đỏ, type: text, list: true }
+      - { name: mangTheo, label: Đoạn mở "Sau 14 bài mang theo gì", type: text }
+      - name: mangTheoDs
+        label: Những thứ mang theo
+        type: object
+        list: true
+        fields:
+          - { name: ten, label: Tên, type: string }
+          - { name: moTa, label: Mô tả, type: text }
+      - name: nhip
+        label: Nhịp 5 bước
+        type: object
+        list: true
+        fields:
+          - { name: ten, label: Bước, type: string }
+          - { name: moTa, label: Mô tả, type: text }
+      - { name: nhipGhiChu, label: Dòng dưới nhịp 5 bước, type: text }
+      - name: chang
+        label: Các chặng và bài học
+        type: object
+        list: true
+        fields:
+          - { name: so, label: "Số chặng (I, II…; để trống cho bài mở đầu)", type: string }
+          - { name: ten, label: Tên chặng, type: string }
+          - { name: ghiChu, label: Dòng viết tay (nếu có), type: text }
+          - name: bai
+            label: Bài
+            type: object
+            list: true
+            fields:
+              - { name: so, label: "Số (EP01…)", type: string }
+              - { name: ten, label: Tên bài, type: string }
+              - { name: moTa, label: Mô tả, type: text }
+      - { name: workbook, label: Đoạn giới thiệu workbook, type: text }
+      - { name: workbookDs, label: Trong workbook có, type: string, list: true }
+      - { name: workbookGhiTay, label: Dòng viết tay phần workbook, type: string }
+      - { name: anhWorkbook, label: Ảnh phần workbook, type: image }
+      - { name: anhWorkbookMoTa, label: Tả ảnh workbook, type: string }
+      - { name: camNhanTieuDe, label: "Tiêu đề phần cảm nhận (*chữ nghiêng*)", type: string }
+      - name: camNhan
+        label: "Cảm nhận học viên (chưa có mục nào thì phần này tự ẩn)"
+        type: object
+        list: true
+        fields:
+          - { name: loi, label: Lời cảm nhận, type: text }
+          - { name: ten, label: "Tên (hoặc tên viết tắt)", type: string }
+          - { name: moTa, label: "Dòng nhỏ dưới tên (vd: mẹ hai con, Hà Nội)", type: string }
+          - { name: anh, label: Ảnh đại diện (không bắt buộc), type: image }
+      - { name: anhMay, label: Ảnh của May, type: image }
+      - { name: anhMayMoTa, label: Tả ảnh của May, type: string }
+      - { name: veMay, label: Các đoạn "Mình là May", type: text, list: true }
+      - { name: veMayChungChi, label: Chứng chỉ / dấu mốc, type: string, list: true }
+      - { name: veMayKet, label: Câu kết phần về May, type: text }
+      - { name: hop, label: Có thể hợp nếu, type: string, list: true }
+      - { name: khongHop, label: Có thể chưa hợp nếu, type: text }
+      - { name: luuY, label: Lưu ý sức khoẻ tinh thần, type: text }
+      - { name: nhanDuoc, label: Bạn nhận được, type: string, list: true }
+      - { name: hoanTien, label: Cam kết hoàn tiền, type: text }
+      - name: hoiDap
+        label: Câu hỏi thường gặp
+        type: object
+        list: true
+        fields:
+          - { name: hoi, label: Câu hỏi, type: string }
+          - { name: dap, label: Trả lời, type: text }
+      - { name: ket, label: Các đoạn kết, type: text, list: true }

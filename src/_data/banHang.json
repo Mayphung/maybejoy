@@ -8,9 +8,9 @@
   "sanPham": [
     {
       "ma": "emotion-course",
-      "ten": "Emotion Course",
-      "moTa": "Trọn bộ video và sổ tay thực hành",
-      "gia": 299000,
+      "ten": "Khoảng Dừng Cảm Xúc",
+      "moTa": "15 clip bài học và workbook thực hành · hoàn tiền 7 ngày",
+      "gia": 345000,
       "phong": "emotion-course"
     },
     {
@@ -29,8 +29,14 @@
     }
   ],
   "phong": {
-    "emotion-course": { "ten": "Emotion Course", "duongDan": "/hoc/emotion-course/" },
-    "soi-chieu": { "ten": "Soi Chiếu", "duongDan": "/hoc/soi-chieu/" }
+    "emotion-course": {
+      "ten": "Khoảng Dừng Cảm Xúc",
+      "duongDan": "/hoc/emotion-course/"
+    },
+    "soi-chieu": {
+      "ten": "Soi Chiếu",
+      "duongDan": "/hoc/soi-chieu/"
+    }
   },
   "quaTang": {
     "ten": "Khi Sợ Hãi Điều Khiển Tình Yêu",

@@ -69,6 +69,76 @@
     capNhat();
   }
 
+  /* ---------- Khoảng Dừng Cảm Xúc ---------- */
+  var qs = document.querySelectorAll('.kd-q');
+  if (qs.length) {
+    var dem = document.getElementById('kd-dem');
+    qs.forEach(function (q) {
+      q.addEventListener('click', function () {
+        q.setAttribute('aria-pressed', q.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+        var n = document.querySelectorAll('.kd-q[aria-pressed="true"]').length;
+        if (dem) dem.textContent = n === 0 ? '' : n === 1 ? 'một dòng giống bạn. đọc tiếp nhé ↓' : n + ' dòng giống bạn. vậy thì đọc tiếp nhé ↓';
+      });
+    });
+  }
+  var steps = document.querySelectorAll('#kd-steps li');
+  if (steps.length) {
+    var lbl = document.getElementById('kd-breath-lbl');
+    var rings = document.querySelectorAll('.kd-breath .ring');
+    var cur = 0, auto = null, chay = false;
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var show = function (i) {
+      cur = i;
+      steps.forEach(function (s, j) { s.classList.toggle('on', j === i); });
+      if (!chay && lbl) lbl.textContent = steps[i].querySelector('.t').textContent.toLowerCase();
+    };
+    var startAuto = function () { if (!reduce) auto = setInterval(function () { show((cur + 1) % steps.length); }, 3600); };
+    steps.forEach(function (s, i) {
+      s.querySelector('button').addEventListener('click', function () { clearInterval(auto); show(i); });
+    });
+    startAuto();
+    var tryBtn = document.getElementById('kd-try');
+    if (tryBtn) tryBtn.addEventListener('click', function () {
+      if (chay) return;
+      chay = true; clearInterval(auto); show(1);
+      var vong = document.querySelector('.kd-breath');
+      if (vong && vong.getBoundingClientRect().top < 0) vong.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+      var goc = tryBtn.textContent;
+      tryBtn.classList.add('chay');
+      rings.forEach(function (r) { r.style.animation = 'none'; void r.offsetWidth; r.style.animation = ''; });
+      var t0 = Date.now();
+      var tick = setInterval(function () {
+        var s = (Date.now() - t0) / 1000;
+        if (s >= 30) {
+          clearInterval(tick); chay = false;
+          lbl.textContent = 'xong rồi';
+          tryBtn.classList.remove('chay');
+          tryBtn.textContent = 'Bạn vừa có một khoảng dừng. Thử lại?';
+          setTimeout(function () { show(4); }, 1200);
+          return;
+        }
+        var p = s % 10;
+        lbl.textContent = p < 4 ? 'thở vào…' : p < 5 ? 'giữ…' : 'thở ra…';
+        tryBtn.textContent = 'Đang thở cùng May · còn ' + Math.ceil(30 - s) + ' giây';
+      }, 200);
+    });
+  }
+  var sticky = document.getElementById('kd-sticky');
+  if (sticky) {
+    var heroCta = document.querySelector('.kd-hero-cta');
+    var giaBox = document.getElementById('gia');
+    var dangDoi = false;
+    var capNhatSticky = function () {
+      dangDoi = false;
+      var h = heroCta.getBoundingClientRect(), g = giaBox.getBoundingClientRect();
+      var quaHero = h.bottom < 0;
+      var thayGia = g.top < window.innerHeight && g.bottom > 0;
+      sticky.hidden = !quaHero || thayGia;
+    };
+    window.addEventListener('scroll', function () { if (!dangDoi) { dangDoi = true; requestAnimationFrame(capNhatSticky); } }, { passive: true });
+    capNhatSticky();
+  }
+
   /* ---------- Thanh toán ---------- */
   var tt = document.getElementById('tt-form');
   if (tt) {

@@ -1,131 +1,227 @@
 ---
 layout: base.njk
-title: Emotion Course
-description: 'Emotion Course — khoá học video 14 tập của May về não bộ, cảm xúc và những cách cụ thể để hiểu phản ứng của mình. Mua một lần, xem lại không giới hạn thời gian.'
-permalink: /emotion-course/
-css: course
-bodyClass: p-course
+title: Khoảng Dừng Cảm Xúc
+description: 'Khoảng Dừng Cảm Xúc — 14 bài video ngắn và một workbook thực hành của May, giúp bạn hiểu cảm xúc của mình và chọn cách phản ứng, thay vì bị nó cuốn đi. Hoàn tiền 7 ngày.'
+image: /assets/images/di-vao-suong.jpg
+permalink: /khoang-dung-cam-xuc/
+css: khoang
+bodyClass: p-kd
 navKey: o-xuong-may
 ---
 {% from "macros.njk" import mform with context %}
-{% set ec = xuong.daXong | findBy("ten", "Emotion Course") %}
+{% set k = khoangDung %}
+{% set sp = banHang.sanPham | findBy("ma", "emotion-course") %}
+{% set moBan = banHang.nganHang.soTaiKhoan %}
+{% set giaChu = sp.gia | vnd %}
+{% set cta %}{% if moBan %}<a class="btn kd-cta" href="/thanh-toan/?sp=emotion-course">Vào học {{ k.ten }} — {{ giaChu }}</a>{% else %}<a class="btn kd-cta" href="#gia">Báo mình khi mở cửa</a>{% endif %}{% endset %}
+
 <div class="wrap">{% include "nav.njk" %}</div>
-<div class="course-hero" id="noi-dung">
-  <div class="kicker">Khoá học video · 14 tập</div>
-  <h1>Emotion Course</h1>
-  <div class="hand hero-note">món đầu tiên may xong ở xưởng.</div>
-  <p>14 tập May làm để cùng bạn hiểu chuyện gì đang diễn ra bên trong mình — và thử phản ứng khác đi một chút.</p>
-  <a class="scroll-hint" href="#hanh-trinh">Cuộn xuống ↓</a>
-</div>
 
-<main>
-  <div class="narrow">
-    <div class="big-breath">
-      <p>Có lúc cảm xúc đến nhanh hơn cả lúc mình kịp nghĩ.</p>
-      <p>Nói ra một câu rồi hối hận. Im lặng rồi ấm ức.</p>
-      <p>Hoặc chỉ đơn giản là <span class="lift">mệt</span> — vì biết mình đang phản ứng theo cách cũ, mà chưa biết làm sao để khác.</p>
+<main id="noi-dung">
+
+{# ===== 1. Mở đầu ===== #}
+<section class="kd-hero">
+  <div class="kd-hero-text">
+    <div class="kd-kick">Khoá học video · Ở xưởng May</div>
+    <h1>{{ k.ten }}</h1>
+    <p class="kd-sub">{{ k.moTaNgan }}</p>
+    <ul class="kd-meta">{% for m in k.dongMeta %}<li>{{ m }}</li>{% endfor %}</ul>
+    <div class="kd-price-line">
+      <span class="now">{{ giaChu }}</span>
+      <span class="later">sau đó <s>{{ k.giaSau | vnd }}</s></span>
+      <span class="tag hand">giá khởi điểm</span>
     </div>
-    <div class="door-line">
-      <p>Lần nào cũng tự nhủ lần sau sẽ bình tĩnh hơn. Rồi chuyện đến, mọi thứ lại đâu vào đấy. Có lẽ trước hết, mình cần hiểu điều gì đang xảy ra bên trong.</p>
+    <div class="kd-hero-cta">{{ cta | safe }}</div>
+    <p class="kd-small">{{ k.ghiChuMua }}</p>
+  </div>
+  <figure class="kd-hero-photo">
+    <img src="{{ k.anhDau }}" alt="{{ k.anhDauMoTa }}" width="900" height="1200" fetchpriority="high">
+    <figcaption class="hand">{{ k.anhDauGhiTay }}</figcaption>
+  </figure>
+</section>
+
+{# ===== 2. Cái móc ===== #}
+<section class="kd-hook">
+  <p class="kd-big">{{ k.moDau | mdInline | safe }}</p>
+  <p class="kd-hook-more">{{ k.moDauThem }}</p>
+  <p class="kd-hook-intro">{{ k.gioiThieu | mdInline | safe }}</p>
+</section>
+
+{# ===== 3. Nghe quen không? ===== #}
+<section class="kd-quen" aria-labelledby="quen-h">
+  <h2 id="quen-h">Nghe quen không?</h2>
+  <p class="kd-quen-hint hand">bấm vào dòng nào thấy giống mình.</p>
+  <ul class="kd-quen-list">
+    {% for q in k.ngheQuen %}
+    <li><button class="kd-q" type="button" aria-pressed="false"><span class="t">{{ q.nhan }}</span><span class="c">{{ q.chu | mdInline | safe }}</span><span class="nod" aria-hidden="true">ừ, mình nè</span></button></li>
+    {% endfor %}
+  </ul>
+  <p class="kd-quen-count hand" id="kd-dem" aria-live="polite"></p>
+  <div class="kd-not-you">
+    <p class="kd-big">{{ k.khongPhaiLoiBan | mdInline | safe }}</p>
+    {% for p in k.khongPhaiLoiBanThem %}<p>{{ p }}</p>{% endfor %}
+  </div>
+</section>
+
+{# ===== 4. Mang theo gì ===== #}
+<section class="kd-bag" aria-labelledby="bag-h">
+  <div class="kd-wrap">
+    <h2 id="bag-h">Sau 14 bài, bạn <em>mang theo</em> gì?</h2>
+    <p class="kd-lead">{{ k.mangTheo | mdInline | safe }}</p>
+    <ol class="kd-bag-list">
+      {% for m in k.mangTheoDs %}
+      <li><span class="n">{{ loop.index }}</span><strong>{{ m.ten }}</strong><span>{{ m.moTa }}</span></li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+{# ===== 5. Nhịp 5 bước ===== #}
+<section class="kd-rhythm" id="nhip" aria-labelledby="nhip-h">
+  <div class="kd-wrap">
+    <div class="kd-kick light">Trái tim của khoá học</div>
+    <h2 id="nhip-h">Nhịp 5 bước</h2>
+    <div class="kd-breath" aria-hidden="true"><div class="ring"></div><div class="ring r2"></div><span class="lbl" id="kd-breath-lbl">dừng</span></div>
+    <ol class="kd-steps" id="kd-steps">
+      {% for n in k.nhip %}
+      <li{% if loop.first %} class="on"{% endif %}><button type="button"><span class="i">{{ loop.index }}</span><span class="t">{{ n.ten }}</span></button><p>{{ n.moTa }}</p></li>
+      {% endfor %}
+    </ol>
+    <p class="kd-rhythm-note">{{ k.nhipGhiChu }}</p>
+    <button class="kd-try" type="button" id="kd-try">Thử một nhịp thở cùng May · 30 giây</button>
+  </div>
+</section>
+
+{# ===== 6. 14 bài, 4 chặng ===== #}
+<section class="kd-path" aria-labelledby="path-h">
+  <div class="kd-wrap">
+    <h2 id="path-h">14 bài, <em>4 chặng</em></h2>
+    <p class="kd-lead">Các bài xây tiếp lên nhau, nên mình khuyên bạn đi từ đầu. Nhưng không ai chấm điểm tốc độ của bạn.</p>
+    <div class="kd-trail">
+      {% for c in k.chang %}
+      <div class="kd-stage{% if c.so == 'III' %} dark{% endif %}">
+        <div class="kd-stage-head">{% if c.so %}<span class="roman">Chặng {{ c.so }}</span>{% endif %}<h3>{{ c.ten }}</h3></div>
+        {% if c.ghiChu %}<p class="kd-stage-note hand">{{ c.ghiChu }}</p>{% endif %}
+        <ul>
+          {% for b in c.bai %}
+          <li><span class="ep">{{ b.so }}</span><div><strong>{{ b.ten }}</strong><span>{{ b.moTa }}</span></div></li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
     </div>
   </div>
+</section>
 
-  <div class="journey-intro" id="hanh-trinh">
-    <h2>Hành trình: 14 tập, 4 chặng</h2>
-  </div>
-
-  <div class="act">
-    <div class="act-head"><span class="act-num">CHẶNG I</span><span class="act-title">Nền Tảng</span></div>
-    <p class="desc">Trước khi đổi cách phản ứng, hiểu não bộ và cảm xúc vận hành thế nào.</p>
-    <ul class="ep-list">
-      <li><span class="ep-tag">EP0</span>Cam kết xuất hiện</li>
-      <li><span class="ep-tag">EP1</span>Hiểu về não bộ &amp; cảm xúc</li>
-      <li><span class="ep-tag">EP2</span>Yếu tố kích thích</li>
-    </ul>
-  </div>
-  <div class="act">
-    <div class="act-head"><span class="act-num">CHẶNG II</span><span class="act-title">Kỹ Thuật</span></div>
-    <p class="desc">Bốn kỹ thuật, mỗi cái có cách dùng riêng, hướng dẫn từng bước.</p>
-    <ul class="ep-list">
-      <li><span class="ep-tag">EP3</span>Kỹ thuật thở</li>
-      <li><span class="ep-tag">EP4</span>Kỹ thuật reframing</li>
-      <li><span class="ep-tag">EP5</span>Kỹ thuật thay đổi năng lượng</li>
-      <li><span class="ep-tag">EP6</span>Kỹ thuật lắng nghe cảm xúc</li>
-    </ul>
-  </div>
-  <div class="act act--mystery">
-    <div class="act-head"><span class="act-num">CHẶNG III</span><span class="act-title">Gặp "Con Quỷ"</span></div>
-    <p class="desc">Sáu kiểu suy nghĩ, phản ứng quen thuộc — có thể bạn sẽ nhận ra mình trong đó.</p>
-    <ul class="ep-list">
-      <li><span class="ep-tag">EP7</span>???</li>
-      <li><span class="ep-tag">EP8</span>???</li>
-      <li><span class="ep-tag">EP9</span>???</li>
-      <li><span class="ep-tag">EP10</span>???</li>
-      <li><span class="ep-tag">EP11</span>???</li>
-      <li><span class="ep-tag">EP12</span>???</li>
-    </ul>
-    <p class="mystery-note">Gợi ý thôi: có một con quỷ tên là trì hoãn. Còn lại, để bạn tự gặp.</p>
-  </div>
-  <div class="act">
-    <div class="act-head"><span class="act-num">CHẶNG IV</span><span class="act-title">Tích Hợp</span></div>
-    <p class="desc">Gom mọi thứ lại, và thử mang chúng vào những chuyện thường ngày.</p>
-    <ul class="ep-list">
-      <li><span class="ep-tag">EP13</span>Kỹ thuật EFT</li>
-      <li><span class="ep-tag">EP14</span>Dọn dẹp nhà kho ký ức</li>
-    </ul>
-  </div>
-
-  <div class="room-section">
-    <div class="inner">
-      <p>Không có bài kiểm tra. Không có deadline.</p>
-      <p>Chỉ cần một khoảng yên tĩnh, một tách trà nếu thích, và mở từng tập. May nói, hướng dẫn từng phần. Bạn dừng lúc nào cũng được, xem tiếp hôm khác, hay quay lại đoạn chưa hiểu.</p>
-      <p>Mỗi tập một kỹ thuật, tập sau dựa trên tập trước. May muốn bạn biết cách dùng, chứ không chỉ nghe qua — vì khi cảm xúc ập tới, điều mình cần là biết có thể thử làm gì.</p>
+{# ===== 7. Workbook ===== #}
+<section class="kd-wb" aria-labelledby="wb-h">
+  <div class="kd-wrap kd-wb-grid">
+    <figure class="kd-wb-photo">
+      <img src="{{ k.anhWorkbook }}" alt="{{ k.anhWorkbookMoTa }}" loading="lazy" width="800" height="1066">
+    </figure>
+    <div>
+      <h2 id="wb-h">Workbook: nơi bạn <em>thật sự</em> thực hành</h2>
+      <p>{{ k.workbook | mdInline | safe }}</p>
+      <ul class="kd-tabs">{% for w in k.workbookDs %}<li>{{ w }}</li>{% endfor %}</ul>
+      <p class="hand kd-wb-note">{{ k.workbookGhiTay }}</p>
     </div>
   </div>
+</section>
 
-  <div class="narrow">
-    <div class="voice">
-      <p>May làm 14 tập này từ những điều mình từng ước có ai giải thích sớm hơn. Tự tìm hiểu, tự thử, có lúc được, có lúc không. Ở đây là những gì May thấy có ích. Mong bạn cũng tìm được điều hợp với mình.</p>
+{# ===== 8. Cảm nhận (chỉ hiện khi đã có) ===== #}
+{% if k.camNhan and k.camNhan.length %}
+<section class="kd-voices" aria-labelledby="voices-h">
+  <div class="kd-wrap">
+    <h2 id="voices-h">{{ k.camNhanTieuDe | mdInline | safe }}</h2>
+    <div class="kd-voice-grid">
+      {% for c in k.camNhan %}
+      <figure class="kd-voice">
+        <blockquote>{{ c.loi }}</blockquote>
+        <figcaption>{% if c.anh %}<img src="{{ c.anh }}" alt="" loading="lazy" width="48" height="48">{% endif %}<span><strong>{{ c.ten }}</strong>{% if c.moTa %}<small>{{ c.moTa }}</small>{% endif %}</span></figcaption>
+      </figure>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{# ===== 9. Mình là May ===== #}
+<section class="kd-may" aria-labelledby="may-h">
+  <div class="kd-wrap kd-may-grid">
+    {% if k.anhMay %}
+    <figure class="kd-may-photo"><img src="{{ k.anhMay }}" alt="{{ k.anhMayMoTa }}" loading="lazy" width="900" height="1012"></figure>
+    {% endif %}
+    <div>
+      <h2 id="may-h">Mình là May</h2>
+      {% for p in k.veMay %}<p>{{ p }}</p>{% endfor %}
+      <ul class="kd-creds">{% for c in k.veMayChungChi %}<li>{{ c }}</li>{% endfor %}</ul>
+      <p class="kd-may-end">{{ k.veMayKet }}</p>
       <p class="signature">— May</p>
     </div>
+  </div>
+</section>
 
-    <div class="price-section" id="mua">
-      <div class="price-box">
-        <div class="founding">Giá ra mắt</div>
-        <div class="old-price">{{ site.courseOldPrice }}</div>
-        <div class="price">{{ ec.gia }}</div>
-        <ul>
-          <li>Trọn bộ 14 tập</li>
-          <li>Xem lại không giới hạn thời gian</li>
-          <li>Giá ra mắt cho những bạn đăng ký đợt đầu — sau đó trở về {{ site.courseOldPrice }}</li>
-        </ul>
-        {% if banHang.nganHang.soTaiKhoan %}
-        <a href="/thanh-toan/?sp=emotion-course" class="btn cta">Bước vào phòng</a>
-        {% else %}
-        <p class="hand" style="font-size: 21px; color: #A8522B; margin: 18px 0 10px">May đang chuẩn bị phần thanh toán. để lại email, mở cửa là May báo.</p>
-        {{ mform("em-ec", "Email của bạn", "Báo mình nhé") }}
-        {% endif %}
-      </div>
-      <p class="price-note">Mua một lần, xem lại bất cứ lúc nào. Không hạn phải học xong.</p>
+{# ===== 10. Hợp với ai ===== #}
+<section class="kd-fit" aria-labelledby="fit-h">
+  <div class="kd-wrap">
+    <h2 id="fit-h">Khoá học này dành cho ai?</h2>
+    <div class="kd-fit-grid">
+      <div class="yes"><h3>Có thể hợp với bạn nếu</h3><ul>{% for h in k.hop %}<li>{{ h }}</li>{% endfor %}</ul></div>
+      <div class="no"><h3>Có thể chưa hợp nếu</h3><p>{{ k.khongHop }}</p></div>
     </div>
+    <p class="kd-care">{{ k.luuY }}</p>
+  </div>
+</section>
 
-    <div class="s-kicker" style="text-align:center;">Còn thắc mắc?</div>
-    <div class="faq-item">
-      <p class="faq-q">Có cần xem đúng thứ tự không?</p>
-      <p class="faq-a">Có. 14 tập đi theo trình tự, từ não bộ và cảm xúc đến từng kỹ thuật. Tập sau dựa trên tập trước, nên cứ xem từ đầu, không cần vội.</p>
+{# ===== 11. Giá và cam kết ===== #}
+<section class="kd-offer" id="gia" aria-labelledby="gia-h">
+  <div class="kd-ticket">
+    <div class="kd-ticket-main">
+      <div class="kd-kick">Giá khởi điểm</div>
+      <h2 id="gia-h">{{ k.ten }}</h2>
+      <div class="kd-ticket-price"><span class="now">{{ giaChu }}</span><s>{{ k.giaSau | vnd }}</s></div>
+      <p class="per hand">khoảng {{ ((sp.gia / 15) / 1000) | round | int }}.000đ mỗi clip</p>
+      <ul>{% for n in k.nhanDuoc %}<li>{{ n }}</li>{% endfor %}</ul>
+      {% if moBan %}
+      {{ cta | safe }}
+      {% else %}
+      <p class="hand kd-wait">May đang mở cửa phòng học. Để lại email, mở xong là May báo bạn đầu tiên.</p>
+      {{ mform("em-kd", "Email của bạn", "Báo mình nhé") }}
+      {% endif %}
     </div>
-    <div class="faq-item">
-      <p class="faq-q">Xem hết mất bao lâu?</p>
-      <p class="faq-a">Tuỳ bạn. Có thể xem một tập mỗi ngày trong hai tuần, hoặc lâu hơn. Không có lịch học bắt buộc.</p>
-    </div>
-    <div class="faq-item">
-      <p class="faq-q">Mua rồi xem ở đâu, có hạn không?</p>
-      <p class="faq-a">Sau khi thanh toán, May gửi đường dẫn qua email của bạn. Không giới hạn thời gian — cần lúc nào, mở ra xem lại lúc đó.</p>
-    </div>
-
-    <div class="closing">
-      <p>Không cần đợi đến khi bình tĩnh được trong mọi chuyện mới bắt đầu tìm hiểu cảm xúc.<br>Muốn hiểu thêm điều đang diễn ra bên trong mình, mình bắt đầu từ đây nhé.</p>
+    <div class="kd-seal">
+      <div class="kd-seal-badge"><span class="big">7</span><span>ngày</span></div>
+      <h3>Hoàn tiền 100%</h3>
+      <p>{{ k.hoanTien }}</p>
     </div>
   </div>
+</section>
+
+{# ===== 12. Hỏi đáp ===== #}
+<section class="kd-faq" aria-labelledby="faq-h">
+  <div class="kd-wrap">
+    <h2 id="faq-h">Câu hỏi thường gặp</h2>
+    {% for q in k.hoiDap %}
+    <details><summary>{{ q.hoi }}</summary><p>{{ q.dap }}</p></details>
+    {% endfor %}
+  </div>
+</section>
+
+{# ===== 13. Kết ===== #}
+<section class="kd-end">
+  <div class="kd-wrap">
+    {% for p in k.ket %}<p>{{ p }}</p>{% endfor %}
+    <p class="kd-end-hand">Từng chút một.</p>
+    {{ cta | safe }}
+  </div>
+</section>
+
 </main>
+
+{# Thanh mua dính dưới màn hình (điện thoại) #}
+<div class="kd-sticky" id="kd-sticky" hidden>
+  <span><strong>{{ giaChu }}</strong><s>{{ k.giaSau | vnd }}</s></span>
+  {% if moBan %}<a class="btn" href="/thanh-toan/?sp=emotion-course">Vào học</a>{% else %}<a class="btn" href="#gia">Báo mình</a>{% endif %}
+</div>
+
 <div class="wrap">{% include "foot.njk" %}</div>

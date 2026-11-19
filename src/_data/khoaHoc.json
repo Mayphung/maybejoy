@@ -2,7 +2,7 @@
   "emotionCourse": {
     "loiChao": "Chào bạn, mừng bạn vào phòng. Mỗi tập là một bước nhỏ. Bạn cứ xem theo thứ tự, mỗi ngày một tập là vừa, xem xong thì mở sổ tay làm phần thực hành của tập đó.",
     "soTay": {
-      "ten": "Sổ tay thực hành",
+      "ten": "Workbook thực hành",
       "driveId": "1q7jrjUqChQabtNVC4pqBMB3AQ3yWpb4D"
     },
     "bai": [
@@ -13,72 +13,72 @@
       },
       {
         "so": 1,
-        "ten": "Hiểu về não bộ",
+        "ten": "Vì sao mình phản ứng nhanh hơn cả lúc kịp nghĩ?",
         "driveId": "16BefTF9IHJ0cwMEYZbQk3FNSq-esJnH3"
       },
       {
         "so": 2,
-        "ten": "Yếu tố kích thích",
+        "ten": "Chuyện gì thường làm mình bật lên?",
         "driveId": "1HEw4GHr1GQ8tArO-YbRwoTOkMYB_1cs-"
       },
       {
         "so": 3,
-        "ten": "Kỹ thuật thở",
+        "ten": "Một nhịp thở trước khi phản ứng",
         "driveId": "1JojPPpYDCWFu0HsmHPEyqETNfk6FsDYW"
       },
       {
         "so": 4,
-        "ten": "Kỹ thuật đổi góc nhìn",
+        "ten": "Cùng một chuyện, nhiều cách kể",
         "driveId": "1Ih1nfSB3Kc0RrnihanWYWL3kTbgAHJBk"
       },
       {
         "so": 5,
-        "ten": "Thay đổi trạng thái năng lượng",
+        "ten": "Đổi trạng thái trước cuộc trò chuyện",
         "driveId": "1qCsKAza_iMS9PNa8Yo6bKcdT05_Ij1LJ"
       },
       {
         "so": 6,
-        "ten": "Kỹ thuật lắng nghe cảm xúc",
+        "ten": "Mời cảm xúc ngồi xuống uống một ly cà phê",
         "driveId": "1KSpdOFubyHMMEoBRXkiRb3DkYESuYPKh"
       },
       {
         "so": 7,
-        "ten": "Con quỷ tư duy nạn nhân",
+        "ten": "“Tại họ mà mình thế này.”",
         "driveId": "1KjWb1Di1Qymy6xplt_hD07qgJXopliWC"
       },
       {
         "so": 8,
-        "ten": "Con quỷ lợi ích thứ cấp",
+        "ten": "Việc mình cứ lặp lại đang cho mình điều gì?",
         "driveId": "1UCOhwz56RXeUcU-PzyD_ODnP8XCv-MVb"
       },
       {
         "so": 9,
-        "ten": "Con quỷ tự ti",
+        "ten": "Giọng nói “mình không đủ”",
         "driveId": "1NzNzI5VHUXGHuFcZ4maU4U8SovJ2OX_U"
       },
       {
         "so": 10,
-        "ten": "Con quỷ phê phán",
+        "ten": "Giọng nói “đáng lẽ mình phải…”",
         "driveId": "12aDBVuUZkXEmxnP5gpV5aGnWTjvCUZC2"
       },
       {
         "so": 11,
-        "ten": "Con quỷ nghĩ nhiều",
+        "ten": "Khi đầu cứ chạy mãi một chuyện",
         "driveId": "1MZcNHbbaALUIUHZOVJMRkoAhw4m4Fo49"
       },
       {
         "so": 12,
-        "ten": "Con quỷ trì hoãn",
+        "ten": "Muốn làm mà không làm được",
         "driveId": "1cEm6MxBzV5hNycU6AHs7a2cb9c6fyDeH"
       },
       {
         "so": 13,
-        "ten": "Kỹ thuật gõ huyệt (EFT)",
+        "ten": "Một thực hành EFT/tapping",
         "driveId": "1imViLkTguZMMIf2-sdWn-NmyIrPwZuOy"
       },
       {
         "so": 14,
-        "ten": "Dọn dẹp nhà kho ký ức",
+        "ten": "Dọn “nhà kho ký ức”",
         "driveId": "1APEhlJYVQTCu8M7aJHOBVN9PY45xlsOl"
       }
     ]

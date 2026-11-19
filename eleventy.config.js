@@ -4,6 +4,7 @@ const md = markdownIt({ html: true, breaks: true });
 
 export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
+  eleventyConfig.addPassthroughCopy({ "src/_redirects": "_redirects" });
 
   // Xuống dòng trong bài viết giữ nguyên như khi gõ
   eleventyConfig.amendLibrary("md", (lib) => lib.set({ breaks: true, typographer: false }));
