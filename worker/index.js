@@ -85,27 +85,6 @@ const nut = (href, chu) =>
   `<p style="margin:26px 0"><a href="${esc(href)}" style="background:#6E2A34;color:#FBF6EE;text-decoration:none;padding:13px 26px;border-radius:999px;font-weight:bold;display:inline-block">${esc(chu)}</a></p>`;
 
 // ---------- Kit (danh sách email) ----------
-async function guiKit(env, email, loai) {
-  const formId = (loai === "qua" && env.KIT_FORM_QUA) || env.KIT_FORM_CHUNG;
-  if (!formId) return;
-  let ghi = { luc: Date.now(), email };
-  try {
-    const r = await fetch(`https://app.kit.com/forms/${formId}/subscriptions`, {
-      method: "POST",
-      headers: { "content-type": "application/x-www-form-urlencoded", accept: "application/json", "user-agent": "Mozilla/5.0 (mayphung.com)" },
-      body: new URLSearchParams({ email_address: email }),
-      redirect: "manual",
-    });
-    ghi.status = r.status;
-    ghi.body = (await r.text()).slice(0, 300);
-  } catch (e) {
-    ghi.loi = e.message;
-  }
-  console.log("Kit", JSON.stringify(ghi));
-  await env.DB.put("kit:cuoi", JSON.stringify(ghi));
-  return ghi;
-}
-
 // ---------- xử lý ----------
 async function dangKy(request, env, ctx) {
   const body = await docBody(request);
@@ -116,7 +95,6 @@ async function dangKy(request, env, ctx) {
   const cu = (await env.DB.get(k, "json")) || { email, luc: Date.now(), loai: [] };
   if (!cu.loai.includes(loai)) cu.loai.push(loai);
   await env.DB.put(k, JSON.stringify(cu));
-  const kit = await guiKit(env, email, loai);
   const coQua = loai === "qua" && !!banHang.quaTang.link && !!env.RESEND_API_KEY;
   if (coQua) {
     ctx.waitUntil(
@@ -127,7 +105,7 @@ async function dangKy(request, env, ctx) {
       })
     );
   }
-  return json({ ok: true, daGuiQua: coQua, kit: kit ? kit.status ?? "loi" : "tat", kitKq: kit && kit.body ? (kit.body.match(/"status":"(\w+)"/) || [])[1] : undefined });
+  return json({ ok: true, daGuiQua: coQua });
 }
 
 async function taoDon(request, env) {
@@ -283,11 +261,6 @@ async function quanLy(request, env, url) {
       return new Response(null, { status: 303, headers: { location: "/quan-ly/", "set-cookie": await datPhien() } });
     }
     if (!daVao) return html(trangDangNhap(), 403);
-    if (body.hanhDong === "dong-bo-kit") {
-      const ds = await env.DB.list({ prefix: "dk:" });
-      for (const x of ds.keys) await guiKit(env, x.name.slice(3), "chung");
-      return new Response(null, { status: 303, headers: { location: "/quan-ly/?kit=" + ds.keys.length } });
-    }
     if (body.hanhDong === "dang-xuat") return new Response(null, { status: 303, headers: { location: "/quan-ly/", "set-cookie": "qly=; Path=/; Max-Age=0; Secure; HttpOnly; SameSite=Lax" } });
     const don = await env.DB.get(`don:${String(body.ma || "")}`, "json");
     if (don) {
@@ -324,17 +297,15 @@ async function quanLy(request, env, url) {
     })
     .join("");
   const thieu = ["TOKEN_SECRET", "RESEND_API_KEY", "SEPAY_API_KEY"].filter((x) => !env[x]);
-  const kit = await env.DB.get("kit:cuoi", "json");
   const dsEmail = (await Promise.all(dk.keys.slice(0, 50).map((x) => env.DB.get(x.name, "json")))).filter(Boolean).sort((a, b) => b.luc - a.luc);
   const than = `<h1>Đơn hàng</h1>
 <p class="links"><a href="/hoc/emotion-course/">Xem phòng Emotion Course</a><a href="/hoc/soi-chieu/">Xem phòng Soi Chiếu</a></p>
 ${thieu.length ? `<p style="color:#A8522B">Máy chủ còn thiếu: ${thieu.join(", ")}</p>` : `<p>✅ Đủ khoá: thanh toán, gửi email, phòng học.</p>`}
 <p>${dons.filter((d) => d.trangThai === "da-nhan").length} đơn đã thanh toán · ${dk.keys.length} email đăng ký
-${url.searchParams.get("kit") ? ` · ✅ đã chuyển ${esc(url.searchParams.get("kit"))} email sang Kit` : ""}</p>
-${dk.keys.length && env.KIT_FORM_CHUNG ? `<form method="post" style="margin:-6px 0 18px"><input type="hidden" name="hanhDong" value="dong-bo-kit"><button style="background:#A8522B">Chuyển các email đã có sang Kit</button></form>` : ""}
-${kit ? `<p><small>Lần gửi sang Kit gần nhất: ${new Date(kit.luc).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" })} · ${esc(kit.email)} · kết quả: <b>${esc(kit.status ?? kit.loi)}</b> ${esc((kit.body || "").slice(0, 160))}</small></p>` : ""}
+</p>
 <table><tr><th>Lúc</th><th>Mã</th><th>Món</th><th>Email</th><th>Trạng thái</th></tr>${rows || '<tr><td colspan="5">Chưa có đơn nào.</td></tr>'}</table>
 <h2 style="color:#6E2A34;font-family:Georgia,serif;font-weight:500;margin-top:34px">Email đăng ký</h2>
+<p><a href="/quan-ly/email.csv">Tải danh sách email (file CSV, nhập được vào Kit)</a></p>
 <table><tr><th>Lúc</th><th>Email</th><th>Ô nào</th></tr>${dsEmail.map((e) => `<tr><td>${new Date(e.luc).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" })}</td><td>${esc(e.email)}</td><td>${e.loai.map((l) => (l === "qua" ? "cuốn quà tặng" : "nhận bài mới")).join(", ")}</td></tr>`).join("") || '<tr><td colspan="3">Chưa có ai.</td></tr>'}</table>
 <form method="post" style="margin-top:28px"><input type="hidden" name="hanhDong" value="dang-xuat"><button style="background:#7A6C64">Đăng xuất</button></form>`;
   return html(khungTrang("Quản lý đơn", than), 200, k ? { "set-cookie": await datPhien() } : {});
@@ -357,6 +328,13 @@ export default {
       if (p.startsWith("/api/don/") && request.method === "GET") return await xemDon(p.slice(9).toUpperCase(), env);
       if (p === "/api/sepay" && request.method === "POST") return await sepay(request, env, ctx);
       if (p.startsWith("/hoc/")) return await phongHoc(request, env, url);
+      if (p === "/quan-ly/email.csv") {
+        if (!(await laMayDangNhap(request, env))) return new Response("Không có quyền.", { status: 403 });
+        const ds = await env.DB.list({ prefix: "dk:" });
+        const rows = (await Promise.all(ds.keys.map((x) => env.DB.get(x.name, "json")))).filter(Boolean);
+        const csv = "email,ngay_dang_ky,o_dang_ky\n" + rows.map((e) => `${e.email},${new Date(e.luc).toISOString().slice(0, 10)},${e.loai.join(" ")}`).join("\n");
+        return new Response("\ufeff" + csv, { headers: { "content-type": "text/csv; charset=utf-8", "content-disposition": 'attachment; filename="email-mayphung.csv"', "cache-control": "no-store" } });
+      }
       if (p === "/quan-ly/" || p === "/quan-ly") return await quanLy(request, env, url);
       if (p.startsWith("/api/")) return json({ ok: false }, 404);
     } catch (e) {

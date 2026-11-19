@@ -1,6 +1,6 @@
 {#- Form nhận email, gửi về /api/dang-ky. kind: "chung" (bài mới, sách mới…) hoặc "qua" (cuốn nhỏ miễn phí) -#}
 {% macro mform(id, label, button, kind="chung", style="", inputStyle="") %}
-<form class="mform" method="post" action="/api/dang-ky" style="{{ style }}">
+<form class="mform" method="post" action="/api/dang-ky" data-kit="{{ site.kitFormId }}" style="{{ style }}">
   <label for="{{ id }}">{{ label }}
     <input id="{{ id }}" type="email" name="email" placeholder="ten@gmail.com" autocomplete="email" required style="{{ inputStyle }}">
   </label>

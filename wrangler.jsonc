@@ -14,9 +14,7 @@
   // Nơi lưu đơn hàng và email đăng ký. Lần deploy đầu Cloudflare tự tạo.
   "kv_namespaces": [{ "binding": "DB" }],
   "vars": {
-    "EMAIL_MAY": "phung.p.vn@gmail.com",
-    // Form "Web mayphung.com" trên Kit: mọi email đăng ký trên web được chuyển vào đây
-    "KIT_FORM_CHUNG": "10211257"
+    "EMAIL_MAY": "phung.p.vn@gmail.com"
   },
   "observability": { "enabled": true }
 }

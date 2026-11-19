@@ -335,6 +335,7 @@ content:
           - { name: facebook, label: Facebook, type: string }
           - { name: youtube, label: YouTube, type: string }
       - { name: contactEmail, label: Email liên hệ, type: string }
+      - { name: kitFormId, label: "Số form Kit (nơi nhận email đăng ký)", type: string }
       - { name: courseOldPrice, label: Giá gốc Emotion Course (gạch ngang), type: string }
       - name: nav
         type: object

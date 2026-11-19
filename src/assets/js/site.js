@@ -13,8 +13,16 @@
       var btn = f.querySelector('button[type=submit]');
       if (btn) btn.disabled = true;
       var data = Object.fromEntries(new FormData(f));
+      var kit = f.dataset.kit
+        ? fetch('https://app.kit.com/forms/' + f.dataset.kit + '/subscriptions', {
+            method: 'POST',
+            headers: { accept: 'application/json', 'content-type': 'application/x-www-form-urlencoded' },
+            body: 'email_address=' + encodeURIComponent(data.email || '')
+          }).catch(function () {})
+        : Promise.resolve();
       fetch('/api/dang-ky', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(data) })
         .then(function (r) { return r.json().catch(function () { return { ok: r.ok }; }); })
+        .then(function (r) { return kit.then(function () { return r; }); })
         .then(function (r) {
           if (!r.ok) throw new Error(r.loi || 'loi');
           f.hidden = true;
