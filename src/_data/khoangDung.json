@@ -10,10 +10,10 @@
   "anhDau": "/assets/images/di-vao-suong.jpg",
   "anhDauMoTa": "Một người bước chậm vào con đường đầy sương",
   "anhDauGhiTay": "giữa chuyện xảy ra và điều mình làm, có một khoảng dừng.",
+  "ghiChuMua": "Link vào học được gửi qua email sau khi thanh toán. Hoàn tiền 100% trong 7 ngày nếu bạn thấy không hợp, vì bất kỳ lý do gì.",
   "moDau": "Bạn biết mình muốn phản ứng khác đi. Nhưng đến lúc chuyện xảy ra, *mọi thứ lại như cũ*.",
   "moDauThem": "Một lời nhận xét khiến bạn nghĩ cả ngày. Một lần nổi nóng khiến bạn tự trách mãi. Một việc muốn làm nhưng cứ trì hoãn, rồi lại thấy mình chẳng ra sao.",
   "gioiThieu": "**Khoảng Dừng Cảm Xúc** là 14 bài học ngắn và một workbook thực hành, giúp bạn hiểu điều gì đang diễn ra bên trong, và có thêm một lựa chọn trước khi làm theo phản ứng đầu tiên.",
-  "ghiChuMua": "Link vào học được gửi qua email sau khi thanh toán. Hoàn tiền 100% trong 7 ngày nếu bạn thấy không hợp, vì bất kỳ lý do gì.",
   "ngheQuen": [
     {
       "nhan": "8:42 sáng",
@@ -45,10 +45,10 @@
     "Phản ứng của bạn là một tín hiệu đáng để lắng nghe. Có thể nó đang chạm vào một nhu cầu, một nỗi lo, hay một trải nghiệm cũ. Còn cứ tự trách “sao mình không bình tĩnh hơn” thì có lẽ cũng chẳng giúp được bao nhiêu.",
     "Điều bạn cần là hiểu chuyện gì đang diễn ra bên trong, rồi có thêm vài cách để không phải lúc nào cũng làm theo phản ứng đầu tiên."
   ],
-  "mangTheo": "Mình không muốn hứa quá nhiều. Cảm xúc không phải công tắc để bật tắt, nên mình sẽ không hứa bạn hết buồn, giận hay lo. Điều mình muốn mang đến nhỏ hơn và thật hơn: *một khoảng dừng để bạn có thêm lựa chọn.*",
+  "mangTheo": "Mình không muốn hứa quá nhiều. Cảm xúc không phải công tắc để bật tắt, nên mình sẽ không hứa bạn hết buồn, giận hay lo. Điều mình muốn mang đến thật hơn: *một khoảng dừng để bạn có thêm lựa chọn.*",
   "mangTheoDs": [
     {
-      "ten": "Trigger Map của riêng bạn",
+      "ten": "Trigger Map (những thứ kích thích cảm xúc) của riêng bạn",
       "moTa": "Biết chuyện gì hay làm mình bật lên, và mình thường phản ứng ra sao."
     },
     {
@@ -61,11 +61,11 @@
     },
     {
       "ten": "Bộ công cụ của riêng bạn",
-      "moTa": "Vài thực hành bạn thấy hợp và muốn giữ lại. Không phải một danh sách bắt bạn nhớ hết."
+      "moTa": "Những thực hành, những công cụ bạn thấy hợp và muốn giữ lại"
     },
     {
-      "ten": "Kế hoạch dịu dàng 7 ngày",
-      "moTa": "Để bạn tiếp tục nhẹ nhàng sau khi học xong."
+      "ten": "Kế hoạch dịu lại 7 ngày",
+      "moTa": "Để bạn tiếp tục nhẹ nhàng ôm ấp bản thân sau khi học xong."
     }
   ],
   "nhip": [
@@ -75,7 +75,7 @@
     },
     {
       "ten": "Thở",
-      "moTa": "Vài vòng thở để cơ thể bớt báo động."
+      "moTa": "Vài vòng thở để cơ thể bớt dịu lại."
     },
     {
       "ten": "Nhận ra",
@@ -93,7 +93,6 @@
   "nhipGhiChu": "Năm bước này là khung của cả khóa học. Bạn tập dần qua từng bài.",
   "chang": [
     {
-      "so": "",
       "ten": "Bài mở đầu",
       "bai": [
         {
@@ -212,9 +211,11 @@
   "anhWorkbook": "/assets/images/tay-viet-so.jpg",
   "anhWorkbookMoTa": "Bàn tay đang viết vào sổ",
   "camNhanTieuDe": "Những người đã đi qua *khoảng dừng*",
-  "camNhan": [],
   "anhMay": "/assets/images/may-thien.jpg",
   "anhMayMoTa": "May ngồi thiền, mắt nhắm, nắng sau lưng",
+  "anhMay2": "/assets/images/may-nhay-tu-tren-cao.jpg",
+  "anhMay2MoTa": "May đội mũ bảo hộ, dang tay cười lớn khi nhảy từ trên cao xuống",
+  "anhMay2GhiTay": "cô bé nhút nhát ngày xưa, giờ dám nhảy.",
   "veMay": [
     "Có một thời gian rất dài, mình bị cuốn vào những cơn sóng cảm xúc mà chính mình cũng không hiểu. Đó là một khoảng thời gian rất khó khăn.",
     "Mình đi khám, đi trị liệu, và thử rất nhiều cách để thoát ra. Có cách giúp, có cách không. Khóa học này là những gì giúp được, mình gom lại thành từng bước nhỏ.",
@@ -227,6 +228,7 @@
     "Tác giả sách thiếu nhi (NXB Kim Đồng)"
   ],
   "veMayKet": "Mình không phải người đã hiểu hết mọi thứ. Mình chỉ chia sẻ những gì mình đã học, đã thử, và thấy có ích với chính mình.",
+  "veMayThucHanh": "Ngoài ra, nhiều năm nay mình tự thực hành thiền (trong đó có các bài thiền theo phương pháp của Dr. Joe Dispenza), chánh niệm, EFT/tapping, các bài tập theo hướng CBT và làm việc với cơ thể.",
   "hop": [
     "Bạn hay nghĩ nhiều, khó ngắt dòng suy nghĩ.",
     "Bạn hay tự trách, tự phê phán, thấy mình chưa đủ tốt.",
@@ -282,10 +284,6 @@
     "Có lẽ điều mình đang học, và muốn học cùng bạn, là cách ở bên chính mình khi những cảm xúc ấy đến: thêm một chút tò mò, một chút khoảng thở, và một chút dịu dàng.",
     "Bạn không cần chờ đến một ngày mình hoàn hảo hơn mới bắt đầu. Hôm nay, chỉ cần hiểu thêm một chút về điều đang diễn ra bên trong."
   ],
-  "anhMay2": "/assets/images/may-nhay-tu-tren-cao.jpg",
-  "anhMay2MoTa": "May đội mũ bảo hộ, dang tay cười lớn khi nhảy từ trên cao xuống",
-  "anhMay2GhiTay": "cô bé nhút nhát ngày xưa, giờ dám nhảy.",
-  "veMayThucHanh": "Ngoài ra, nhiều năm nay mình tự thực hành thiền (trong đó có các bài thiền theo phương pháp của Dr. Joe Dispenza), chánh niệm, EFT/tapping, các bài tập theo hướng CBT và làm việc với cơ thể.",
   "chu": {
     "nutMua": "Vào học {ten} — {gia}",
     "nutChuaMo": "Báo mình khi mở cửa",
