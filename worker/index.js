@@ -5,8 +5,11 @@
 //   GET  /api/don/:ma        trang thanh toán hỏi xem đơn đã nhận tiền chưa
 //   POST /api/sepay          SePay báo có tiền vào
 //   GET  /hoc/*              phòng học: chỉ mở khi có chìa khoá hợp lệ
+//   POST /api/kiem-tra       bài kiểm tra: đếm người bắt đầu / làm xong, lưu câu trả lời ẩn danh
+//   POST /api/kiem-tra/lien-he  người làm để lại email/Zalo: lưu lại, gửi phần phân tích
 //   GET  /quan-ly/           trang quản lý đơn cho May (cần mật khẩu riêng)
 import banHang from "../src/_data/banHang.json";
+import kiemTra from "../src/_data/kiemTra.json";
 
 const SITE = "https://mayphung.com";
 const FROM = "May Phung <may@mayphung.com>";
@@ -189,6 +192,132 @@ async function sepay(request, env, ctx) {
   return json({ success: true });
 }
 
+
+// ---------- bài kiểm tra ----------
+const baiKt = (ma) => (kiemTra.bai || []).find((b) => b.ma === ma && b.hien !== false);
+const kqKt = (bai, ma) => (bai.ketQua || []).find((r) => r.ma === ma);
+const maNgau = () => Date.now().toString(36) + b64url(crypto.getRandomValues(new Uint8Array(4)));
+const zaloHopLe = (z) => typeof z === "string" && /^(\+?84|0)\d{9,10}$/.test(z);
+
+async function tang(env, khoa) {
+  const n = Number((await env.DB.get(khoa)) || 0) + 1;
+  await env.DB.put(khoa, String(n), { metadata: { n } });
+  return n;
+}
+
+function diemGon(diem) {
+  if (!diem || typeof diem !== "object") return {};
+  const out = {};
+  for (const [k, v] of Object.entries(diem).slice(0, 12)) if (typeof v === "number" && isFinite(v)) out[String(k).slice(0, 20)] = Math.round(v * 100) / 100;
+  return out;
+}
+
+async function kiemTraGhi(request, env) {
+  const body = await docBody(request);
+  const bai = baiKt(String(body.bai || ""));
+  if (!bai) return json({ ok: false }, 400);
+  if (body.buoc === "bat-dau") {
+    await tang(env, `dem:${bai.ma}:_bat-dau`);
+    return json({ ok: true });
+  }
+  if (body.buoc !== "xong" || !kqKt(bai, String(body.kq || ""))) return json({ ok: false }, 400);
+  const kq = String(body.kq);
+  const phu = kqKt(bai, String(body.phu || "")) ? String(body.phu) : "";
+  let traLoi = body.traLoi;
+  try { traLoi = JSON.parse(JSON.stringify(traLoi ?? null)); } catch { traLoi = null; }
+  if (JSON.stringify(traLoi || "").length > 2000) traLoi = null;
+  await env.DB.put(`kt:${bai.ma}:${maNgau()}`, JSON.stringify({ luc: Date.now(), kq, phu, diem: diemGon(body.diem), doTinCay: String(body.doTinCay || "").slice(0, 8), traLoi }), { expirationTtl: 730 * NGAY });
+  await tang(env, `dem:${bai.ma}:_xong`);
+  await tang(env, `dem:${bai.ma}:${kq}`);
+  return json({ ok: true });
+}
+
+// Phần phân tích viết trong kiemTra.json: "## " là tiêu đề nhỏ, "- " là gạch đầu dòng
+function phanTichHtml(t) {
+  let out = "", ds = false;
+  const chu = (x) => esc(x).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>").replace(/\*(.+?)\*/g, "<em>$1</em>");
+  for (let d of String(t || "").split(/\n/)) {
+    d = d.trim();
+    if (!d) continue;
+    if (d.startsWith("- ")) { if (!ds) { out += '<ul style="margin:0 0 14px;padding-left:20px">'; ds = true; } out += `<li style="margin:0 0 8px">${chu(d.slice(2))}</li>`; continue; }
+    if (ds) { out += "</ul>"; ds = false; }
+    out += d.startsWith("## ") ? `<h3 style="font-family:Georgia,serif;color:#6E2A34;font-size:19px;margin:26px 0 8px">${chu(d.slice(3))}</h3>` : `<p style="margin:0 0 14px">${chu(d)}</p>`;
+  }
+  return out + (ds ? "</ul>" : "");
+}
+
+async function guiPhanTich(env, bai, r, email) {
+  const v = { ten: r.ten, phu: r.phu || "", loiNhan: r.loiNhan || "" };
+  const T = bai.buocTiep || {};
+  const link = (x) => (String(x || "").startsWith("/") ? SITE + x : x);
+  const html = khungEmail(
+    doan(dien(bai.email?.moDau || "Kết quả của bạn: {ten}.", v)) +
+      phanTichHtml(r.phanTich) +
+      (T.link && T.nut ? `<p style="margin:26px 0 0">${esc(String(T.chu || "").replace(/\*/g, ""))}</p>` + nut(link(T.link), T.nut) : "") +
+      `<p style="margin:18px 0 0;font-size:14px"><a href="${SITE}/kiem-tra/" style="color:#A8522B">Làm thêm bài kiểm tra khác của May</a></p>`
+  );
+  return guiEmail(env, { to: email, subject: dien(bai.email?.tieuDe || "Kết quả bài kiểm tra: {ten}", v), html });
+}
+
+async function kiemTraLienHe(request, env, ctx) {
+  const body = await docBody(request);
+  const bai = baiKt(String(body.bai || ""));
+  const r = bai && kqKt(bai, String(body.kq || ""));
+  if (!r) return json({ ok: false, loi: "Không tìm thấy bài kiểm tra này." }, 400);
+  const email = String(body.email || "").trim().toLowerCase();
+  const zalo = String(body.zalo || "").replace(/[\s.\-()]/g, "");
+  const coEmail = emailHopLe(email), coZalo = zaloHopLe(zalo);
+  if (!coEmail && !coZalo) return json({ ok: false, loi: "Email hoặc số Zalo chưa đúng, bạn xem lại giúp May nhé." }, 400);
+  const phu = kqKt(bai, String(body.phu || "")) ? String(body.phu) : "";
+  const ban = { luc: Date.now(), bai: bai.ma, kq: r.ma, phu, diem: diemGon(body.diem), email: coEmail ? email : "", zalo: coZalo ? zalo : "" };
+  await env.DB.put(`lh:${maNgau()}`, JSON.stringify(ban), { metadata: { luc: ban.luc, bai: bai.ma, kq: r.ma, phu, email: ban.email, zalo: ban.zalo } });
+  await tang(env, `dem:${bai.ma}:_lien-he`);
+  let daGui = false;
+  if (coEmail) {
+    const k = `dk:${email}`;
+    const cu = (await env.DB.get(k, "json")) || { email, luc: Date.now(), loai: [] };
+    if (!cu.loai.includes("kiem-tra")) cu.loai.push("kiem-tra");
+    cu.kiemTra = { ...(cu.kiemTra || {}), [bai.ma]: r.ma };
+    await env.DB.put(k, JSON.stringify(cu));
+    if (env.RESEND_API_KEY) {
+      daGui = true;
+      ctx.waitUntil(guiPhanTich(env, bai, r, email));
+    }
+  }
+  if (coZalo && env.EMAIL_MAY) {
+    ctx.waitUntil(guiEmail(env, {
+      to: env.EMAIL_MAY,
+      subject: `Zalo mới từ bài kiểm tra: ${bai.ten}`,
+      html: khungEmail(`<p>Có người làm bài <strong>${esc(bai.ten)}</strong> và để lại Zalo, đợi May nhắn phần phân tích.</p><p>Zalo: <strong>${esc(zalo)}</strong><br>Kết quả: ${esc(r.ten)}${phu ? ` (gần thứ hai: ${esc(kqKt(bai, phu).ten)})` : ""}</p><p>Phần phân tích để gửi nằm trong 📝 Bài kiểm tra trên Pages CMS, hoặc xem trên trang <a href="${SITE}/quan-ly/">quản lý</a>.</p>`),
+    }));
+  }
+  return json({ ok: true, daGui });
+}
+
+async function soLieuKt(env) {
+  const dem = {};
+  let cursor;
+  do {
+    const l = await env.DB.list({ prefix: "dem:", cursor });
+    for (const x of l.keys) dem[x.name.slice(4)] = x.metadata?.n ?? Number((await env.DB.get(x.name)) || 0);
+    cursor = l.list_complete ? null : l.cursor;
+  } while (cursor);
+  return dem;
+}
+async function dsLienHe(env, gioiHan = 1000) {
+  const out = [];
+  let cursor;
+  do {
+    const l = await env.DB.list({ prefix: "lh:", cursor });
+    for (const x of l.keys) if (x.metadata) out.push(x.metadata);
+    cursor = l.list_complete || out.length >= gioiHan ? null : l.cursor;
+  } while (cursor);
+  return out.sort((a, b) => b.luc - a.luc);
+}
+const tenKq = (baiMa, kqMa) => { const b = (kiemTra.bai || []).find((x) => x.ma === baiMa); return (b && kqKt(b, kqMa)?.ten) || kqMa || ""; };
+const tenBai = (ma) => (kiemTra.bai || []).find((x) => x.ma === ma)?.ten || ma;
+const csvO = (v) => `"${String(v ?? "").replace(/"/g, '""')}"`;
+
 // ---------- phòng học ----------
 async function phongHoc(request, env, url) {
   const ten = url.pathname.split("/")[2] || "";
@@ -308,9 +437,30 @@ ${thieu.length ? `<p style="color:#A8522B">Máy chủ còn thiếu: ${thieu.join
 <table><tr><th>Lúc</th><th>Mã</th><th>Món</th><th>Email</th><th>Trạng thái</th></tr>${rows || '<tr><td colspan="5">Chưa có đơn nào.</td></tr>'}</table>
 <h2 style="color:#6E2A34;font-family:Georgia,serif;font-weight:500;margin-top:34px">Email đăng ký</h2>
 <p><a href="/quan-ly/email.csv">Tải danh sách email (file CSV, nhập được vào Kit)</a></p>
-<table><tr><th>Lúc</th><th>Email</th><th>Ô nào</th></tr>${dsEmail.map((e) => `<tr><td>${new Date(e.luc).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" })}</td><td>${esc(e.email)}</td><td>${e.loai.map((l) => (l === "qua" ? "cuốn quà tặng" : "nhận bài mới")).join(", ")}</td></tr>`).join("") || '<tr><td colspan="3">Chưa có ai.</td></tr>'}</table>
+<table><tr><th>Lúc</th><th>Email</th><th>Ô nào</th></tr>${dsEmail.map((e) => `<tr><td>${new Date(e.luc).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" })}</td><td>${esc(e.email)}</td><td>${e.loai.map((l) => (l === "qua" ? "cuốn quà tặng" : l === "kiem-tra" ? "bài kiểm tra" : "nhận bài mới")).join(", ")}</td></tr>`).join("") || '<tr><td colspan="3">Chưa có ai.</td></tr>'}</table>
+${await phanKiemTra(env)}
 <form method="post" style="margin-top:28px"><input type="hidden" name="hanhDong" value="dang-xuat"><button style="background:#7A6C64">Đăng xuất</button></form>`;
   return html(khungTrang("Quản lý đơn", than), 200, k ? { "set-cookie": await datPhien() } : {});
+}
+
+
+async function phanKiemTra(env) {
+  const dem = await soLieuKt(env);
+  const lh = await dsLienHe(env, 200);
+  const h2 = (t) => `<h2 style="color:#6E2A34;font-family:Georgia,serif;font-weight:500;margin-top:34px">${t}</h2>`;
+  const hang = (kiemTra.bai || []).map((b) => {
+    const bd = dem[`${b.ma}:_bat-dau`] || 0, xong = dem[`${b.ma}:_xong`] || 0, lien = dem[`${b.ma}:_lien-he`] || 0;
+    const pt = (a, c) => (c ? ` <small>(${Math.round((a / c) * 100)}%)</small>` : "");
+    const kq = (b.ketQua || []).map((r) => `${esc(r.ten)}: <b>${dem[`${b.ma}:${r.ma}`] || 0}</b>`).join("<br>");
+    return `<tr><td><b>${esc(b.ten)}</b>${b.hien === false ? "<br><small>đang ẩn</small>" : ""}<br><a href="/kiem-tra/${b.ma}/">mở bài</a></td><td>${bd}</td><td>${xong}${pt(xong, bd)}</td><td>${lien}${pt(lien, xong)}</td><td>${kq}</td></tr>`;
+  }).join("");
+  const dong = lh.slice(0, 100).map((x) => `<tr><td>${new Date(x.luc).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" })}</td><td>${esc(tenBai(x.bai))}</td><td>${esc(tenKq(x.bai, x.kq))}${x.phu ? `<br><small>gần thứ hai: ${esc(tenKq(x.bai, x.phu))}</small>` : ""}</td><td>${esc(x.email)}${x.zalo ? `${x.email ? "<br>" : ""}Zalo: ${esc(x.zalo)}` : ""}</td></tr>`).join("");
+  return `${h2("Bài kiểm tra")}
+<p>Bắt đầu → làm xong → để lại email/Zalo. Câu trả lời được lưu ẩn danh.</p>
+<table><tr><th>Bài</th><th>Bắt đầu</th><th>Làm xong</th><th>Để lại liên hệ</th><th>Kết quả</th></tr>${hang}</table>
+${h2("Người để lại liên hệ sau bài kiểm tra")}
+<p><a href="/quan-ly/kiem-tra.csv">Tải danh sách (file CSV, có cả kết quả từng người)</a></p>
+<table><tr><th>Lúc</th><th>Bài</th><th>Kết quả</th><th>Liên hệ</th></tr>${dong || '<tr><td colspan="4">Chưa có ai.</td></tr>'}</table>`;
 }
 
 async function docBody(request) {
@@ -336,6 +486,14 @@ export default {
         const rows = (await Promise.all(ds.keys.map((x) => env.DB.get(x.name, "json")))).filter(Boolean);
         const csv = "email,ngay_dang_ky,o_dang_ky\n" + rows.map((e) => `${e.email},${new Date(e.luc).toISOString().slice(0, 10)},${e.loai.join(" ")}`).join("\n");
         return new Response("\ufeff" + csv, { headers: { "content-type": "text/csv; charset=utf-8", "content-disposition": 'attachment; filename="email-mayphung.csv"', "cache-control": "no-store" } });
+      }
+      if (p === "/api/kiem-tra" && request.method === "POST") return await kiemTraGhi(request, env);
+      if (p === "/api/kiem-tra/lien-he" && request.method === "POST") return await kiemTraLienHe(request, env, ctx);
+      if (p === "/quan-ly/kiem-tra.csv") {
+        if (!(await laMayDangNhap(request, env))) return new Response("Không có quyền.", { status: 403 });
+        const ds = await dsLienHe(env, 10000);
+        const csv = "ngay,bai,ket_qua,gan_thu_hai,email,zalo\n" + ds.map((x) => [new Date(x.luc).toISOString().slice(0, 10), tenBai(x.bai), tenKq(x.bai, x.kq), x.phu ? tenKq(x.bai, x.phu) : "", x.email, x.zalo].map(csvO).join(",")).join("\n");
+        return new Response("\ufeff" + csv, { headers: { "content-type": "text/csv; charset=utf-8", "content-disposition": 'attachment; filename="kiem-tra-mayphung.csv"', "cache-control": "no-store" } });
       }
       if (p === "/quan-ly/" || p === "/quan-ly") return await quanLy(request, env, url);
       if (p.startsWith("/api/")) return json({ ok: false }, 404);

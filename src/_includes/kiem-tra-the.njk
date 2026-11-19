@@ -1,0 +1,16 @@
+{#- Các phiếu bài kiểm tra (trang chủ và trang /kiem-tra/). Dữ liệu: kiemTra.json -#}
+{%- set K = kiemTra.chu %}
+<div class="kt-ds">
+  {%- for b in kiemTra.bai | ktHien %}
+  {%- set soCau = b.cauThang.length if b.kieu == "thang" else b.cau.length %}
+  <a class="kt-the" href="/kiem-tra/{{ b.ma }}/" data-kt="{{ b.ma }}" style="--r: {{ ['-1.4deg', '1deg', '-0.6deg', '1.3deg'][loop.index0 % 4] }}">
+    <span class="kt-de">{{ K.nhanDe }} {{ loop.index }} · {{ soCau }} {{ K.cau | lower }} · {{ b.thoiGian }}</span>
+    <span class="kt-ten">{{ b.ten }}</span>
+    <span class="kt-moc">{{ b.moc }}</span>
+    <span class="kt-day">
+      <span class="kt-nut" data-lam="{{ K.nutLam }}" data-xem="{{ K.xemLai }}">{{ K.nutLam }}</span>
+      <span class="kt-dau" hidden><span class="kt-dau-n">{{ K.daLam }}</span> <b></b></span>
+    </span>
+  </a>
+  {%- endfor %}
+</div>

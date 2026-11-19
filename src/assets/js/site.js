@@ -339,4 +339,14 @@
       });
     });
   }
+
+  /* ---------- Phiếu bài kiểm tra: đánh dấu đề đã làm ---------- */
+  document.querySelectorAll('.kt-the[data-kt]').forEach(function (a) {
+    var kq = store.get('mj-kt-' + a.dataset.kt);
+    var ten = kq && kq.tenKq;
+    if (!kq || !kq.kq) return;
+    var dau = a.querySelector('.kt-dau'), nut = a.querySelector('.kt-nut');
+    if (dau && ten) { dau.querySelector('b').textContent = ten; dau.hidden = false; a.classList.add('da-lam'); }
+    if (nut) nut.textContent = nut.dataset.xem;
+  });
 })();

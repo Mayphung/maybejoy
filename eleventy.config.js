@@ -12,6 +12,11 @@ export default function (eleventyConfig) {
   // Chữ có *nghiêng*, **đậm** trong các ô chữ ngắn
   eleventyConfig.addFilter("mdInline", (s) => md.renderInline(s || ""));
   eleventyConfig.addFilter("md", (s) => md.render(s || ""));
+  // Dữ liệu đưa vào thẻ <script type="application/json"> an toàn
+  eleventyConfig.addFilter("jsonScript", (v) => JSON.stringify(v ?? null).replace(/</g, "\\u003c"));
+  // Bài kiểm tra đang bật
+  eleventyConfig.addFilter("ktHien", (ds) => (ds || []).filter((b) => b.hien !== false));
+  eleventyConfig.addFilter("ktGon", (ds) => (ds || []).map((b) => ({ ma: b.ma, ten: b.ten, moc: b.moc })));
 
   // Ngày kiểu Việt
   eleventyConfig.addFilter("dateVi", (d) => {

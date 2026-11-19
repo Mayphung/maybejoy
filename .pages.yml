@@ -689,3 +689,128 @@ content:
           - { name: thanhDinhNut, label: "Nút trên thanh dính (điện thoại)", type: string }
           - { name: thanhDinhNutChuaMo, label: "Nút thanh dính khi chưa mở bán", type: string }
 
+
+  - name: kiem-tra
+    label: "📝 Bài kiểm tra (Kiểm tra miệng)"
+    type: file
+    path: src/_data/kiemTra.json
+    format: json
+    fields:
+      - { name: hienTrangChu, label: "Hiện phần Kiểm tra miệng ở trang chủ", type: boolean, default: true }
+      - name: chu
+        label: "Các chữ dùng chung"
+        type: object
+        fields:
+          - { name: tieuDe, label: "Tiêu đề phần (trang chủ)", type: string }
+          - { name: ghiTay, label: "Dòng viết tay dưới tiêu đề", type: string }
+          - { name: nhanDe, label: "Chữ 'Đề' trên phiếu", type: string }
+          - { name: nutLam, label: "Nút trên phiếu", type: string }
+          - { name: daLam, label: "Chữ trên con dấu khi đã làm", type: string }
+          - { name: xemLai, label: "Nút trên phiếu khi đã làm", type: string }
+          - { name: batDau, label: "Nút bắt đầu", type: string }
+          - { name: cau, label: "Chữ 'Câu'", type: string }
+          - { name: cauTruoc, label: "Nút quay lại câu trước", type: string }
+          - { name: dangTinh, label: "Chữ lúc đang chấm", type: string }
+          - { name: nhanKetQua, label: "Nhãn trên kết quả", type: string }
+          - { name: banCoThe, label: "Chữ trước danh sách 'Bạn có thể'", type: string }
+          - { name: nhanPhu, label: "Nhãn kết quả gần thứ hai", type: string }
+          - { name: ngangNhau, label: "Câu khi hai kết quả ngang nhau", type: text }
+          - { name: oNhap, label: "Nhãn ô email/Zalo", type: string }
+          - { name: goiYNhap, label: "Chữ mờ trong ô", type: string }
+          - { name: nutGui, label: "Nút gửi", type: string }
+          - { name: chuNho, label: "Dòng nhỏ dưới ô", type: string }
+          - { name: loiNhap, label: "Báo khi nhập sai", type: text }
+          - { name: loiMang, label: "Báo khi mạng lỗi", type: text }
+          - { name: daGuiEmail, label: "Sau khi gửi email (đã gửi phân tích)", type: text }
+          - { name: daNhanEmail, label: "Sau khi gửi email (chưa gửi được thư)", type: text }
+          - { name: daNhanZalo, label: "Sau khi để lại Zalo", type: text }
+          - { name: chiaSe, label: "Nút chia sẻ", type: string }
+          - { name: chiaSeLoi, label: "Lời đi kèm đường dẫn chia sẻ", type: string }
+          - { name: daChep, label: "Báo khi đã chép đường dẫn", type: string }
+          - { name: lamLai, label: "Nút làm lại", type: string }
+          - { name: deKhac, label: "Tiêu đề làm thêm đề khác", type: string }
+          - { name: anDanh, label: "Dòng nhỏ về lưu câu trả lời", type: text }
+          - { name: trangDsTieuDe, label: "Tiêu đề trang /kiem-tra/", type: string }
+          - { name: trangDsMoTa, label: "Giới thiệu trang /kiem-tra/", type: text }
+      - name: bai
+        label: "Các bài kiểm tra"
+        type: object
+        list: true
+        fields:
+          - { name: ma, label: "Mã bài (nằm trong đường dẫn — đừng đổi)", type: string }
+          - { name: hien, label: "Đang hiện trên web", type: boolean, default: true }
+          - { name: ten, label: "Tên ngắn (trên phiếu)", type: string }
+          - { name: tieuDe, label: "Câu hỏi lớn đầu trang", type: string }
+          - { name: moc, label: "Câu gợi tò mò trên phiếu", type: text }
+          - { name: thoiGian, label: "Thời gian (vd: 3 phút)", type: string }
+          - { name: moTa, label: "Lời mở đầu (**chữ đậm**, mỗi dòng một đoạn)", type: text }
+          - { name: nguon, label: "Dòng nhỏ: dựa trên nghiên cứu nào", type: text }
+          - { name: luuY, label: "Lưu ý cuối trang", type: text }
+          - { name: kieu, label: "Kiểu bài: chon = chọn đáp án · thang = thang điểm 1–4 (đừng đổi)", type: string }
+          - { name: nhanCanGi, label: "Nhãn trước ô 'điều bạn cần' (bỏ trống nếu không cần)", type: string }
+          - { name: mucThang, label: "(Kiểu thang) bốn mức trả lời", type: string, list: true }
+          - name: truc
+            label: "(Kiểu thang) hai trục điểm"
+            type: object
+            fields:
+              - { name: lo, label: "Tên trục lo âu", type: string }
+              - { name: ne, label: "Tên trục né tránh", type: string }
+              - { name: nguong, label: "Ngưỡng chia (2.5)", type: number }
+          - { name: cap, label: "(Kiểu thang) cặp câu kiểm tra độ nhất quán, vd 1-31", type: string, list: true }
+          - { name: doTinCayThap, label: "(Kiểu thang) lời nhắn khi trả lời hơi ngược nhau", type: text }
+          - name: cauThang
+            label: "(Kiểu thang) các câu, theo thứ tự hiện"
+            type: object
+            list: true
+            fields:
+              - { name: so, label: "Số gốc (đừng đổi)", type: number }
+              - { name: chu, label: "Câu", type: text }
+              - { name: tinh, label: "Tính vào trục: lo / ne / bỏ trống", type: string }
+              - { name: dao, label: "Câu đảo chiều (5 − điểm)", type: boolean }
+          - name: cau
+            label: "(Kiểu chọn) các câu hỏi"
+            type: object
+            list: true
+            fields:
+              - { name: hoi, label: "Câu hỏi", type: text }
+              - name: chon
+                label: "Các lựa chọn (thứ tự sẽ được xáo khi hiện)"
+                type: object
+                list: true
+                fields:
+                  - { name: chu, label: "Lựa chọn", type: text }
+                  - { name: kq, label: "Thuộc kết quả (mã)", type: string }
+          - name: ketQua
+            label: "Các kết quả"
+            type: object
+            list: true
+            fields:
+              - { name: ma, label: "Mã (đừng đổi)", type: string }
+              - { name: ten, label: "Tên kết quả", type: string }
+              - { name: phu, label: "Dòng nhỏ dưới tên", type: string }
+              - { name: moTa, label: "Mô tả", type: text }
+              - { name: dau, label: "Bạn có thể… (từng dòng)", type: string, list: true }
+              - { name: canGi, label: "Ô điều bạn cần / khi thiếu (bỏ trống nếu không có)", type: text }
+              - { name: loiNhan, label: "Câu viết tay vỗ về", type: text }
+              - { name: phanTich, label: "Phân tích chi tiết (gửi qua email). '## ' ở đầu dòng = tiêu đề nhỏ, '- ' = gạch đầu dòng", type: text }
+          - { name: ket, label: "Câu kết dưới kết quả", type: text }
+          - name: giuLienLac
+            label: "Hộp xin email/Zalo"
+            type: object
+            fields:
+              - { name: tieuDe, label: "Tiêu đề", type: string }
+              - { name: moTa, label: "Lời mời", type: text }
+              - { name: ds, label: "Sẽ nhận được (từng dòng)", type: string, list: true }
+          - name: buocTiep
+            label: "Gợi ý bước tiếp (khung đỏ dưới kết quả)"
+            type: object
+            fields:
+              - { name: chu, label: "Lời gợi ý (*chữ nghiêng*)", type: text }
+              - { name: nut, label: "Chữ trên nút", type: string }
+              - { name: link, label: "Đường dẫn", type: string }
+          - name: email
+            label: "Email gửi phân tích"
+            type: object
+            fields:
+              - { name: tieuDe, label: "Tiêu đề email ({ten} = tên kết quả)", type: string }
+              - { name: moDau, label: "Đoạn mở đầu ({ten}, {phu}, {loiNhan})", type: text }

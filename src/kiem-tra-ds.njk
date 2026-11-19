@@ -1,0 +1,21 @@
+---
+layout: base.njk
+css: kiemtra
+bodyClass: p-kt
+permalink: /kiem-tra/
+eleventyComputed:
+  title: "{{ kiemTra.chu.trangDsTieuDe }}"
+  description: "{{ kiemTra.chu.trangDsMoTa }}"
+---
+<div class="vo">
+  {% include "nav.njk" %}
+  <main class="kt-giay" id="noi-dung">
+    <header class="kt-dau-trang">
+      <h1 class="kt-h1">{{ kiemTra.chu.trangDsTieuDe }}</h1>
+      <p class="hand kt-ghi">{{ kiemTra.chu.ghiTay }}</p>
+    </header>
+    <div class="kt-chu"><p>{{ kiemTra.chu.trangDsMoTa }}</p></div>
+    {% include "kiem-tra-the.njk" %}
+  </main>
+  <div class="kt-foot">{% include "foot.njk" %}</div>
+</div>

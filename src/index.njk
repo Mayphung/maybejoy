@@ -102,6 +102,15 @@ bodyClass: p-home
       </div>
     </div>
 
+    <!-- KIỂM TRA MIỆNG -->
+    {% if kiemTra.hienTrangChu and (kiemTra.bai | ktHien).length %}
+    <section style="margin-top: 96px" id="kiem-tra" aria-labelledby="kt-h">
+      <h2 class="script sec-h" id="kt-h"><span class="ul">{{ kiemTra.chu.tieuDe }}</span></h2>
+      <p class="hand kt-ghi">{{ kiemTra.chu.ghiTay }}</p>
+      {% include "kiem-tra-the.njk" %}
+    </section>
+    {% endif %}
+
     <!-- TRANG MỚI NHẤT -->
     {% set moi = collections.moiNhat | limit(3) %}
     {% if moi.length %}

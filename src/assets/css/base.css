@@ -86,3 +86,21 @@ a{color:var(--burgundy)}a:hover{color:var(--terracotta-dark)}
   .hide-s{display:none !important}
 }
 .sub-line{font-style:italic;font-size:18px;line-height:1.4;color:var(--terracotta-dark);margin-bottom:12px}
+
+/* phiếu bài kiểm tra (trang chủ, /kiem-tra/) */
+.kt-ghi{font-size:20px;line-height:28px;color:var(--terracotta-dark);margin:6px 0 0}
+.kt-ds{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:28px;margin-top:30px}
+.kt-the{position:relative;display:flex;flex-direction:column;gap:8px;padding:22px 22px 20px 40px;background-color:var(--paper-white);background-image:linear-gradient(to right,transparent 24px,rgba(193,101,58,.7) 24px,rgba(193,101,58,.7) 25.5px,transparent 25.5px),repeating-linear-gradient(to bottom,transparent 0 31px,rgba(110,42,52,.12) 31px 32px);border-radius:3px;box-shadow:0 10px 24px rgba(54,42,36,.14),0 1px 3px rgba(54,42,36,.1);text-decoration:none;color:var(--charcoal);transform:rotate(var(--r,0deg));transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s ease;line-height:1.5}
+.kt-the:hover{transform:rotate(0deg) translateY(-6px);box-shadow:0 18px 34px rgba(54,42,36,.2);color:var(--charcoal)}
+.kt-the::before{content:"";position:absolute;top:-10px;left:50%;width:70px;height:20px;margin-left:-35px;background:rgba(193,101,58,.45);transform:rotate(-3deg)}
+.kt-de{font-size:11.5px;letter-spacing:1.6px;text-transform:uppercase;color:var(--burgundy);font-weight:500}
+.kt-ten{font-family:'Lora',Georgia,serif;font-size:25px;line-height:1.25;color:var(--burgundy);font-weight:600}
+.kt-moc{font-family:'Patrick Hand',cursive;font-size:20px;line-height:1.35;flex:1}
+.kt-day{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:6px;min-height:44px}
+.kt-nut{font-weight:500;font-size:15px;color:var(--terracotta-dark);border-bottom:2px solid var(--terracotta)}
+.kt-the:hover .kt-nut{color:var(--burgundy)}
+.kt-dau{flex:0 1 auto;max-width:150px;transform:rotate(-6deg);border:2.5px solid rgba(168,82,43,.85);border-radius:12px;padding:4px 10px;font-family:'Patrick Hand',cursive;font-size:15px;line-height:1.2;color:var(--terracotta-dark);text-align:center;background:rgba(255,253,248,.85)}
+.kt-dau b{display:block;font-weight:400;font-size:17px;color:var(--burgundy)}
+.kt-dau[hidden]{display:none}
+.kt-the.da-lam .kt-moc{padding-right:0}
+@media (max-width:860px){.kt-ds{gap:24px}.kt-the{transform:none}}

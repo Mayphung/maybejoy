@@ -1,0 +1,53 @@
+---
+layout: base.njk
+css: kiemtra
+js: kiemtra
+bodyClass: p-kt
+pagination:
+  data: kiemTra.bai
+  size: 1
+  alias: bai
+  before: function(ds) { return ds.filter((b) => b.hien !== false); }
+permalink: "/kiem-tra/{{ bai.ma }}/"
+eleventyComputed:
+  title: "{{ bai.ten }}: {{ bai.tieuDe }}"
+  description: "{{ bai.moc }}"
+---
+{%- set K = kiemTra.chu %}
+{%- set soCau = bai.cauThang.length if bai.kieu == "thang" else bai.cau.length %}
+<div class="vo">
+  {% include "nav.njk" %}
+  <main class="kt-giay" id="noi-dung">
+    <header class="kt-dau-trang">
+      <a class="kt-ve" href="/kiem-tra/">{{ K.tieuDe }}</a>
+      <p class="kt-meta">{{ bai.ten }} · {{ soCau }} {{ K.cau | lower }} · {{ bai.thoiGian }}</p>
+      <h1 class="kt-h1">{{ bai.tieuDe }}</h1>
+    </header>
+
+    <section id="kt-mo" class="kt-mo">
+      <div class="kt-chu">{{ bai.moTa | md | safe }}</div>
+      <button class="btn kt-bat" type="button" id="kt-bat" hidden>{{ K.batDau }}</button>
+      <noscript><p class="hand">Bài kiểm tra cần bật JavaScript trong trình duyệt.</p></noscript>
+      <p class="kt-nguon">{{ bai.nguon }}</p>
+    </section>
+
+    <section id="kt-lam" class="kt-lam" hidden aria-live="polite">
+      <div class="kt-tien">
+        <span class="kt-so">{{ K.cau }} <b id="kt-n">1</b>/<span id="kt-tong">{{ soCau }}</span></span>
+        <span class="kt-thanh" aria-hidden="true"><i id="kt-thanh"></i></span>
+      </div>
+      <h2 class="kt-hoi" id="kt-hoi" tabindex="-1"></h2>
+      <div class="kt-chon" id="kt-chon" role="group" aria-labelledby="kt-hoi"></div>
+      <button class="linkbtn kt-lui" type="button" id="kt-lui" hidden>{{ K.cauTruoc }}</button>
+    </section>
+
+    <section id="kt-kq" class="kt-kq" hidden></section>
+
+    <footer class="kt-chan">
+      <p>{{ bai.luuY }}</p>
+      <p>{{ K.anDanh }}</p>
+    </footer>
+  </main>
+  <div class="kt-foot">{% include "foot.njk" %}</div>
+</div>
+<script type="application/json" id="kt-data">{"bai": {{ bai | jsonScript | safe }}, "chu": {{ K | jsonScript | safe }}, "khac": {{ kiemTra.bai | ktHien | ktGon | jsonScript | safe }}, "kit": {{ site.kitFormId | jsonScript | safe }}}</script>
