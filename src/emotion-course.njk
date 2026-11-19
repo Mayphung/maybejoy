@@ -10,10 +10,11 @@ navKey: o-xuong-may
 ---
 {% from "macros.njk" import mform with context %}
 {% set k = khoangDung %}
+{% set L = khoangDung.chu %}
 {% set sp = banHang.sanPham | findBy("ma", "emotion-course") %}
 {% set moBan = banHang.nganHang.soTaiKhoan %}
 {% set giaChu = sp.gia | vnd %}
-{% set cta %}{% if moBan %}<a class="btn kd-cta" href="/thanh-toan/?sp=emotion-course">Vào học {{ k.ten }} — {{ giaChu }}</a>{% else %}<a class="btn kd-cta" href="#gia">Báo mình khi mở cửa</a>{% endif %}{% endset %}
+{% set cta %}{% if moBan %}<a class="btn kd-cta" href="/thanh-toan/?sp=emotion-course">{{ L.nutMua | replace("{ten}", k.ten) | replace("{gia}", giaChu) }}</a>{% else %}<a class="btn kd-cta" href="#gia">{{ L.nutChuaMo }}</a>{% endif %}{% endset %}
 
 <div class="wrap">{% include "nav.njk" %}</div>
 
@@ -22,14 +23,14 @@ navKey: o-xuong-may
 {# ===== 1. Mở đầu ===== #}
 <section class="kd-hero">
   <div class="kd-hero-text">
-    <div class="kd-kick">Khoá học video · Ở xưởng May</div>
+    <div class="kd-kick">{{ L.dongNho }}</div>
     <h1>{{ k.ten }}</h1>
     <p class="kd-sub">{{ k.moTaNgan }}</p>
     <ul class="kd-meta">{% for m in k.dongMeta %}<li>{{ m }}</li>{% endfor %}</ul>
     <div class="kd-price-line">
       <span class="now">{{ giaChu }}</span>
-      <span class="later">sau đó <s>{{ k.giaSau | vnd }}</s></span>
-      <span class="tag hand">giá khởi điểm</span>
+      <span class="later">{{ L.sauDo }} <s>{{ k.giaSau | vnd }}</s></span>
+      <span class="tag hand">{{ L.giaKhoiDiem }}</span>
     </div>
     <div class="kd-hero-cta">{{ cta | safe }}</div>
     <p class="kd-small">{{ k.ghiChuMua }}</p>
@@ -49,11 +50,11 @@ navKey: o-xuong-may
 
 {# ===== 3. Nghe quen không? ===== #}
 <section class="kd-quen" aria-labelledby="quen-h">
-  <h2 id="quen-h">Nghe quen không?</h2>
-  <p class="kd-quen-hint hand">bấm vào dòng nào thấy giống mình.</p>
+  <h2 id="quen-h">{{ L.ngheQuenTieuDe }}</h2>
+  <p class="kd-quen-hint hand">{{ L.ngheQuenGoiY }}</p>
   <ul class="kd-quen-list">
     {% for q in k.ngheQuen %}
-    <li><button class="kd-q" type="button" aria-pressed="false"><span class="t">{{ q.nhan }}</span><span class="c">{{ q.chu | mdInline | safe }}</span><span class="nod" aria-hidden="true">ừ, mình nè</span></button></li>
+    <li><button class="kd-q" type="button" aria-pressed="false"><span class="t">{{ q.nhan }}</span><span class="c">{{ q.chu | mdInline | safe }}</span><span class="nod" aria-hidden="true">{{ L.ngheQuenNhan }}</span></button></li>
     {% endfor %}
   </ul>
   <p class="kd-quen-count hand" id="kd-dem" aria-live="polite"></p>
@@ -66,7 +67,7 @@ navKey: o-xuong-may
 {# ===== 4. Mang theo gì ===== #}
 <section class="kd-bag" aria-labelledby="bag-h">
   <div class="kd-wrap">
-    <h2 id="bag-h">Sau 14 bài, bạn <em>mang theo</em> gì?</h2>
+    <h2 id="bag-h">{{ L.mangTheoTieuDe | mdInline | safe }}</h2>
     <p class="kd-lead">{{ k.mangTheo | mdInline | safe }}</p>
     <ol class="kd-bag-list">
       {% for m in k.mangTheoDs %}
@@ -79,8 +80,8 @@ navKey: o-xuong-may
 {# ===== 5. Nhịp 5 bước ===== #}
 <section class="kd-rhythm" id="nhip" aria-labelledby="nhip-h">
   <div class="kd-wrap">
-    <div class="kd-kick light">Trái tim của khoá học</div>
-    <h2 id="nhip-h">Nhịp 5 bước</h2>
+    <div class="kd-kick light">{{ L.nhipNhan }}</div>
+    <h2 id="nhip-h">{{ L.nhipTieuDe }}</h2>
     <div class="kd-breath" aria-hidden="true"><div class="ring"></div><div class="ring r2"></div><span class="lbl" id="kd-breath-lbl">dừng</span></div>
     <ol class="kd-steps" id="kd-steps">
       {% for n in k.nhip %}
@@ -88,15 +89,15 @@ navKey: o-xuong-may
       {% endfor %}
     </ol>
     <p class="kd-rhythm-note">{{ k.nhipGhiChu }}</p>
-    <button class="kd-try" type="button" id="kd-try">Thử một nhịp thở cùng May · 30 giây</button>
+    <button class="kd-try" type="button" id="kd-try">{{ L.nutThuTho }}</button>
   </div>
 </section>
 
 {# ===== 6. 14 bài, 4 chặng ===== #}
 <section class="kd-path" aria-labelledby="path-h">
   <div class="kd-wrap">
-    <h2 id="path-h">14 bài, <em>4 chặng</em></h2>
-    <p class="kd-lead">Các bài xây tiếp lên nhau, nên mình khuyên bạn đi từ đầu. Nhưng không ai chấm điểm tốc độ của bạn.</p>
+    <h2 id="path-h">{{ L.changTieuDe | mdInline | safe }}</h2>
+    <p class="kd-lead">{{ L.changLoi }}</p>
     <div class="kd-trail">
       {% for c in k.chang %}
       <div class="kd-stage{% if c.so == 'III' %} dark{% endif %}">
@@ -120,7 +121,7 @@ navKey: o-xuong-may
       <img src="{{ k.anhWorkbook }}" alt="{{ k.anhWorkbookMoTa }}" loading="lazy" width="800" height="1066">
     </figure>
     <div>
-      <h2 id="wb-h">Workbook: nơi bạn <em>thật sự</em> thực hành</h2>
+      <h2 id="wb-h">{{ L.workbookTieuDe | mdInline | safe }}</h2>
       <p>{{ k.workbook | mdInline | safe }}</p>
       <ul class="kd-tabs">{% for w in k.workbookDs %}<li>{{ w }}</li>{% endfor %}</ul>
       <p class="hand kd-wb-note">{{ k.workbookGhiTay }}</p>
@@ -157,7 +158,7 @@ navKey: o-xuong-may
     </div>
     {% endif %}
     <div>
-      <h2 id="may-h">Mình là May</h2>
+      <h2 id="may-h">{{ L.veMayTieuDe }}</h2>
       {% for p in k.veMay %}<p>{{ p }}</p>{% endfor %}
       <ul class="kd-creds">{% for c in k.veMayChungChi %}<li>{{ c }}</li>{% endfor %}</ul>
       {% if k.veMayThucHanh %}<p>{{ k.veMayThucHanh }}</p>{% endif %}
@@ -170,10 +171,10 @@ navKey: o-xuong-may
 {# ===== 10. Hợp với ai ===== #}
 <section class="kd-fit" aria-labelledby="fit-h">
   <div class="kd-wrap">
-    <h2 id="fit-h">Khoá học này dành cho ai?</h2>
+    <h2 id="fit-h">{{ L.choAiTieuDe }}</h2>
     <div class="kd-fit-grid">
-      <div class="yes"><h3>Có thể hợp với bạn nếu</h3><ul>{% for h in k.hop %}<li>{{ h }}</li>{% endfor %}</ul></div>
-      <div class="no"><h3>Có thể chưa hợp nếu</h3><p>{{ k.khongHop }}</p></div>
+      <div class="yes"><h3>{{ L.hopTieuDe }}</h3><ul>{% for h in k.hop %}<li>{{ h }}</li>{% endfor %}</ul></div>
+      <div class="no"><h3>{{ L.khongHopTieuDe }}</h3><p>{{ k.khongHop }}</p></div>
     </div>
     <p class="kd-care">{{ k.luuY }}</p>
   </div>
@@ -183,21 +184,21 @@ navKey: o-xuong-may
 <section class="kd-offer" id="gia" aria-labelledby="gia-h">
   <div class="kd-ticket">
     <div class="kd-ticket-main">
-      <div class="kd-kick">Giá khởi điểm</div>
+      <div class="kd-kick">{{ L.giaNhan }}</div>
       <h2 id="gia-h">{{ k.ten }}</h2>
       <div class="kd-ticket-price"><span class="now">{{ giaChu }}</span><s>{{ k.giaSau | vnd }}</s></div>
-      <p class="per hand">khoảng {{ ((sp.gia / 15) / 1000) | round | int }}.000đ mỗi clip</p>
+      <p class="per hand">{{ L.moiClip | replace("{gia}", ((sp.gia / 15) / 1000) | round | int + ".000đ") }}</p>
       <ul>{% for n in k.nhanDuoc %}<li>{{ n }}</li>{% endfor %}</ul>
       {% if moBan %}
       {{ cta | safe }}
       {% else %}
-      <p class="hand kd-wait">May đang mở cửa phòng học. Để lại email, mở xong là May báo bạn đầu tiên.</p>
+      <p class="hand kd-wait">{{ L.choMoLoi }}</p>
       {{ mform("em-kd", "Email của bạn", "Báo mình nhé") }}
       {% endif %}
     </div>
     <div class="kd-seal">
       <div class="kd-seal-badge"><span class="big">7</span><span>ngày</span></div>
-      <h3>Hoàn tiền 100%</h3>
+      <h3>{{ L.hoanTienTieuDe }}</h3>
       <p>{{ k.hoanTien }}</p>
     </div>
   </div>
@@ -206,7 +207,7 @@ navKey: o-xuong-may
 {# ===== 12. Hỏi đáp ===== #}
 <section class="kd-faq" aria-labelledby="faq-h">
   <div class="kd-wrap">
-    <h2 id="faq-h">Câu hỏi thường gặp</h2>
+    <h2 id="faq-h">{{ L.hoiDapTieuDe }}</h2>
     {% for q in k.hoiDap %}
     <details><summary>{{ q.hoi }}</summary><p>{{ q.dap }}</p></details>
     {% endfor %}
@@ -217,7 +218,7 @@ navKey: o-xuong-may
 <section class="kd-end">
   <div class="kd-wrap">
     {% for p in k.ket %}<p>{{ p }}</p>{% endfor %}
-    <p class="kd-end-hand">Từng chút một.</p>
+    <p class="kd-end-hand">{{ L.ketGhiTay }}</p>
     {{ cta | safe }}
   </div>
 </section>
@@ -227,7 +228,7 @@ navKey: o-xuong-may
 {# Thanh mua dính dưới màn hình (điện thoại) #}
 <div class="kd-sticky" id="kd-sticky" hidden>
   <span><strong>{{ giaChu }}</strong><s>{{ k.giaSau | vnd }}</s></span>
-  {% if moBan %}<a class="btn" href="/thanh-toan/?sp=emotion-course">Vào học</a>{% else %}<a class="btn" href="#gia">Báo mình</a>{% endif %}
+  {% if moBan %}<a class="btn" href="/thanh-toan/?sp=emotion-course">{{ L.thanhDinhNut }}</a>{% else %}<a class="btn" href="#gia">{{ L.thanhDinhNutChuaMo }}</a>{% endif %}
 </div>
 
 <div class="wrap">{% include "foot.njk" %}</div>

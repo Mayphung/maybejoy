@@ -71,12 +71,15 @@ async function guiEmail(env, { to, subject, html, replyTo }) {
   return r.ok;
 }
 
+const E = banHang.email || {};
+const dien = (mau, v) => String(mau || "").replace(/\{(\w+)\}/g, (m, k) => (k in v ? v[k] : m));
+const doan = (t) => esc(t).split(/\n/).map((x) => `<p style="margin:0 0 14px">${x}</p>`).join("");
 function khungEmail(noiDung) {
   return `<!doctype html><html><body style="margin:0;background:#F4EBE0;padding:28px 12px;font-family:Arial,Helvetica,sans-serif;color:#362A24">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;background:#FFFDF8;border-radius:10px;padding:30px 28px">
 <tr><td style="font-size:16px;line-height:1.7">${noiDung}
-<p style="margin:28px 0 0">Ôm ôm,<br><strong style="color:#6E2A34">May</strong></p>
+<p style="margin:28px 0 0">${esc(E.kyTen || "Ôm ôm,\nMay").replace(/\n/g, "<br>")}</p>
 </td></tr></table>
 <p style="font-size:12px;color:#7A6C64;margin:16px 0 0">mayphung.com · Bạn trả lời thẳng email này là May đọc được.</p>
 </td></tr></table></body></html>`;
@@ -97,11 +100,12 @@ async function dangKy(request, env, ctx) {
   await env.DB.put(k, JSON.stringify(cu));
   const coQua = loai === "qua" && !!banHang.quaTang.link && !!env.RESEND_API_KEY;
   if (coQua) {
+    const v = { ten: banHang.quaTang.ten };
     ctx.waitUntil(
       guiEmail(env, {
         to: email,
-        subject: `Cuốn nhỏ của bạn: ${banHang.quaTang.ten}`,
-        html: khungEmail(`<p>Chào bạn,</p><p>Cảm ơn bạn đã ghé nhà May. Đây là cuốn <em>${esc(banHang.quaTang.ten)}</em> như đã hứa.</p>${nut(banHang.quaTang.link, "Mở cuốn sách")}<p>Đọc chậm thôi, làm bài tập bên trong nếu bạn thích. Đọc xong có gì muốn kể, bạn trả lời email này nhé.</p>`),
+        subject: dien(E.quaTieuDe || "Cuốn nhỏ của bạn: {ten}", v),
+        html: khungEmail(doan(dien(E.quaMoDau, v)) + nut(banHang.quaTang.link, dien(E.quaNut || "Mở cuốn sách", v)) + doan(dien(E.quaKet, v))),
       })
     );
   }
@@ -132,13 +136,11 @@ async function xemDon(ma, env) {
 
 async function guiChiaKhoa(env, don) {
   const link = await linkPhong(env, don.phong, don.email);
-  const phong = banHang.phong[don.phong];
+  const v = { phong: banHang.phong[don.phong].ten, mon: don.ten, gia: tien(don.gia), ma: don.ma };
   return guiEmail(env, {
     to: don.email,
-    subject: `Chìa khoá vào ${phong.ten} của bạn`,
-    html: khungEmail(
-      `<p>Chào bạn,</p><p>May đã nhận được ${tien(don.gia)} cho <strong>${esc(don.ten)}</strong> (mã đơn ${don.ma}). Cảm ơn bạn nhiều lắm.</p>${nut(link, "Vào " + phong.ten)}<p>Bạn giữ email này lại nhé: đường dẫn trên là chìa khoá riêng của bạn, dùng được mãi, trên máy nào cũng được.</p>`
-    ),
+    subject: dien(E.chiaKhoaTieuDe || "Chìa khoá vào {phong} của bạn", v),
+    html: khungEmail(doan(dien(E.chiaKhoaMoDau, v)) + nut(link, dien(E.chiaKhoaNut || "Vào {phong}", v)) + doan(dien(E.chiaKhoaKet, v))),
   });
 }
 

@@ -41,5 +41,32 @@
   "quaTang": {
     "ten": "Khi Sợ Hãi Điều Khiển Tình Yêu",
     "link": ""
+  },
+  "chuThanhToan": {
+    "dongNho": "Ở xưởng May",
+    "tieuDe": "Bước vào phòng",
+    "chuaMo": "May đang hoàn tất phần chuyển khoản. Bạn quay lại sau ít phút nhé.",
+    "oEmail": "Email nhận đường dẫn vào phòng",
+    "ghiChuEmail": "May gửi chìa khoá vào email này ngay khi nhận được tiền. Bạn gõ kỹ giúp May nhé.",
+    "nutTiep": "Tiếp tục",
+    "buoc1": "Mở app ngân hàng, quét mã bên dưới. Số tiền và nội dung đã điền sẵn. Đang xem bằng điện thoại? Bạn chụp màn hình mã QR, rồi trong app ngân hàng chọn quét mã từ ảnh.",
+    "buoc2": "Giữ nguyên nội dung chuyển khoản, để web nhận ra đơn của bạn:",
+    "buoc3": "Chuyển xong, cứ để trang này mở. Vài giây sau cửa tự mở.",
+    "dangCho": "đang chờ tiền về",
+    "chuaThay": "Chuyển rồi mà 15 phút sau chưa thấy gì? Bạn trả lời email bất kỳ của May, kèm mã đơn bên dưới. May mở cửa tay cho bạn.",
+    "xongTieuDe": "May nhận được rồi. Cảm ơn bạn nhiều lắm!",
+    "xongLoi": "Chìa khoá cũng đã gửi vào email của bạn (nhớ xem cả mục Quảng cáo). Giờ thì mời bạn vào:",
+    "xongNut": "Vào phòng"
+  },
+  "email": {
+    "chiaKhoaTieuDe": "Chìa khoá vào {phong} của bạn",
+    "chiaKhoaMoDau": "Chào bạn,\nMay đã nhận được {gia} cho {mon} (mã đơn {ma}). Cảm ơn bạn nhiều lắm.",
+    "chiaKhoaNut": "Vào {phong}",
+    "chiaKhoaKet": "Bạn giữ email này lại nhé: đường dẫn trên là chìa khoá riêng của bạn, dùng được mãi, trên máy nào cũng được.",
+    "quaTieuDe": "Cuốn nhỏ của bạn: {ten}",
+    "quaMoDau": "Chào bạn,\nCảm ơn bạn đã ghé nhà May. Đây là cuốn {ten} như đã hứa.",
+    "quaNut": "Mở cuốn sách",
+    "quaKet": "Đọc chậm thôi, làm bài tập bên trong nếu bạn thích. Đọc xong có gì muốn kể, bạn trả lời email này nhé.",
+    "kyTen": "Ôm ôm,\nMay"
   }
 }

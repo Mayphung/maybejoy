@@ -9,6 +9,7 @@ navKey: me-cung-dang-hoc
 ---
 {% from "macros.njk" import mform with context %}
 {% set m = meCungDangHoc %}
+{% set C = meCungDangHoc.chu %}
 {% set baiMe = collections.posts | byCategory("me-cung-dang-hoc") %}
 {% set noiBat = baiMe | featured %}
 <div class="wrap">
@@ -16,8 +17,8 @@ navKey: me-cung-dang-hoc
   <hr class="rule">
 
   <header class="head" id="noi-dung">
-    <div class="serif sub-line">hiên nhà</div>
-    <h1 class="serif h1">Mẹ <span style="font-style: italic">cũng đang</span> học</h1>
+    <div class="serif sub-line">{{ C.dongNho }}</div>
+    <h1 class="serif h1">{{ C.tieuDe | mdInline | safe }}</h1>
     <p style="font-size: 19px; max-width: 640px; margin: 0 auto">{{ m.loiMoDau }}</p>
   </header>
 
@@ -28,7 +29,7 @@ navKey: me-cung-dang-hoc
   </div>
 
   {% if noiBat %}
-  <div class="kick" style="margin-bottom: 18px">Bài mới nhất</div>
+  <div class="kick" style="margin-bottom: 18px">{{ C.baiMoiNhat }}</div>
   <a class="feat" href="{{ noiBat.url }}">
     <img src="{{ noiBat.data.image or '/assets/images/me-om-con-cua-so.jpg' }}" alt="{{ noiBat.data.imageAlt or '' }}">
     <div class="feat-body">
@@ -36,7 +37,7 @@ navKey: me-cung-dang-hoc
       <div class="kick" style="margin-bottom: 14px">{% if t0 %}{{ t0.ten }} · {% endif %}{{ noiBat.content | readMin }} phút đọc</div>
       <h2 class="serif" style="font-size: 34px; line-height: 1.3; margin: 0 0 18px; color: #6E2A34; font-weight: 600">{{ noiBat.data.title }}</h2>
       {% if noiBat.data.excerpt %}<p style="margin: 0 0 24px; font-size: 16px">{{ noiBat.data.excerpt }}</p>{% endif %}
-      <span style="font-weight: 500; color: #6E2A34; border-bottom: 1.5px solid #C1653A; align-self: flex-start; font-size: 14px">Đọc bài</span>
+      <span style="font-weight: 500; color: #6E2A34; border-bottom: 1.5px solid #C1653A; align-self: flex-start; font-size: 14px">{{ C.docBai }}</span>
     </div>
   </a>
   {% endif %}
@@ -56,7 +57,7 @@ navKey: me-cung-dang-hoc
       {% endfor %}
     </div>
     <div class="list-top">
-      <button class="chip-all on" type="button" data-the="all" aria-pressed="true">Toàn bộ</button>
+      <button class="chip-all on" type="button" data-the="all" aria-pressed="true">{{ C.toanBo }}</button>
       <span class="hand" id="the-line" aria-live="polite"></span>
     </div>
     <div class="me-list">
@@ -69,24 +70,24 @@ navKey: me-cung-dang-hoc
       </a>
       {% endfor %}
     </div>
-    <div class="more-wrap"><button class="btn-more" type="button" id="me-more" hidden>Đọc tiếp</button></div>
+    <div class="more-wrap"><button class="btn-more" type="button" id="me-more" hidden>{{ C.docTiep }}</button></div>
   </section>
 
   {% if m.hienThuToiNay %}
   <section class="g2 try-sec">
     <div>
-      <h2 class="serif" style="font-size: 38px; line-height: 1.25; margin: 0 0 14px; color: #6E2A34; font-weight: 500">Một việc nhỏ, <span style="font-style: italic">thử tối nay.</span></h2>
+      <h2 class="serif" style="font-size: 38px; line-height: 1.25; margin: 0 0 14px; color: #6E2A34; font-weight: 500">{{ C.thuToiNayTieuDe | mdInline | safe }}</h2>
       <p style="margin: 0; font-size: 16px">{{ m.thuToiNayGiaiThich }}</p>
     </div>
     <div class="try" style="margin: 0">
-      <div class="lbl">thử tối nay</div>
+      <div class="lbl">{{ C.thuToiNayNhan }}</div>
       {{ m.viDuThuToiNay | md | safe }}
     </div>
   </section>
   {% endif %}
 
   <section class="signup">
-    <h2 class="serif" style="font-size: 36px; line-height: 1.25; margin: 0 0 26px; color: #6E2A34; font-weight: 500">Cùng May học nhé!</h2>
+    <h2 class="serif" style="font-size: 36px; line-height: 1.25; margin: 0 0 26px; color: #6E2A34; font-weight: 500">{{ C.moiDangKy }}</h2>
     {{ mform("em-me", "Email của bạn", "Gửi cho mình", "chung", "margin: 0 auto; justify-content: center") }}
   </section>
 

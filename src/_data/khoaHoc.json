@@ -86,5 +86,16 @@
   "soiChieu": {
     "loiChao": "Chào bạn, Soi Chiếu đây rồi. Năm tuần, năm căn phòng. Bạn tải sổ về, mở bằng máy tính hoặc iPad để gõ thẳng vào sổ, hoặc in ra viết tay đều được.",
     "driveId": "1z5JHguJZm_vT7FBiPha5NQ0zXm8aitqu"
+  },
+  "chu": {
+    "dongNho": "Phòng học",
+    "tieuDe": "Khoảng Dừng Cảm Xúc",
+    "moSoTay": "Mở workbook thực hành (PDF)",
+    "daXem": "Mình xem xong tập này rồi",
+    "videoLoi": "Video không chạy? Bạn thử tải lại trang, hoặc mở bằng Chrome/Safari bản mới. Vẫn không được thì trả lời email của May, May xem giúp.",
+    "soiChieuDongNho": "Ở xưởng May · Soi Chiếu",
+    "soiChieuTieuDe": "Soi Chiếu",
+    "soiChieuNut": "Tải sổ Soi Chiếu (PDF)",
+    "soiChieuLoi": "Nút tải không chạy? Mở sổ trên Google Drive rồi bấm biểu tượng tải về."
   }
 }

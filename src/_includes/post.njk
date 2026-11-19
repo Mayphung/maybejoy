@@ -17,7 +17,7 @@ bodyClass: p-post
     </div>
     {% if thuToiNay and meCungDangHoc.hienThuToiNay %}
     <aside class="try" aria-label="Thử tối nay">
-      <div class="lbl">thử tối nay</div>
+      <div class="lbl">{{ meCungDangHoc.chu.thuToiNayNhan }}</div>
       {{ thuToiNay | md | safe }}
     </aside>
     {% endif %}
@@ -27,17 +27,17 @@ bodyClass: p-post
   {% set others = collections.posts | byCategory(category) | without(page.url) | limit(4) %}
   {% if others.length %}
   <nav class="more" aria-label="Đọc tiếp">
-    <div class="kick" style="margin-bottom: 6px">Đọc tiếp trong {{ cat.name if cat else "vở" }}</div>
+    <div class="kick" style="margin-bottom: 6px">{{ site.chu.docTiepTrong }} {{ cat.name if cat else "vở" }}</div>
     {% for p in others %}
     <a href="{{ p.url }}"><span class="t">{{ p.data.title }}</span><span class="c">{{ p.content | readMin }} phút</span></a>
     {% endfor %}
-    <a href="/viet/" style="border-bottom: none"><span class="c">Tất cả bài viết →</span></a>
+    <a href="/viet/" style="border-bottom: none"><span class="c">{{ site.chu.tatCaBaiMuiTen }}</span></a>
   </nav>
   {% endif %}
 
   <section class="post-sign">
-    <h2 class="script" style="font-size: 40px; line-height: 1.2; margin: 0 0 20px; color: #6E2A34">Nhắn bạn khi có bài mới</h2>
-    {{ mform("em-post", "Email của bạn", "Gửi cho mình") }}
+    <h2 class="script" style="font-size: 40px; line-height: 1.2; margin: 0 0 20px; color: #6E2A34">{{ site.chu.cuoiBaiMoiDangKy }}</h2>
+    {{ mform("em-post", site.chu.oEmail, site.chu.nutGui) }}
   </section>
 
   {% include "foot.njk" %}

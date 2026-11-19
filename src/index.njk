@@ -5,6 +5,7 @@ bodyClass: p-home
 ---
 {% from "macros.njk" import mform with context %}
 {% set t = trangChu %}
+{% set C = trangChu.chu %}
 {% set check %}<svg class="tick" width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="#A8522B" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 16 L12 24 L27 5"/></svg>{% endset %}
 {% set socialMap = { "TikTok": site.social.tiktok, "Facebook": site.social.facebook, "YouTube": site.social.youtube } %}
 <div class="vo">
@@ -17,8 +18,8 @@ bodyClass: p-home
     <div class="g-top">
       <div class="label">
         <div style="text-align: center; margin-bottom: 14px">
-          <div class="script" style="font-size: 64px; line-height: 72px; color: #6E2A34; font-weight: 700">Bit by Bit</div>
-          <div class="hand" style="font-size: 20px; line-height: 24px; color: #A8522B">từng chút một</div>
+          <div class="script" style="font-size: 64px; line-height: 72px; color: #6E2A34; font-weight: 700">{{ C.tenVo }}</div>
+          <div class="hand" style="font-size: 20px; line-height: 24px; color: #A8522B">{{ C.phuDe }}</div>
         </div>
         {% for f in t.nhan %}<div class="field"><b>{{ f.nhan }}:</b><span>{{ f.giaTri }}</span></div>{% endfor %}
       </div>
@@ -38,7 +39,7 @@ bodyClass: p-home
     <!-- NGÀY THÁNG -->
     <div style="text-align: center; margin: 64px 0 8px">
       <div class="script h-date" id="hom-nay">Hôm nay</div>
-      <h2 class="script day-title">Việc hôm nay</h2>
+      <h2 class="script day-title">{{ C.viecHomNay }}</h2>
     </div>
 
     <!-- DANH SÁCH VIỆC -->
@@ -82,19 +83,19 @@ bodyClass: p-home
 
       <!-- việc của bạn -->
       <div class="item mine" data-i="mine">
-        <div class="margin-note">việc của bạn đó →</div>
+        <div class="margin-note">{{ C.ghiLeViecBan }}</div>
         <div class="box dashed" aria-hidden="true">{{ check | safe }}</div>
         <div>
           <form class="mine-open" id="mine-form">
-            <label class="task" for="viec-cua-ban" style="display: block">Một việc thật nhỏ của bạn, hôm nay:</label>
+            <label class="task" for="viec-cua-ban" style="display: block">{{ C.hoiViecBan }}</label>
             <div style="display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap; margin-top: 8px; max-width: 640px">
-              <input id="viec-cua-ban" class="inp" type="text" placeholder="ví dụ: uống đủ nước…" maxlength="120" autocomplete="off">
-              <button class="btn" type="submit">Gạch!</button>
+              <input id="viec-cua-ban" class="inp" type="text" placeholder="{{ C.goiYViecBan }}" maxlength="120" autocomplete="off">
+              <button class="btn" type="submit">{{ C.nutGach }}</button>
             </div>
           </form>
           <div class="mine-done" hidden>
             <div class="task"><span id="mine-text"></span></div>
-            <div class="sub">Thấy chưa, hôm nay đã có một việc xong. <button type="button" id="mine-undo" class="linkbtn">viết việc khác</button></div>
+            <div class="sub">{{ C.daGach }} <button type="button" id="mine-undo" class="linkbtn">{{ C.vietViecKhac }}</button></div>
           </div>
         </div>
         <div></div>
@@ -105,7 +106,7 @@ bodyClass: p-home
     {% set moi = collections.moiNhat | limit(3) %}
     {% if moi.length %}
     <section style="margin-top: 96px" aria-labelledby="moi-h">
-      <h2 class="script sec-h" id="moi-h"><span class="ul">Bài mới nhất</span></h2>
+      <h2 class="script sec-h" id="moi-h"><span class="ul">{{ C.baiMoiNhat }}</span></h2>
       <ul class="moi">
         {% for it in moi %}
         {% set c = site.nav | navItem(it.data.category or "tung-chut-mot") %}
@@ -122,15 +123,15 @@ bodyClass: p-home
 
     <!-- BÀI TẬP VỀ NHÀ -->
     <section style="margin-top: 96px" id="bai-tap" aria-labelledby="bt-h">
-      <h2 class="script sec-h" id="bt-h"><span class="ul">Nếu bạn thích làm bài tập</span></h2>
+      <h2 class="script sec-h" id="bt-h"><span class="ul">{{ C.baiTap }}</span></h2>
       <div class="g-hw">
         <div class="hide-s booklet">
-          <div style="font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #F0B892; line-height: 16px">Cuốn nhỏ · miễn phí</div>
+          <div style="font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #F0B892; line-height: 16px">{{ C.nhanCuonNho }}</div>
           <div class="serif" style="font-size: 22px; line-height: 28px; font-weight: 600">{{ t.baiTap.tenSach }}</div>
         </div>
         <div>
-          <p style="margin: 0 0 16px; max-width: 600px"><b style="font-weight: 600; color: #6E2A34">Đề bài:</b> {{ t.baiTap.deBai | mdInline | safe }}</p>
-          {{ mform("email-bt", "Email để nhận đề", "Gửi mình", "qua", "", "font-family: 'Be Vietnam Pro', sans-serif") }}
+          <p style="margin: 0 0 16px; max-width: 600px"><b style="font-weight: 600; color: #6E2A34">{{ C.deBai }}</b> {{ t.baiTap.deBai | mdInline | safe }}</p>
+          {{ mform("email-bt", C.oEmail, C.nutGui, "qua", "", "font-family: 'Be Vietnam Pro', sans-serif") }}
         </div>
       </div>
     </section>
@@ -138,12 +139,12 @@ bodyClass: p-home
     <!-- THỜI KHOÁ BIỂU -->
     {% if site.social.tiktok or site.social.facebook or site.social.youtube %}
     <section style="margin-top: 96px" id="thoi-khoa-bieu" aria-labelledby="tkb-h">
-      <h2 class="script sec-h" id="tkb-h" style="margin-bottom: 24px"><span class="ul">Thời khoá biểu</span></h2>
+      <h2 class="script sec-h" id="tkb-h" style="margin-bottom: 24px"><span class="ul">{{ C.thoiKhoaBieu }}</span></h2>
       <table class="tkb">
-        <thead><tr><th scope="col">Môn</th><th scope="col">Lớp ở đâu</th><th scope="col" class="c3">Học gì</th><th scope="col"><span class="hide-s">Vào lớp</span></th></tr></thead>
+        <thead><tr><th scope="col">{{ C.cotMon }}</th><th scope="col">{{ C.cotNoi }}</th><th scope="col" class="c3">{{ C.cotHoc }}</th><th scope="col"><span class="hide-s">{{ C.cotVao }}</span></th></tr></thead>
         <tbody>
           {% for r in t.thoiKhoaBieu %}{% if socialMap[r.noi] %}
-          <tr><td><b style="font-weight: 600; color: #6E2A34">{{ r.mon }}</b></td><td>{{ r.noi }}</td><td class="c3">{{ r.hoc }}</td><td><a href="{{ socialMap[r.noi] }}" target="_blank" rel="me noopener" style="font-weight: 500; display: inline-block; padding: 10px 0">Vào lớp →</a></td></tr>
+          <tr><td><b style="font-weight: 600; color: #6E2A34">{{ r.mon }}</b></td><td>{{ r.noi }}</td><td class="c3">{{ r.hoc }}</td><td><a href="{{ socialMap[r.noi] }}" target="_blank" rel="me noopener" style="font-weight: 500; display: inline-block; padding: 10px 0">{{ C.vaoLop }}</a></td></tr>
           {% endif %}{% endfor %}
         </tbody>
       </table>

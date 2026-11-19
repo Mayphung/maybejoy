@@ -11,6 +11,7 @@ footColor: "#A8522B"
 ---
 {% from "macros.njk" import mform with context %}
 {% set k = motChuyen %}
+{% set C = motChuyen.chu %}
 {% set star %}<path d="M12 2l2.9 6.3 6.9.7-5.2 4.6 1.5 6.8L12 17l-6.1 3.4 1.5-6.8L2.2 9l6.9-.7z"/>{% endset %}
 {% set playIcon %}<div class="play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#FBF6EE" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></div>{% endset %}
 {% set thumbColors = ["#F3C6C0", "#C3DCE8", "#F2C14E", "#B5CDA5"] %}
@@ -50,9 +51,9 @@ footColor: "#A8522B"
   <div class="wrap" style="position: relative">
     {% include "nav.njk" %}
     <header class="head" id="noi-dung">
-      <div class="serif sub-line">dưới gốc đa</div>
+      <div class="serif sub-line">{{ C.dongNho }}</div>
       <h1 class="script h1">Một chuyện thôi mẹ!</h1>
-      <div class="hand" style="font-size: 23px; color: #A8522B; margin-bottom: 24px">(thêm một truyện nữa thôi...)</div>
+      <div class="hand" style="font-size: 23px; color: #A8522B; margin-bottom: 24px">{{ C.ghiTay }}</div>
       <p style="font-size: 19px; max-width: 620px; margin: 0 auto">{{ k.loiMoDau }}</p>
     </header>
   </div>
@@ -64,24 +65,24 @@ footColor: "#A8522B"
   <div class="g3" style="margin: 30px 0 110px">
     <a class="door" href="#nghe-ke" style="background: #F2C14E">
       <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#6E2A34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="5" height="7" rx="2"/><rect x="16" y="14" width="5" height="7" rx="2"/></svg>
-      <span class="serif" style="font-size: 26px; color: #6E2A34; font-weight: 600">Truyện kể trên YouTube</span><span style="font-size: 15px">Mở truyện, tắt đèn, nằm nghe cùng con.</span>
+      <span class="serif" style="font-size: 26px; color: #6E2A34; font-weight: 600">{{ C.cua1Ten }}</span><span style="font-size: 15px">{{ C.cua1MoTa }}</span>
     </a>
     <a class="door" href="#sach" style="background: #C3DCE8">
       <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#6E2A34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5a2 2 0 0 1 2-2h6v18H5a2 2 0 0 1-2-2z"/><path d="M21 5a2 2 0 0 0-2-2h-6v18h6a2 2 0 0 0 2-2z"/></svg>
-      <span class="serif" style="font-size: 26px; color: #6E2A34; font-weight: 600">Sách Cappu &amp; Lucia</span><span style="font-size: 15px">Ba câu chuyện về ba nỗi sợ của trẻ nhỏ, cùng {{ k.sach.nxb }}.</span>
+      <span class="serif" style="font-size: 26px; color: #6E2A34; font-weight: 600">{{ C.cua2Ten }}</span><span style="font-size: 15px">{{ C.cua2MoTa }}</span>
     </a>
     <a class="door" href="#ngoi-lang" style="background: #B5CDA5">
       <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#6E2A34" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-5h4v5"/></svg>
-      <span class="serif" style="font-size: 26px; color: #6E2A34; font-weight: 600">Một ngôi làng nhỏ</span><span style="font-size: 15px">Mười con mèo màu lạ đang chờ tên.</span>
+      <span class="serif" style="font-size: 26px; color: #6E2A34; font-weight: 600">{{ C.cua3Ten }}</span><span style="font-size: 15px">{{ C.cua3MoTa }}</span>
     </a>
   </div>
 
   <section id="nghe-ke" style="margin-bottom: 120px">
     <div class="sec-top">
       <div>
-        <h2 class="serif" style="font-size: 44px; line-height: 1.2; margin: 0; color: #6E2A34; font-weight: 500">Tắt đèn. <span style="font-style: italic">Bật truyện.</span></h2>
+        <h2 class="serif" style="font-size: 44px; line-height: 1.2; margin: 0; color: #6E2A34; font-weight: 500">{{ C.truyenTieuDe | mdInline | safe }}</h2>
       </div>
-      {% if site.social.youtube %}<a class="btn3d" href="{{ site.social.youtube }}" target="_blank" rel="me noopener">Mở kênh YouTube</a>{% endif %}
+      {% if site.social.youtube %}<a class="btn3d" href="{{ site.social.youtube }}" target="_blank" rel="me noopener">{{ C.moKenh }}</a>{% endif %}
     </div>
     {% if k.videos.length %}
     <div class="g3">
@@ -97,8 +98,8 @@ footColor: "#A8522B"
     <div class="soon-box">
       <div class="thumb" style="background: #F3C6C0; width: 200px; flex-shrink: 0"><svg style="position: absolute; top: 14px; right: 18px" width="22" height="22" viewBox="0 0 24 24" fill="#F2C14E" aria-hidden="true">{{ star | safe }}</svg>{{ playIcon | safe }}</div>
       <div>
-        <div class="kick">Tập 01 · sắp lên sóng</div>
-        <p style="margin: 6px 0 0">May đang chuẩn bị những câu chuyện đầu tiên. Để lại email <a href="#bao-tin">ở cuối trang</a>, tập đầu có là May báo.</p>
+        <div class="kick">{{ C.tapSapCo }}</div>
+        <p style="margin: 6px 0 0"><a href="#bao-tin" style="color: inherit; text-decoration: none">{{ C.tapSapCoLoi }}</a></p>
       </div>
     </div>
     {% endif %}
@@ -115,7 +116,7 @@ footColor: "#A8522B"
       </div>
       <div style="display: flex; align-items: flex-end; gap: 22px">
         {% if k.sach.sapCo %}<div class="hand" style="font-size: 21px; color: #6E2A34; max-width: 220px; transform: rotate(-2deg)">{{ k.sach.sapCo }}</div>{% endif %}
-        <figure class="hide-s mini-pol" style="transform: rotate(4deg); width: 200px"><img src="/assets/images/gio-doc-sach.jpg" alt="Mẹ đọc sách cho con" loading="lazy" style="height: 220px"><figcaption class="hand" style="font-size: 17px; margin-top: 8px">giờ đọc sách nhà mình</figcaption></figure>
+        <figure class="hide-s mini-pol" style="transform: rotate(4deg); width: 200px"><img src="/assets/images/gio-doc-sach.jpg" alt="Mẹ đọc sách cho con" loading="lazy" style="height: 220px"><figcaption class="hand" style="font-size: 17px; margin-top: 8px">{{ C.anhDocSachGhiTay }}</figcaption></figure>
       </div>
     </div>
     <div class="g3">
@@ -124,14 +125,14 @@ footColor: "#A8522B"
         <div class="cover"><img src="{{ b.bia }}" alt="Bìa sách {{ b.ten }}" loading="lazy"></div>
         <div><h3 class="serif" style="font-size: 21px; line-height: 1.35; color: #6E2A34; font-weight: 600; margin: 0">{{ b.ten }}</h3><div class="hand" style="font-size: 19px; color: #6E2A34">{{ b.noiSo }}</div></div>
         <p style="margin: 0; font-size: 15px">{{ b.moTa }}</p>
-        {% if b.linkMua %}<a class="buy" href="{{ b.linkMua }}" target="_blank" rel="noopener">Mua sách</a>{% endif %}
+        {% if b.linkMua %}<a class="buy" href="{{ b.linkMua }}" target="_blank" rel="noopener">{{ C.muaSach }}</a>{% endif %}
       </div>
       {% endfor %}
     </div>
     {% if k.sach.ghiChu %}
     <div class="shelf-note">
       <div class="hand" style="font-size: 20px; color: #6E2A34">{{ k.sach.ghiChu }}</div>
-      <a class="btn3d" href="#bao-tin">Báo mình khi sách về</a>
+      <a class="btn3d" href="#bao-tin">{{ C.baoKhiSachVe }}</a>
     </div>
     {% endif %}
   </div>
@@ -146,7 +147,7 @@ footColor: "#A8522B"
         <div style="display: flex; gap: 18px; margin-bottom: 30px; flex-wrap: wrap">
           <figure class="mini-pol" style="transform: rotate(-3deg); width: 170px"><img src="/assets/images/meo-trong-hop.jpg" alt="Mèo con trong hộp giấy" loading="lazy" style="height: 150px"></figure>
           <figure class="mini-pol" style="transform: rotate(3deg); width: 170px"><img src="/assets/images/meo-trang-trong-rung.jpg" alt="Mèo trắng trong rừng" loading="lazy" style="height: 150px"></figure>
-          <div class="hand" style="font-size: 18px; color: #6E2A34; align-self: center; max-width: 160px">mèo ngoài đời. trước khi thành mèo trong truyện.</div>
+          <div class="hand" style="font-size: 18px; color: #6E2A34; align-self: center; max-width: 160px">{{ C.meoGhiTay }}</div>
         </div>
         <div id="bao-tin">{{ mform("em-ke", "Email của bố mẹ", "Báo khi có sách, truyện mới", "chung", "max-width: 500px") }}</div>
       </div>

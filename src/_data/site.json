@@ -34,5 +34,19 @@
       "sub": "khung cửi"
     }
   ],
-  "kitFormId": "10211257"
+  "kitFormId": "10211257",
+  "chu": {
+    "chanTrang": "mayphung.com · Bit by Bit",
+    "tatCaBai": "Tất cả bài viết",
+    "veMay": "Về May",
+    "docTiepTrong": "Đọc tiếp trong",
+    "tatCaBaiMuiTen": "Tất cả bài viết →",
+    "cuoiBaiMoiDangKy": "Nhắn bạn khi có bài mới",
+    "oEmail": "Email của bạn",
+    "nutGui": "Gửi cho mình",
+    "trangTatCaBai": "Tất cả bài viết",
+    "loi404TieuDe": "Trang này bị xé mất rồi.",
+    "loi404GhiTay": "lạc một chút cũng được. quay lại vở nhé.",
+    "loi404Nut": "Về trang đầu vở"
+  }
 }

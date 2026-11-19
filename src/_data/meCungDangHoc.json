@@ -39,5 +39,16 @@
       "moTaAnh": "Mẹ giúp con tập xe"
     }
   ],
-  "viDuThuToiNay": "Khi con bực bội: *“Tại mẹ không mua đồ chơi cho con!”*\n\nMẹ thử gọi tên điều con đang cảm thấy: *“Con thất vọng vì không được mua đồ chơi, phải không?”*\n\nCon có thể vẫn khóc. Không sao. Mình đang giúp con gọi tên điều con đang cảm thấy."
+  "viDuThuToiNay": "Khi con bực bội: *“Tại mẹ không mua đồ chơi cho con!”*\n\nMẹ thử gọi tên điều con đang cảm thấy: *“Con thất vọng vì không được mua đồ chơi, phải không?”*\n\nCon có thể vẫn khóc. Không sao. Mình đang giúp con gọi tên điều con đang cảm thấy.",
+  "chu": {
+    "dongNho": "hiên nhà",
+    "tieuDe": "Mẹ *cũng đang* học",
+    "baiMoiNhat": "Bài mới nhất",
+    "docBai": "Đọc bài",
+    "toanBo": "Toàn bộ",
+    "docTiep": "Đọc tiếp",
+    "thuToiNayTieuDe": "Một việc nhỏ, *thử tối nay.*",
+    "thuToiNayNhan": "thử tối nay",
+    "moiDangKy": "Cùng May học nhé!"
+  }
 }

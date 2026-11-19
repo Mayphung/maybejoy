@@ -152,7 +152,7 @@
       var first = exact || opts.filter(function (o) { return !o.hidden; })[0];
       first.querySelector('input').checked = true;
       var ten = first.querySelector('.t').textContent;
-      document.getElementById('tt-meta').textContent = 'Ở xưởng May · ' + ten;
+      var mt = document.getElementById('tt-meta'); mt.textContent = mt.textContent + ' · ' + ten;
       document.title = 'Thanh toán ' + ten + ' — May Phung';
     }
     var visible = opts.filter(function (o) { return !o.hidden; });

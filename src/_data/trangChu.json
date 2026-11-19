@@ -76,5 +76,28 @@
       "noi": "YouTube",
       "hoc": "Truyện cho bé 2–6 tuổi, nghe trước giờ ngủ"
     }
-  ]
+  ],
+  "chu": {
+    "tenVo": "Bit by Bit",
+    "phuDe": "từng chút một",
+    "viecHomNay": "Việc hôm nay",
+    "ghiLeViecBan": "việc của bạn đó →",
+    "hoiViecBan": "Một việc thật nhỏ của bạn, hôm nay:",
+    "goiYViecBan": "ví dụ: uống đủ nước…",
+    "nutGach": "Gạch!",
+    "daGach": "Thấy chưa, hôm nay đã có một việc xong.",
+    "vietViecKhac": "viết việc khác",
+    "baiMoiNhat": "Bài mới nhất",
+    "baiTap": "Nếu bạn thích làm bài tập",
+    "nhanCuonNho": "Cuốn nhỏ · miễn phí",
+    "deBai": "Đề bài:",
+    "oEmail": "Email để nhận đề",
+    "nutGui": "Gửi mình",
+    "thoiKhoaBieu": "Thời khoá biểu",
+    "cotMon": "Môn",
+    "cotNoi": "Lớp ở đâu",
+    "cotHoc": "Học gì",
+    "cotVao": "Vào lớp",
+    "vaoLop": "Vào lớp →"
+  }
 }

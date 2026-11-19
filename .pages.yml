@@ -156,6 +156,31 @@ content:
             type: select
             options: { values: [TikTok, Facebook, YouTube] }
           - { name: hoc, label: Học gì, type: string }
+      - name: chu
+        label: "Các chữ nhỏ khác trên trang chủ"
+        type: object
+        fields:
+          - { name: tenVo, label: "Tên vở (chữ lớn đầu trang)", type: string }
+          - { name: phuDe, label: "Dòng viết tay dưới tên vở", type: string }
+          - { name: viecHomNay, label: "Tiêu đề danh sách việc", type: string }
+          - { name: ghiLeViecBan, label: "Ghi chú bên lề ô việc của bạn", type: string }
+          - { name: hoiViecBan, label: "Câu hỏi ô việc của bạn", type: text }
+          - { name: goiYViecBan, label: "Chữ mờ gợi ý trong ô", type: string }
+          - { name: nutGach, label: "Nút gạch", type: string }
+          - { name: daGach, label: "Câu sau khi gạch", type: text }
+          - { name: vietViecKhac, label: "Nút viết việc khác", type: string }
+          - { name: baiMoiNhat, label: "Tiêu đề bài mới nhất", type: string }
+          - { name: baiTap, label: "Tiêu đề phần bài tập", type: string }
+          - { name: nhanCuonNho, label: "Nhãn nhỏ trên khung bài tập", type: string }
+          - { name: deBai, label: "Chữ 'Đề bài'", type: string }
+          - { name: oEmail, label: "Nhãn ô email", type: string }
+          - { name: nutGui, label: "Nút gửi", type: string }
+          - { name: thoiKhoaBieu, label: "Tiêu đề thời khoá biểu", type: string }
+          - { name: cotMon, label: "Cột 1", type: string }
+          - { name: cotNoi, label: "Cột 2", type: string }
+          - { name: cotHoc, label: "Cột 3", type: string }
+          - { name: cotVao, label: "Cột 4", type: string }
+          - { name: vaoLop, label: "Chữ trên link vào lớp", type: string }
 
   - name: trang-tung-chut-mot
     label: "📄 Trang Từng chút một — chữ đầu trang"
@@ -166,6 +191,23 @@ content:
       - { name: loiMoDau, label: Lời mở đầu, type: text }
       - { name: ghiLe, label: Câu viết tay bên phải, type: string }
       - { name: moiDangKy, label: Lời mời đăng ký email cuối trang, type: text }
+      - name: chu
+        label: "Các chữ nhỏ khác trên trang"
+        type: object
+        fields:
+          - { name: dongNho, label: "Dòng nhỏ trên tiêu đề", type: string }
+          - { name: tatCaBai, label: "Link tất cả bài viết", type: string }
+          - { name: ngayHomNay, label: "Chữ trước các nhãn lọc", type: string }
+          - { name: tatCa, label: "Nút xem tất cả", type: string }
+          - { name: docTiep, label: "Chữ đọc tiếp trên thẻ bài", type: string }
+          - { name: moiDangKyTieuDe, label: "Tiêu đề ô đăng ký cuối trang", type: string }
+      - name: nhanNgay
+        label: "Các nhãn ngày (đổi tên thoải mái; đừng đổi ô Mã)"
+        type: object
+        list: true
+        fields:
+          - { name: ma, label: Mã, type: string }
+          - { name: ten, label: Tên nhãn, type: string }
 
   - name: trang-me
     label: "📄 Trang Mẹ cũng đang học — chữ và các chương"
@@ -195,6 +237,19 @@ content:
       - { name: hienThuToiNay, label: "Hiện phần 'thử tối nay' (trên trang này và cuối các bài)", type: boolean }
       - { name: thuToiNayGiaiThich, label: "Dòng giải thích phần 'thử tối nay'", type: text }
       - { name: viDuThuToiNay, label: "Ví dụ 'thử tối nay' trên trang", type: text }
+      - name: chu
+        label: "Các chữ nhỏ khác trên trang"
+        type: object
+        fields:
+          - { name: dongNho, label: "Dòng nhỏ trên tiêu đề", type: string }
+          - { name: tieuDe, label: "Tiêu đề trang (*chữ nghiêng*)", type: string }
+          - { name: baiMoiNhat, label: "Nhãn bài mới nhất", type: string }
+          - { name: docBai, label: "Chữ đọc bài", type: string }
+          - { name: toanBo, label: "Nút xem toàn bộ", type: string }
+          - { name: docTiep, label: "Nút đọc tiếp (hiện thêm bài)", type: string }
+          - { name: thuToiNayTieuDe, label: "Tiêu đề phần thử tối nay (*chữ nghiêng*)", type: string }
+          - { name: thuToiNayNhan, label: "Nhãn hộp thử tối nay", type: string }
+          - { name: moiDangKy, label: "Tiêu đề ô đăng ký", type: string }
 
   - name: trang-ke
     label: "📄 Trang Một chuyện thôi mẹ! — video, sách, ngôi làng"
@@ -238,6 +293,26 @@ content:
         fields:
           - { name: tieuDe, label: "Tiêu đề (*chữ nghiêng* giữa hai dấu sao)", type: string }
           - { name: moTa, label: Mô tả, type: text }
+      - name: chu
+        label: "Các chữ nhỏ khác trên trang"
+        type: object
+        fields:
+          - { name: dongNho, label: "Dòng nhỏ trên tiêu đề", type: string }
+          - { name: ghiTay, label: "Dòng viết tay dưới tiêu đề", type: string }
+          - { name: cua1Ten, label: "Cửa 1: tên", type: string }
+          - { name: cua1MoTa, label: "Cửa 1: mô tả", type: string }
+          - { name: cua2Ten, label: "Cửa 2: tên", type: string }
+          - { name: cua2MoTa, label: "Cửa 2: mô tả", type: string }
+          - { name: cua3Ten, label: "Cửa 3: tên", type: string }
+          - { name: cua3MoTa, label: "Cửa 3: mô tả", type: string }
+          - { name: truyenTieuDe, label: "Tiêu đề phần truyện (*chữ nghiêng*)", type: string }
+          - { name: moKenh, label: "Nút mở kênh YouTube", type: string }
+          - { name: tapSapCo, label: "Nhãn khi chưa có tập", type: string }
+          - { name: tapSapCoLoi, label: "Lời khi chưa có tập", type: text }
+          - { name: anhDocSachGhiTay, label: "Dòng viết tay dưới ảnh đọc sách", type: string }
+          - { name: muaSach, label: "Chữ trên link mua sách", type: string }
+          - { name: baoKhiSachVe, label: "Nút báo khi sách về", type: string }
+          - { name: meoGhiTay, label: "Dòng viết tay cạnh ảnh mèo", type: string }
 
   - name: trang-xuong
     label: "📄 Trang Ở xưởng May — các món"
@@ -301,6 +376,17 @@ content:
           - { name: chuThich, label: Chú thích ảnh, type: string }
           - { name: tieuDe, label: "Tiêu đề (*chữ nghiêng* giữa hai dấu sao)", type: string }
           - { name: loi, label: Đoạn giới thiệu (cách đoạn bằng một dòng trống), type: text }
+      - name: chu
+        label: "Các chữ nhỏ khác trên trang"
+        type: object
+        fields:
+          - { name: dongNho, label: "Dòng nhỏ trên tiêu đề", type: string }
+          - { name: tieuDe, label: "Tiêu đề trang (*chữ nghiêng* thành màu cam)", type: string }
+          - { name: daXong, label: "Tiêu đề phần đã xong", type: string }
+          - { name: daXongGhiTay, label: "Ghi tay cạnh đã xong", type: string }
+          - { name: dangMay, label: "Tiêu đề phần đang may", type: string }
+          - { name: dangMayGhiTay, label: "Ghi tay cạnh đang may", type: string }
+          - { name: docThem, label: "Link đọc thêm về May", type: string }
 
   - name: ve-may
     label: "📄 Trang Về May"
@@ -346,6 +432,22 @@ content:
           - { name: name, type: string }
           - { name: url, type: string }
           - { name: sub, type: string }
+      - name: chu
+        label: "Chữ dùng chung (chân trang, cuối bài, trang 404)"
+        type: object
+        fields:
+          - { name: chanTrang, label: "Dòng đầu chân trang", type: string }
+          - { name: tatCaBai, label: "Link tất cả bài viết ở chân trang", type: string }
+          - { name: veMay, label: "Link về May ở chân trang", type: string }
+          - { name: docTiepTrong, label: "Chữ 'Đọc tiếp trong' cuối bài", type: string }
+          - { name: tatCaBaiMuiTen, label: "Link tất cả bài viết cuối bài", type: string }
+          - { name: cuoiBaiMoiDangKy, label: "Tiêu đề ô đăng ký cuối bài", type: string }
+          - { name: oEmail, label: "Nhãn ô email cuối bài", type: string }
+          - { name: nutGui, label: "Nút gửi cuối bài", type: string }
+          - { name: trangTatCaBai, label: "Tiêu đề trang tất cả bài viết", type: string }
+          - { name: loi404TieuDe, label: "Trang 404: tiêu đề", type: string }
+          - { name: loi404GhiTay, label: "Trang 404: dòng viết tay", type: string }
+          - { name: loi404Nut, label: "Trang 404: nút", type: string }
 
   - name: ban-hang
     label: "💳 Bán hàng: tài khoản nhận tiền, giá, quà tặng"
@@ -383,6 +485,37 @@ content:
         fields:
           - { name: ten, label: Tên cuốn, type: string }
           - { name: link, label: "Link file (Google Drive, để chế độ ai có link cũng xem được)", type: string }
+      - name: chuThanhToan
+        label: "Chữ trên trang thanh toán"
+        type: object
+        fields:
+          - { name: dongNho, label: "Dòng nhỏ trên tiêu đề", type: string }
+          - { name: tieuDe, label: "Tiêu đề", type: string }
+          - { name: chuaMo, label: "Lời khi chưa có số tài khoản", type: text }
+          - { name: oEmail, label: "Nhãn ô email", type: string }
+          - { name: ghiChuEmail, label: "Ghi chú dưới ô email", type: text }
+          - { name: nutTiep, label: "Nút tiếp tục", type: string }
+          - { name: buoc1, label: "Bước 1", type: text }
+          - { name: buoc2, label: "Bước 2 (mã đơn hiện sau câu này)", type: string }
+          - { name: buoc3, label: "Bước 3", type: string }
+          - { name: dangCho, label: "Dòng viết tay khi đang chờ tiền", type: string }
+          - { name: chuaThay, label: "Lời khi chuyển rồi chưa thấy", type: text }
+          - { name: xongTieuDe, label: "Tiêu đề khi xong", type: string }
+          - { name: xongLoi, label: "Lời khi xong", type: text }
+          - { name: xongNut, label: "Nút vào phòng", type: string }
+      - name: email
+        label: "Email tự động ({phong} = tên phòng, {mon} = tên món, {gia} = giá, {ma} = mã đơn, {ten} = tên cuốn quà; xuống dòng = đoạn mới)"
+        type: object
+        fields:
+          - { name: chiaKhoaTieuDe, label: "Email chìa khoá: tiêu đề", type: string }
+          - { name: chiaKhoaMoDau, label: "Email chìa khoá: đoạn đầu", type: text }
+          - { name: chiaKhoaNut, label: "Email chìa khoá: chữ trên nút", type: string }
+          - { name: chiaKhoaKet, label: "Email chìa khoá: đoạn cuối", type: text }
+          - { name: quaTieuDe, label: "Email quà tặng: tiêu đề", type: string }
+          - { name: quaMoDau, label: "Email quà tặng: đoạn đầu", type: text }
+          - { name: quaNut, label: "Email quà tặng: chữ trên nút", type: string }
+          - { name: quaKet, label: "Email quà tặng: đoạn cuối", type: text }
+          - { name: kyTen, label: "Lời ký cuối mọi email", type: text }
 
   - name: phong-hoc
     label: "🎓 Phòng học: video Emotion Course, file Soi Chiếu"
@@ -415,6 +548,19 @@ content:
         fields:
           - { name: loiChao, label: Lời chào, type: text }
           - { name: driveId, label: "Mã file PDF trên Google Drive", type: string }
+      - name: chu
+        label: "Chữ trên phòng học"
+        type: object
+        fields:
+          - { name: dongNho, label: "Emotion Course: dòng nhỏ", type: string }
+          - { name: tieuDe, label: "Emotion Course: tiêu đề", type: string }
+          - { name: moSoTay, label: "Nút mở workbook", type: string }
+          - { name: daXem, label: "Ô đánh dấu đã xem", type: string }
+          - { name: videoLoi, label: "Ghi chú khi video lỗi", type: text }
+          - { name: soiChieuDongNho, label: "Soi Chiếu: dòng nhỏ", type: string }
+          - { name: soiChieuTieuDe, label: "Soi Chiếu: tiêu đề", type: string }
+          - { name: soiChieuNut, label: "Soi Chiếu: nút tải", type: string }
+          - { name: soiChieuLoi, label: "Soi Chiếu: ghi chú khi nút lỗi", type: text }
 
   - name: khoang-dung
     label: "🎓 Trang bán khoá Khoảng Dừng Cảm Xúc"
@@ -511,3 +657,35 @@ content:
           - { name: hoi, label: Câu hỏi, type: string }
           - { name: dap, label: Trả lời, type: text }
       - { name: ket, label: Các đoạn kết, type: text, list: true }
+      - name: chu
+        label: "Các chữ nhỏ khác trên trang ({ten} = tên khoá, {gia} = giá)"
+        type: object
+        fields:
+          - { name: nutMua, label: "Nút mua", type: string }
+          - { name: nutChuaMo, label: "Nút khi chưa mở bán", type: string }
+          - { name: dongNho, label: "Dòng nhỏ trên tên khoá", type: string }
+          - { name: sauDo, label: "Chữ 'sau đó' cạnh giá gạch", type: string }
+          - { name: giaKhoiDiem, label: "Ghi tay cạnh giá", type: string }
+          - { name: ngheQuenTieuDe, label: "Tiêu đề Nghe quen không", type: string }
+          - { name: ngheQuenGoiY, label: "Gợi ý bấm", type: string }
+          - { name: ngheQuenNhan, label: "Nhãn khi bấm", type: string }
+          - { name: mangTheoTieuDe, label: "Tiêu đề mang theo gì (*chữ nghiêng*)", type: string }
+          - { name: nhipNhan, label: "Nhãn nhỏ trên nhịp 5 bước", type: string }
+          - { name: nhipTieuDe, label: "Tiêu đề nhịp 5 bước", type: string }
+          - { name: nutThuTho, label: "Nút thử thở", type: string }
+          - { name: changTieuDe, label: "Tiêu đề các chặng (*chữ nghiêng*)", type: string }
+          - { name: changLoi, label: "Câu dưới tiêu đề các chặng", type: text }
+          - { name: workbookTieuDe, label: "Tiêu đề workbook (*chữ nghiêng*)", type: string }
+          - { name: veMayTieuDe, label: "Tiêu đề về May", type: string }
+          - { name: choAiTieuDe, label: "Tiêu đề dành cho ai", type: string }
+          - { name: hopTieuDe, label: "Cột hợp", type: string }
+          - { name: khongHopTieuDe, label: "Cột chưa hợp", type: string }
+          - { name: giaNhan, label: "Nhãn trên vé giá", type: string }
+          - { name: moiClip, label: "Dòng giá mỗi clip", type: string }
+          - { name: choMoLoi, label: "Lời khi chưa mở bán", type: text }
+          - { name: hoanTienTieuDe, label: "Tiêu đề hoàn tiền", type: string }
+          - { name: hoiDapTieuDe, label: "Tiêu đề hỏi đáp", type: string }
+          - { name: ketGhiTay, label: "Dòng viết tay cuối trang", type: string }
+          - { name: thanhDinhNut, label: "Nút trên thanh dính (điện thoại)", type: string }
+          - { name: thanhDinhNutChuaMo, label: "Nút thanh dính khi chưa mở bán", type: string }
+

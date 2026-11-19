@@ -8,15 +8,16 @@ bodyClass: p-post p-hoc
 navKey: o-xuong-may
 ---
 {% set k = khoaHoc.soiChieu %}
+{% set H = khoaHoc.chu %}
 <div class="wrap">
 {% include "nav.njk" %}
 <main class="article hoc" id="noi-dung">
-  <div class="meta">Ở xưởng May · Soi Chiếu</div>
+  <div class="meta">{{ H.soiChieuDongNho }}</div>
   <p class="hoc-chu hand" data-chu-phong hidden></p>
-  <h1>Soi Chiếu</h1>
+  <h1>{{ H.soiChieuTieuDe }}</h1>
   <p class="hoc-chao">{{ k.loiChao }}</p>
-  <p><a class="btn" href="https://drive.google.com/uc?export=download&id={{ k.driveId }}">Tải sổ Soi Chiếu (PDF)</a></p>
-  <p class="hoc-note">Nút tải không chạy? <a href="https://drive.google.com/file/d/{{ k.driveId }}/view" target="_blank" rel="noopener">Mở sổ trên Google Drive</a> rồi bấm biểu tượng tải về.</p>
+  <p><a class="btn" href="https://drive.google.com/uc?export=download&id={{ k.driveId }}">{{ H.soiChieuNut }}</a></p>
+  <p class="hoc-note"><a href="https://drive.google.com/file/d/{{ k.driveId }}/view" target="_blank" rel="noopener" style="color: inherit">{{ H.soiChieuLoi }}</a></p>
   <p class="signoff">— May</p>
 </main>
 {% include "foot.njk" %}

@@ -31,5 +31,23 @@
   "ngoiLang": {
     "tieuDe": "Một ngôi làng *chưa có tên.*",
     "moTa": "Có một cô bé sống ở nông trại. Mười con mèo màu lạ trong nhà kho, một chú chó già hiền, và một ông kể chuyện mới dọn về ngọn đồi, nơi có hiệu sách và những cái cây biết nói. May đang tưởng tượng từng nhân vật. Mèo thì đủ rồi, tên làng thì chưa."
+  },
+  "chu": {
+    "dongNho": "dưới gốc đa",
+    "ghiTay": "(thêm một truyện nữa thôi...)",
+    "cua1Ten": "Truyện kể trên YouTube",
+    "cua1MoTa": "Mở truyện, tắt đèn, nằm nghe cùng con.",
+    "cua2Ten": "Sách Cappu & Lucia",
+    "cua2MoTa": "Ba câu chuyện về ba nỗi sợ của trẻ nhỏ, cùng NXB Kim Đồng.",
+    "cua3Ten": "Một ngôi làng nhỏ",
+    "cua3MoTa": "Mười con mèo màu lạ đang chờ tên.",
+    "truyenTieuDe": "Tắt đèn. *Bật truyện.*",
+    "moKenh": "Mở kênh YouTube",
+    "tapSapCo": "Tập 01 · sắp lên sóng",
+    "tapSapCoLoi": "May đang chuẩn bị những câu chuyện đầu tiên. Để lại email ở cuối trang, tập đầu có là May báo.",
+    "anhDocSachGhiTay": "giờ đọc sách nhà mình",
+    "muaSach": "Mua sách",
+    "baoKhiSachVe": "Báo mình khi sách về",
+    "meoGhiTay": "mèo ngoài đời. trước khi thành mèo trong truyện."
   }
 }

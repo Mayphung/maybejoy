@@ -9,6 +9,7 @@ navKey: o-xuong-may
 ---
 {% from "macros.njk" import mform with context %}
 {% set x = xuong %}
+{% set C = xuong.chu %}
 {% macro tag(p, i) %}
 <div class="hang">
   <svg class="string" width="60" height="60" viewBox="0 0 60 60" fill="none" stroke="#A8522B" stroke-width="2" aria-hidden="true"><path d="{{ 'M30 70 C 10 40, 50 30, 30 0' if i % 2 == 0 else 'M30 70 C 50 40, 10 30, 30 0' }}"/></svg>
@@ -36,8 +37,8 @@ navKey: o-xuong-may
 <div class="wrap">
   <header class="g2 head" id="noi-dung">
     <div>
-      <div class="serif sub-line">khung cửi</div>
-      <h1 class="serif h1">Ở xưởng <span style="font-style: italic; color: #C1653A">May</span></h1>
+      <div class="serif sub-line">{{ C.dongNho }}</div>
+      <h1 class="serif h1 h1-xuong">{{ C.tieuDe | mdInline | safe }}</h1>
       <p style="font-size: 19px; max-width: 600px; margin: 0">{{ x.loiMoDau }}</p>
     </div>
     <div class="hand" style="font-size: 23px; color: #A8522B; transform: rotate(-3deg)">{{ x.ghiLe }}</div>
@@ -55,14 +56,14 @@ navKey: o-xuong-may
 
   {% if x.daXong.length %}
   <section style="margin-bottom: 110px">
-    <div class="sec-h"><h2 class="serif">Đã may xong</h2><span class="hand">— mời xem thử</span></div>
+    <div class="sec-h"><h2 class="serif">{{ C.daXong }}</h2><span class="hand">{{ C.daXongGhiTay }}</span></div>
     <div class="g3">{% for p in x.daXong %}{{ tag(p, loop.index0) }}{% endfor %}</div>
   </section>
   {% endif %}
 
   {% if x.dangMay.length %}
   <section style="margin-bottom: 110px">
-    <div class="sec-h"><h2 class="serif">Đang trên bàn may</h2><span class="hand">— chưa xong, nhưng đã thấy dáng</span></div>
+    <div class="sec-h"><h2 class="serif">{{ C.dangMay }}</h2><span class="hand">{{ C.dangMayGhiTay }}</span></div>
     <div class="g3{% if x.dangMay.length == 1 %} one{% endif %}">{% for p in x.dangMay %}{{ tag(p, loop.index0 + 1) }}{% endfor %}</div>
   </section>
   {% endif %}
@@ -87,7 +88,7 @@ navKey: o-xuong-may
     <div>
       <h2 class="serif" style="font-size: 44px; line-height: 1.2; margin: 0 0 20px; color: #6E2A34; font-weight: 500">{{ n.tieuDe | mdInline | safe }}</h2>
       <div class="maker-text">{{ n.loi | md | safe }}</div>
-      <a class="tagline" href="/ve-may/">Đọc thêm về May →</a>
+      <a class="tagline" href="/ve-may/">{{ C.docThem }}</a>
     </div>
   </section>
 

@@ -11,9 +11,9 @@ eleventyExcludeFromCollections: true
   {% include "nav.njk" %}
   <main class="article" id="noi-dung" style="text-align: center; padding-bottom: 100px">
     <div class="meta">Trang 404</div>
-    <h1>Trang này bị xé mất rồi.</h1>
-    <p class="hand" style="font-size: 24px; color: #A8522B; margin: 0 0 30px">lạc một chút cũng được. quay lại vở nhé.</p>
-    <a class="btn" href="/">Về trang đầu vở</a>
+    <h1>{{ site.chu.loi404TieuDe }}</h1>
+    <p class="hand" style="font-size: 24px; color: #A8522B; margin: 0 0 30px">{{ site.chu.loi404GhiTay }}</p>
+    <a class="btn" href="/">{{ site.chu.loi404Nut }}</a>
   </main>
   {% include "foot.njk" %}
 </div>

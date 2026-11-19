@@ -9,7 +9,7 @@ bodyClass: p-page
 <div class="wrap">
   {% include "nav.njk" %}
   <main class="article" id="noi-dung">
-    <h1>Tất cả bài viết</h1>
+    <h1>{{ site.chu.trangTatCaBai }}</h1>
     {% for c in site.nav %}
     {% set ds = collections.posts | byCategory(c.key) %}
     {% if ds.length %}
