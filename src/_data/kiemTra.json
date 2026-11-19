@@ -15,15 +15,13 @@
     "banCoThe": "Bạn có thể:",
     "nhanPhu": "Bạn cũng khá giống:",
     "ngangNhau": "Điểm của bạn bằng nhau giữa {ds}. Bạn đọc cả hai nhé, phần nào thấy giống mình hơn thì đó là bạn.",
-    "oNhap": "Email hoặc số Zalo",
-    "goiYNhap": "ten@gmail.com hoặc 09…",
-    "nutGui": "Gửi May nha",
-    "chuNho": "May chỉ dùng để gửi kết quả và hướng dẫn cho bạn. Không spam.",
-    "loiNhap": "Email hoặc số Zalo chưa đúng, bạn xem lại giúp May nhé.",
+    "oNhap": "Email của bạn",
+    "goiYNhap": "ten@gmail.com",
+    "nutGui": "Gửi kết quả cho mình",
+    "chuNho": "May gửi kết quả vào email này, thỉnh thoảng gửi thêm bài viết mới. Bạn hủy nhận lúc nào cũng được.",
+    "loiNhap": "Email chưa đúng, bạn xem lại giúp May nhé.",
     "loiMang": "Mạng hơi chập chờn. Bạn thử lại giúp May nhé.",
-    "daGuiEmail": "May gửi rồi đó! Bạn mở hộp thư nhé (xem cả mục Quảng cáo). Phần phân tích cũng ở ngay dưới đây:",
-    "daNhanEmail": "May nhận được rồi! Phần phân tích ở ngay dưới đây, May cũng sẽ gửi vào hộp thư của bạn:",
-    "daNhanZalo": "May nhận được rồi, May sẽ nhắn Zalo cho bạn. Trong lúc chờ, phần phân tích ở ngay dưới đây:",
+    "daGuiEmail": "Kết quả đã bay vào hộp thư {email}. Bạn mở thư nhé, nhớ xem cả mục Quảng cáo hoặc Thư rác.",
     "chiaSe": "Gửi bài này cho người ấy",
     "chiaSeLoi": "Mình vừa làm bài này, bạn làm thử xem ra kiểu gì nè:",
     "daChep": "Đã chép đường dẫn. Dán vào tin nhắn là gửi được.",
@@ -31,7 +29,17 @@
     "deKhac": "Làm thêm đề khác",
     "anDanh": "May lưu câu trả lời ẩn danh để hiểu bạn đọc hơn. Email thì May chỉ lưu khi bạn tự để lại.",
     "trangDsTieuDe": "Vài bài test nhỏ để hiểu mình hơn",
-    "trangDsMoTa": "Vài bài test nhỏ để hiểu mình hơn trong tình yêu và lúc căng thẳng. Không chấm điểm, không dán nhãn. Làm xong có kết quả ngay."
+    "trangDsMoTa": "Vài bài test nhỏ để hiểu mình hơn trong tình yêu và lúc căng thẳng. Không chấm điểm, không dán nhãn. Làm xong có kết quả ngay.",
+    "nhanXong": "Chấm xong rồi!",
+    "khoaTieuDe": "Kết quả của bạn đã sẵn sàng",
+    "dangGui": "May đang gửi…",
+    "khongGuiDuoc": "May chưa gửi được thư lúc này, nên kết quả đầy đủ ở ngay đây cho bạn:",
+    "trongEmail": "Phần phân tích chi tiết và những bước nhỏ nên thử đã nằm trong email của bạn.",
+    "guiLai": "Gửi lại thư",
+    "doiEmail": "Đổi email khác",
+    "daGuiLai": "May gửi lại rồi đó. Bạn xem hộp thư nhé.",
+    "tieuDePhanTich": "Phân tích chi tiết",
+    "lamThemEmail": "Làm thêm bài test khác của May"
   },
   "bai": [
     {
@@ -660,12 +668,12 @@
       ],
       "ket": "Phong cách gắn kết không phải số phận. Nó là cách hệ thần kinh học cách yêu từ rất sớm, và điều tuyệt vời là nó có thể thay đổi.",
       "giuLienLac": {
-        "tieuDe": "Muốn hiểu sâu hơn về kết quả của bạn?",
-        "moTa": "May sẽ gửi cho bạn:",
+        "tieuDe": "Bạn đang yêu theo kiểu nào, và vì sao?",
+        "moTa": "Để lại email, May gửi ngay vào hộp thư của bạn:",
         "ds": [
-          "phân tích chi tiết phong cách gắn kết của bạn",
-          "vì sao bạn thường bị hút vào một kiểu người nhất định",
-          "những bước đầu để chuyển sang gắn kết an toàn hơn"
+          "kết quả phong cách gắn kết của bạn",
+          "vì sao bạn hay bị hút vào một kiểu người nhất định",
+          "những bước đầu để yêu an toàn hơn"
         ]
       },
       "buocTiep": {
@@ -677,7 +685,9 @@
         "tieuDe": "Phân tích phong cách gắn kết của bạn: {ten}",
         "moDau": "Cảm ơn bạn đã làm bài kiểm tra cùng May.\nKết quả của bạn: {ten} ({phu}).\n{loiNhan}"
       },
-      "nhanCanGi": ""
+      "nhanCanGi": "",
+      "mau": "do-ruou",
+      "hienDayDu": false
     },
     {
       "ma": "cang-thang",
@@ -1026,11 +1036,11 @@
       "ket": "Không kiểu nào xấu cả: đây đều là cách cơ thể giúp mình vượt qua, chỉ cần nhận ra và điều chỉnh. Ngôn ngữ căng thẳng có thể đổi tùy hoàn cảnh (ở chỗ làm hay ở nhà) và tùy từng giai đoạn trong đời.",
       "giuLienLac": {
         "tieuDe": "Vì sao người thương mình lại hay làm đúng điều ngược lại?",
-        "moTa": "Bạn vừa biết mình cần gì khi stress rồi. Câu hỏi khó hơn là: vì sao người thương mình lại hay làm ngược lại, và làm sao nói ra nhu cầu mà không gây căng thẳng thêm? May gửi bạn:",
+        "moTa": "Để lại email, May gửi ngay vào hộp thư của bạn:",
         "ds": [
+          "ngôn ngữ căng thẳng của bạn và điều bạn thật sự cần",
           "vì sao người khác hay phản ứng ngược với điều bạn cần",
-          "cách nói ra nhu cầu mà không gây căng thẳng thêm",
-          "một bài tập nhỏ cho đúng kiểu của bạn"
+          "cách nói ra nhu cầu, kèm một bài tập nhỏ đúng kiểu của bạn"
         ]
       },
       "buocTiep": {
@@ -1042,7 +1052,9 @@
         "tieuDe": "Ngôn ngữ căng thẳng của bạn: {ten}",
         "moDau": "Cảm ơn bạn đã làm bài kiểm tra cùng May.\nKết quả của bạn: {ten} ({phu}).\n{loiNhan}"
       },
-      "nhanCanGi": "Bạn cần học cách:"
+      "nhanCanGi": "Bạn cần học cách:",
+      "mau": "than",
+      "hienDayDu": false
     },
     {
       "ma": "yeu-thuong",
@@ -1531,9 +1543,9 @@
       "ket": "Ai cũng cần cả năm ngôn ngữ. Hiểu ngôn ngữ chính của mình giúp bạn nói ra điều mình cần. Hiểu ngôn ngữ của người kia giúp bạn thương họ đúng cách.",
       "giuLienLac": {
         "tieuDe": "Vì sao mình lại yêu theo cách đó?",
-        "moTa": "Bạn vừa biết mình đang yêu theo cách nào rồi. Nhưng câu hỏi thật sự là: vì sao mình lại yêu theo cách đó, và vì sao người kia cứ hay yêu sai cách với mình? May gửi bạn:",
+        "moTa": "Để lại email, May gửi ngay vào hộp thư của bạn:",
         "ds": [
-          "vì sao ngôn ngữ yêu thương này hình thành ở bạn",
+          "ngôn ngữ yêu thương chính của bạn và điểm từng ngôn ngữ",
           "vì sao người yêu bạn hay “yêu sai cách”",
           "cách nói ra nhu cầu mà không làm người kia phòng thủ"
         ]
@@ -1547,7 +1559,9 @@
         "tieuDe": "Ngôn ngữ yêu thương của bạn: {ten}",
         "moDau": "Cảm ơn bạn đã làm bài test cùng May.\nNgôn ngữ yêu thương chính của bạn: {ten} ({phu}).\n{loiNhan}"
       },
-      "nhanCanGi": ""
+      "nhanCanGi": "",
+      "mau": "dat-nung",
+      "hienDayDu": false
     }
   ]
 }

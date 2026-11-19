@@ -112,3 +112,36 @@ body.p-kt{background:var(--cream-warm)}
   .kt-tiep{grid-template-columns:minmax(0,1fr)}
   .kt-hop{padding:24px 18px 20px}
 }
+
+/* màu theo từng bài */
+.kt-mau-do-ruou{--nen:#6E2A34;--nhan:#F3C9A8}
+.kt-mau-than{--nen:#362A24;--nhan:#E9A27C}
+.kt-mau-dat-nung{--nen:#A8522B;--nhan:#FFE3CC}
+/* khoá kết quả bằng email */
+.kt-khoa{position:relative;margin-top:22px}
+.kt-mo-mo{filter:blur(7px);opacity:.55;pointer-events:none;user-select:none;padding:6px 4px 0}
+.kt-ten-gia{font-family:'Lora',Georgia,serif;font-size:36px;color:var(--burgundy);margin:0}
+.kt-khoa .kt-hop{position:relative;margin:-150px 0 0;z-index:1}
+.kt-hop[class*="kt-mau-"]{background:var(--nen);border:none;color:#FBF6EE;box-shadow:0 18px 40px rgba(54,42,36,.25)}
+.kt-hop[class*="kt-mau-"] h3{color:#FBF6EE}
+.kt-hop[class*="kt-mau-"] li::marker{color:var(--nhan)}
+.kt-hop[class*="kt-mau-"] .kt-form label{color:var(--nhan)}
+.kt-hop[class*="kt-mau-"] .kt-form input{color:#FBF6EE;border-bottom-color:rgba(251,246,238,.8)}
+.kt-hop[class*="kt-mau-"] .kt-form input::placeholder{color:rgba(251,246,238,.55)}
+.kt-hop[class*="kt-mau-"] .kt-form input:focus{border-bottom-color:var(--nhan)}
+.kt-hop[class*="kt-mau-"] .btn{background:#FBF6EE;color:var(--nen)}
+.kt-hop[class*="kt-mau-"] .btn:hover{background:var(--nhan);color:var(--nen)}
+.kt-hop[class*="kt-mau-"] .kt-nho{color:rgba(251,246,238,.75)}
+.kt-hop[class*="kt-mau-"] .kt-tb{color:var(--nhan)}
+.kt-lai-nho{margin-top:22px;font-size:14px}
+.kt-lai-nho .linkbtn,.kt-thu .linkbtn{background:none;border:none;padding:0;font:inherit;color:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.kt-thu{background:var(--nen);color:#FBF6EE;border-radius:8px;padding:16px 20px;margin:0 0 26px}
+.kt-thu p{margin:0;font-size:16px;line-height:27px}
+.kt-thu b{color:var(--nhan);font-weight:500;word-break:break-all}
+.kt-thu .kt-thu-nut{margin-top:6px;font-size:14px;color:rgba(251,246,238,.85)}
+.kt-thu .kt-tb{color:var(--nhan);font-size:18px}
+#kt-doi-hop .kt-hop{margin:0 0 26px}
+.kt-trong-email{margin:24px 0 0;padding:12px 16px;border:1.5px dashed var(--terracotta-dark);border-radius:8px;font-size:16px;line-height:27px;background:var(--paper-white)}
+.kt-thanh i{background:var(--nen,var(--terracotta))}
+.p-kt .kt-meta{color:var(--nen,var(--burgundy))}
+@media (max-width:860px){.kt-khoa .kt-hop{margin-top:-120px}.kt-ten-gia{font-size:28px}}

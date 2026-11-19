@@ -65,11 +65,18 @@ async function guiEmail(env, { to, subject, html, replyTo }) {
     console.log("Chưa có RESEND_API_KEY, bỏ qua email tới", to, subject);
     return false;
   }
-  const r = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: { authorization: `Bearer ${env.RESEND_API_KEY}`, "content-type": "application/json" },
-    body: JSON.stringify({ from: env.EMAIL_FROM || FROM, to: [to], subject, html, reply_to: replyTo || env.EMAIL_MAY || undefined }),
-  });
+  let r;
+  try {
+    r = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: { authorization: `Bearer ${env.RESEND_API_KEY}`, "content-type": "application/json" },
+      body: JSON.stringify({ from: env.EMAIL_FROM || FROM, to: [to], subject, html, reply_to: replyTo || env.EMAIL_MAY || undefined }),
+      signal: AbortSignal.timeout(8000),
+    });
+  } catch (e) {
+    console.log("Resend không phản hồi", String(e));
+    return false;
+  }
   if (!r.ok) console.log("Resend lỗi", r.status, await r.text());
   return r.ok;
 }
@@ -213,7 +220,6 @@ async function sepay(request, env, ctx) {
 const baiKt = (ma) => (kiemTra.bai || []).find((b) => b.ma === ma && b.hien !== false);
 const kqKt = (bai, ma) => (bai.ketQua || []).find((r) => r.ma === ma);
 const maNgau = () => Date.now().toString(36) + b64url(crypto.getRandomValues(new Uint8Array(4)));
-const zaloHopLe = (z) => typeof z === "string" && /^(\+?84|0)\d{9,10}$/.test(z);
 
 async function tang(env, khoa) {
   const n = Number((await env.DB.get(khoa)) || 0) + 1;
@@ -262,53 +268,72 @@ function phanTichHtml(t) {
   return out + (ds ? "</ul>" : "");
 }
 
-async function guiPhanTich(env, bai, r, email, r2) {
+async function guiPhanTich(env, bai, r, email, r2, diem) {
   const v = { ten: r.ten, phu: r.phu || "", loiNhan: r.loiNhan || "" };
   const T = bai.buocTiep || {};
+  const C = kiemTra.chu || {};
   const link = (x) => (String(x || "").startsWith("/") ? SITE + x : x);
+  const chu = (x) => esc(x).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>").replace(/\*(.+?)\*/g, "<em>$1</em>");
+  const mau = { "do-ruou": "#6E2A34", than: "#362A24", "dat-nung": "#A8522B" }[bai.mau] || "#6E2A34";
+  // khối kết quả
+  let kq = `<div style="background:${mau};color:#FBF6EE;border-radius:10px;padding:22px 24px;margin:6px 0 22px">
+<p style="margin:0 0 4px;font-size:12px;letter-spacing:2px;text-transform:uppercase;opacity:.85">${esc(bai.ten)}</p>
+<p style="margin:0;font-family:Georgia,serif;font-size:26px;line-height:1.25;font-weight:bold">${esc(r.ten)}</p>
+${r.phu ? `<p style="margin:4px 0 0;font-size:13px;opacity:.85">${esc(r.phu)}</p>` : ""}
+<p style="margin:14px 0 0">${chu(r.moTa)}</p></div>`;
+  if (r.dau?.length) kq += `<p style="margin:0 0 4px">${esc(C.banCoThe || "Bạn có thể:")}</p><ul style="margin:0 0 14px;padding-left:20px">${r.dau.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>`;
+  if (r.canGi) kq += `<p style="margin:0 0 14px;padding:12px 16px;border:1.5px dashed #A8522B;border-radius:8px">${bai.nhanCanGi ? `<strong>${esc(bai.nhanCanGi)}</strong> ` : ""}${chu(r.canGi)}</p>`;
+  if (r.loiNhan) kq += `<p style="margin:0 0 18px;padding-left:14px;border-left:3px solid #C1653A;font-style:italic;color:#A8522B">${esc(r.loiNhan)}</p>`;
+  // điểm từng kiểu
+  if (diem && bai.kieu !== "thang") {
+    const toiDa = {};
+    for (const c of bai.cau || []) for (const o of c.chon || []) toiDa[o.kq] = (toiDa[o.kq] || 0) + 1;
+    const xep = (bai.ketQua || []).slice().sort((a, b) => (diem[b.ma] || 0) - (diem[a.ma] || 0));
+    kq += `<table role="presentation" style="width:100%;border-collapse:collapse;margin:0 0 18px;font-size:14px">${xep
+      .map((x) => {
+        const n = diem[x.ma] || 0, w = Math.round((n / (toiDa[x.ma] || 1)) * 100);
+        return `<tr><td style="padding:4px 10px 4px 0;white-space:nowrap;${x.ma === r.ma ? "font-weight:bold;color:#6E2A34" : ""}">${esc(x.ten)}</td><td style="width:60%;padding:4px 0"><div style="background:#EADFD3;border-radius:99px;height:10px"><div style="background:${x.ma === r.ma ? "#C1653A" : "#C9B8A8"};width:${w}%;height:10px;border-radius:99px"></div></div></td><td style="padding:4px 0 4px 10px;text-align:right;color:#7A6C64">${n}</td></tr>`;
+      })
+      .join("")}</table>`;
+  }
+  if (r2) kq += `<p style="margin:0 0 18px">${esc(String(C.ngangNhau || "").replace("{ds}", `${r.ten} và ${r2.ten}`))}</p>`;
   const html = khungEmail(
-    doan(dien(bai.email?.moDau || "Kết quả của bạn: {ten}.", v)) +
+    doan(dien(bai.email?.moDau || "Cảm ơn bạn đã làm bài test cùng May.", v).split("\n")[0]) +
+      kq +
+      `<h2 style="font-family:Georgia,serif;color:#6E2A34;font-size:22px;margin:30px 0 4px;border-top:1px dotted #6E2A34;padding-top:20px">${esc(C.tieuDePhanTich || "Phân tích chi tiết")}</h2>` +
       phanTichHtml(r.phanTich) +
-      (r2 ? `<h2 style="font-family:Georgia,serif;color:#6E2A34;font-size:22px;margin:34px 0 4px;border-top:1px dotted #6E2A34;padding-top:20px">Bạn cũng bằng điểm với: ${esc(r2.ten)}</h2>` + phanTichHtml(r2.phanTich) : "") +
+      (r2 ? `<h2 style="font-family:Georgia,serif;color:#6E2A34;font-size:22px;margin:34px 0 4px;border-top:1px dotted #6E2A34;padding-top:20px">${esc(r2.ten)}</h2><p style="margin:0 0 14px">${chu(r2.moTa)}</p>` + phanTichHtml(r2.phanTich) : "") +
+      (bai.ket ? `<p style="margin:22px 0 0;font-family:Georgia,serif;font-style:italic;color:#6E2A34">${esc(bai.ket)}</p>` : "") +
       (T.link && T.nut ? `<p style="margin:26px 0 0">${esc(String(T.chu || "").replace(/\*/g, ""))}</p>` + nut(link(T.link), T.nut) : "") +
-      `<p style="margin:18px 0 0;font-size:14px"><a href="${SITE}/kiem-tra/" style="color:#A8522B">Làm thêm bài kiểm tra khác của May</a></p>`
+      `<p style="margin:18px 0 0;font-size:14px"><a href="${SITE}/kiem-tra/" style="color:#A8522B">${esc(C.lamThemEmail || "Làm thêm bài test khác của May")}</a></p>`
   );
-  return guiEmail(env, { to: email, subject: dien(bai.email?.tieuDe || "Kết quả bài kiểm tra: {ten}", v), html });
+  return guiEmail(env, { to: email, subject: dien(bai.email?.tieuDe || "Kết quả bài test của bạn: {ten}", v), html });
 }
 
 async function kiemTraLienHe(request, env, ctx) {
   const body = await docBody(request);
   const bai = baiKt(String(body.bai || ""));
   const r = bai && kqKt(bai, String(body.kq || ""));
-  if (!r) return json({ ok: false, loi: "Không tìm thấy bài kiểm tra này." }, 400);
+  if (!r) return json({ ok: false, loi: "Không tìm thấy bài test này." }, 400);
   const email = String(body.email || "").trim().toLowerCase();
-  const zalo = String(body.zalo || "").replace(/[\s.\-()]/g, "");
-  const coEmail = emailHopLe(email), coZalo = zaloHopLe(zalo);
-  if (!coEmail && !coZalo) return json({ ok: false, loi: "Email hoặc số Zalo chưa đúng, bạn xem lại giúp May nhé." }, 400);
+  if (!emailHopLe(email)) return json({ ok: false, loi: "Email chưa đúng, bạn xem lại giúp May nhé." }, 400);
   const phu = kqKt(bai, String(body.phu || "")) ? String(body.phu) : "";
-  const ban = { luc: Date.now(), bai: bai.ma, kq: r.ma, phu, diem: diemGon(body.diem), email: coEmail ? email : "", zalo: coZalo ? zalo : "" };
-  await env.DB.put(`lh:${maNgau()}`, JSON.stringify(ban), { metadata: { luc: ban.luc, bai: bai.ma, kq: r.ma, phu, email: ban.email, zalo: ban.zalo } });
-  await tang(env, `dem:${bai.ma}:_lien-he`);
-  let daGui = false;
-  if (coEmail) {
+  const diem = diemGon(body.diem);
+  // cùng một người bấm gửi lại trong 10 phút: chỉ gửi lại thư, không đếm thêm
+  const khoaMoi = `lh-moi:${bai.ma}:${email}`;
+  if (!(await env.DB.get(khoaMoi))) {
+    await env.DB.put(khoaMoi, "1", { expirationTtl: 600 });
+    const ban = { luc: Date.now(), bai: bai.ma, kq: r.ma, phu, diem, email, zalo: "" };
+    await env.DB.put(`lh:${maNgau()}`, JSON.stringify(ban), { metadata: { luc: ban.luc, bai: bai.ma, kq: r.ma, phu, email, zalo: "" } });
+    await tang(env, `dem:${bai.ma}:_lien-he`);
     const k = `dk:${email}`;
     const cu = (await env.DB.get(k, "json")) || { email, luc: Date.now(), loai: [] };
     if (!cu.loai.includes("kiem-tra")) cu.loai.push("kiem-tra");
     cu.kiemTra = { ...(cu.kiemTra || {}), [bai.ma]: r.ma };
     await env.DB.put(k, JSON.stringify(cu));
-    if (env.RESEND_API_KEY) {
-      daGui = true;
-      ctx.waitUntil(guiPhanTich(env, bai, r, email, body.ngang === true && phu ? kqKt(bai, phu) : null));
-    }
   }
-  if (coZalo && env.EMAIL_MAY) {
-    ctx.waitUntil(guiEmail(env, {
-      to: env.EMAIL_MAY,
-      subject: `Zalo mới từ bài kiểm tra: ${bai.ten}`,
-      html: khungEmail(`<p>Có người làm bài <strong>${esc(bai.ten)}</strong> và để lại Zalo, đợi May nhắn phần phân tích.</p><p>Zalo: <strong>${esc(zalo)}</strong><br>Kết quả: ${esc(r.ten)}${phu ? ` (cũng khá giống: ${esc(kqKt(bai, phu).ten)})` : ""}</p><p>Phần phân tích để gửi nằm trong 📝 Bài kiểm tra trên Pages CMS, hoặc xem trên trang <a href="${SITE}/quan-ly/">quản lý</a>.</p>`),
-    }));
-  }
-  return json({ ok: true, daGui });
+  const daGui = env.RESEND_API_KEY ? await guiPhanTich(env, bai, r, email, body.ngang === true && phu ? kqKt(bai, phu) : null, diem) : false;
+  return json({ ok: true, daGui: !!daGui });
 }
 
 async function soLieuKt(env) {

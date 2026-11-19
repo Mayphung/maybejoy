@@ -196,59 +196,87 @@
   }
 
   /* ---------- kết quả ---------- */
-  function hienKetQua(moiLam) {
-    var kq = ketQua, r = timKq(kq.kq);
-    if (!r) { luu.xoa(); return false; }
-    var h = '<p class="kt-nhan">' + esc(K.nhanKetQua) + '</p>';
+  function phanKetQua(kq, r, dayDu) {
+    var h = '';
+    h += '<p class="kt-nhan">' + esc(K.nhanKetQua) + '</p>';
     h += '<h2 class="kt-ten-kq" tabindex="-1" id="kt-ten-kq">' + esc(r.ten) + '</h2>';
     if (r.phu) h += '<p class="kt-phu-kq">' + esc(r.phu) + '</p>';
     h += '<p class="kt-mota">' + chuNho(r.moTa) + '</p>';
-    if (r.dau && r.dau.length) h += '<p style="margin:0">' + esc(K.banCoThe) + '</p><ul class="kt-ds-dau">' + r.dau.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>';
-    if (r.canGi) h += '<div class="kt-can">' + (B.nhanCanGi ? '<b>' + esc(B.nhanCanGi) + '</b> ' : '') + chuNho(r.canGi) + '</div>';
+    if (dayDu && r.dau && r.dau.length) h += '<p style="margin:0">' + esc(K.banCoThe) + '</p><ul class="kt-ds-dau">' + r.dau.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>';
+    if (dayDu && r.canGi) h += '<div class="kt-can">' + (B.nhanCanGi ? '<b>' + esc(B.nhanCanGi) + '</b> ' : '') + chuNho(r.canGi) + '</div>';
     if (r.loiNhan) h += '<p class="kt-loi">' + esc(r.loiNhan) + '</p>';
+    h += bieuDo(kq);
+    if (B.ket) h += '<p class="kt-ket">' + esc(B.ket) + '</p>';
+    return h;
+  }
+  function bieuDo(kq) {
+    var h = '';
     if (thang) {
       h += banDo(kq);
       h += '<p class="kt-diem">' + esc(B.truc.lo) + ' ' + kq.diem.lo.toFixed(1) + ' / 4 · ' + esc(B.truc.ne) + ' ' + kq.diem.ne.toFixed(1) + ' / 4</p>';
       if (kq.doTinCay === 'thap' && B.doTinCayThap) h += '<p class="kt-ghichu">' + esc(B.doTinCayThap) + '</p>';
-    } else {
-      h += cot(kq);
-      var p = kq.phu && timKq(kq.phu);
-      if (kq.ngang && kq.ngang.length > 1) {
-        var ten = kq.ngang.map(function (k) { return '<b>' + esc((timKq(k) || {}).ten) + '</b>'; });
-        var ds = ten.length > 2 ? ten.slice(0, -1).join(', ') + ' và ' + ten[ten.length - 1] : ten.join(' và ');
-        h += '<p class="kt-phu2">' + esc(K.ngangNhau).replace('{ds}', ds) + '</p>';
-        kq.ngang.slice(1).forEach(function (k) {
-          var r2 = timKq(k);
-          if (r2) h += '<div class="kt-can"><b>' + esc(r2.ten) + '.</b> ' + chuNho(r2.moTa) + (r2.loiNhan ? '<br><i>' + esc(r2.loiNhan) + '</i>' : '') + '</div>';
-        });
-      } else if (p) h += '<p class="kt-phu2">' + esc(K.nhanPhu) + ' <b>' + esc(p.ten) + '</b>.</p>';
+      return h;
     }
-    if (B.ket) h += '<p class="kt-ket">' + esc(B.ket) + '</p>';
-
+    h += cot(kq);
+    var p = kq.phu && timKq(kq.phu);
+    if (kq.ngang && kq.ngang.length > 1) {
+      var ten = kq.ngang.map(function (k) { return '<b>' + esc((timKq(k) || {}).ten) + '</b>'; });
+      var ds = ten.length > 2 ? ten.slice(0, -1).join(', ') + ' và ' + ten[ten.length - 1] : ten.join(' và ');
+      h += '<p class="kt-phu2">' + esc(K.ngangNhau).replace('{ds}', ds) + '</p>';
+      kq.ngang.slice(1).forEach(function (k) {
+        var r2 = timKq(k);
+        if (r2) h += '<div class="kt-can"><b>' + esc(r2.ten) + '.</b> ' + chuNho(r2.moTa) + (r2.loiNhan ? '<br><i>' + esc(r2.loiNhan) + '</i>' : '') + '</div>';
+      });
+    } else if (p) h += '<p class="kt-phu2">' + esc(K.nhanPhu) + ' <b>' + esc(p.ten) + '</b>.</p>';
+    return h;
+  }
+  function hopEmail(kq) {
     var L = B.giuLienLac || {};
-    h += '<div class="kt-hop" id="kt-hop">';
+    var h = '<div class="kt-hop kt-mau-' + esc(B.mau || 'do-ruou') + '" id="kt-hop">';
     h += '<h3>' + esc(L.tieuDe) + '</h3>';
     if (L.moTa) h += '<p>' + esc(L.moTa) + '</p>';
     if (L.ds && L.ds.length) h += '<ul>' + L.ds.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>';
-    h += '<form class="kt-form" id="kt-form" novalidate' + (kq.daGui ? ' hidden' : '') + '><label>' + esc(K.oNhap) + '<input id="kt-lh" name="lienHe" type="text" inputmode="email" autocomplete="email" placeholder="' + esc(K.goiYNhap) + '" required></label><button class="btn" type="submit">' + esc(K.nutGui) + '</button></form>';
-    h += '<p class="kt-nho"' + (kq.daGui ? ' hidden' : '') + '>' + esc(K.chuNho) + '</p>';
+    h += '<form class="kt-form" id="kt-form" novalidate><label>' + esc(K.oNhap) + '<input id="kt-lh" name="email" type="email" inputmode="email" autocomplete="email" placeholder="' + esc(K.goiYNhap) + '" value="' + esc(kq.email || '') + '" required></label><button class="btn" type="submit">' + esc(K.nutGui) + '</button></form>';
+    h += '<p class="kt-nho">' + esc(K.chuNho) + '</p>';
     h += '<p class="kt-tb" id="kt-tb" aria-live="polite"></p>';
-    var themNgang = (kq.ngang || []).slice(1).map(function (k) { var r2 = timKq(k); return r2 ? '<h4 class="kt-them">' + esc(r2.ten) + '</h4>' + phanTich(r2.phanTich) : ''; }).join('');
-    h += '<div class="kt-sau" id="kt-sau"' + (kq.daGui ? '' : ' hidden') + '>' + phanTich(r.phanTich) + themNgang + '</div>';
-    h += '</div>';
+    return h + '</div>';
+  }
 
-    var T = B.buocTiep || {};
-    if (T.link && T.nut) h += '<div class="kt-tiep"><p>' + chuNho(T.chu) + '</p><a class="btn" href="' + esc(T.link) + '">' + esc(T.nut) + ' →</a></div>';
-
-    h += '<div class="kt-hang"><button type="button" class="btn ghost" id="kt-chia">' + esc(K.chiaSe) + '</button><button type="button" class="btn ghost" id="kt-lai">' + esc(K.lamLai) + '</button></div>';
-    h += '<p class="kt-tb" id="kt-tb-chia" aria-live="polite"></p>';
-
-    var khac = (D.khac || []).filter(function (x) { return x.ma !== B.ma; });
-    if (khac.length) {
-      h += '<div class="kt-khac"><h3>' + esc(K.deKhac) + '</h3>' + khac.map(function (x) {
-        return '<a href="/kiem-tra/' + esc(x.ma) + '/"><b>' + esc(x.ten) + ' →</b><span>' + esc(x.moc) + '</span></a>';
-      }).join('') + '</div>';
+  function hienKetQua(moiLam) {
+    var kq = ketQua, r = timKq(kq.kq);
+    if (!r) { luu.xoa(); return false; }
+    var h = '';
+    if (!kq.daGui) {
+      // chưa để lại email: kết quả nằm sau lớp mờ
+      h += '<p class="kt-nhan">' + esc(K.nhanXong) + '</p>';
+      h += '<h2 class="kt-ten-kq" tabindex="-1" id="kt-ten-kq">' + esc(K.khoaTieuDe) + '</h2>';
+      h += '<div class="kt-khoa"><div class="kt-mo-mo" aria-hidden="true"><p class="kt-ten-gia">██████ ███ ████</p>' + bieuDo(kq).replace(/<p class="kt-phu2">[\s\S]*$/, '') + '</div>' + hopEmail(kq) + '</div>';
+    } else {
+      var dayDu = !!(kq.dayDu || B.hienDayDu);
+      h += '<div class="kt-thu kt-mau-' + esc(B.mau || 'do-ruou') + '">';
+      h += '<p>' + esc(kq.thuToi ? K.daGuiEmail : K.khongGuiDuoc).replace('{email}', '<b>' + esc(kq.email || '') + '</b>') + '</p>';
+      if (kq.thuToi) h += '<p class="kt-thu-nut"><button type="button" class="linkbtn" id="kt-gui-lai">' + esc(K.guiLai) + '</button> · <button type="button" class="linkbtn" id="kt-doi">' + esc(K.doiEmail) + '</button></p>';
+      h += '<p class="kt-tb" id="kt-tb2" aria-live="polite"></p></div>';
+      h += '<div id="kt-doi-hop" hidden>' + hopEmail(kq) + '</div>';
+      h += phanKetQua(kq, r, dayDu);
+      if (dayDu) {
+        var themNgang = (kq.ngang || []).slice(1).map(function (k) { var r2 = timKq(k); return r2 ? '<h4 class="kt-them">' + esc(r2.ten) + '</h4>' + phanTich(r2.phanTich) : ''; }).join('');
+        h += '<div class="kt-sau">' + phanTich(r.phanTich) + themNgang + '</div>';
+      } else if (K.trongEmail) {
+        h += '<p class="kt-trong-email">✉ ' + esc(K.trongEmail) + '</p>';
+      }
+      var T = B.buocTiep || {};
+      if (T.link && T.nut) h += '<div class="kt-tiep"><p>' + chuNho(T.chu) + '</p><a class="btn" href="' + esc(T.link) + '">' + esc(T.nut) + ' →</a></div>';
+      h += '<div class="kt-hang"><button type="button" class="btn ghost" id="kt-chia">' + esc(K.chiaSe) + '</button><button type="button" class="btn ghost" id="kt-lai">' + esc(K.lamLai) + '</button></div>';
+      h += '<p class="kt-tb" id="kt-tb-chia" aria-live="polite"></p>';
+      var khac = (D.khac || []).filter(function (x) { return x.ma !== B.ma; });
+      if (khac.length) {
+        h += '<div class="kt-khac"><h3>' + esc(K.deKhac) + '</h3>' + khac.map(function (x) {
+          return '<a href="/kiem-tra/' + esc(x.ma) + '/"><b>' + esc(x.ten) + ' →</b><span>' + esc(x.moc) + '</span></a>';
+        }).join('') + '</div>';
+      }
     }
+    if (!kq.daGui) h += '<p class="kt-lai-nho"><button type="button" class="linkbtn" id="kt-lai">' + esc(K.lamLai) + '</button></p>';
 
     kqS.innerHTML = h;
     moS.hidden = true; lamS.hidden = true; kqS.hidden = false;
@@ -264,41 +292,52 @@
     return true;
   }
 
+  function guiKetQua(email, nut, tb, khiXong) {
+    var du = { bai: B.ma, kq: ketQua.kq, phu: ketQua.phu || '', ngang: !!(ketQua.ngang && ketQua.ngang.length > 1), diem: ketQua.diem, email: email };
+    if (nut) nut.disabled = true;
+    if (tb) tb.textContent = K.dangGui || '';
+    var kit = D.kit
+      ? fetch('https://app.kit.com/forms/' + D.kit + '/subscriptions', { method: 'POST', headers: { accept: 'application/json', 'content-type': 'application/x-www-form-urlencoded' }, body: 'email_address=' + encodeURIComponent(email) }).catch(function () {})
+      : Promise.resolve();
+    return gui('/api/kiem-tra/lien-he', du)
+      .then(function (r) { return kit.then(function () { return r; }); })
+      .then(function (r) {
+        if (!r.ok) throw new Error(r.loi || 'loi');
+        ketQua.daGui = true; ketQua.email = email; ketQua.thuToi = !!r.daGui;
+        ketQua.dayDu = !r.daGui;
+        luu.dat(ketQua);
+        khiXong(r);
+      })
+      .catch(function (err) {
+        if (nut) nut.disabled = false;
+        if (tb) tb.textContent = err && err.message && err.message !== 'loi' && err.message !== 'Failed to fetch' ? err.message : K.loiMang;
+      });
+  }
+
   function ganNut() {
-    var f = $('kt-form'), tb = $('kt-tb');
-    if (f) f.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var v = $('kt-lh').value.trim();
-      var so = v.replace(/[\s.\-()]/g, '');
-      var du = { bai: B.ma, kq: ketQua.kq, phu: ketQua.phu || '', ngang: !!(ketQua.ngang && ketQua.ngang.length > 1), diem: ketQua.diem };
-      if (/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) du.email = v.toLowerCase();
-      else if (/^(\+?84|0)\d{9,10}$/.test(so)) du.zalo = so;
-      else { tb.textContent = K.loiNhap; return; }
-      var nut = f.querySelector('button'); nut.disabled = true; tb.textContent = '';
-      var kit = du.email && D.kit
-        ? fetch('https://app.kit.com/forms/' + D.kit + '/subscriptions', { method: 'POST', headers: { accept: 'application/json', 'content-type': 'application/x-www-form-urlencoded' }, body: 'email_address=' + encodeURIComponent(du.email) }).catch(function () {})
-        : Promise.resolve();
-      gui('/api/kiem-tra/lien-he', du)
-        .then(function (r) { return kit.then(function () { return r; }); })
-        .then(function (r) {
-          if (!r.ok) throw new Error(r.loi || 'loi');
-          f.hidden = true;
-          var nho = f.parentNode.querySelector('.kt-nho'); if (nho) nho.hidden = true;
-          tb.textContent = du.zalo ? K.daNhanZalo : r.daGui ? K.daGuiEmail : K.daNhanEmail;
-          $('kt-sau').hidden = false;
-          ketQua.daGui = true; luu.dat(ketQua);
-        })
-        .catch(function (err) {
-          nut.disabled = false;
-          tb.textContent = err && err.message && err.message !== 'loi' && err.message !== 'Failed to fetch' ? err.message : K.loiMang;
-        });
+    kqS.querySelectorAll('#kt-form').forEach(function (f) {
+      f.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var o = f.querySelector('input'), tb = f.parentNode.querySelector('.kt-tb');
+        var v = o.value.trim().toLowerCase();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) { tb.textContent = K.loiNhap; o.focus(); return; }
+        guiKetQua(v, f.querySelector('button'), tb, function () { hienKetQua(true); });
+      });
     });
+    var lai = $('kt-gui-lai');
+    if (lai) lai.addEventListener('click', function () {
+      var tb = $('kt-tb2');
+      guiKetQua(ketQua.email, lai, tb, function (r) { lai.disabled = false; tb.textContent = r.daGui ? K.daGuiLai : K.loiMang; });
+    });
+    var doi = $('kt-doi');
+    if (doi) doi.addEventListener('click', function () { var hop = $('kt-doi-hop'); hop.hidden = false; var o = hop.querySelector('input'); o.value = ''; o.focus(); });
     $('kt-lai').addEventListener('click', function () {
       luu.xoa(); tl = []; i = 0; ketQua = null;
       kqS.hidden = true; kqS.innerHTML = '';
       batDau();
     });
-    $('kt-chia').addEventListener('click', function () {
+    var chia = $('kt-chia');
+    if (chia) chia.addEventListener('click', function () {
       var url = location.origin + '/kiem-tra/' + B.ma + '/';
       var tb2 = $('kt-tb-chia');
       if (navigator.share) {

@@ -17,7 +17,7 @@ eleventyComputed:
 {%- set soCau = bai.cauThang.length if bai.kieu == "thang" else bai.cau.length %}
 <div class="vo">
   {% include "nav.njk" %}
-  <main class="kt-giay" id="noi-dung">
+  <main class="kt-giay kt-mau-{{ bai.mau or 'do-ruou' }}" id="noi-dung">
     <header class="kt-dau-trang">
       <a class="kt-ve" href="/kiem-tra/">{{ K.tieuDe }}</a>
       <p class="kt-meta">{{ bai.ten }} · {{ soCau }} {{ K.cau | lower }} · {{ bai.thoiGian }}</p>

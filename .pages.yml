@@ -715,15 +715,23 @@ content:
           - { name: banCoThe, label: "Chữ trước danh sách 'Bạn có thể'", type: string }
           - { name: nhanPhu, label: "Nhãn kết quả gần thứ hai", type: string }
           - { name: ngangNhau, label: "Câu khi các kết quả ngang điểm ({ds} = tên các kết quả)", type: text }
-          - { name: oNhap, label: "Nhãn ô email/Zalo", type: string }
+          - { name: oNhap, label: "Nhãn ô email", type: string }
           - { name: goiYNhap, label: "Chữ mờ trong ô", type: string }
           - { name: nutGui, label: "Nút gửi", type: string }
           - { name: chuNho, label: "Dòng nhỏ dưới ô", type: string }
           - { name: loiNhap, label: "Báo khi nhập sai", type: text }
           - { name: loiMang, label: "Báo khi mạng lỗi", type: text }
-          - { name: daGuiEmail, label: "Sau khi gửi email (đã gửi phân tích)", type: text }
-          - { name: daNhanEmail, label: "Sau khi gửi email (chưa gửi được thư)", type: text }
-          - { name: daNhanZalo, label: "Sau khi để lại Zalo", type: text }
+          - { name: nhanXong, label: "Chữ viết tay khi làm xong bài", type: string }
+          - { name: khoaTieuDe, label: "Tiêu đề trước khi nhập email", type: string }
+          - { name: dangGui, label: "Chữ lúc đang gửi", type: string }
+          - { name: daGuiEmail, label: "Sau khi gửi email ({email} = email người làm)", type: text }
+          - { name: khongGuiDuoc, label: "Khi chưa gửi được thư (kết quả hiện đầy đủ trên trang)", type: text }
+          - { name: trongEmail, label: "Dòng nhắc phần phân tích nằm trong email", type: text }
+          - { name: guiLai, label: "Nút gửi lại thư", type: string }
+          - { name: doiEmail, label: "Nút đổi email", type: string }
+          - { name: daGuiLai, label: "Báo đã gửi lại", type: string }
+          - { name: tieuDePhanTich, label: "Tiêu đề phần phân tích trong email", type: string }
+          - { name: lamThemEmail, label: "Đường dẫn cuối email", type: string }
           - { name: chiaSe, label: "Nút chia sẻ", type: string }
           - { name: chiaSeLoi, label: "Lời đi kèm đường dẫn chia sẻ", type: string }
           - { name: daChep, label: "Báo khi đã chép đường dẫn", type: string }
@@ -739,6 +747,15 @@ content:
         fields:
           - { name: ma, label: "Mã bài (nằm trong đường dẫn — đừng đổi)", type: string }
           - { name: hien, label: "Đang hiện trên web", type: boolean, default: true }
+          - name: mau
+            label: "Màu phiếu"
+            type: select
+            options:
+              values:
+                - { value: do-ruou, label: "Đỏ rượu" }
+                - { value: than, label: "Nâu than" }
+                - { value: dat-nung, label: "Đất nung" }
+          - { name: hienDayDu, label: "Hiện đầy đủ phân tích trên trang sau khi nhập email (tắt = chỉ gửi qua email)", type: boolean, default: false }
           - { name: ten, label: "Tên ngắn (trên phiếu)", type: string }
           - { name: tieuDe, label: "Câu hỏi lớn đầu trang", type: string }
           - { name: moc, label: "Câu gợi tò mò trên phiếu", type: text }
@@ -795,7 +812,7 @@ content:
               - { name: phanTich, label: "Phân tích chi tiết (gửi qua email). '## ' ở đầu dòng = tiêu đề nhỏ, '- ' = gạch đầu dòng", type: text }
           - { name: ket, label: "Câu kết dưới kết quả", type: text }
           - name: giuLienLac
-            label: "Hộp xin email/Zalo"
+            label: "Hộp xin email"
             type: object
             fields:
               - { name: tieuDe, label: "Tiêu đề", type: string }

@@ -104,3 +104,18 @@ a{color:var(--burgundy)}a:hover{color:var(--terracotta-dark)}
 .kt-dau[hidden]{display:none}
 .kt-the.da-lam .kt-moc{padding-right:0}
 @media (max-width:860px){.kt-ds{gap:24px}.kt-the{transform:none}}
+
+/* phiếu màu: đỏ rượu · nâu than · đất nung */
+.kt-the.kt-mau-do-ruou{--nen:#6E2A34;--nhan:#F3C9A8}
+.kt-the.kt-mau-than{--nen:#362A24;--nhan:#E9A27C}
+.kt-the.kt-mau-dat-nung{--nen:#A8522B;--nhan:#FFE3CC}
+.kt-the[class*="kt-mau-"]{background-color:var(--nen);color:#FBF6EE;background-image:linear-gradient(to right,transparent 24px,rgba(251,246,238,.35) 24px,rgba(251,246,238,.35) 25.5px,transparent 25.5px),repeating-linear-gradient(to bottom,transparent 0 31px,rgba(251,246,238,.09) 31px 32px);box-shadow:0 14px 30px rgba(54,42,36,.24),0 2px 4px rgba(54,42,36,.14)}
+.kt-the[class*="kt-mau-"]:hover{color:#FBF6EE;box-shadow:0 22px 40px rgba(54,42,36,.3)}
+.kt-the[class*="kt-mau-"]::before{background:rgba(244,235,224,.55)}
+.kt-the[class*="kt-mau-"] .kt-de{color:var(--nhan)}
+.kt-the[class*="kt-mau-"] .kt-ten{color:#FBF6EE}
+.kt-the[class*="kt-mau-"] .kt-moc{color:#F4EBE0}
+.kt-the[class*="kt-mau-"] .kt-nut{color:#FBF6EE;border-bottom-color:var(--nhan)}
+.kt-the[class*="kt-mau-"]:hover .kt-nut{color:var(--nhan)}
+.kt-the[class*="kt-mau-"] .kt-dau{background:rgba(251,246,238,.12);border-color:var(--nhan);color:#FBF6EE}
+.kt-the[class*="kt-mau-"] .kt-dau b{color:var(--nhan)}
