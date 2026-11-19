@@ -7,6 +7,8 @@
     {%- if site.social.facebook %}<a href="{{ site.social.facebook }}" rel="me noopener" target="_blank">Facebook</a>{% endif %}
     {%- if site.social.youtube %}<a href="{{ site.social.youtube }}" rel="me noopener" target="_blank">YouTube</a>{% endif %}
     {%- if site.contactEmail %}<a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a>{% endif %}
+    <a href="/chinh-sach-bao-mat/">{{ site.chu.chinhSach or "Chính sách bảo mật" }}</a>
+    <a href="/dieu-khoan/">{{ site.chu.dieuKhoan or "Điều khoản" }}</a>
   </div>
   {% if footNote %}<span class="hand" style="font-size: 18px{% if footColor %}; color: {{ footColor }}{% endif %}">{{ footNote }}</span>{% endif %}
 </footer>

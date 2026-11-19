@@ -7,7 +7,6 @@
     "youtube": ""
   },
   "contactEmail": "hello@mayphung.com",
-  "courseOldPrice": "499.000đ",
   "nav": [
     {
       "key": "tung-chut-mot",
@@ -47,6 +46,9 @@
     "trangTatCaBai": "Tất cả bài viết",
     "loi404TieuDe": "Trang này bị xé mất rồi.",
     "loi404GhiTay": "lạc một chút cũng được. quay lại vở nhé.",
-    "loi404Nut": "Về trang đầu vở"
+    "loi404Nut": "Về trang đầu vở",
+    "chinhSach": "Chính sách bảo mật",
+    "dieuKhoan": "Điều khoản",
+    "dongYEmail": "Gửi email là bạn đồng ý nhận thư từ May, hủy nhận lúc nào cũng được."
   }
 }

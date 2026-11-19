@@ -22,13 +22,14 @@
       "loai": "Khóa học video · 14 bài + workbook",
       "ten": "Khoảng Dừng Cảm Xúc",
       "moTa": "Biết mình muốn phản ứng khác đi, mà đến lúc chuyện xảy ra mọi thứ lại như cũ. 14 bài ngắn và một workbook để hiểu điều đang diễn ra bên trong, và có thêm một lựa chọn trước phản ứng đầu tiên.",
-      "gia": "345.000đ",
+      "gia": "",
       "giaGhiChu": "giá khởi điểm",
       "nutChu": "Xem thử",
       "nutLink": "/khoang-dung-cam-xuc/",
       "nutPhu": false,
       "mauDa": false,
-      "tenNghieng": false
+      "tenNghieng": false,
+      "sanPham": "emotion-course"
     },
     {
       "trangThai": "sắp lên kệ",

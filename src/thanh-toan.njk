@@ -35,6 +35,7 @@ navKey: o-xuong-may
       <input id="tt-email" type="email" name="email" placeholder="ten@gmail.com" autocomplete="email" required>
     </label>
     <p class="co-note">{{ T.ghiChuEmail }}</p>
+    {% if T.dongY %}<p class="co-note">{{ T.dongY }} <a href="/dieu-khoan/">{{ site.chu.dieuKhoan or "Điều khoản" }}</a> và <a href="/chinh-sach-bao-mat/">{{ site.chu.chinhSach or "Chính sách bảo mật" }}</a>.</p>{% endif %}
     <button class="btn" type="submit">{{ T.nutTiep }}</button>
     <div class="form-msg" id="tt-msg" aria-live="polite"></div>
   </form>

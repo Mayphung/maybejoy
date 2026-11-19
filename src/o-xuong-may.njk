@@ -20,8 +20,9 @@ navKey: o-xuong-may
     <h3 class="serif tname{% if p.tenNghieng %} it{% endif %}">{{ p.ten }}</h3>
     {% if p.bia and p.bia.length %}<div class="covers">{% for b in p.bia %}<img src="{{ b.anh }}" alt="{{ b.moTa }}" loading="lazy">{% endfor %}</div>{% endif %}
     {% if p.moTa %}<p style="font-size: 15px; margin: 0; text-align: center">{{ p.moTa }}</p>{% endif %}
+    {% set giaThe = p.gia %}{% if p.sanPham %}{% set spThe = banHang.sanPham | findBy("ma", p.sanPham) %}{% if spThe %}{% set giaThe = spThe.gia | vnd %}{% endif %}{% endif %}
     <div class="tag-foot">
-      {% if p.gia %}<div><div class="price{% if p.gia.length > 9 %} sm{% endif %}">{{ p.gia }}</div>{% if p.giaGhiChu %}<div style="font-size: 12px">{{ p.giaGhiChu }}</div>{% endif %}</div>
+      {% if giaThe %}<div><div class="price{% if giaThe.length > 9 %} sm{% endif %}">{{ giaThe }}</div>{% if p.giaGhiChu %}<div style="font-size: 12px">{{ p.giaGhiChu }}</div>{% endif %}</div>
       {% elif p.ghiTay %}<span class="hand" style="font-size: 19px; color: #A8522B">{{ p.ghiTay }}</span>
       {% else %}<span></span>{% endif %}
       {% if p.muaPhong and banHang.nganHang.soTaiKhoan %}<a class="btn" href="/thanh-toan/?sp={{ p.muaPhong }}">{{ p.muaChu or "Mua" }}</a>

@@ -50,4 +50,4 @@ eleventyComputed:
   </main>
   <div class="kt-foot">{% include "foot.njk" %}</div>
 </div>
-<script type="application/json" id="kt-data">{"bai": {{ bai | jsonScript | safe }}, "chu": {{ K | jsonScript | safe }}, "khac": {{ kiemTra.bai | ktHien | ktGon | jsonScript | safe }}, "kit": {{ site.kitFormId | jsonScript | safe }}}</script>
+<script type="application/json" id="kt-data">{"bai": {{ bai | jsonScript | safe }}, "chu": {{ K | jsonScript | safe }}, "khac": {{ kiemTra.bai | ktHien | ktGon | jsonScript | safe }}, "kit": {{ site.kitFormId | jsonScript | safe }}, "cs": {{ (site.chu.chinhSach or "Chính sách bảo mật") | jsonScript | safe }}}</script>

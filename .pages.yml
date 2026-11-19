@@ -340,6 +340,7 @@ content:
           - { name: ten, label: Tên món, type: string }
           - { name: moTa, label: Mô tả, type: text }
           - { name: gia, label: "Giá hiển thị (giá thu tiền thật nằm ở 💳 Bán hàng)", type: string }
+          - { name: sanPham, label: "Lấy giá từ 💳 Bán hàng: điền mã món (vd emotion-course). Có mã thì web bỏ qua ô Giá hiển thị", type: string }
           - { name: giaGhiChu, label: Dòng nhỏ dưới giá, type: string }
           - { name: ghiTay, label: "Dòng viết tay thay cho giá (nếu chưa có giá)", type: string }
           - { name: nutChu, label: Chữ trên nút, type: string }
@@ -422,7 +423,6 @@ content:
           - { name: youtube, label: YouTube, type: string }
       - { name: contactEmail, label: Email liên hệ, type: string }
       - { name: kitFormId, label: "Số form Kit (nơi nhận email đăng ký)", type: string }
-      - { name: courseOldPrice, label: Giá gốc Emotion Course (gạch ngang), type: string }
       - name: nav
         type: object
         list: true
@@ -448,6 +448,9 @@ content:
           - { name: loi404TieuDe, label: "Trang 404: tiêu đề", type: string }
           - { name: loi404GhiTay, label: "Trang 404: dòng viết tay", type: string }
           - { name: loi404Nut, label: "Trang 404: nút", type: string }
+          - { name: chinhSach, label: "Link Chính sách bảo mật (chân trang)", type: string }
+          - { name: dieuKhoan, label: "Link Điều khoản (chân trang)", type: string }
+          - { name: dongYEmail, label: "Dòng nhỏ dưới các ô nhận email", type: string }
 
   - name: ban-hang
     label: "💳 Bán hàng: tài khoản nhận tiền, giá, quà tặng"
@@ -471,7 +474,8 @@ content:
           - { name: ma, label: "Mã (đừng đổi)", type: string }
           - { name: ten, label: Tên, type: string }
           - { name: moTa, label: Mô tả ngắn trên trang thanh toán, type: string }
-          - { name: gia, label: Giá (số), type: number }
+          - { name: gia, label: "Giá đang bán (số). Trang bán, thẻ Ở xưởng May và số tiền thu đều lấy từ ô này", type: number }
+          - { name: giaSau, label: "Giá sau giai đoạn khởi điểm (số, hiện gạch ngang). Bỏ trống nếu không có", type: number }
           - { name: phong, label: "Mở phòng nào (đừng đổi)", type: string }
       - name: phong
         type: object
@@ -494,6 +498,7 @@ content:
           - { name: chuaMo, label: "Lời khi chưa có số tài khoản", type: text }
           - { name: oEmail, label: "Nhãn ô email", type: string }
           - { name: ghiChuEmail, label: "Ghi chú dưới ô email", type: text }
+          - { name: dongY, label: "Câu đồng ý trước link Điều khoản và Chính sách bảo mật", type: string }
           - { name: nutTiep, label: "Nút tiếp tục", type: string }
           - { name: buoc1, label: "Bước 1", type: text }
           - { name: buoc2, label: "Bước 2 (mã đơn hiện sau câu này)", type: string }
@@ -570,7 +575,6 @@ content:
     fields:
       - { name: ten, label: Tên khóa học, type: string }
       - { name: moTaNgan, label: Câu giới thiệu dưới tên, type: text }
-      - { name: giaSau, label: "Giá sau giai đoạn khởi điểm (số, gạch ngang). Giá đang bán sửa ở 💳 Bán hàng", type: number }
       - { name: dongMeta, label: Mấy nhãn nhỏ dưới câu giới thiệu, type: string, list: true }
       - { name: anhDau, label: Ảnh đầu trang, type: image }
       - { name: anhDauMoTa, label: Tả ảnh đầu trang, type: string }
@@ -689,6 +693,24 @@ content:
           - { name: thanhDinhNut, label: "Nút trên thanh dính (điện thoại)", type: string }
           - { name: thanhDinhNutChuaMo, label: "Nút thanh dính khi chưa mở bán", type: string }
 
+
+  - name: phap-ly
+    label: "⚖️ Thông tin người bán (hiện ở Chính sách bảo mật và Điều khoản)"
+    type: file
+    path: src/_data/phapLy.json
+    format: json
+    fields:
+      - { name: ngayCapNhat, label: "Ngày cập nhật (hiện đầu hai trang)", type: string }
+      - { name: phienBan, label: "Phiên bản chính sách (đừng đổi, Claude đổi khi sửa nội dung)", type: string, hidden: true }
+      - name: nguoiBan
+        label: Đơn vị bán hàng
+        type: object
+        fields:
+          - { name: ten, label: "Tên doanh nghiệp, đúng như giấy đăng ký", type: string }
+          - { name: maSoThue, label: Mã số thuế, type: string }
+          - { name: nguoiDaiDien, label: Người đại diện, type: string }
+          - { name: diaChi, label: Địa chỉ, type: string }
+          - { name: dienThoai, label: "Điện thoại (bỏ trống nếu không muốn hiện)", type: string }
 
   - name: kiem-tra
     label: "📝 Bài kiểm tra (Kiểm tra miệng)"

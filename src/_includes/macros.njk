@@ -7,5 +7,6 @@
   <input type="hidden" name="loai" value="{{ kind }}">
   <button class="btn" type="submit">{{ button }}</button>
 </form>
+{% if site.chu.dongYEmail %}<p class="mform-cs"{% if style %} style="{{ style }}; margin-top: 8px"{% endif %}>{{ site.chu.dongYEmail }} <a href="/chinh-sach-bao-mat/">{{ site.chu.chinhSach or "Chính sách bảo mật" }}</a></p>{% endif %}
 <div class="form-msg" aria-live="polite"></div>
 {% endmacro %}

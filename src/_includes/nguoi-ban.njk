@@ -1,0 +1,10 @@
+{%- set nb = phapLy.nguoiBan -%}
+<ul>
+  <li>Người vận hành: May (Phương Phùng)</li>
+  {%- if nb.ten %}<li>Đơn vị bán hàng và nhận tiền: {{ nb.ten }}</li>{% endif %}
+  {%- if nb.maSoThue %}<li>Mã số thuế: {{ nb.maSoThue }}</li>{% endif %}
+  {%- if nb.nguoiDaiDien %}<li>Người đại diện: {{ nb.nguoiDaiDien }}</li>{% endif %}
+  {%- if nb.diaChi %}<li>Địa chỉ: {{ nb.diaChi }}</li>{% endif %}
+  {%- if nb.dienThoai %}<li>Điện thoại: {{ nb.dienThoai }}</li>{% endif %}
+  {%- if site.contactEmail %}<li>Email: <a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a></li>{% endif %}
+</ul>

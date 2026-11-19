@@ -10,11 +10,14 @@
 //   GET  /quan-ly/           trang quản lý đơn cho May (cần mật khẩu riêng)
 import banHang from "../src/_data/banHang.json";
 import kiemTra from "../src/_data/kiemTra.json";
+import phapLy from "../src/_data/phapLy.json";
 
 const SITE = "https://mayphung.com";
 const FROM = "May Phung <may@mayphung.com>";
 const MA_CHU = "ABCDEFGHJKMNPQRSTUVWXYZ23456789";
 const NGAY = 86400;
+// Ghi lại người dùng đồng ý với phiên bản chính sách nào, lúc nào (để kiểm chứng được)
+const dongY = () => ({ luc: Date.now(), ban: phapLy.phienBan });
 
 const json = (data, status = 200, headers = {}) =>
   new Response(JSON.stringify(data), { status, headers: { "content-type": "application/json; charset=utf-8", "cache-control": "no-store", ...headers } });
@@ -107,6 +110,7 @@ async function dangKy(request, env, ctx) {
   const k = `dk:${email}`;
   const cu = (await env.DB.get(k, "json")) || { email, luc: Date.now(), loai: [] };
   if (!cu.loai.includes(loai)) cu.loai.push(loai);
+  cu.dongY = dongY();
   const coQua = loai === "qua" && !!banHang.quaTang.link && !!env.RESEND_API_KEY;
   if (coQua) cu.quaGui = Date.now();
   await env.DB.put(k, JSON.stringify(cu));
@@ -147,7 +151,7 @@ async function taoDon(request, env) {
   if (!banHang.nganHang.soTaiKhoan || !env.TOKEN_SECRET) return json({ ok: false, loi: "May đang hoàn tất phần chuyển khoản. Bạn quay lại sau ít phút nhé." }, 503);
   let ma = taoMa();
   for (let i = 0; i < 3 && (await env.DB.get(`don:${ma}`)); i++) ma = taoMa();
-  const don = { ma, email, sp: sp.ma, ten: sp.ten, gia: sp.gia, phong: sp.phong, trangThai: "cho", luc: Date.now() };
+  const don = { ma, email, sp: sp.ma, ten: sp.ten, gia: sp.gia, phong: sp.phong, trangThai: "cho", luc: Date.now(), dongY: dongY() };
   await env.DB.put(`don:${ma}`, JSON.stringify(don), { expirationTtl: 30 * NGAY });
   return json({ ok: true, ma, gia: sp.gia, giaChu: tien(sp.gia), qr: qrUrl(sp.gia, ma), nganHang: banHang.nganHang });
 }
@@ -323,13 +327,14 @@ async function kiemTraLienHe(request, env, ctx) {
   const khoaMoi = `lh-moi:${bai.ma}:${email}`;
   if (!(await env.DB.get(khoaMoi))) {
     await env.DB.put(khoaMoi, "1", { expirationTtl: 600 });
-    const ban = { luc: Date.now(), bai: bai.ma, kq: r.ma, phu, diem, email, zalo: "" };
+    const ban = { luc: Date.now(), bai: bai.ma, kq: r.ma, phu, diem, email, zalo: "", dongY: dongY() };
     await env.DB.put(`lh:${maNgau()}`, JSON.stringify(ban), { metadata: { luc: ban.luc, bai: bai.ma, kq: r.ma, phu, email, zalo: "" } });
     await tang(env, `dem:${bai.ma}:_lien-he`);
     const k = `dk:${email}`;
     const cu = (await env.DB.get(k, "json")) || { email, luc: Date.now(), loai: [] };
     if (!cu.loai.includes("kiem-tra")) cu.loai.push("kiem-tra");
     cu.kiemTra = { ...(cu.kiemTra || {}), [bai.ma]: r.ma };
+    cu.dongY = dongY();
     await env.DB.put(k, JSON.stringify(cu));
   }
   const daGui = env.RESEND_API_KEY ? await guiPhanTich(env, bai, r, email, body.ngang === true && phu ? kqKt(bai, phu) : null, diem) : false;

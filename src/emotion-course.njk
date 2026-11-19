@@ -29,7 +29,7 @@ navKey: o-xuong-may
     <ul class="kd-meta">{% for m in k.dongMeta %}<li>{{ m }}</li>{% endfor %}</ul>
     <div class="kd-price-line">
       <span class="now">{{ giaChu }}</span>
-      <span class="later">{{ L.sauDo }} <s>{{ k.giaSau | vnd }}</s></span>
+      <span class="later">{{ L.sauDo }} <s>{{ sp.giaSau | vnd }}</s></span>
       <span class="tag hand">{{ L.giaKhoiDiem }}</span>
     </div>
     <div class="kd-hero-cta">{{ cta | safe }}</div>
@@ -186,7 +186,7 @@ navKey: o-xuong-may
     <div class="kd-ticket-main">
       <div class="kd-kick">{{ L.giaNhan }}</div>
       <h2 id="gia-h">{{ k.ten }}</h2>
-      <div class="kd-ticket-price"><span class="now">{{ giaChu }}</span><s>{{ k.giaSau | vnd }}</s></div>
+      <div class="kd-ticket-price"><span class="now">{{ giaChu }}</span><s>{{ sp.giaSau | vnd }}</s></div>
       <p class="per hand">{{ L.moiClip | replace("{gia}", ((sp.gia / 15) / 1000) | round | int + ".000đ") }}</p>
       <ul>{% for n in k.nhanDuoc %}<li>{{ n }}</li>{% endfor %}</ul>
       {% if moBan %}
@@ -227,7 +227,7 @@ navKey: o-xuong-may
 
 {# Thanh mua dính dưới màn hình (điện thoại) #}
 <div class="kd-sticky" id="kd-sticky" hidden>
-  <span><strong>{{ giaChu }}</strong><s>{{ k.giaSau | vnd }}</s></span>
+  <span><strong>{{ giaChu }}</strong><s>{{ sp.giaSau | vnd }}</s></span>
   {% if moBan %}<a class="btn" href="/thanh-toan/?sp=emotion-course">{{ L.thanhDinhNut }}</a>{% else %}<a class="btn" href="#gia">{{ L.thanhDinhNutChuaMo }}</a>{% endif %}
 </div>
 

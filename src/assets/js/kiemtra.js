@@ -237,7 +237,7 @@
     if (L.moTa) h += '<p>' + esc(L.moTa) + '</p>';
     if (L.ds && L.ds.length) h += '<ul>' + L.ds.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>';
     h += '<form class="kt-form" id="kt-form" novalidate><label>' + esc(K.oNhap) + '<input id="kt-lh" name="email" type="email" inputmode="email" autocomplete="email" placeholder="' + esc(K.goiYNhap) + '" value="' + esc(kq.email || '') + '" required></label><button class="btn" type="submit">' + esc(K.nutGui) + '</button></form>';
-    h += '<p class="kt-nho">' + esc(K.chuNho) + '</p>';
+    h += '<p class="kt-nho">' + esc(K.chuNho) + (D.cs ? ' <a href="/chinh-sach-bao-mat/">' + esc(D.cs) + '</a>' : '') + '</p>';
     h += '<p class="kt-tb" id="kt-tb" aria-live="polite"></p>';
     return h + '</div>';
   }
