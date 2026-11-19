@@ -127,7 +127,7 @@ async function dangKy(request, env, ctx) {
       })
     );
   }
-  return json({ ok: true, daGuiQua: coQua, kit: kit ? kit.status ?? "loi" : "tat" });
+  return json({ ok: true, daGuiQua: coQua, kit: kit ? kit.status ?? "loi" : "tat", kitKq: kit && kit.body ? (kit.body.match(/"status":"(\w+)"/) || [])[1] : undefined });
 }
 
 async function taoDon(request, env) {
