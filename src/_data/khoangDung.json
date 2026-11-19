@@ -98,7 +98,7 @@
         {
           "so": "EP00",
           "ten": "Xuất hiện",
-          "moTa": "Chọn một cam kết đủ nhỏ để bạn thật sự giữ được. Không cần xuất hiện thật lớn, chỉ cần xuất hiện đủ đều."
+          "moTa": "Chọn một cam kết đủ nhỏ để bạn thật sự giữ được. Không cần làm gì to lớn, chỉ cần xuất hiện đủ đều."
         }
       ]
     },
@@ -113,14 +113,14 @@
         },
         {
           "so": "EP02",
-          "ten": "Chuyện gì thường làm mình bật lên?",
+          "ten": "Chuyện gì thường làm mình bị kích thích?",
           "moTa": "Nhận diện yếu tố kích thích (trigger)."
         }
       ]
     },
     {
       "so": "II",
-      "ten": "Điều hòa mình",
+      "ten": "Điều hòa bản thân",
       "bai": [
         {
           "so": "EP03",
