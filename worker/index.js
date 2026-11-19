@@ -277,6 +277,11 @@ async function quanLy(request, env, url) {
       return new Response(null, { status: 303, headers: { location: "/quan-ly/", "set-cookie": await datPhien() } });
     }
     if (!daVao) return html(trangDangNhap(), 403);
+    if (body.hanhDong === "dong-bo-kit") {
+      const ds = await env.DB.list({ prefix: "dk:" });
+      for (const x of ds.keys) await guiKit(env, x.name.slice(3), "chung");
+      return new Response(null, { status: 303, headers: { location: "/quan-ly/?kit=" + ds.keys.length } });
+    }
     if (body.hanhDong === "dang-xuat") return new Response(null, { status: 303, headers: { location: "/quan-ly/", "set-cookie": "qly=; Path=/; Max-Age=0; Secure; HttpOnly; SameSite=Lax" } });
     const don = await env.DB.get(`don:${String(body.ma || "")}`, "json");
     if (don) {
@@ -316,7 +321,9 @@ async function quanLy(request, env, url) {
   const than = `<h1>Đơn hàng</h1>
 <p class="links"><a href="/hoc/emotion-course/">Xem phòng Emotion Course</a><a href="/hoc/soi-chieu/">Xem phòng Soi Chiếu</a></p>
 ${thieu.length ? `<p style="color:#A8522B">Máy chủ còn thiếu: ${thieu.join(", ")}</p>` : `<p>✅ Đủ khoá: thanh toán, gửi email, phòng học.</p>`}
-<p>${dons.filter((d) => d.trangThai === "da-nhan").length} đơn đã thanh toán · ${dk.keys.length} email đăng ký</p>
+<p>${dons.filter((d) => d.trangThai === "da-nhan").length} đơn đã thanh toán · ${dk.keys.length} email đăng ký
+${url.searchParams.get("kit") ? ` · ✅ đã chuyển ${esc(url.searchParams.get("kit"))} email sang Kit` : ""}</p>
+${dk.keys.length && env.KIT_FORM_CHUNG ? `<form method="post" style="margin:-6px 0 18px"><input type="hidden" name="hanhDong" value="dong-bo-kit"><button style="background:#A8522B">Chuyển các email đã có sang Kit</button></form>` : ""}
 <table><tr><th>Lúc</th><th>Mã</th><th>Món</th><th>Email</th><th>Trạng thái</th></tr>${rows || '<tr><td colspan="5">Chưa có đơn nào.</td></tr>'}</table>
 <form method="post" style="margin-top:28px"><input type="hidden" name="hanhDong" value="dang-xuat"><button style="background:#7A6C64">Đăng xuất</button></form>`;
   return html(khungTrang("Quản lý đơn", than), 200, k ? { "set-cookie": await datPhien() } : {});
