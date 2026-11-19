@@ -11,7 +11,7 @@ Vào **app.pagescms.org** → đăng nhập bằng GitHub → chọn **maybejoy*
 - **🏠 Trang chủ**, **📄 các trang chuyên mục**: sửa chữ, thêm video, thêm link mua sách.
 - **⚙️ Cài đặt**: link TikTok / Facebook / YouTube, email liên hệ, số form Kit, chữ dùng chung.
 - **💳 Bán hàng**: tài khoản nhận tiền, giá thu tiền, quà tặng, chữ trên trang thanh toán và thư tự động.
-- **🎓 Phòng học**, **🎓 Trang bán khóa Khoảng Dừng Cảm Xúc**, **📝 Bài kiểm tra**.
+- **🎓 Phòng học**, **🎓 Trang bán khóa Khoảng Dừng Cảm Xúc**, **⚖️ Thông tin người bán**, **📝 Bài kiểm tra**.
 
 Bấm **Save** → khoảng 1–2 phút sau web tự cập nhật.
 Nút hay mục nào chưa có link thì tự ẩn, có link là tự hiện.
@@ -24,5 +24,6 @@ Nút hay mục nào chưa có link thì tự ẩn, có link là tự hiện.
 - Worker lo: `/api/dang-ky`, `/api/don`, `/api/sepay`, `/hoc/*`, `/api/kiem-tra`, `/api/kiem-tra/lien-he`, `/quan-ly/`
 - Khoá bí mật (đặt trên Cloudflare, không đưa vào repo): `RESEND_API_KEY`, `TOKEN_SECRET`, `SEPAY_API_KEY`, `ADMIN_KEY`
 - Thư gửi qua Resend từ `may@mayphung.com`, trả lời về `EMAIL_MAY`; email đăng ký đồng thời gửi lên form Kit
-- Giá khoá học nằm ở 3 chỗ: `banHang.json` (giá thu tiền), `xuong.json` (chữ trên thẻ), `khoangDung.json` (`giaSau`)
+- Giá khoá học chỉ nằm ở `banHang.json` (`gia`, `giaSau`); thẻ Ở xưởng May có `sanPham` thì lấy giá từ đó
+- Chính sách bảo mật, Điều khoản: `src/chinh-sach-bao-mat.md`, `src/dieu-khoan.md`; thông tin người bán ở `src/_data/phapLy.json`. Sửa nội dung hai trang thì tăng `phienBan` (máy chủ ghi phiên bản người dùng đã đồng ý)
 - Ảnh: `src/assets/images/`
