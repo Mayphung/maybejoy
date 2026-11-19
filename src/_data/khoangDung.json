@@ -13,7 +13,7 @@
   "moDau": "Bạn biết mình muốn phản ứng khác đi. Nhưng đến lúc chuyện xảy ra, *mọi thứ lại như cũ*.",
   "moDauThem": "Một lời nhận xét khiến bạn nghĩ cả ngày. Một lần nổi nóng khiến bạn tự trách mãi. Một việc muốn làm nhưng cứ trì hoãn, rồi lại thấy mình chẳng ra sao.",
   "gioiThieu": "**Khoảng Dừng Cảm Xúc** là 14 bài học ngắn và một workbook thực hành, giúp bạn hiểu điều gì đang diễn ra bên trong, và có thêm một lựa chọn trước khi làm theo phản ứng đầu tiên.",
-  "ghiChuMua": "Link vào học được gửi qua email ngay sau khi thanh toán. Hoàn tiền 100% trong 7 ngày nếu bạn thấy không hợp, vì bất kỳ lý do gì.",
+  "ghiChuMua": "Link vào học được gửi qua email sau khi thanh toán. Hoàn tiền 100% trong 7 ngày nếu bạn thấy không hợp, vì bất kỳ lý do gì.",
   "ngheQuen": [
     {
       "nhan": "8:42 sáng",
@@ -34,11 +34,15 @@
     {
       "nhan": "lúc nào cũng vậy",
       "chu": "Bạn biết mình cần thay đổi. Chỉ là không biết bắt đầu từ đâu."
+    },
+    {
+      "nhan": "giờ cơm tối",
+      "chu": "Bạn quát con xong, nhìn con khóc, rồi tự hỏi: *mình thương con như vậy mà sao lại làm thế?*"
     }
   ],
   "khongPhaiLoiBan": "Nếu bạn gật đầu với vài dòng trên, mình muốn nói với bạn một điều: *đó không phải vì bạn yếu đuối hay thiếu ý chí.*",
   "khongPhaiLoiBanThem": [
-    "Phản ứng của bạn là một tín hiệu đáng để lắng nghe. Có thể nó đang chạm vào một nhu cầu, một nỗi lo, hay một trải nghiệm cũ. Còn tự nhủ mình phải bình tĩnh hơn thì có lẽ cũng chẳng đi được bao xa.",
+    "Phản ứng của bạn là một tín hiệu đáng để lắng nghe. Có thể nó đang chạm vào một nhu cầu, một nỗi lo, hay một trải nghiệm cũ. Còn tự trách mình phải bình tĩnh hơn thì có lẽ cũng chẳng đi được bao xa.",
     "Điều bạn cần là hiểu chuyện gì đang diễn ra bên trong, rồi có thêm vài cách để không phải lúc nào cũng làm theo phản ứng đầu tiên."
   ],
   "mangTheo": "Mình không muốn hứa quá nhiều. Cảm xúc không phải công tắc để bật tắt, nên mình sẽ không hứa bạn hết buồn, giận hay lo. Điều mình muốn mang đến nhỏ hơn và thật hơn: *một khoảng dừng để bạn có thêm lựa chọn.*",
@@ -131,7 +135,7 @@
         },
         {
           "so": "EP05",
-          "ten": "Đổi trạng thái trước cuộc trò chuyện",
+          "ten": "Mình có thể đổi trạng thái trước cuộc trò chuyện không?",
           "moTa": "Chuyển trạng thái bên trong trước khi bước vào."
         },
         {
@@ -149,7 +153,7 @@
         {
           "so": "EP07",
           "ten": "“Tại họ mà mình thế này.”",
-          "moTa": "Nhận ra khi mình trao hết quyền lựa chọn cho hoàn cảnh, và lấy lại phần mình có thể chọn. Không phải để phủ nhận lỗi của người khác."
+          "moTa": "Nhận ra khi mình trao hết quyền lựa chọn cho hoàn cảnh, và lấy lại phần mình có thể chọn (không phải để phủ nhận lỗi của người khác)."
         },
         {
           "so": "EP08",
@@ -158,12 +162,12 @@
         },
         {
           "so": "EP09",
-          "ten": "Giọng nói “mình không đủ”",
+          "ten": "Cái giọng nói “mình không đủ”",
           "moTa": "Tiếng nói tự ti."
         },
         {
           "so": "EP10",
-          "ten": "Giọng nói “đáng lẽ mình phải…”",
+          "ten": "Cái giọng nói “đáng lẽ mình phải…”",
           "moTa": "Tiếng nói phê phán."
         },
         {
@@ -184,27 +188,27 @@
       "bai": [
         {
           "so": "EP13",
-          "ten": "Một thực hành EFT/tapping",
-          "moTa": "Cách mình tự thực hành và thấy có ích. Không phải phương pháp điều trị."
+          "ten": "Một thực hành EFT/tapping May từng sử dụng",
+          "moTa": "Đây là cách mình tự thực hành, không phải phương pháp điều trị."
         },
         {
           "so": "EP14",
           "ten": "Dọn “nhà kho ký ức”",
-          "moTa": "Nhìn lại những suy nghĩ và niềm tin cũ: điều gì còn hữu ích, điều gì đã đến lúc đặt xuống. Không phải phương pháp xử lý ký ức chấn thương."
+          "moTa": "Nhìn lại “không gian sống” bên trong: những suy nghĩ và niềm tin cũ, điều gì còn hữu ích, điều gì đã đến lúc đặt xuống. Đây không phải phương pháp xử lý ký ức chấn thương."
         }
       ]
     }
   ],
   "workbook": "Xem xong rồi để đó thì chẳng đổi được gì. Vì vậy mỗi bài đều có một trang để bạn ghi lại điều mình nhận ra, kèm một dòng *“điều mình muốn nhớ nhất”*.",
   "workbookDs": [
-    "Trigger Map: bản đồ những điều kích hoạt cảm xúc",
+    "Trigger Map: bản đồ nhận ra điều gì kích hoạt cảm xúc",
     "Reframing: một tình huống, nhiều cách nhìn",
-    "Coffee with my emotion: cuộc hẹn 10 phút với cảm xúc",
-    "Bộ công cụ của mình: vài thực hành thật sự hợp để giữ lại",
+    "Coffee with my emotion: cuộc hẹn 10 phút với cảm xúc của bạn",
+    "Bộ công cụ của mình: chọn vài thực hành thật sự hợp để giữ lại",
     "Kế hoạch dịu dàng 7 ngày",
     "Một lá thư gửi chính mình khi đi hết hành trình"
   ],
-  "workbookGhiTay": "không cần viết hay, không cần làm hết. câu nào chưa sẵn sàng thì cứ để đó.",
+  "workbookGhiTay": "bạn không cần viết hay, không cần làm hết. câu nào chưa sẵn sàng thì cứ bỏ qua, khi nào muốn thì quay lại.",
   "anhWorkbook": "/assets/images/tay-viet-so.jpg",
   "anhWorkbookMoTa": "Bàn tay đang viết vào sổ",
   "camNhanTieuDe": "Những người đã đi qua *khoảng dừng*",
@@ -219,14 +223,16 @@
   "veMayChungChi": [
     "Master Practitioner NLP",
     "Tham dự Advanced Retreat của Dr. Joe Dispenza",
-    "Tác giả sách thiếu nhi, NXB Kim Đồng"
+    "Usui Reiki Level 1 Practitioner (Environmental Geobiology Reiki, 07/2025)",
+    "Tác giả sách thiếu nhi (NXB Kim Đồng)"
   ],
-  "veMayKet": "Mình không đứng đây với tư cách người đã hiểu hết mọi thứ. Mình chỉ chia sẻ những gì mình đã học, đã thử, và thấy có ích với chính mình.",
+  "veMayKet": "Một vài điều về mình: mình không đứng đây với tư cách người đã hiểu hết mọi thứ. Mình chỉ chia sẻ những gì mình đã học, đã thử, và thấy có ích với chính mình.",
   "hop": [
     "Bạn hay nghĩ nhiều, khó ngắt dòng suy nghĩ.",
     "Bạn hay tự trách, tự phê phán, thấy mình chưa đủ tốt.",
     "Bạn phản ứng xong mới thấy hối hận.",
-    "Bạn muốn hiểu những vòng lặp của mình và có thêm cách để thực hành."
+    "Bạn muốn hiểu những vòng lặp của mình và có thêm cách để thực hành.",
+    "Bạn là cha mẹ, thương con rất nhiều nhưng đôi khi không giữ được bình tĩnh trước con."
   ],
   "khongHop": "Bạn đang tìm một phương pháp điều trị tâm lý, hoặc mong mọi cảm xúc khó chịu sẽ biến mất sau vài bài học.",
   "luuY": "Đây là khóa học tự thực hành, không thay thế đánh giá, chẩn đoán hay điều trị y khoa hoặc tâm lý. Nếu một bài thực hành khiến bạn quá tải, hãy dừng lại. Nếu bạn đang rất nặng nề, hãy tìm đến bác sĩ, chuyên gia hoặc người thân bạn tin cậy. Mình cũng đã làm vậy.",
@@ -234,9 +240,9 @@
     "15 clip: 1 bài mở đầu và 14 bài học, mỗi clip dưới 10 phút",
     "Workbook thực hành",
     "Xem lại không giới hạn thời gian",
-    "Link vào học gửi qua email ngay sau khi thanh toán"
+    "Link vào học gửi qua email sau khi thanh toán"
   ],
-  "hoanTien": "Nếu sau khi học thử bạn thấy khóa học không hợp, vì bất kỳ lý do gì, nhắn cho mình qua email trong vòng 7 ngày kể từ ngày thanh toán. Mình hoàn lại toàn bộ học phí trong 48 giờ, không cần giải thích.",
+  "hoanTien": "Nếu sau khi học thử bạn thấy khóa học không hợp, vì bất kỳ lý do gì, hãy nhắn cho mình qua email trong vòng 7 ngày kể từ ngày thanh toán. Mình hoàn lại toàn bộ học phí trong 48 giờ, không cần giải thích.",
   "hoiDap": [
     {
       "hoi": "Mình có cần học đúng thứ tự không?",
@@ -252,11 +258,15 @@
     },
     {
       "hoi": "Mua rồi mình xem ở đâu?",
-      "dap": "Ngay sau khi thanh toán, đường dẫn vào phòng học được gửi tới email của bạn. Xem trên điện thoại hay máy tính đều được."
+      "dap": "Sau khi thanh toán, mình gửi đường dẫn vào khóa học qua email bạn đăng ký."
     },
     {
-      "hoi": "Học xong mình có hết buồn, hết lo không?",
+      "hoi": "Mình học xong có hết buồn, hết lo không?",
       "dap": "Không, và mình không hứa vậy. Điều bạn có là thêm một khoảng dừng và vài công cụ để chọn cách phản ứng."
+    },
+    {
+      "hoi": "Mình là mẹ, khóa này có dạy cách dạy con không?",
+      "dap": "Không. Đây là khóa về cảm xúc của chính bạn. Khi bạn hiểu mình hơn và có thêm một khoảng dừng, bạn sẽ có thêm lựa chọn trong những lúc ở bên con."
     },
     {
       "hoi": "Khóa học có thay thế trị liệu tâm lý không?",
