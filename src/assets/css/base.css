@@ -114,17 +114,17 @@ a{color:var(--burgundy)}a:hover{color:var(--terracotta-dark)}
 .kt-the.da-lam .kt-moc{padding-right:0}
 @media (max-width:860px){.kt-ds{gap:24px}.kt-the{transform:none}}
 
-/* phiếu màu: đỏ rượu · nâu than · đất nung */
-.kt-the.kt-mau-do-ruou{--nen:#6E2A34;--nhan:#F3C9A8}
-.kt-the.kt-mau-than{--nen:#362A24;--nhan:#E9A27C}
-.kt-the.kt-mau-dat-nung{--nen:#A8522B;--nhan:#FFE3CC}
-.kt-the[class*="kt-mau-"]{background-color:var(--nen);color:#FBF6EE;background-image:linear-gradient(to right,transparent 24px,rgba(251,246,238,.35) 24px,rgba(251,246,238,.35) 25.5px,transparent 25.5px),repeating-linear-gradient(to bottom,transparent 0 31px,rgba(251,246,238,.09) 31px 32px);box-shadow:0 14px 30px rgba(54,42,36,.24),0 2px 4px rgba(54,42,36,.14)}
-.kt-the[class*="kt-mau-"]:hover{color:#FBF6EE;box-shadow:0 22px 40px rgba(54,42,36,.3)}
-.kt-the[class*="kt-mau-"]::before{background:rgba(244,235,224,.55)}
-.kt-the[class*="kt-mau-"] .kt-de{color:var(--nhan)}
-.kt-the[class*="kt-mau-"] .kt-ten{color:#FBF6EE}
-.kt-the[class*="kt-mau-"] .kt-moc{color:#F4EBE0}
-.kt-the[class*="kt-mau-"] .kt-nut{color:#FBF6EE;border-bottom-color:var(--nhan)}
-.kt-the[class*="kt-mau-"]:hover .kt-nut{color:var(--nhan)}
-.kt-the[class*="kt-mau-"] .kt-dau{background:rgba(251,246,238,.12);border-color:var(--nhan);color:#FBF6EE}
-.kt-the[class*="kt-mau-"] .kt-dau b{color:var(--nhan)}
+/* phiếu màu nhạt: đỏ rượu · nâu than · đất nung */
+.kt-the.kt-mau-do-ruou{--dam:#6E2A34;--nhat:#F6E6E2;--bang:rgba(110,42,52,.22)}
+.kt-the.kt-mau-than{--dam:#4A3A31;--nhat:#EEE6DD;--bang:rgba(74,58,49,.2)}
+.kt-the.kt-mau-dat-nung{--dam:#A8522B;--nhat:#FBE9DA;--bang:rgba(193,101,58,.3)}
+.kt-the[class*="kt-mau-"]{background-color:var(--nhat);color:var(--charcoal);background-image:linear-gradient(to right,transparent 24px,var(--dam) 24px,var(--dam) 26px,transparent 26px),repeating-linear-gradient(to bottom,transparent 0 31px,rgba(54,42,36,.07) 31px 32px);box-shadow:0 8px 20px rgba(54,42,36,.1),0 1px 2px rgba(54,42,36,.08);border-top:4px solid var(--dam)}
+.kt-the[class*="kt-mau-"]:hover{color:var(--charcoal);box-shadow:0 16px 30px rgba(54,42,36,.16)}
+.kt-the[class*="kt-mau-"]::before{background:var(--bang)}
+.kt-the[class*="kt-mau-"] .kt-de{color:var(--dam)}
+.kt-the[class*="kt-mau-"] .kt-ten{color:var(--dam)}
+.kt-the[class*="kt-mau-"] .kt-moc{color:var(--charcoal)}
+.kt-the[class*="kt-mau-"] .kt-nut{color:var(--dam);border-bottom-color:var(--dam)}
+.kt-the[class*="kt-mau-"]:hover .kt-nut{color:var(--terracotta-dark);border-bottom-color:var(--terracotta)}
+.kt-the[class*="kt-mau-"] .kt-dau{background:rgba(255,253,248,.7);border-color:var(--dam);color:var(--dam)}
+.kt-the[class*="kt-mau-"] .kt-dau b{color:var(--dam)}
