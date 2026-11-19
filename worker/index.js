@@ -6,7 +6,7 @@
 //   POST /api/sepay          SePay báo có tiền vào
 //   GET  /hoc/*              phòng học: chỉ mở khi có chìa khóa hợp lệ
 //   POST /api/kiem-tra       bài kiểm tra: đếm người bắt đầu / làm xong, lưu câu trả lời ẩn danh
-//   POST /api/kiem-tra/lien-he  người làm để lại email/Zalo: lưu lại, gửi phần phân tích
+//   POST /api/kiem-tra/lien-he  người làm để lại email: lưu lại, gửi phần phân tích
 //   GET  /quan-ly/           trang quản lý đơn cho May (cần mật khẩu riêng)
 import banHang from "../src/_data/banHang.json";
 import kiemTra from "../src/_data/kiemTra.json";
