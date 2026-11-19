@@ -204,7 +204,7 @@ async function phongHoc(request, env, url) {
   const ten = url.pathname.split("/")[2] || "";
   if (!banHang.phong[ten]) return env.ASSETS.fetch(request);
   const p = banHang.phong[ten];
-  const xemTruoc = env.ADMIN_KEY && url.searchParams.get("xem") === env.ADMIN_KEY;
+  const xemTruoc = (env.ADMIN_KEY && url.searchParams.get("xem") === env.ADMIN_KEY) || (await laMayDangNhap(request, env));
   if (!env.TOKEN_SECRET && !xemTruoc) return new Response(trangKhoa(p.ten), { status: 403, headers: { "content-type": "text/html; charset=utf-8" } });
   const cookieName = `chia_${ten.replace(/-/g, "_")}`;
   let e = url.searchParams.get("e");
@@ -215,8 +215,7 @@ async function phongHoc(request, env, url) {
   }
   let email = "";
   try { email = e ? b64urlDecodeText(e) : ""; } catch { email = ""; }
-  const xem = url.searchParams.get("xem");
-  const laMay = !!(env.ADMIN_KEY && xem && xem === env.ADMIN_KEY);
+  const laMay = !!xemTruoc;
   if (laMay || (env.TOKEN_SECRET && email && k && (await kyTen(env, ten, email)) === k)) {
     const res = await env.ASSETS.fetch(new Request(new URL(url.pathname, url.origin), request));
     const out = new Response(res.body, res);
@@ -237,15 +236,41 @@ function trangKhoa(ten) {
 }
 
 // ---------- trang quản lý ----------
+async function maPhien(env) {
+  const key = await crypto.subtle.importKey("raw", new TextEncoder().encode(env.ADMIN_KEY), { name: "HMAC", hash: "SHA-256" }, false, ["sign"]);
+  return b64url(await crypto.subtle.sign("HMAC", key, new TextEncoder().encode("quan-ly-may"))).slice(0, 40);
+}
+async function laMayDangNhap(request, env) {
+  if (!env.ADMIN_KEY) return false;
+  const c = (request.headers.get("cookie") || "").split(/;\s*/).find((x) => x.startsWith("qly="));
+  return !!c && c.slice(4) === (await maPhien(env));
+}
+const khungTrang = (tieuDe, than) => `<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>${tieuDe}</title>
+<style>body{font:15px/1.6 system-ui,sans-serif;background:#F4EBE0;color:#362A24;margin:0;padding:24px}h1{color:#6E2A34;font-family:Georgia,serif;font-weight:500}table{border-collapse:collapse;width:100%;background:#FFFDF8}td,th{border-bottom:1px solid #ddd;padding:10px;text-align:left;vertical-align:top}button{margin-top:6px;background:#6E2A34;color:#fff;border:0;border-radius:99px;padding:9px 16px;cursor:pointer;font:inherit}input[type=password]{font:inherit;padding:10px;border:1px solid #bbb;border-radius:6px;width:100%;max-width:340px;box-sizing:border-box}.box{background:#FFFDF8;padding:26px;border-radius:12px;max-width:420px}a{color:#A8522B}.links a{margin-right:18px}</style></head><body>${than}</body></html>`;
+const html = (b, status = 200, extra = {}) => new Response(b, { status, headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store", "x-robots-tag": "noindex", ...extra } });
+
+function trangDangNhap(loi) {
+  return khungTrang("Đăng nhập", `<div class="box"><h1>Chào May</h1>${loi ? `<p style="color:#A8522B">${loi}</p>` : ""}<form method="post"><input type="hidden" name="hanhDong" value="dang-nhap"><label>Mật khẩu quản lý<br><input type="password" name="matKhau" autofocus required></label><br><button>Vào</button></form></div>`);
+}
 async function quanLy(request, env, url) {
-  const k = url.searchParams.get("k") || "";
-  if (!env.ADMIN_KEY || k !== env.ADMIN_KEY) return new Response("Không có quyền.", { status: 403 });
+  if (!env.ADMIN_KEY) return html(trangDangNhap("Máy chủ chưa có ADMIN_KEY trong Runtime variables. Thêm xong đợi 1 phút rồi tải lại."), 503);
+  let daVao = await laMayDangNhap(request, env);
+  const k = url.searchParams.get("k");
+  if (!daVao && k && k === env.ADMIN_KEY) daVao = true;
+  const datPhien = async () => `qly=${await maPhien(env)}; Path=/; Max-Age=${30 * NGAY}; Secure; HttpOnly; SameSite=Lax`;
   if (request.method === "POST") {
     const body = await docBody(request);
+    if (body.hanhDong === "dang-nhap") {
+      if (String(body.matKhau || "").trim() !== env.ADMIN_KEY.trim()) return html(trangDangNhap("Mật khẩu chưa đúng. May thử lại nhé."), 403);
+      return new Response(null, { status: 303, headers: { location: "/quan-ly/", "set-cookie": await datPhien() } });
+    }
+    if (!daVao) return html(trangDangNhap(), 403);
+    if (body.hanhDong === "dang-xuat") return new Response(null, { status: 303, headers: { location: "/quan-ly/", "set-cookie": "qly=; Path=/; Max-Age=0; Secure; HttpOnly; SameSite=Lax" } });
     const don = await env.DB.get(`don:${String(body.ma || "")}`, "json");
     if (don) await xacNhanDon(env, don, "May xác nhận tay");
-    return Response.redirect(`${url.origin}/quan-ly/?k=${encodeURIComponent(k)}`, 303);
+    return Response.redirect(`${url.origin}/quan-ly/`, 303);
   }
+  if (!daVao) return html(trangDangNhap());
   const list = await env.DB.list({ prefix: "don:" });
   const dons = (await Promise.all(list.keys.map((x) => env.DB.get(x.name, "json")))).filter(Boolean).sort((a, b) => b.luc - a.luc);
   const dk = await env.DB.list({ prefix: "dk:" });
@@ -258,13 +283,14 @@ async function quanLy(request, env, url) {
       }</td></tr>`
     )
     .join("");
-  return new Response(
-    `<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Quản lý đơn</title>
-<style>body{font:15px/1.5 system-ui,sans-serif;background:#F4EBE0;color:#362A24;margin:0;padding:20px}h1{color:#6E2A34;font-family:Georgia,serif;font-weight:500}table{border-collapse:collapse;width:100%;background:#FFFDF8}td,th{border-bottom:1px solid #ddd;padding:10px;text-align:left;vertical-align:top}button{margin-top:6px;background:#6E2A34;color:#fff;border:0;border-radius:99px;padding:8px 14px;cursor:pointer}</style></head>
-<body><h1>Đơn hàng</h1><p>${dons.filter((d) => d.trangThai === "da-nhan").length} đơn đã thanh toán · ${dk.keys.length} email đăng ký</p>
-<table><tr><th>Lúc</th><th>Mã</th><th>Món</th><th>Email</th><th>Trạng thái</th></tr>${rows || '<tr><td colspan="5">Chưa có đơn nào.</td></tr>'}</table></body></html>`,
-    { headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store", "x-robots-tag": "noindex" } }
-  );
+  const thieu = ["TOKEN_SECRET", "RESEND_API_KEY", "SEPAY_API_KEY"].filter((x) => !env[x]);
+  const than = `<h1>Đơn hàng</h1>
+<p class="links"><a href="/hoc/emotion-course/">Xem phòng Emotion Course</a><a href="/hoc/soi-chieu/">Xem phòng Soi Chiếu</a></p>
+${thieu.length ? `<p style="color:#A8522B">Máy chủ còn thiếu: ${thieu.join(", ")}</p>` : `<p>✅ Đủ khoá: thanh toán, gửi email, phòng học.</p>`}
+<p>${dons.filter((d) => d.trangThai === "da-nhan").length} đơn đã thanh toán · ${dk.keys.length} email đăng ký</p>
+<table><tr><th>Lúc</th><th>Mã</th><th>Món</th><th>Email</th><th>Trạng thái</th></tr>${rows || '<tr><td colspan="5">Chưa có đơn nào.</td></tr>'}</table>
+<form method="post" style="margin-top:28px"><input type="hidden" name="hanhDong" value="dang-xuat"><button style="background:#7A6C64">Đăng xuất</button></form>`;
+  return html(khungTrang("Quản lý đơn", than), 200, k ? { "set-cookie": await datPhien() } : {});
 }
 
 async function docBody(request) {
