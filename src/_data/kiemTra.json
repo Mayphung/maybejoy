@@ -1,8 +1,8 @@
 {
   "hienTrangChu": true,
   "chu": {
-    "tieuDe": "Kiểm tra miệng",
-    "ghiTay": "(không chấm điểm. chỉ để hiểu mình thêm một chút)",
+    "tieuDe": "Vài bài test nhỏ để hiểu mình hơn",
+    "ghiTay": "",
     "nhanDe": "Đề",
     "nutLam": "Làm bài →",
     "daLam": "đã làm:",
@@ -30,7 +30,7 @@
     "lamLai": "Làm lại từ đầu",
     "deKhac": "Làm thêm đề khác",
     "anDanh": "Câu trả lời được lưu ẩn danh để May hiểu bạn đọc hơn. Email chỉ được lưu khi bạn tự để lại.",
-    "trangDsTieuDe": "Kiểm tra miệng",
+    "trangDsTieuDe": "Vài bài test nhỏ để hiểu mình hơn",
     "trangDsMoTa": "Vài bài kiểm tra nhỏ để hiểu mình hơn trong yêu thương và lúc căng thẳng. Không chấm điểm, không dán nhãn. Làm xong có kết quả ngay."
   },
   "bai": [

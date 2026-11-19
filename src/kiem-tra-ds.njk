@@ -12,7 +12,7 @@ eleventyComputed:
   <main class="kt-giay" id="noi-dung">
     <header class="kt-dau-trang">
       <h1 class="kt-h1">{{ kiemTra.chu.trangDsTieuDe }}</h1>
-      <p class="hand kt-ghi">{{ kiemTra.chu.ghiTay }}</p>
+      {% if kiemTra.chu.ghiTay %}<p class="hand kt-ghi">{{ kiemTra.chu.ghiTay }}</p>{% endif %}
     </header>
     <div class="kt-chu"><p>{{ kiemTra.chu.trangDsMoTa }}</p></div>
     {% include "kiem-tra-the.njk" %}
