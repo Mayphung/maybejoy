@@ -100,19 +100,35 @@ async function dangKy(request, env, ctx) {
   const k = `dk:${email}`;
   const cu = (await env.DB.get(k, "json")) || { email, luc: Date.now(), loai: [] };
   if (!cu.loai.includes(loai)) cu.loai.push(loai);
-  await env.DB.put(k, JSON.stringify(cu));
   const coQua = loai === "qua" && !!banHang.quaTang.link && !!env.RESEND_API_KEY;
-  if (coQua) {
-    const v = { ten: banHang.quaTang.ten };
-    ctx.waitUntil(
-      guiEmail(env, {
-        to: email,
-        subject: dien(E.quaTieuDe || "Cuốn nhỏ của bạn: {ten}", v),
-        html: khungEmail(doan(dien(E.quaMoDau, v)) + nut(banHang.quaTang.link, dien(E.quaNut || "Mở cuốn sách", v)) + doan(dien(E.quaKet, v))),
-      })
-    );
-  }
+  if (coQua) cu.quaGui = Date.now();
+  await env.DB.put(k, JSON.stringify(cu));
+  if (coQua) ctx.waitUntil(guiQua(env, email).then((ok) => { if (!ok) { delete cu.quaGui; return env.DB.put(k, JSON.stringify(cu)); } }));
   return json({ ok: true, daGuiQua: coQua });
+}
+
+function guiQua(env, email) {
+  const v = { ten: banHang.quaTang.ten };
+  return guiEmail(env, {
+    to: email,
+    subject: dien(E.quaTieuDe || "Cuốn nhỏ của bạn: {ten}", v),
+    html: khungEmail(doan(dien(E.quaMoDau, v)) + nut(banHang.quaTang.link, dien(E.quaNut || "Mở cuốn sách", v)) + doan(dien(E.quaKet, v))),
+  });
+}
+
+// Người đăng ký nhận quà từ trước khi có file: chưa ai gửi cho họ
+async function chuaNhanQua(env) {
+  const out = [];
+  let cursor;
+  do {
+    const l = await env.DB.list({ prefix: "dk:", cursor });
+    for (const x of l.keys) {
+      const e = await env.DB.get(x.name, "json");
+      if (e && e.loai?.includes("qua") && !e.quaGui) out.push(e);
+    }
+    cursor = l.list_complete ? null : l.cursor;
+  } while (cursor);
+  return out;
 }
 
 async function taoDon(request, env) {
@@ -393,6 +409,15 @@ async function quanLy(request, env, url) {
       return new Response(null, { status: 303, headers: { location: "/quan-ly/", "set-cookie": await datPhien() } });
     }
     if (!daVao) return html(trangDangNhap(), 403);
+    if (body.hanhDong === "gui-qua-con-thieu" && banHang.quaTang.link && env.RESEND_API_KEY) {
+      for (const e of await chuaNhanQua(env)) {
+        if (!(await guiQua(env, e.email))) continue;
+        e.quaGui = Date.now();
+        await env.DB.put(`dk:${e.email}`, JSON.stringify(e));
+        await new Promise((ok) => setTimeout(ok, 600));
+      }
+      return Response.redirect(`${url.origin}/quan-ly/`, 303);
+    }
     if (body.hanhDong === "dang-xuat") return new Response(null, { status: 303, headers: { location: "/quan-ly/", "set-cookie": "qly=; Path=/; Max-Age=0; Secure; HttpOnly; SameSite=Lax" } });
     const don = await env.DB.get(`don:${String(body.ma || "")}`, "json");
     if (don) {
@@ -438,6 +463,11 @@ ${thieu.length ? `<p style="color:#A8522B">Máy chủ còn thiếu: ${thieu.join
 <table><tr><th>Lúc</th><th>Mã</th><th>Món</th><th>Email</th><th>Trạng thái</th></tr>${rows || '<tr><td colspan="5">Chưa có đơn nào.</td></tr>'}</table>
 <h2 style="color:#6E2A34;font-family:Georgia,serif;font-weight:500;margin-top:34px">Email đăng ký</h2>
 <p><a href="/quan-ly/email.csv">Tải danh sách email (file CSV, nhập được vào Kit)</a></p>
+${await (async () => {
+  if (!banHang.quaTang.link || !env.RESEND_API_KEY) return "";
+  const n = (await chuaNhanQua(env)).length;
+  return n ? `<form method="post" onsubmit="return confirm('Gửi cuốn ${esc(banHang.quaTang.ten)} cho ${n} người đã đăng ký nhận quà nhưng chưa nhận được?')"><input type="hidden" name="hanhDong" value="gui-qua-con-thieu"><p>${n} người đăng ký nhận cuốn quà từ trước khi có file, chưa nhận được thư. <button>Gửi cuốn quà cho ${n} người này</button></p></form>` : "<p>✅ Ai đăng ký nhận quà cũng đã được gửi.</p>";
+})()}
 <table><tr><th>Lúc</th><th>Email</th><th>Ô nào</th></tr>${dsEmail.map((e) => `<tr><td>${new Date(e.luc).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" })}</td><td>${esc(e.email)}</td><td>${e.loai.map((l) => (l === "qua" ? "cuốn quà tặng" : l === "kiem-tra" ? "bài kiểm tra" : "nhận bài mới")).join(", ")}</td></tr>`).join("") || '<tr><td colspan="3">Chưa có ai.</td></tr>'}</table>
 ${await phanKiemTra(env)}
 <form method="post" style="margin-top:28px"><input type="hidden" name="hanhDong" value="dang-xuat"><button style="background:#7A6C64">Đăng xuất</button></form>`;
