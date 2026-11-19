@@ -133,7 +133,11 @@
 /* 9. May */
 .kd-may{padding:96px 0}
 .kd-may-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:center}
+.kd-may-photos{position:relative;padding-bottom:70px}
 .kd-may-photo{margin:0}
+.kd-may-polaroid{position:absolute;right:-22px;bottom:0;width:46%;margin:0;background:var(--paper-white);padding:10px 10px 12px;box-shadow:0 14px 30px rgba(54,42,36,.22);transform:rotate(5deg)}
+.kd-may-polaroid img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;display:block}
+.kd-may-polaroid figcaption{font-size:17px;line-height:1.3;color:var(--terracotta-dark);text-align:center;margin-top:8px}
 .kd-may-photo img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;display:block;border-radius:14px 14px 220px 220px;box-shadow:-18px 20px 0 #E3D4C2}
 .kd-may p{font-size:18px;line-height:1.8}
 .kd-creds{list-style:none;padding:0;margin:20px 0;display:flex;flex-wrap:wrap;gap:8px}
@@ -208,7 +212,9 @@
   .kd-hero{grid-template-columns:1fr;gap:36px;padding-bottom:60px}
   .kd-hero-photo{max-width:420px;margin:0 auto;order:-1}
   .kd-wb-grid,.kd-may-grid,.kd-fit-grid,.kd-ticket{grid-template-columns:minmax(0,1fr)}
-  .kd-wb-photo,.kd-may-photo{max-width:380px;margin:0 auto}
+  .kd-wb-photo{max-width:380px;margin:0 auto}
+  .kd-may-photos{max-width:360px;margin:0 auto;width:82%}
+  .kd-may-polaroid{right:-14%}
   .kd-ticket-main{border-right:0;border-bottom:2px dashed var(--line)}
   .kd-steps{grid-template-columns:1fr;max-width:420px;text-align:left;gap:4px}
   .kd-steps::before{left:22px;right:auto;top:20px;bottom:20px;border-top:0;border-left:1.5px dashed rgba(240,184,146,.5)}

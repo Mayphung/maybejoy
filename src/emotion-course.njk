@@ -149,13 +149,19 @@ navKey: o-xuong-may
 <section class="kd-may" aria-labelledby="may-h">
   <div class="kd-wrap kd-may-grid">
     {% if k.anhMay %}
-    <figure class="kd-may-photo"><img src="{{ k.anhMay }}" alt="{{ k.anhMayMoTa }}" loading="lazy" width="900" height="1012"></figure>
+    <div class="kd-may-photos">
+      <figure class="kd-may-photo"><img src="{{ k.anhMay }}" alt="{{ k.anhMayMoTa }}" loading="lazy" width="750" height="1000"></figure>
+      {% if k.anhMay2 %}
+      <figure class="kd-may-polaroid"><img src="{{ k.anhMay2 }}" alt="{{ k.anhMay2MoTa }}" loading="lazy" width="750" height="1000">{% if k.anhMay2GhiTay %}<figcaption class="hand">{{ k.anhMay2GhiTay }}</figcaption>{% endif %}</figure>
+      {% endif %}
+    </div>
     {% endif %}
     <div>
       <h2 id="may-h">Mình là May</h2>
       {% for p in k.veMay %}<p>{{ p }}</p>{% endfor %}
       <ul class="kd-creds">{% for c in k.veMayChungChi %}<li>{{ c }}</li>{% endfor %}</ul>
       <p class="kd-may-end">{{ k.veMayKet }}</p>
+      {% if k.veMayThucHanh %}<p>{{ k.veMayThucHanh }}</p>{% endif %}
       <p class="signature">— May</p>
     </div>
   </div>

@@ -491,9 +491,13 @@ content:
           - { name: anh, label: Ảnh đại diện (không bắt buộc), type: image }
       - { name: anhMay, label: Ảnh của May, type: image }
       - { name: anhMayMoTa, label: Tả ảnh của May, type: string }
+      - { name: anhMay2, label: Ảnh nhỏ thứ hai (kiểu ảnh polaroid), type: image }
+      - { name: anhMay2MoTa, label: Tả ảnh nhỏ, type: string }
+      - { name: anhMay2GhiTay, label: Dòng viết tay dưới ảnh nhỏ, type: string }
       - { name: veMay, label: Các đoạn "Mình là May", type: text, list: true }
       - { name: veMayChungChi, label: Chứng chỉ / dấu mốc, type: string, list: true }
       - { name: veMayKet, label: Câu kết phần về May, type: text }
+      - { name: veMayThucHanh, label: Đoạn về những thực hành của May, type: text }
       - { name: hop, label: Có thể hợp nếu, type: string, list: true }
       - { name: khongHop, label: Có thể chưa hợp nếu, type: text }
       - { name: luuY, label: Lưu ý sức khoẻ tinh thần, type: text }

@@ -118,7 +118,7 @@
           return;
         }
         var p = s % 10;
-        lbl.textContent = p < 4 ? 'thở vào…' : p < 5 ? 'giữ…' : 'thở ra…';
+        lbl.textContent = p < 4 ? 'hít vào…' : p < 5 ? 'giữ…' : 'thở ra…';
         tryBtn.textContent = 'Đang thở cùng May · còn ' + Math.ceil(30 - s) + ' giây';
       }, 200);
     });
