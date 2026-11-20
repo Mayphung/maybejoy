@@ -21,7 +21,7 @@ bodyClass: p-post
       {{ thuToiNay | md | safe }}
     </aside>
     {% endif %}
-    <p class="signoff">— May</p>
+    <p class="signoff">{{ site.chu.kyTen or "bit by bit, May" }}</p>
   </article>
 
   {% set others = collections.posts | byCategory(category) | without(page.url) | limit(4) %}

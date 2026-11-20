@@ -5,7 +5,7 @@ title: Về May
 photo: /assets/images/anh-the-bai-bien.jpg
 photoAlt: May trên bãi biển, nhìn ra xa
 photoCaption: (đang nghĩ xem mai nhích tiếp hướng nào)
-signoff: — May
+signoff: bit by bit, May
 description: "May — Phương Phùng, người viết và người mẹ ở Sài Gòn. Tác giả sách
   thiếu nhi cùng NXB Kim Đồng, "
 ---

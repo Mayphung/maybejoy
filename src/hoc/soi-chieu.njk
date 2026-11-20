@@ -18,7 +18,7 @@ navKey: o-xuong-may
   <p class="hoc-chao">{{ k.loiChao }}</p>
   <p><a class="btn" href="https://drive.google.com/uc?export=download&id={{ k.driveId }}">{{ H.soiChieuNut }}</a></p>
   <p class="hoc-note"><a href="https://drive.google.com/file/d/{{ k.driveId }}/view" target="_blank" rel="noopener" style="color: inherit">{{ H.soiChieuLoi }}</a></p>
-  <p class="signoff">— May</p>
+  <p class="signoff">{{ site.chu.kyTen or "bit by bit, May" }}</p>
 </main>
 {% include "foot.njk" %}
 </div>

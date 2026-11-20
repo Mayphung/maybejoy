@@ -2,7 +2,7 @@
 :root{
   --cream:#F4EBE0; --cream-warm:#EFE2D2; --paper:#FBF6EE; --paper-white:#FFFDF8;
   --burgundy:#6E2A34; --terracotta:#C1653A; --terracotta-dark:#A8522B;
-  --charcoal:#362A24; --stone:#D8CFC2; --line:#C9BCAC;
+  --charcoal:#362A24; --stone:#EBCBA9; --stone-line:#D4AE88; --line:#C9BCAC;
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}

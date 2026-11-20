@@ -92,7 +92,7 @@ function khungEmail(noiDung) {
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;background:#FFFDF8;border-radius:10px;padding:30px 28px">
 <tr><td style="font-size:16px;line-height:1.7">${noiDung}
-<p style="margin:28px 0 0">${esc(E.kyTen || "Ôm ôm,\nMay").replace(/\n/g, "<br>")}</p>
+<p style="margin:28px 0 0">${esc(E.kyTen || "bit by bit,\nMay").replace(/\n/g, "<br>")}</p>
 </td></tr></table>
 <p style="font-size:12px;color:#7A6C64;margin:16px 0 0">mayphung.com · Bạn trả lời thẳng email này là May đọc được.</p>
 </td></tr></table></body></html>`;

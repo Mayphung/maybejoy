@@ -348,7 +348,7 @@ content:
           - { name: muaPhong, label: "Bán qua web: emotion-course hoặc soi-chieu (có thì nút Mua thay cho nút trên)", type: string }
           - { name: muaChu, label: Chữ trên nút Mua, type: string }
           - { name: nutPhu, label: Nút viền (thay vì nút đặc), type: boolean }
-          - { name: mauDa, label: "Thẻ màu đá (dành cho sách Cappu & Lucia)", type: boolean }
+          - { name: mauDa, label: "Thẻ màu đào sữa (dành cho sách Cappu & Lucia)", type: boolean }
           - { name: tenNghieng, label: Tên in nghiêng, type: boolean }
           - name: bia
             label: Ảnh bìa nhỏ trên thẻ
@@ -451,6 +451,7 @@ content:
           - { name: chinhSach, label: "Link Chính sách bảo mật (chân trang)", type: string }
           - { name: dieuKhoan, label: "Link Điều khoản (chân trang)", type: string }
           - { name: dongYEmail, label: "Dòng nhỏ dưới các ô nhận email", type: string }
+          - { name: kyTen, label: "Lời ký viết tay cuối bài và cuối trang", type: string }
 
   - name: ban-hang
     label: "💳 Bán hàng: tài khoản nhận tiền, giá, quà tặng"

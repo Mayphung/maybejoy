@@ -163,7 +163,7 @@ navKey: o-xuong-may
       <ul class="kd-creds">{% for c in k.veMayChungChi %}<li>{{ c }}</li>{% endfor %}</ul>
       {% if k.veMayThucHanh %}<p>{{ k.veMayThucHanh }}</p>{% endif %}
       <p class="kd-may-end">{{ k.veMayKet }}</p>
-      <p class="signature">— May</p>
+      <p class="signature">{{ site.chu.kyTen or "bit by bit, May" }}</p>
     </div>
   </div>
 </section>
