@@ -2,7 +2,12 @@ import markdownIt from "markdown-it";
 
 const md = markdownIt({ html: true, breaks: true });
 
+import { kiemTraNguon, kiemTraKetQua, baoLoi } from "./scripts/kiem-tra.mjs";
+
 export default function (eleventyConfig) {
+  // Cổng chặn: thấy lỗi thì dừng dựng web, bản đang chạy vẫn giữ nguyên (xem scripts/kiem-tra.mjs)
+  eleventyConfig.on("eleventy.before", () => baoLoi(kiemTraNguon(), "dữ liệu"));
+  eleventyConfig.on("eleventy.after", ({ dir }) => baoLoi(kiemTraKetQua(dir.output), "trang đã dựng"));
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy({ "src/_redirects": "_redirects" });
   eleventyConfig.addPassthroughCopy({ "src/_headers": "_headers" });

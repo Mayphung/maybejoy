@@ -16,5 +16,7 @@
   "vars": {
     "EMAIL_MAY": "phung.p.vn@gmail.com"
   },
-  "observability": { "enabled": true }
+  "observability": { "enabled": true },
+  // Thư báo cáo tuần: 01:00 giờ quốc tế thứ Hai = 8 giờ sáng thứ Hai ở Việt Nam
+  "triggers": { "crons": ["0 1 * * 1"] }
 }

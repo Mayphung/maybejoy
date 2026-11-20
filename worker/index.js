@@ -439,6 +439,10 @@ async function quanLy(request, env, url) {
       return new Response(null, { status: 303, headers: { location: "/quan-ly/", "set-cookie": await datPhien() } });
     }
     if (!daVao) return html(trangDangNhap(), 403);
+    if (body.hanhDong === "gui-thu-bao-cao") {
+      await guiBaoCaoTuan(env, true);
+      return Response.redirect(`${url.origin}/quan-ly/?baoCao=1`, 303);
+    }
     if (body.hanhDong === "gui-qua-con-thieu" && banHang.quaTang.link && env.RESEND_API_KEY) {
       for (const e of await chuaNhanQua(env)) {
         if (!(await guiQua(env, e.email))) continue;
@@ -491,6 +495,7 @@ ${thieu.length ? `<p style="color:#A8522B">Máy chủ còn thiếu: ${thieu.join
 <p>${dons.filter((d) => d.trangThai === "da-nhan").length} đơn đã thanh toán · ${dk.keys.length} email đăng ký
 </p>
 <table><tr><th>Lúc</th><th>Mã</th><th>Món</th><th>Email</th><th>Trạng thái</th></tr>${rows || '<tr><td colspan="5">Chưa có đơn nào.</td></tr>'}</table>
+<form method="post"><input type="hidden" name="hanhDong" value="gui-thu-bao-cao"><p>${url.searchParams.get("baoCao") ? "✅ Đã gửi thư báo cáo thử về " + esc(env.EMAIL_MAY) + ". " : ""}Thư báo cáo tự gửi mỗi thứ Hai lúc 8 giờ sáng. <button>Gửi thử ngay</button></p></form>
 <h2 style="color:#6E2A34;font-family:Georgia,serif;font-weight:500;margin-top:34px">Email đăng ký</h2>
 <p><a href="/quan-ly/email.csv">Tải danh sách email (file CSV, nhập được vào Kit)</a></p>
 ${await (async () => {
@@ -531,7 +536,85 @@ async function docBody(request) {
   return fd ? Object.fromEntries(fd) : {};
 }
 
+// ---------- Thư báo cáo mỗi thứ Hai (Cloudflare tự chạy theo lịch trong wrangler.jsonc) ----------
+async function lietKe(env, prefix) {
+  const out = [];
+  let cursor;
+  do {
+    const l = await env.DB.list({ prefix, cursor });
+    for (const x of l.keys) out.push(await env.DB.get(x.name, "json"));
+    cursor = l.list_complete ? null : l.cursor;
+  } while (cursor);
+  return out.filter(Boolean);
+}
+
+async function soLieuTuan(env, bayGio = Date.now()) {
+  const tu = bayGio - 7 * NGAY * 1000;
+  const dk = await lietKe(env, "dk:");
+  const dkMoi = dk.filter((e) => e.luc >= tu);
+  const lh = (await dsLienHe(env, 100000)).filter((x) => x.luc >= tu);
+  const dem = await soLieuKt(env);
+  const truoc = await env.DB.get("bc:dem", "json");
+  const don = await lietKe(env, "don:");
+  const daTra = don.filter((d) => d.trangThai === "da-nhan" && (d.nhanLuc || 0) >= tu);
+  const choTra = don.filter((d) => d.trangThai === "cho" && d.luc >= tu);
+  const bai = (kiemTra.bai || []).map((b) => {
+    const tuan = (k) => (truoc ? (dem[`${b.ma}:${k}`] || 0) - (truoc[`${b.ma}:${k}`] || 0) : null);
+    const ketQua = {};
+    lh.filter((x) => x.bai === b.ma).forEach((x) => { ketQua[x.kq] = (ketQua[x.kq] || 0) + 1; });
+    const nhieuNhat = Object.entries(ketQua).sort((a, c) => c[1] - a[1])[0];
+    return {
+      ten: b.ten, batDau: tuan("_bat-dau"), xong: tuan("_xong"), email: lh.filter((x) => x.bai === b.ma).length,
+      tongXong: dem[`${b.ma}:_xong`] || 0, nhieuNhat: nhieuNhat ? `${tenKq(b.ma, nhieuNhat[0])} (${nhieuNhat[1]})` : "",
+    };
+  });
+  return {
+    tu, bayGio, coTuanTruoc: !!truoc, dem,
+    emailMoi: dkMoi.length, tongEmail: dk.length,
+    emailQua: dkMoi.filter((e) => e.loai?.includes("qua")).length,
+    emailTest: dkMoi.filter((e) => e.loai?.includes("kiem-tra")).length,
+    bai, daTra, choTra, doanhThu: daTra.reduce((t, d) => t + (d.gia || 0), 0),
+  };
+}
+
+function thuBaoCao(s) {
+  const ngay = (t) => new Date(t + 7 * 3600 * 1000).toISOString().slice(0, 10).split("-").reverse().join("/");
+  const o = (x) => `<td style="padding:6px 10px;border-bottom:1px solid #E5D9C8">${x}</td>`;
+  const so = (n) => (n === null ? "—" : n);
+  const hangBai = s.bai.map((b) => `<tr>${o(esc(b.ten))}${o(so(b.batDau))}${o(so(b.xong))}${o(b.email)}${o(esc(b.nhieuNhat) || "—")}</tr>`).join("");
+  const dsDon = s.daTra.map((d) => `<li>${esc(d.ten)} · ${tien(d.gia)} · ${esc(d.email)}</li>`).join("");
+  return `<div style="font-family:Georgia,serif;color:#362A24;max-width:620px;line-height:1.6">
+<h2 style="color:#6E2A34;margin:0 0 4px">Tuần qua ở mayphung.com</h2>
+<p style="margin:0 0 20px;color:#7A6C64">Từ ${ngay(s.tu)} đến ${ngay(s.bayGio)}</p>
+<h3 style="color:#6E2A34;margin:20px 0 6px">Email</h3>
+<p style="margin:0"><strong>${s.emailMoi}</strong> email mới (${s.emailQua} nhận sổ tay, ${s.emailTest} từ bài test). Tổng danh sách: ${s.tongEmail}.</p>
+<h3 style="color:#6E2A34;margin:20px 0 6px">Bài test</h3>
+<table style="border-collapse:collapse;font-size:15px"><tr>${o("<b>Bài</b>")}${o("<b>Bắt đầu</b>")}${o("<b>Làm xong</b>")}${o("<b>Để lại email</b>")}${o("<b>Kết quả nhiều nhất</b>")}</tr>${hangBai}</table>
+${s.coTuanTruoc ? "" : `<p style="color:#7A6C64;font-size:14px">Đây là thư đầu tiên nên cột "Bắt đầu" và "Làm xong" chưa có số của riêng tuần này. Từ thư sau sẽ có.</p>`}
+<h3 style="color:#6E2A34;margin:20px 0 6px">Đơn hàng</h3>
+<p style="margin:0"><strong>${s.daTra.length}</strong> đơn đã thanh toán · ${tien(s.doanhThu)}${s.choTra.length ? ` · ${s.choTra.length} đơn tạo trong tuần còn chờ chuyển khoản` : ""}</p>
+${dsDon ? `<ul>${dsDon}</ul>` : ""}
+<p style="margin:26px 0 0"><a href="${SITE}/quan-ly/" style="color:#6E2A34">Mở trang quản lý</a> để xem chi tiết và tải file CSV.</p>
+</div>`;
+}
+
+async function guiBaoCaoTuan(env, guiThu = false) {
+  if (!env.EMAIL_MAY) return false;
+  const s = await soLieuTuan(env);
+  const ok = await guiEmail(env, {
+    to: env.EMAIL_MAY,
+    subject: `${guiThu ? "[Gửi thử] " : ""}Tuần qua ở mayphung.com: ${s.emailMoi} email mới · ${s.daTra.length} đơn`,
+    html: thuBaoCao(s),
+  });
+  // Chỉ lưu mốc khi thư đi được, để tuần sau so cho đúng
+  if (ok && !guiThu) await env.DB.put("bc:dem", JSON.stringify(s.dem));
+  return ok;
+}
+
 export default {
+  async scheduled(event, env, ctx) {
+    ctx.waitUntil(guiBaoCaoTuan(env));
+  },
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     const p = url.pathname;

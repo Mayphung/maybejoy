@@ -17,8 +17,12 @@ Bấm **Save** → khoảng 1–2 phút sau web tự cập nhật.
 Nút hay mục nào chưa có link thì tự ẩn, có link là tự hiện.
 
 Đơn hàng, email đăng ký, số liệu bài test: **mayphung.com/quan-ly/** (mật khẩu quản lý).
+Mỗi thứ Hai 8 giờ sáng, web tự gửi thư báo cáo tuần về email của May (gửi thử được ở trang quản lý).
+
+Nếu một lần Save làm web không cập nhật: rất có thể cổng chặn đã bắt được lỗi (giá sai, chữ tạm, dữ liệu bài test hỏng…). Vào Cloudflare → maybejoy → Deployments, đọc dòng bắt đầu bằng ✋, hoặc chụp gửi Claude.
 
 ## Phần kỹ thuật (để Claude đọc)
+Đọc CLAUDE.md trước khi sửa.
 - Eleventy 3 · `npm run build` → `_site/` · chữ và cài đặt nằm trong `src/_data/*.json`, Pages CMS đọc `.pages.yml`
 - Cloudflare Workers (static assets + `worker/index.js`) · cấu hình ở `wrangler.jsonc` · KV binding `DB`
 - Worker lo: `/api/dang-ky`, `/api/don`, `/api/sepay`, `/hoc/*`, `/api/kiem-tra`, `/api/kiem-tra/lien-he`, `/quan-ly/`

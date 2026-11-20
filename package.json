@@ -5,7 +5,9 @@
   "scripts": {
     "build": "eleventy",
     "dev": "eleventy --serve",
-    "deploy": "eleventy && wrangler deploy"
+    "deploy": "eleventy && wrangler deploy",
+    "kiem-tra": "node scripts/kiem-tra.mjs",
+    "khoa-phap-ly": "node scripts/kiem-tra.mjs khoa"
   },
   "keywords": [],
   "author": "",
