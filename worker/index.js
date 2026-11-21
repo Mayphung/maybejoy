@@ -8,11 +8,23 @@
 //   POST /api/kiem-tra       bài kiểm tra: đếm người bắt đầu / làm xong, lưu câu trả lời ẩn danh
 //   POST /api/kiem-tra/lien-he  người làm để lại email: lưu lại, gửi phần phân tích
 //   GET  /quan-ly/           trang quản lý đơn cho May (cần mật khẩu riêng)
+//
+// Hai tên miền, một Worker: yeswithmay.com (kênh dạy bán hàng) chạy chung máy chủ, KV, SePay, Resend
+// và thư báo cáo với mayphung.com. Worker nhìn tên miền (host) của mỗi lượt ghé:
+//   yeswithmay.com/<đường dẫn>  → trang trong _site/yes/<đường dẫn> (Eleventy dựng từ src/yes/)
+//   www.yeswithmay.com          → chuyển về yeswithmay.com
+//   mayphung.com/yes/...        → chuyển sang yeswithmay.com/...
+//   /api/*, /hoc/*              → giống nhau trên cả hai tên miền
+// Món có "thuongHieu": "yes" trong banHang.json thì thư từ, chân thư, đường dẫn đều theo yeswithmay.com.
 import banHang from "../src/_data/banHang.json";
 import kiemTra from "../src/_data/kiemTra.json";
 import phapLy from "../src/_data/phapLy.json";
+import ywm from "../src/_data/ywm.json";
 
 const SITE = "https://mayphung.com";
+const SITE_YES = ywm.url || "https://yeswithmay.com";
+// yes.localhost: để chạy thử trên máy (wrangler dev), không ảnh hưởng web thật
+const laHostYes = (h) => h === "yeswithmay.com" || h === "yes.localhost";
 const FROM = "May Phung <may@mayphung.com>";
 const MA_CHU = "ABCDEFGHJKMNPQRSTUVWXYZ23456789";
 const NGAY = 86400;
@@ -53,7 +65,7 @@ async function kyTen(env, phong, email) {
 
 async function linkPhong(env, phong, email) {
   const p = banHang.phong[phong];
-  return `${SITE}${p.duongDan}?e=${b64urlText(email.toLowerCase())}&k=${await kyTen(env, phong, email)}`;
+  return `${p.thuongHieu === "yes" ? SITE_YES : SITE}${p.duongDan}?e=${b64urlText(email.toLowerCase())}&k=${await kyTen(env, phong, email)}`;
 }
 
 function qrUrl(so, ma) {
@@ -63,7 +75,7 @@ function qrUrl(so, ma) {
 }
 
 // ---------- gửi email ----------
-async function guiEmail(env, { to, subject, html, replyTo }) {
+async function guiEmail(env, { to, subject, html, replyTo, from }) {
   if (!env.RESEND_API_KEY) {
     console.log("Chưa có RESEND_API_KEY, bỏ qua email tới", to, subject);
     return false;
@@ -73,7 +85,7 @@ async function guiEmail(env, { to, subject, html, replyTo }) {
     r = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: { authorization: `Bearer ${env.RESEND_API_KEY}`, "content-type": "application/json" },
-      body: JSON.stringify({ from: env.EMAIL_FROM || FROM, to: [to], subject, html, reply_to: replyTo || env.EMAIL_MAY || undefined }),
+      body: JSON.stringify({ from: from || env.EMAIL_FROM || FROM, to: [to], subject, html, reply_to: replyTo || env.EMAIL_MAY || undefined }),
       signal: AbortSignal.timeout(8000),
     });
   } catch (e) {
@@ -85,27 +97,34 @@ async function guiEmail(env, { to, subject, html, replyTo }) {
 }
 
 const E = banHang.email || {};
+const EY = ywm.email || {};
+// Mỗi thương hiệu một kiểu thư: màu, lời ký, dòng chân thư, người gửi
+const THU = {
+  may: { nen: "#F4EBE0", the: "#FFFDF8", chu: "#362A24", nut: "#6E2A34", nutChu: "#FBF6EE", phu: "#7A6C64", ky: () => E.kyTen || "bit by bit,\nMay", chan: "mayphung.com · Bạn trả lời thẳng email này là May đọc được.", tu: () => undefined },
+  yes: { nen: "#F2F0E9", the: "#FCFBF8", chu: "#111318", nut: "#111318", nutChu: "#F2F0E9", phu: "#5E636E", ky: () => ywm.kyTen || "May", chan: EY.chanThu || "yeswithmay.com", tu: () => ywm.emailGui || undefined },
+};
+const thuCua = (sp) => (sp && sp.thuongHieu === "yes" ? THU.yes : THU.may);
 const dien = (mau, v) => String(mau || "").replace(/\{(\w+)\}/g, (m, k) => (k in v ? v[k] : m));
 const doan = (t) => esc(t).split(/\n/).map((x) => `<p style="margin:0 0 14px">${x}</p>`).join("");
-function khungEmail(noiDung) {
-  return `<!doctype html><html><body style="margin:0;background:#F4EBE0;padding:28px 12px;font-family:Arial,Helvetica,sans-serif;color:#362A24">
+function khungEmail(noiDung, t = THU.may) {
+  return `<!doctype html><html><body style="margin:0;background:${t.nen};padding:28px 12px;font-family:Arial,Helvetica,sans-serif;color:${t.chu}">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center">
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;background:#FFFDF8;border-radius:10px;padding:30px 28px">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;background:${t.the};border-radius:10px;padding:30px 28px">
 <tr><td style="font-size:16px;line-height:1.7">${noiDung}
-<p style="margin:28px 0 0">${esc(E.kyTen || "bit by bit,\nMay").replace(/\n/g, "<br>")}</p>
+<p style="margin:28px 0 0">${esc(t.ky()).replace(/\n/g, "<br>")}</p>
 </td></tr></table>
-<p style="font-size:12px;color:#7A6C64;margin:16px 0 0">mayphung.com · Bạn trả lời thẳng email này là May đọc được.</p>
+<p style="font-size:12px;color:${t.phu};margin:16px 0 0">${esc(t.chan)}</p>
 </td></tr></table></body></html>`;
 }
-const nut = (href, chu) =>
-  `<p style="margin:26px 0"><a href="${esc(href)}" style="background:#6E2A34;color:#FBF6EE;text-decoration:none;padding:13px 26px;border-radius:999px;font-weight:bold;display:inline-block">${esc(chu)}</a></p>`;
+const nut = (href, chu, t = THU.may) =>
+  `<p style="margin:26px 0"><a href="${esc(href)}" style="background:${t.nut};color:${t.nutChu};text-decoration:none;padding:13px 26px;border-radius:999px;font-weight:bold;display:inline-block">${esc(chu)}</a></p>`;
 
 // ---------- Kit (danh sách email) ----------
 // ---------- xử lý ----------
 async function dangKy(request, env, ctx) {
   const body = await docBody(request);
   const email = String(body.email || body["fields[email]"] || "").trim().toLowerCase();
-  const loai = ["chung", "qua"].includes(body.loai) ? body.loai : "chung";
+  const loai = ["chung", "qua", "sales"].includes(body.loai) ? body.loai : "chung";
   if (!emailHopLe(email)) return json({ ok: false, loi: "Email chưa đúng, bạn xem lại giúp May nhé." }, 400);
   const k = `dk:${email}`;
   const cu = (await env.DB.get(k, "json")) || { email, luc: Date.now(), loai: [] };
@@ -152,25 +171,58 @@ async function taoDon(request, env) {
   let ma = taoMa();
   for (let i = 0; i < 3 && (await env.DB.get(`don:${ma}`)); i++) ma = taoMa();
   const don = { ma, email, sp: sp.ma, ten: sp.ten, gia: sp.gia, phong: sp.phong, trangThai: "cho", luc: Date.now(), dongY: dongY() };
+  const ng = nguonGon(body.nguon);
+  if (ng) don.utm = ng;
   await env.DB.put(`don:${ma}`, JSON.stringify(don), { expirationTtl: 30 * NGAY });
   return json({ ok: true, ma, gia: sp.gia, giaChu: tien(sp.gia), qr: qrUrl(sp.gia, ma), nganHang: banHang.nganHang });
 }
+
+// Mã utm trên link quảng cáo (utm_source, utm_medium, utm_campaign, utm_content): chỉ giữ chữ, số, . _ -
+function nguonGon(x) {
+  if (!x || typeof x !== "object") return null;
+  const out = {};
+  for (const k of ["s", "m", "c", "n"]) {
+    const v = String(x[k] ?? "").slice(0, 60);
+    if (/^[\w.\-]+$/.test(v)) out[k] = v;
+  }
+  return Object.keys(out).length ? out : null;
+}
+// (don.nguon là ai xác nhận tiền: SePay hay May; don.utm là link quảng cáo người mua bấm vào)
+const tenNguon = (d) => d.utm?.n || d.utm?.c || d.utm?.s || "";
 
 async function xemDon(ma, env) {
   const don = await env.DB.get(`don:${ma}`, "json");
   if (!don) return json({ ok: false }, 404);
   const out = { ok: true, trangThai: don.trangThai };
-  if (don.trangThai === "da-nhan") out.link = await linkPhong(env, don.phong, don.email);
+  if (don.trangThai === "da-nhan") {
+    if (don.phong) out.link = await linkPhong(env, don.phong, don.email);
+    else if (sanPham(don.sp)?.datTruoc) out.datTruoc = true;
+  }
   return json(out);
 }
 
 async function guiChiaKhoa(env, don) {
   const link = await linkPhong(env, don.phong, don.email);
   const v = { phong: banHang.phong[don.phong].ten, mon: don.ten, gia: tien(don.gia), ma: don.ma };
+  const t = thuCua(sanPham(don.sp));
   return guiEmail(env, {
     to: don.email,
+    from: t.tu(),
     subject: dien(E.chiaKhoaTieuDe || "Chìa khóa vào {phong} của bạn", v),
-    html: khungEmail(doan(dien(E.chiaKhoaMoDau, v)) + nut(link, dien(E.chiaKhoaNut || "Vào {phong}", v)) + doan(dien(E.chiaKhoaKet, v))),
+    html: khungEmail(doan(dien(E.chiaKhoaMoDau, v)) + nut(link, dien(E.chiaKhoaNut || "Vào {phong}", v), t) + doan(dien(E.chiaKhoaKet, v)), t),
+  });
+}
+
+// Món đặt trước (chưa có phòng): thư xác nhận giữ chỗ, ngày chốt, ngày giao, cam kết hoàn tiền
+function guiDatTruoc(env, don, sp) {
+  const dt = sp.datTruoc || {};
+  const v = { mon: don.ten, gia: tien(don.gia), ma: don.ma, ngayChot: dt.ngayChot || "", ngayGiao: dt.ngayGiao || "", canDu: dt.canDu ?? "" };
+  const t = thuCua(sp);
+  return guiEmail(env, {
+    to: don.email,
+    from: t.tu(),
+    subject: dien(EY.datTruocTieuDe || "Đã giữ chỗ: {mon}", v),
+    html: khungEmail(doan(dien(EY.datTruocMoDau, v)) + doan(dien(EY.datTruocGiua, v)) + doan(dien(EY.datTruocKet, v)), t),
   });
 }
 
@@ -180,15 +232,21 @@ async function xacNhanDon(env, don, nguon) {
   don.nhanLuc = Date.now();
   don.nguon = nguon;
   await env.DB.put(`don:${don.ma}`, JSON.stringify(don), { expirationTtl: 3650 * NGAY });
-  const ds = (await env.DB.get(`mua:${don.email}`, "json")) || [];
-  if (!ds.includes(don.phong)) ds.push(don.phong);
-  await env.DB.put(`mua:${don.email}`, JSON.stringify(ds));
-  await guiChiaKhoa(env, don);
+  const sp = sanPham(don.sp);
+  if (don.phong) {
+    const ds = (await env.DB.get(`mua:${don.email}`, "json")) || [];
+    if (!ds.includes(don.phong)) ds.push(don.phong);
+    await env.DB.put(`mua:${don.email}`, JSON.stringify(ds));
+    await guiChiaKhoa(env, don);
+  } else if (sp?.datTruoc) {
+    await guiDatTruoc(env, don, sp);
+  }
   if (env.EMAIL_MAY) {
+    const yes = sp?.thuongHieu === "yes";
     await guiEmail(env, {
       to: env.EMAIL_MAY,
-      subject: `🎉 Đơn mới: ${don.ten} · ${tien(don.gia)}`,
-      html: khungEmail(`<p>Có đơn mới vừa thanh toán xong.</p><p><strong>${esc(don.ten)}</strong> · ${tien(don.gia)}<br>Người mua: ${esc(don.email)}<br>Mã đơn: ${don.ma}<br>Xác nhận bởi: ${nguon}</p><p>Web đã tự gửi chìa khóa cho người mua.</p>`),
+      subject: `🎉 ${sp?.datTruoc ? "Đơn đặt trước" : "Đơn mới"}${yes ? " (yeswithmay)" : ""}: ${don.ten} · ${tien(don.gia)}`,
+      html: khungEmail(`<p>Có đơn mới vừa thanh toán xong.</p><p><strong>${esc(don.ten)}</strong> · ${tien(don.gia)}<br>Người mua: ${esc(don.email)}<br>Mã đơn: ${don.ma}<br>Xác nhận bởi: ${nguon}${tenNguon(don) ? `<br>Đến từ: ${esc(tenNguon(don))}` : ""}</p><p>${don.phong ? "Web đã tự gửi chìa khóa cho người mua." : "Web đã tự gửi thư xác nhận đặt trước cho người mua."}</p>`),
     });
   }
   return true;
@@ -458,7 +516,7 @@ async function quanLy(request, env, url) {
       const khoa = `thu-hoi:${don.phong}:${don.email}`;
       if (body.hanhDong === "thu-hoi") await env.DB.put(khoa, String(Date.now()));
       else if (body.hanhDong === "mo-lai") await env.DB.delete(khoa);
-      else if (body.hanhDong === "gui-lai" && don.trangThai === "da-nhan") await guiChiaKhoa(env, don);
+      else if (body.hanhDong === "gui-lai" && don.trangThai === "da-nhan" && don.phong) await guiChiaKhoa(env, don);
       else if (body.hanhDong === "xac-nhan") await xacNhanDon(env, don, "May xác nhận tay");
     }
     return Response.redirect(`${url.origin}/quan-ly/`, 303);
@@ -473,18 +531,20 @@ async function quanLy(request, env, url) {
   const rows = dons
     .map((d) => {
       let tt;
-      if (d.trangThai === "da-nhan") {
+      if (d.trangThai === "da-nhan" && d.phong) {
         const bi = daThuHoi.has(`thu-hoi:${d.phong}:${d.email}`);
         tt = (bi ? `⛔ đã thu hồi chìa khóa<br>` : `✅ đã nhận<br><small>${esc(d.nguon || "")}</small><br>`) +
           (bi
             ? nutForm(d.ma, "mo-lai", "Mở lại", `Mở lại chìa khóa cho ${esc(d.email)}?`)
             : nutForm(d.ma, "gui-lai", "Gửi lại chìa khóa", `Gửi lại email chìa khóa cho ${esc(d.email)}?`, "#A8522B") +
               nutForm(d.ma, "thu-hoi", "Thu hồi", `Thu hồi chìa khóa của ${esc(d.email)}? Người này sẽ không vào phòng được nữa.`, "#7A6C64"));
+      } else if (d.trangThai === "da-nhan") {
+        tt = `✅ đã nhận (đặt trước)<br><small>${esc(d.nguon || "")}</small>`;
       } else {
         tt = `chờ tiền${d.ghiChu ? `<br><small>${esc(d.ghiChu)}</small>` : ""}<br>` +
           nutForm(d.ma, "xac-nhan", "Đã nhận tiền", `Đã thấy ${tien(d.gia)} với nội dung ${d.ma} trong tài khoản? Web sẽ gửi chìa khóa cho ${esc(d.email)}.`);
       }
-      return `<tr><td>${new Date(d.luc).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" })}</td><td><b>${d.ma}</b></td><td>${esc(d.ten)}<br><small>${tien(d.gia)}</small></td><td>${esc(d.email)}</td><td>${tt}</td></tr>`;
+      return `<tr><td>${new Date(d.luc).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" })}</td><td><b>${d.ma}</b></td><td>${esc(d.ten)}<br><small>${tien(d.gia)}</small></td><td>${esc(d.email)}${tenNguon(d) ? `<br><small>đến từ: ${esc(tenNguon(d))}</small>` : ""}</td><td>${tt}</td></tr>`;
     })
     .join("");
   const thieu = ["TOKEN_SECRET", "RESEND_API_KEY", "SEPAY_API_KEY"].filter((x) => !env[x]);
@@ -503,7 +563,7 @@ ${await (async () => {
   const n = (await chuaNhanQua(env)).length;
   return n ? `<form method="post" onsubmit="return confirm('Gửi sổ tay ${esc(banHang.quaTang.ten)} cho ${n} người đã đăng ký nhận quà nhưng chưa nhận được?')"><input type="hidden" name="hanhDong" value="gui-qua-con-thieu"><p>${n} người đăng ký nhận sổ tay từ trước khi có file, chưa nhận được thư. <button>Gửi sổ tay cho ${n} người này</button></p></form>` : "<p>✅ Ai đăng ký nhận quà cũng đã được gửi.</p>";
 })()}
-<table><tr><th>Lúc</th><th>Email</th><th>Ô nào</th></tr>${dsEmail.map((e) => `<tr><td>${new Date(e.luc).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" })}</td><td>${esc(e.email)}</td><td>${e.loai.map((l) => (l === "qua" ? "sổ tay quà tặng" : l === "kiem-tra" ? "bài kiểm tra" : "nhận bài mới")).join(", ")}</td></tr>`).join("") || '<tr><td colspan="3">Chưa có ai.</td></tr>'}</table>
+<table><tr><th>Lúc</th><th>Email</th><th>Ô nào</th></tr>${dsEmail.map((e) => `<tr><td>${new Date(e.luc).toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" })}</td><td>${esc(e.email)}</td><td>${e.loai.map((l) => (l === "qua" ? "sổ tay quà tặng" : l === "kiem-tra" ? "bài kiểm tra" : l === "sales" ? "yeswithmay (người làm sales)" : "nhận bài mới")).join(", ")}</td></tr>`).join("") || '<tr><td colspan="3">Chưa có ai.</td></tr>'}</table>
 ${await phanKiemTra(env)}
 <form method="post" style="margin-top:28px"><input type="hidden" name="hanhDong" value="dang-xuat"><button style="background:#7A6C64">Đăng xuất</button></form>`;
   return html(khungTrang("Quản lý đơn", than), 200, k ? { "set-cookie": await datPhien() } : {});
@@ -568,11 +628,25 @@ async function soLieuTuan(env, bayGio = Date.now()) {
       tongXong: dem[`${b.ma}:_xong`] || 0, nhieuNhat: nhieuNhat ? `${tenKq(b.ma, nhieuNhat[0])} (${nhieuNhat[1]})` : "",
     };
   });
+  // yeswithmay: đơn đặt trước, đếm theo từng mẫu quảng cáo (utm_content)
+  const datTruoc = banHang.sanPham.filter((sp) => sp.datTruoc).map((sp) => {
+    const cua = don.filter((d) => d.sp === sp.ma);
+    const tra = cua.filter((d) => d.trangThai === "da-nhan");
+    const mau = {};
+    for (const d of cua) {
+      const k = tenNguon(d) || "(không qua link quảng cáo)";
+      const m = (mau[k] ||= { tuan: 0, tong: 0, cho: 0 });
+      if (d.trangThai === "da-nhan") { m.tong++; if ((d.nhanLuc || 0) >= tu) m.tuan++; }
+      else if (d.luc >= tu) m.cho++;
+    }
+    return { ten: sp.ten, canDu: sp.datTruoc.canDu, ngayChot: sp.datTruoc.ngayChot, tong: tra.length, tuan: tra.filter((d) => (d.nhanLuc || 0) >= tu).length, mau: Object.entries(mau).sort((a, b) => b[1].tong - a[1].tong || b[1].cho - a[1].cho) };
+  });
   return {
-    tu, bayGio, coTuanTruoc: !!truoc, dem,
+    tu, bayGio, coTuanTruoc: !!truoc, dem, datTruoc,
     emailMoi: dkMoi.length, tongEmail: dk.length,
     emailQua: dkMoi.filter((e) => e.loai?.includes("qua")).length,
     emailTest: dkMoi.filter((e) => e.loai?.includes("kiem-tra")).length,
+    emailSales: dkMoi.filter((e) => e.loai?.includes("sales")).length,
     bai, daTra, choTra, doanhThu: daTra.reduce((t, d) => t + (d.gia || 0), 0),
   };
 }
@@ -584,16 +658,20 @@ function thuBaoCao(s) {
   const hangBai = s.bai.map((b) => `<tr>${o(esc(b.ten))}${o(so(b.batDau))}${o(so(b.xong))}${o(b.email)}${o(esc(b.nhieuNhat) || "—")}</tr>`).join("");
   const dsDon = s.daTra.map((d) => `<li>${esc(d.ten)} · ${tien(d.gia)} · ${esc(d.email)}</li>`).join("");
   return `<div style="font-family:Georgia,serif;color:#362A24;max-width:620px;line-height:1.6">
-<h2 style="color:#6E2A34;margin:0 0 4px">Tuần qua ở mayphung.com</h2>
+<h2 style="color:#6E2A34;margin:0 0 4px">Tuần qua ở mayphung.com và yeswithmay.com</h2>
 <p style="margin:0 0 20px;color:#7A6C64">Từ ${ngay(s.tu)} đến ${ngay(s.bayGio)}</p>
 <h3 style="color:#6E2A34;margin:20px 0 6px">Email</h3>
-<p style="margin:0"><strong>${s.emailMoi}</strong> email mới (${s.emailQua} nhận sổ tay, ${s.emailTest} từ bài test). Tổng danh sách: ${s.tongEmail}.</p>
+<p style="margin:0"><strong>${s.emailMoi}</strong> email mới (${s.emailQua} nhận sổ tay, ${s.emailTest} từ bài test, ${s.emailSales} người làm sales ở yeswithmay). Tổng danh sách: ${s.tongEmail}.</p>
 <h3 style="color:#6E2A34;margin:20px 0 6px">Bài test</h3>
 <table style="border-collapse:collapse;font-size:15px"><tr>${o("<b>Bài</b>")}${o("<b>Bắt đầu</b>")}${o("<b>Làm xong</b>")}${o("<b>Để lại email</b>")}${o("<b>Kết quả nhiều nhất</b>")}</tr>${hangBai}</table>
 ${s.coTuanTruoc ? "" : `<p style="color:#7A6C64;font-size:14px">Đây là thư đầu tiên nên cột "Bắt đầu" và "Làm xong" chưa có số của riêng tuần này. Từ thư sau sẽ có.</p>`}
 <h3 style="color:#6E2A34;margin:20px 0 6px">Đơn hàng</h3>
 <p style="margin:0"><strong>${s.daTra.length}</strong> đơn đã thanh toán · ${tien(s.doanhThu)}${s.choTra.length ? ` · ${s.choTra.length} đơn tạo trong tuần còn chờ chuyển khoản` : ""}</p>
 ${dsDon ? `<ul>${dsDon}</ul>` : ""}
+${s.datTruoc.map((x) => `<h3 style="color:#6E2A34;margin:24px 0 6px">Đặt trước · ${esc(x.ten)}</h3>
+<p style="margin:0 0 8px"><strong>${x.tong}${x.canDu ? `/${x.canDu}` : ""}</strong> người đã đặt và trả tiền (tuần này thêm ${x.tuan})${x.ngayChot ? `. Ngày chốt: ${esc(x.ngayChot)}` : ""}.</p>
+${x.mau.length ? `<table style="border-collapse:collapse;font-size:15px"><tr>${o("<b>Mẫu quảng cáo</b>")}${o("<b>Đã trả, tuần này</b>")}${o("<b>Đã trả, tổng</b>")}${o("<b>Tạo đơn chưa trả (tuần này)</b>")}</tr>${x.mau.map(([k, m]) => `<tr>${o(esc(k))}${o(m.tuan)}${o(m.tong)}${o(m.cho)}</tr>`).join("")}</table>
+<p style="color:#7A6C64;font-size:14px">Số người bấm vào từng mẫu xem trong trình quản lý quảng cáo của Meta. Web không đếm lượt xem để đỡ tốn lượt ghi.</p>` : `<p style="color:#7A6C64">Chưa có đơn nào.</p>`}`).join("")}
 <p style="margin:26px 0 0"><a href="${SITE}/quan-ly/" style="color:#6E2A34">Mở trang quản lý</a> để xem chi tiết và tải file CSV.</p>
 </div>`;
 }
@@ -603,12 +681,30 @@ async function guiBaoCaoTuan(env, guiThu = false) {
   const s = await soLieuTuan(env);
   const ok = await guiEmail(env, {
     to: env.EMAIL_MAY,
-    subject: `${guiThu ? "[Gửi thử] " : ""}Tuần qua ở mayphung.com: ${s.emailMoi} email mới · ${s.daTra.length} đơn`,
+    subject: `${guiThu ? "[Gửi thử] " : ""}Tuần qua: ${s.emailMoi} email mới · ${s.daTra.length} đơn${s.datTruoc.map((x) => ` · ${x.ten.split(" ").slice(0, 3).join(" ")} ${x.tong}${x.canDu ? "/" + x.canDu : ""}`).join("")}`,
     html: thuBaoCao(s),
   });
   // Chỉ lưu mốc khi thư đi được, để tuần sau so cho đúng
   if (ok && !guiThu) await env.DB.put("bc:dem", JSON.stringify(s.dem));
   return ok;
+}
+
+// ---------- yeswithmay.com: lấy trang trong _site/yes/ ----------
+async function trangYes(request, env, url) {
+  if (url.pathname.startsWith("/assets/")) return env.ASSETS.fetch(request);
+  const dich = new URL("/yes" + url.pathname + url.search, url.origin);
+  const res = await env.ASSETS.fetch(new Request(dich, request));
+  // Cloudflare tự thêm/bỏ dấu / cuối đường dẫn: sửa địa chỉ chuyển hướng cho khỏi lộ /yes/
+  const loc = res.headers.get("location");
+  if (res.status >= 300 && res.status < 400 && loc) {
+    const l = new URL(loc, dich);
+    if (l.pathname === "/yes" || l.pathname.startsWith("/yes/")) {
+      const h = new Headers(res.headers);
+      h.set("location", (l.pathname.slice(4) || "/") + l.search);
+      return new Response(null, { status: res.status, headers: h });
+    }
+  }
+  return res;
 }
 
 export default {
@@ -618,6 +714,10 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
     const p = url.pathname;
+    if (url.hostname === "www.yeswithmay.com") return Response.redirect(SITE_YES + p + url.search, 301);
+    const yes = laHostYes(url.hostname);
+    // Trang quản lý chỉ ở mayphung.com (cookie đăng nhập gắn với một tên miền)
+    if (yes && (p === "/quan-ly" || p.startsWith("/quan-ly/"))) return Response.redirect(SITE + p, 302);
     try {
       if (p === "/api/dang-ky" && request.method === "POST") return await dangKy(request, env, ctx);
       if (p === "/api/don" && request.method === "POST") return await taoDon(request, env);
@@ -645,6 +745,8 @@ export default {
       console.log("Lỗi", p, e.stack || e.message);
       return json({ ok: false, loi: "Có trục trặc nhỏ. Bạn thử lại giúp May nhé." }, 500);
     }
+    if (yes) return trangYes(request, env, url);
+    if (p === "/yes" || p.startsWith("/yes/")) return Response.redirect(SITE_YES + (p.slice(4) || "/") + url.search, 301);
     return env.ASSETS.fetch(request);
   },
 };

@@ -27,6 +27,19 @@
       "moTa": "Sổ viết 5 tuần · tặng May một cuốn sách",
       "gia": 96000,
       "phong": "soi-chieu"
+    },
+    {
+      "ma": "so-21-ngay",
+      "ten": "Sổ 21 ngày hết sợ bị từ chối",
+      "moTa": "Đặt trước · bản PDF in được · không đủ người đặt thì hoàn tiền",
+      "gia": 99000,
+      "giaSau": 149000,
+      "thuongHieu": "yes",
+      "datTruoc": {
+        "canDu": 20,
+        "ngayChot": "08/12/2026",
+        "ngayGiao": "05/01/2027"
+      }
     }
   ],
   "phong": {

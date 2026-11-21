@@ -1,0 +1,13 @@
+---
+permalink: /yes/chinh-sach-bao-mat/index.html
+title: Chính sách bảo mật
+description: "mayphung.com và yeswithmay.com thu những thông tin gì, dùng để làm gì, cất ở đâu, giữ bao lâu, và bạn có những quyền gì với dữ liệu của mình."
+bodyClass: y-phaply
+---
+{#- Cùng một nội dung với mayphung.com/chinh-sach-bao-mat/ (một nguồn duy nhất: src/chinh-sach-bao-mat.md) -#}
+{%- set goc = collections.all | findBy("url", "/chinh-sach-bao-mat/") %}
+<main class="y-khoi y-van" id="noi-dung">
+  <p class="y-nhan">Cập nhật ngày {{ phapLy.ngayCapNhat }}</p>
+  <h1>{{ title }}</h1>
+  <div class="y-van-than">{{ goc.templateContent | safe }}</div>
+</main>

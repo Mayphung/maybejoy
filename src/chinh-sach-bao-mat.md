@@ -2,33 +2,35 @@
 layout: page.njk
 permalink: /chinh-sach-bao-mat/
 title: Chính sách bảo mật
-description: "mayphung.com thu những thông tin gì, dùng để làm gì, cất ở đâu, giữ bao lâu, và bạn có những quyền gì với dữ liệu của mình."
+description: "mayphung.com và yeswithmay.com thu những thông tin gì, dùng để làm gì, cất ở đâu, giữ bao lâu, và bạn có những quyền gì với dữ liệu của mình."
 eleventyComputed:
   kicker: "Cập nhật ngày {{ phapLy.ngayCapNhat }}"
 ---
-Trang này nói rõ mayphung.com thu những thông tin gì của bạn, dùng để làm gì, cất ở đâu, giữ bao lâu, và bạn có những quyền gì. May viết ngắn gọn nhất có thể, nhưng đây vẫn là một văn bản có giá trị: khi bạn gửi email hay mua hàng trên web, nghĩa là bạn đã đọc và đồng ý với những điều dưới đây.
+Trang này nói rõ mayphung.com và yeswithmay.com (hai trang web của May, chạy chung một hệ thống, gọi chung là "web") thu những thông tin gì của bạn, dùng để làm gì, cất ở đâu, giữ bao lâu, và bạn có những quyền gì. May viết ngắn gọn nhất có thể, nhưng đây vẫn là một văn bản có giá trị: khi bạn gửi email hay mua hàng trên web, nghĩa là bạn đã đọc và đồng ý với những điều dưới đây.
 
 ## 1. Ai chịu trách nhiệm về dữ liệu của bạn
 
 {% include "nguoi-ban.njk" %}
 
-Trong trang này, "May" là người vận hành mayphung.com cùng đơn vị bán hàng nêu trên. Mọi câu hỏi về dữ liệu cá nhân, bạn gửi về email ở trên.
+Trong trang này, "May" là người vận hành mayphung.com, yeswithmay.com cùng đơn vị bán hàng nêu trên. Mọi câu hỏi về dữ liệu cá nhân, bạn gửi về email ở trên.
 
 ## 2. May thu những gì, để làm gì
 
-**Khi bạn đăng ký nhận bài mới hoặc nhận sổ tay.** May nhận email của bạn, thời điểm đăng ký và ô bạn đã đăng ký. May dùng email để gửi sổ tay, bài viết mới, tin về sách và sản phẩm của May.
+**Khi bạn đăng ký nhận bài mới hoặc nhận sổ tay.** May nhận email của bạn, thời điểm đăng ký và ô bạn đã đăng ký. May dùng email để gửi sổ tay, bài viết mới, tin về sách và sản phẩm của May. Ô đăng ký trên yeswithmay.com dành cho người làm bán hàng: May dùng email đó để báo khi sản phẩm ra mắt và gửi thư về bán hàng.
 
 **Khi bạn làm bài test.** Câu trả lời và kết quả được gửi về web để chấm và để May thống kê, giúp bài test tốt hơn. Phần này không kèm tên hay email của bạn.
 
 **Khi bạn để lại email để nhận kết quả bài test.** May lưu email cùng tên bài, kết quả, điểm từng kiểu và thời điểm gửi. May dùng chúng để gửi thư phân tích cho bạn, thỉnh thoảng gửi bài viết mới, và để biết bài test nào đang giúp được nhiều người.
 
-**Khi bạn mua hàng.** May lưu email, món bạn mua, giá, mã đơn, thời điểm và trạng thái thanh toán. May dùng chúng để nhận ra khoản chuyển khoản của bạn, gửi link vào học, hỗ trợ, hoàn tiền khi cần, và giữ sổ sách.
+**Khi bạn mua hàng.** May lưu email, món bạn mua, giá, mã đơn, thời điểm và trạng thái thanh toán. May dùng chúng để nhận ra khoản chuyển khoản của bạn, gửi link vào học hoặc thư xác nhận đặt trước, giao sản phẩm, hỗ trợ, hoàn tiền khi cần, và giữ sổ sách.
+
+**Khi bạn đến từ một đường dẫn quảng cáo.** Một số đường dẫn tới web (ví dụ trong quảng cáo trên Facebook, Instagram) có gắn mã nguồn, cho biết đường dẫn thuộc mẫu quảng cáo nào. Nếu bạn mua hàng trong 7 ngày sau đó, web lưu mã này cùng đơn hàng để May biết mẫu quảng cáo nào hiệu quả. Mã nguồn không chứa tên hay thông tin nào khác về bạn.
 
 **Khi bạn chuyển khoản.** Ngân hàng báo giao dịch về web qua dịch vụ SePay (số tiền, nội dung chuyển khoản, mã giao dịch). Web chỉ giữ lại mã giao dịch để không xử lý một khoản tiền hai lần. Như mọi giao dịch chuyển khoản, May cũng thấy tên và số tài khoản người chuyển trong sao kê ngân hàng.
 
 **Khi bạn viết thư cho May.** May nhận email và nội dung thư để trả lời bạn.
 
-May không thu số căn cước, số thẻ, mật khẩu ngân hàng hay mã OTP của bạn. Web không dùng công cụ theo dõi quảng cáo, cũng không dùng công cụ đo lường của bên thứ ba.
+May không thu số căn cước, số thẻ, mật khẩu ngân hàng hay mã OTP của bạn. Web không cài công cụ theo dõi quảng cáo (như Meta Pixel), cũng không dùng công cụ đo lường của bên thứ ba.
 
 ## 3. Riêng về bài test
 
@@ -48,10 +50,10 @@ May không thu số căn cước, số thẻ, mật khẩu ngân hàng hay mã O
 Để web chạy được, May dùng một số dịch vụ. Mỗi dịch vụ chỉ nhận phần dữ liệu cần cho việc của nó:
 
 - **Cloudflare:** đặt web, máy chủ và kho dữ liệu. Nhật ký kỹ thuật của máy chủ (có thể gồm địa chỉ IP) được giữ trong thời gian ngắn để vận hành và bảo vệ web.
-- **Resend:** gửi thư tự động (sổ tay, kết quả bài test, link vào học).
+- **Resend:** gửi thư tự động (sổ tay, kết quả bài test, link vào học, xác nhận đơn).
 - **Kit:** giữ danh sách email và gửi bản tin.
 - **SePay** và **ngân hàng MB:** nhận tiền và báo giao dịch.
-- **Google:** phông chữ trên web tải từ máy chủ Google (nên Google nhận địa chỉ IP của bạn khi bạn mở web); video và tài liệu trong phòng học nằm trên Google Drive; thư bạn trả lời May đi về hộp thư Gmail của May.
+- **Google:** phông chữ trên mayphung.com tải từ máy chủ Google (nên Google nhận địa chỉ IP của bạn khi bạn mở mayphung.com; yeswithmay.com dùng phông chữ đặt sẵn trên web, không gọi tới Google); video và tài liệu trong phòng học nằm trên Google Drive; thư bạn trả lời May đi về hộp thư Gmail của May.
 
 Một số dịch vụ đặt máy chủ ở nước ngoài, nên dữ liệu của bạn có thể được lưu và xử lý ngoài Việt Nam, theo chính sách bảo mật của từng dịch vụ.
 
@@ -65,6 +67,7 @@ May không bán dữ liệu của bạn cho bất kỳ ai.
 | Câu trả lời bài test (không kèm email) | Tự xoá sau 2 năm |
 | Đơn chưa thanh toán | Tự xoá sau 30 ngày |
 | Đơn đã thanh toán | 10 năm, để đối chiếu thanh toán, hoàn tiền và giữ sổ sách |
+| Mã nguồn quảng cáo đi kèm đơn | Như đơn hàng đó |
 | Mã giao dịch ngân hàng | Tự xoá sau 90 ngày |
 | Thư bạn gửi May | Nằm trong hộp thư của May cho đến khi không còn cần |
 
@@ -72,6 +75,7 @@ May không bán dữ liệu của bạn cho bất kỳ ai.
 
 - Phòng học dùng một cookie "chìa khoá" để mở đúng phòng bạn đã mua. Cookie này cần thiết cho việc học, không dùng để theo dõi bạn.
 - Bài test lưu tiến độ và kết quả trong bộ nhớ trình duyệt trên chính máy của bạn, để bạn quay lại không phải làm từ đầu. Bạn xoá dữ liệu trình duyệt là phần này mất.
+- Khi bạn đến từ một đường dẫn có mã nguồn quảng cáo, trình duyệt lưu mã đó trên máy bạn trong 7 ngày, để gắn vào đơn nếu bạn mua. Mã chỉ được gửi về web khi bạn tạo đơn.
 - Web không dùng cookie quảng cáo hay cookie đo lường.
 
 ## 8. Quyền của bạn
@@ -87,7 +91,7 @@ Rút lại sự đồng ý không ảnh hưởng tới việc xử lý đã di�
 
 ## 9. Trẻ em
 
-mayphung.com dành cho người lớn. Nếu bạn dưới 16 tuổi, hãy nhờ bố mẹ hoặc người giám hộ trước khi để lại email, làm bài test có để lại email hay mua hàng. Nếu May biết mình đã nhận dữ liệu của một bạn dưới 16 tuổi mà chưa có sự đồng ý của bố mẹ, May sẽ xoá.
+mayphung.com và yeswithmay.com dành cho người lớn. Nếu bạn dưới 16 tuổi, hãy nhờ bố mẹ hoặc người giám hộ trước khi để lại email, làm bài test có để lại email hay mua hàng. Nếu May biết mình đã nhận dữ liệu của một bạn dưới 16 tuổi mà chưa có sự đồng ý của bố mẹ, May sẽ xoá.
 
 ## 10. May giữ an toàn dữ liệu thế nào
 

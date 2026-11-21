@@ -2,17 +2,17 @@
 layout: page.njk
 permalink: /dieu-khoan/
 title: Điều khoản sử dụng và mua hàng
-description: "Điều khoản khi dùng mayphung.com và mua khóa học, sổ viết của May: thanh toán, giao hàng, quyền sử dụng, hoàn tiền, khiếu nại."
+description: "Điều khoản khi dùng mayphung.com, yeswithmay.com và mua khóa học, sổ của May: thanh toán, đặt trước, giao hàng, quyền sử dụng, hoàn tiền, khiếu nại."
 eleventyComputed:
   kicker: "Cập nhật ngày {{ phapLy.ngayCapNhat }}"
 ---
-Khi dùng mayphung.com hoặc mua một món ở đây, bạn đồng ý với các điều khoản dưới đây và với [Chính sách bảo mật](/chinh-sach-bao-mat/). Nếu chưa đồng ý ở điểm nào, bạn viết cho May trước khi mua nhé.
+Khi dùng mayphung.com, yeswithmay.com (gọi chung là "web") hoặc mua một món ở đây, bạn đồng ý với các điều khoản dưới đây và với [Chính sách bảo mật](/chinh-sach-bao-mat/). Nếu chưa đồng ý ở điểm nào, bạn viết cho May trước khi mua nhé.
 
 ## 1. Về web và người bán
 
 {% include "nguoi-ban.njk" %}
 
-Trong trang này, "May" là người vận hành mayphung.com cùng đơn vị bán hàng nêu trên; "bạn" là người dùng web hoặc người mua.
+Trong trang này, "May" là người vận hành mayphung.com, yeswithmay.com cùng đơn vị bán hàng nêu trên; "bạn" là người dùng web hoặc người mua.
 
 ## 2. Ai được mua
 
@@ -20,7 +20,9 @@ Bạn cần đủ 18 tuổi, hoặc có bố mẹ hay người giám hộ đồn
 
 ## 3. Nội dung ở đây không thay cho chuyên gia
 
-Bài viết, bài test, khóa học và sổ viết trên mayphung.com là chia sẻ từ trải nghiệm của May và công cụ để bạn tự thực hành. Chúng không thay thế việc đánh giá, chẩn đoán, điều trị hay tư vấn y khoa, tâm lý. Bài test không phải công cụ chẩn đoán.
+Bài viết, bài test, khóa học, sổ viết và sổ bài tập của May là chia sẻ từ trải nghiệm của May và công cụ để bạn tự thực hành. Chúng không thay thế việc đánh giá, chẩn đoán, điều trị hay tư vấn y khoa, tâm lý. Bài test không phải công cụ chẩn đoán.
+
+Sản phẩm về bán hàng trên yeswithmay.com là bài tập tự làm về cảm xúc của người bán. May không hứa doanh số, thu nhập hay kết quả kinh doanh nào.
 
 Bạn tự quyết định áp dụng điều gì cho mình và chịu trách nhiệm với quyết định đó. Nếu một bài thực hành làm bạn quá tải, hãy dừng lại. Nếu bạn đang khủng hoảng hoặc nghĩ đến việc làm hại bản thân, hãy gọi cấp cứu 115 hoặc đến cơ sở y tế gần nhất.
 
@@ -31,6 +33,7 @@ Bạn tự quyết định áp dụng điều gì cho mình và chịu trách nh
 - Bạn thanh toán bằng chuyển khoản qua mã QR vào tài khoản hiện trên trang thanh toán, và giữ nguyên nội dung chuyển khoản (mã đơn) để web nhận ra đơn của bạn.
 - Giao dịch hoàn tất khi May nhận đủ tiền của đúng đơn. Nếu bạn chuyển thiếu, May liên hệ để bạn chuyển bù hoặc nhận lại tiền.
 - Đơn chưa thanh toán sau 30 ngày thì hết hiệu lực.
+- **Đặt trước:** với món ghi "đặt trước", bạn trả tiền trước khi sản phẩm hoàn thành. Trang bán của món đó ghi rõ số người đặt tối thiểu, ngày chốt và ngày giao. Những con số này áp dụng theo trang bán lúc bạn đặt, và cũng được ghi trong thư xác nhận May gửi bạn.
 
 ## 5. Giao hàng và thời gian sử dụng
 
@@ -38,6 +41,7 @@ Bạn tự quyết định áp dụng điều gì cho mình và chịu trách nh
 - Bạn cần nhập đúng email. Sau 24 giờ vẫn chưa nhận được thư (nhớ xem cả mục Quảng cáo, Spam), bạn viết cho May kèm mã đơn.
 - **Khoảng Dừng Cảm Xúc:** bạn xem lại không giới hạn thời gian, trong suốt thời gian May còn cung cấp khóa học trên mayphung.com. Nếu có ngày May ngừng khóa học, May báo qua email trước ít nhất 30 ngày để bạn xem nốt và tải workbook về.
 - **Soi Chiếu:** bạn tải file về và giữ lâu dài.
+- **Sổ 21 ngày hết sợ bị từ chối (đặt trước):** nếu đến ngày chốt đủ số người đặt tối thiểu, May gửi đường dẫn tải bản PDF vào email của bạn trước ngày giao. Bạn tải về và giữ lâu dài. Nếu thấy sẽ giao trễ, May báo bạn qua email trước ngày giao; bạn chọn chờ thêm, hoặc nhận lại toàn bộ tiền.
 - Video và tài liệu phát qua dịch vụ của bên thứ ba (Google Drive). Khi các dịch vụ này gián đoạn, May sẽ khắc phục sớm nhất có thể.
 
 ## 6. Quyền sử dụng
@@ -48,10 +52,10 @@ Bạn không được:
 
 - chia sẻ link vào học hay chìa khóa phòng học cho người khác;
 - tải về, quay, ghi lại, đăng lại video bài học;
-- chia sẻ, bán lại, cho thuê workbook hay sổ viết;
+- chia sẻ, bán lại, cho thuê workbook, sổ viết hay sổ bài tập;
 - dùng nội dung để dạy lại, làm khóa học, tài liệu hay sản phẩm khác, dù có thu tiền hay không.
 
-Bạn được in workbook và sổ viết để tự dùng.
+Bạn được in workbook, sổ viết và sổ bài tập để tự dùng.
 
 Nếu có vi phạm, May có quyền khóa quyền truy cập mà không hoàn tiền, và yêu cầu bồi thường theo pháp luật.
 
@@ -59,12 +63,13 @@ Nếu có vi phạm, May có quyền khóa quyền truy cập mà không hoàn t
 
 - **Khoảng Dừng Cảm Xúc:** trong 7 ngày kể từ ngày thanh toán, nếu bạn thấy khóa học không hợp, vì bất kỳ lý do gì, hãy viết cho May. May hoàn lại toàn bộ học phí trong 48 giờ, không cần giải thích. Sau khi hoàn tiền, link vào học ngừng hoạt động và bạn xóa workbook đã tải. Mỗi người được hoàn tiền một lần cho mỗi khóa.
 - **Soi Chiếu:** vì file được gửi và tải về được ngay, May không hoàn tiền sau khi đã gửi link, trừ khi file bị lỗi không mở được và May không sửa được trong 7 ngày.
+- **Sổ 21 ngày hết sợ bị từ chối (đặt trước):** nếu đến ngày chốt chưa đủ số người đặt tối thiểu, May hoàn lại toàn bộ tiền cho mọi người đã đặt trong 3 ngày làm việc sau ngày chốt, bạn không cần yêu cầu. Giao trễ thì xem mục 5. Sau khi đã gửi đường dẫn tải sổ, May không hoàn tiền, trừ khi file bị lỗi không mở được và May không sửa được trong 7 ngày.
 - Tiền hoàn được chuyển về đúng tài khoản đã chuyển cho May.
 - Những điều trên không làm mất đi quyền của bạn theo pháp luật về bảo vệ quyền lợi người tiêu dùng, ví dụ khi sản phẩm không đúng như mô tả.
 
 ## 8. Bản quyền
 
-Bài viết, hình ảnh, video, bài test, phần phân tích, workbook, sổ viết và thiết kế trên mayphung.com thuộc quyền của May, trừ chỗ ghi rõ nguồn khác. Bạn có thể trích một đoạn ngắn kèm tên May và đường dẫn về bài gốc. Muốn dùng nhiều hơn, bạn cần May đồng ý bằng văn bản (email là được).
+Bài viết, hình ảnh, video, bài test, phần phân tích, workbook, sổ viết, sổ bài tập và thiết kế trên mayphung.com và yeswithmay.com thuộc quyền của May, trừ chỗ ghi rõ nguồn khác. Bạn có thể trích một đoạn ngắn kèm tên May và đường dẫn về bài gốc. Muốn dùng nhiều hơn, bạn cần May đồng ý bằng văn bản (email là được).
 
 ## 9. Khi dùng web
 
@@ -76,7 +81,7 @@ Trong phạm vi pháp luật cho phép:
 
 - May không chịu trách nhiệm cho thiệt hại gián tiếp phát sinh từ việc bạn dùng hay không dùng được nội dung trên web.
 - Trách nhiệm của May với một đơn hàng không vượt quá số tiền bạn đã trả cho đơn đó.
-- May không chịu trách nhiệm về nội dung của các trang web khác mà mayphung.com dẫn tới.
+- May không chịu trách nhiệm về nội dung của các trang web khác mà web dẫn tới.
 
 Điều này không loại trừ trách nhiệm mà pháp luật không cho phép loại trừ.
 

@@ -78,6 +78,12 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("featured", (posts) => (posts || []).find((p) => p.data.noiBat) || (posts || [])[0]);
   eleventyConfig.addFilter("toMap", (list, k, v) => Object.fromEntries((list || []).map((x) => [x[k], x[v]])));
   eleventyConfig.addFilter("vnd", (n) => Number(n || 0).toLocaleString("vi-VN") + "đ");
+  // Điền {gia}, {giaSau}, {ngayChot}, {ngayGiao}, {canDu} của một món trong banHang.json vào câu chữ
+  eleventyConfig.addFilter("dienSp", (s, sp) => {
+    const tien = (n) => Number(n || 0).toLocaleString("vi-VN") + "đ";
+    const v = { ten: sp?.ten, gia: sp?.gia && tien(sp.gia), giaSau: sp?.giaSau && tien(sp.giaSau), ...(sp?.datTruoc || {}) };
+    return String(s || "").replace(/\{(\w+)\}/g, (m, k) => (v[k] != null && v[k] !== "" ? String(v[k]) : m));
+  });
   eleventyConfig.addFilter("digits", (s) => String(s || "").replace(/\D/g, ""));
   eleventyConfig.addFilter("navItem", (nav, key) => (nav || []).find((c) => c.key === key));
 

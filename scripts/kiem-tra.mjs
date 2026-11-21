@@ -42,6 +42,24 @@ export function kiemTraNguon() {
     if (m.sanPham && !maSp.has(m.sanPham)) loi.push(`Ở xưởng May: thẻ "${m.ten}" lấy giá từ mã "${m.sanPham}" nhưng 💳 Bán hàng không có mã này.`);
   }
 
+  // Đặt trước: phải có đủ số người tối thiểu, ngày chốt, ngày giao (trang bán, thư xác nhận và điều khoản dựa vào đây)
+  const ngay = (t) => { const m = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(String(t || "")); return m ? new Date(`${m[3]}-${m[2]}-${m[1]}T00:00:00Z`) : null; };
+  for (const sp of banHang.sanPham || []) {
+    if (!sp.datTruoc) continue;
+    const d = sp.datTruoc, chot = ngay(d.ngayChot), giao = ngay(d.ngayGiao);
+    if (!Number.isInteger(d.canDu) || d.canDu <= 0) loi.push(`Bán hàng: món đặt trước "${sp.ten}" thiếu số người đặt tối thiểu.`);
+    if (!chot || isNaN(chot)) loi.push(`Bán hàng: món đặt trước "${sp.ten}" có ngày chốt "${d.ngayChot}" chưa đúng dạng ngày/tháng/năm (08/12/2026).`);
+    if (!giao || isNaN(giao)) loi.push(`Bán hàng: món đặt trước "${sp.ten}" có ngày giao "${d.ngayGiao}" chưa đúng dạng ngày/tháng/năm (05/01/2027).`);
+    if (chot && giao && !(giao > chot)) loi.push(`Bán hàng: món đặt trước "${sp.ten}" có ngày giao không sau ngày chốt.`);
+  }
+
+  // yeswithmay.com: món đang bán phải có trong 💳 Bán hàng và thuộc thương hiệu yes
+  const ywm = json("src/_data/ywm.json");
+  const spYes = (banHang.sanPham || []).find((s) => s.ma === ywm.sanPham);
+  if (!spYes) loi.push(`yeswithmay: món "${ywm.sanPham}" không có trong 💳 Bán hàng.`);
+  else if (spYes.thuongHieu !== "yes") loi.push(`yeswithmay: món "${spYes.ten}" chưa ghi thương hiệu yes trong 💳 Bán hàng.`);
+  if (!ywm.kyTen) loi.push("yeswithmay: ô Lời ký đang trống.");
+
   // Bài test: dữ liệu đủ và chấm ra đúng kết quả
   for (const B of kiemTra.bai || []) {
     const ma = B.ketQua.map((r) => r.ma);
@@ -106,6 +124,7 @@ const CAM = [
   [/\[(điền|thêm|chèn|link|todo|sửa|placeholder)[^\]]*\]/i, "chữ tạm trong ngoặc vuông"],
   [/\bTODO\b|lorem ipsum/i, "chữ nháp"],
   [/\bundefined\b|\[object Object\]|\bNaN\b/, "lỗi dữ liệu (undefined, NaN…)"],
+  [/\{[a-zA-Z]\w*\}/, "chữ chờ điền trong ngoặc nhọn (như {ngayGiao})"],
   [/Ôm ôm,\s*May|— May(?! Phung)\b/, "lời ký cũ"],
 ];
 const chuThay = (html) => html
@@ -116,6 +135,8 @@ export function kiemTraKetQua(thuMuc = path.join(GOC, "_site")) {
   const loi = [];
   const site = json("src/_data/site.json");
   const banHang = json("src/_data/banHang.json");
+  const ywm = json("src/_data/ywm.json");
+  const tien = (n) => Number(n).toLocaleString("vi-VN") + "đ";
   const trang = [];
   const di = (d) => { for (const f of fs.readdirSync(d, { withFileTypes: true })) { const p = path.join(d, f.name); if (f.isDirectory()) { if (f.name !== "assets") di(p); } else if (f.name.endsWith(".html")) trang.push(p); } };
   di(thuMuc);
@@ -127,6 +148,17 @@ export function kiemTraKetQua(thuMuc = path.join(GOC, "_site")) {
     if (!/<title>[^<]+<\/title>/.test(html)) loi.push(`${ten}: thiếu tiêu đề trang.`);
     if (!ten.includes("404") && !/<meta name="description" content="[^"]+"/.test(html)) loi.push(`${ten}: thiếu mô tả cho Google.`);
     for (const k of html.matchAll(/class="(?:signoff|signature)">([^<]*)</g)) if (k[1].trim() !== site.chu.kyTen) loi.push(`${ten}: lời ký là "${k[1].trim()}", không khớp lời ký trong Cài đặt.`);
+    // Giá hiện trên trang (chỗ nào có data-gia-cua / data-gia-sau-cua) phải khớp 💳 Bán hàng
+    for (const k of html.matchAll(/data-gia(-sau)?-cua="([^"]+)"[^>]*>([^<]*)</g)) {
+      const sp = (banHang.sanPham || []).find((s) => s.ma === k[2]);
+      const dung = sp && (k[1] ? sp.giaSau : sp.gia);
+      if (!dung || k[3].trim() !== tien(dung)) loi.push(`${ten}: giá "${k[3].trim()}" của "${k[2]}" không khớp 💳 Bán hàng (${dung ? tien(dung) : "không có món này"}).`);
+    }
+    // yeswithmay: lời ký riêng, không lẫn lời ký của mayphung.com
+    if (ten.startsWith("/yes/")) {
+      for (const k of html.matchAll(/class="y-ky">([^<]*)</g)) if (k[1].trim() !== ywm.kyTen) loi.push(`${ten}: lời ký là "${k[1].trim()}", không khớp lời ký trong ywm.json.`);
+      if (/bit by bit/i.test(chu)) loi.push(`${ten}: trang yeswithmay lẫn chữ "bit by bit" của mayphung.com.`);
+    }
   }
   // Giá khoá học trên trang bán và thẻ Ở xưởng May phải khớp giá thu tiền
   const kd = (banHang.sanPham || []).find((s) => s.ma === "emotion-course");

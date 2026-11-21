@@ -1,0 +1,13 @@
+---
+permalink: /yes/dieu-khoan/index.html
+title: Điều khoản sử dụng và mua hàng
+description: "Điều khoản khi dùng mayphung.com, yeswithmay.com và mua sản phẩm của May: thanh toán, đặt trước, giao hàng, quyền sử dụng, hoàn tiền, khiếu nại."
+bodyClass: y-phaply
+---
+{#- Cùng một nội dung với mayphung.com/dieu-khoan/ (một nguồn duy nhất: src/dieu-khoan.md) -#}
+{%- set goc = collections.all | findBy("url", "/dieu-khoan/") %}
+<main class="y-khoi y-van" id="noi-dung">
+  <p class="y-nhan">Cập nhật ngày {{ phapLy.ngayCapNhat }}</p>
+  <h1>{{ title }}</h1>
+  <div class="y-van-than">{{ goc.templateContent | safe }}</div>
+</main>

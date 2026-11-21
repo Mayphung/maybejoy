@@ -1,0 +1,68 @@
+---
+permalink: /yes/thanh-toan/index.html
+title: Đặt trước
+noindex: true
+bodyClass: y-tt
+anNutTren: true
+---
+{#- Cùng bộ máy thanh toán với mayphung.com (site.js, /api/don, SePay), chỉ khác giao diện và chữ -#}
+{%- set nh = banHang.nganHang %}
+{%- set T = ywm.thanhToan %}
+{%- set spYes = banHang.sanPham | findBy("ma", ywm.sanPham) %}
+<main class="y-khoi y-tt-trong checkout" id="noi-dung">
+  <p class="y-nhan" id="tt-meta">{{ T.dongNho }}</p>
+  <h1 id="tt-h">{{ T.tieuDe }}</h1>
+
+  {% if not nh.soTaiKhoan %}
+  <p class="y-tt-chua">{{ T.chuaMo }}</p>
+  {% else %}
+  <form class="co-step" id="tt-form" novalidate>
+    <fieldset class="co-pick" id="tt-pick">
+      <legend class="sr-only">Chọn món</legend>
+      {% for s in banHang.sanPham %}{% if s.thuongHieu == "yes" %}
+      <label class="co-opt" data-phong="{{ s.phong }}">
+        <input type="radio" name="sp" value="{{ s.ma }}" data-gia="{{ s.gia }}"{% if s.ma == spYes.ma %} checked{% endif %}>
+        <span class="t">{{ s.ten }}</span>
+        <span class="d">{{ s.moTa }}</span>
+        <span class="g" data-gia-cua="{{ s.ma }}">{{ s.gia | vnd }}</span>
+      </label>
+      {% endif %}{% endfor %}
+    </fieldset>
+    <label class="co-email" for="tt-email">{{ T.oEmail }}
+      <input id="tt-email" type="email" name="email" placeholder="ten@gmail.com" autocomplete="email" required>
+    </label>
+    <p class="co-note">{{ T.ghiChuEmail }}</p>
+    {% if T.dongY %}<p class="co-note">{{ T.dongY }} <a href="/dieu-khoan/">{{ site.chu.dieuKhoan or "Điều khoản" }}</a> và <a href="/chinh-sach-bao-mat/">{{ site.chu.chinhSach or "Chính sách bảo mật" }}</a>.</p>{% endif %}
+    <button class="y-nut y-nut-to" type="submit">{{ T.nutTiep }}</button>
+    <div class="form-msg" id="tt-msg" aria-live="polite"></div>
+  </form>
+
+  <section class="co-step" id="tt-qr" hidden aria-live="polite">
+    <ol class="steps">
+      <li>{{ T.buoc1 }}</li>
+      <li>{{ T.buoc2 }} <strong class="co-ma" data-ma></strong></li>
+      <li>{{ T.buoc3 }}</li>
+    </ol>
+    <div class="pay-box">
+      <img class="qr" id="tt-qr-img" alt="Mã QR chuyển khoản" width="300" height="300">
+      <dl>
+        <dt>Ngân hàng</dt><dd>{{ nh.ten }}</dd>
+        <dt>Chủ tài khoản</dt><dd>{{ nh.chuTaiKhoan }}</dd>
+        <dt>Số tài khoản</dt><dd>{{ nh.soTaiKhoan }}</dd>
+        <dt>Số tiền</dt><dd id="tt-gia"></dd>
+        <dt>Nội dung</dt><dd><strong data-ma></strong></dd>
+      </dl>
+    </div>
+    <p class="co-wait" id="tt-wait"><span class="y-cham" aria-hidden="true"></span>{{ T.dangCho }}</p>
+    {%- set lienHe = ywm.contactEmail or site.contactEmail %}
+    <p class="co-note">{{ T.chuaThay }} Mã đơn: <strong data-ma></strong>{% if lienHe %} · <a href="mailto:{{ lienHe }}">{{ lienHe }}</a>{% endif %}</p>
+  </section>
+
+  <section class="co-step" id="tt-xong" hidden>
+    <p class="co-done">{{ T.xongTieuDe }}</p>
+    <p>{{ T.xongLoi | dienSp(spYes) }}</p>
+    <a class="y-nut" id="tt-vao" href="/" hidden>{{ ywm.ten }}</a>
+  </section>
+  {% endif %}
+  <p class="y-ky">{{ ywm.kyTen }}</p>
+</main>

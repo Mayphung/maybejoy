@@ -9,7 +9,9 @@
     "binding": "ASSETS",
     "not_found_handling": "404-page",
     "html_handling": "auto-trailing-slash",
-    "run_worker_first": ["/api/*", "/hoc/*", "/quan-ly", "/quan-ly/*"]
+    // Worker chạy trước mọi trang (để nhìn tên miền mayphung.com hay yeswithmay.com),
+    // trừ /assets/ (ảnh, css, phông, pdf) đi thẳng, không tốn lượt chạy Worker.
+    "run_worker_first": ["/*", "!/assets/*"]
   },
   // Nơi lưu đơn hàng và email đăng ký. Lần deploy đầu Cloudflare tự tạo.
   "kv_namespaces": [{ "binding": "DB" }],

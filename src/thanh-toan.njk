@@ -22,14 +22,14 @@ navKey: o-xuong-may
   <form class="co-step" id="tt-form" novalidate>
     <fieldset class="co-pick" id="tt-pick">
       <legend class="sr-only">Chọn món</legend>
-      {% for s in banHang.sanPham %}
+      {% for s in banHang.sanPham %}{% if s.thuongHieu != "yes" %}
       <label class="co-opt" data-phong="{{ s.phong }}">
         <input type="radio" name="sp" value="{{ s.ma }}" data-gia="{{ s.gia }}"{% if loop.first %} checked{% endif %}>
         <span class="t">{{ s.ten }}</span>
         <span class="d">{{ s.moTa }}</span>
         <span class="g">{{ s.gia | vnd }}</span>
       </label>
-      {% endfor %}
+      {% endif %}{% endfor %}
     </fieldset>
     <label class="co-email" for="tt-email">{{ T.oEmail }}
       <input id="tt-email" type="email" name="email" placeholder="ten@gmail.com" autocomplete="email" required>

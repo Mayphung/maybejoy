@@ -478,6 +478,14 @@ content:
           - { name: gia, label: "Giá đang bán (số). Trang bán, thẻ Ở xưởng May và số tiền thu đều lấy từ ô này", type: number }
           - { name: giaSau, label: "Giá sau giai đoạn khởi điểm (số, hiện gạch ngang). Bỏ trống nếu không có", type: number }
           - { name: phong, label: "Mở phòng nào (đừng đổi)", type: string }
+          - { name: thuongHieu, label: "Bán ở đâu: để trống là mayphung.com, ghi yes là yeswithmay.com (đừng đổi)", type: string }
+          - name: datTruoc
+            label: "Đặt trước (chỉ món chưa làm xong mới có). Ngày ghi dạng 08/12/2026"
+            type: object
+            fields:
+              - { name: canDu, label: "Cần đủ bao nhiêu người đặt", type: number }
+              - { name: ngayChot, label: "Ngày chốt số người đặt", type: string }
+              - { name: ngayGiao, label: "Giao trước ngày", type: string }
       - name: phong
         type: object
         hidden: true
@@ -522,6 +530,163 @@ content:
           - { name: quaNut, label: "Email quà tặng: chữ trên nút", type: string }
           - { name: quaKet, label: "Email quà tặng: đoạn cuối", type: text }
           - { name: kyTen, label: "Lời ký cuối mọi email", type: text }
+
+  - name: yeswithmay
+    label: "📞 yeswithmay.com: trang bán Sổ 21 ngày (giá và ngày giao sửa ở 💳 Bán hàng)"
+    type: file
+    path: src/_data/ywm.json
+    format: json
+    fields:
+      - { name: url, type: string, hidden: true }
+      - { name: ten, label: Tên kênh, type: string }
+      - { name: khauHieu, label: Khẩu hiệu, type: string }
+      - { name: moTa, label: "Mô tả cho Google và Facebook (dưới 170 chữ cái)", type: text }
+      - { name: kyTen, label: "Lời ký của kênh (khác mayphung.com)", type: string }
+      - { name: contactEmail, label: "Email liên hệ riêng của kênh. Bỏ trống thì dùng email ở ⚙️ Cài đặt", type: string }
+      - { name: kitFormId, label: "Số form Kit riêng cho người làm sales. Bỏ trống thì email chỉ lưu trên web", type: string }
+      - { name: emailGui, label: "Người gửi thư (vd: May <may@yeswithmay.com>, chỉ điền khi Resend đã xác minh tên miền). Bỏ trống thì gửi từ mayphung.com", type: string }
+      - { name: sanPham, label: "Mã món đang bán (đừng đổi)", type: string }
+      - name: dau
+        label: "1. Đầu trang"
+        type: object
+        fields:
+          - { name: nhan, label: Dòng nhỏ trên tiêu đề, type: string }
+          - { name: tieuDe, label: Câu mở lớn, type: string }
+          - { name: moTa, label: Đoạn dưới câu mở, type: text }
+          - { name: nut, label: Chữ trên nút đặt trước, type: string }
+          - { name: ghiChu, label: "Dòng nhỏ dưới nút ({ngayGiao}, {ngayChot}, {canDu}, {gia} tự điền)", type: text }
+      - name: dienThoai
+        label: "Màn hình gọi điện minh họa"
+        type: object
+        fields:
+          - { name: ten, label: Tên trên màn hình, type: string }
+          - { name: phu, label: "Dòng dưới tên (số lần tự thêm vào sau)", type: string }
+          - { name: goiY, label: Lời gợi ý bấm thử, type: string }
+          - { name: nutDo, label: Nút đỏ, type: string }
+          - { name: nutXanh, label: Nút xanh, type: string }
+          - { name: sauGoi, label: Lời sau khi bấm nút xanh, type: string }
+          - { name: sauHoan, label: Lời sau khi bấm nút đỏ, type: string }
+      - name: tinhHuong
+        label: "2. Ba tình huống"
+        type: object
+        fields:
+          - { name: nhan, label: Dòng nhỏ, type: string }
+          - { name: tieuDe, label: Tiêu đề, type: string }
+          - name: ds
+            label: Các tình huống
+            type: object
+            list: true
+            fields:
+              - { name: gio, label: "Giờ (vd: 08:47)", type: string }
+              - { name: nhan, label: Nhãn đỏ, type: string }
+              - { name: chu, label: Nội dung, type: text }
+          - { name: ket, label: Câu lớn sau ba tình huống, type: text }
+      - name: so
+        label: "3. Sổ có gì"
+        type: object
+        fields:
+          - { name: nhan, label: Dòng nhỏ, type: string }
+          - { name: tieuDe, label: Tiêu đề, type: string }
+          - { name: moTa, label: Đoạn giới thiệu, type: text }
+          - name: baiTap
+            label: Ba loại bài tập
+            type: object
+            list: true
+            fields:
+              - { name: ten, label: Tên, type: string }
+              - { name: chu, label: Nội dung, type: text }
+          - { name: dinhDang, label: Dòng có dấu tích, type: string, list: true }
+          - { name: khongCoNhan, label: Nhãn khung đen, type: string }
+          - { name: khongCo, label: "Những thứ sổ không có (bị gạch)", type: string, list: true }
+          - { name: khongCoKet, label: Câu cuối khung đen, type: text }
+      - name: may
+        label: "4. Câu chuyện của May"
+        type: object
+        fields:
+          - { name: nhan, label: Dòng nhỏ, type: string }
+          - { name: trichDan, label: Câu lớn, type: text }
+          - { name: doan, label: Các đoạn, type: text, list: true }
+          - name: soLieu
+            label: Ba con số
+            type: object
+            list: true
+            fields:
+              - { name: so, label: Chữ lớn màu xanh, type: string }
+              - { name: chu, label: Dòng nhỏ, type: string }
+      - name: gia
+        label: "5. Giá, ngày giao, hoàn tiền ({gia}, {ngayChot}, {ngayGiao}, {canDu} tự điền)"
+        type: object
+        fields:
+          - { name: nhan, label: Dòng nhỏ, type: string }
+          - { name: tieuDe, label: Tiêu đề, type: string }
+          - { name: nhanGia, label: Nhãn trên giá, type: string }
+          - { name: nhanGiaSau, label: Chữ sau giá gạch ngang, type: string }
+          - name: loTrinh
+            label: Các mốc
+            type: object
+            list: true
+            fields:
+              - { name: moc, label: Mốc, type: string }
+              - { name: chu, label: Nội dung, type: text }
+          - { name: camKetTieuDe, label: Tiêu đề khung cam kết, type: string }
+          - { name: camKet, label: Nội dung cam kết, type: text }
+          - { name: viSao, label: Đoạn vì sao bán trước, type: text }
+          - { name: nut, label: Chữ trên nút, type: string }
+          - { name: duoiNut, label: Dòng dưới nút, type: string }
+      - name: hoi
+        label: "6. Hỏi nhanh"
+        type: object
+        fields:
+          - { name: nhan, label: Dòng nhỏ, type: string }
+          - { name: tieuDe, label: Tiêu đề, type: string }
+          - name: ds
+            label: Câu hỏi
+            type: object
+            list: true
+            fields:
+              - { name: hoi, label: Câu hỏi, type: string }
+              - { name: dap, label: Trả lời, type: text }
+      - name: cho
+        label: "Ô để lại email (người chưa muốn đặt)"
+        type: object
+        fields:
+          - { name: tieuDe, label: Tiêu đề, type: string }
+          - { name: chu, label: Một dòng, type: string }
+          - { name: oEmail, label: Chữ mờ trong ô email, type: string }
+          - { name: nut, label: Nút, type: string }
+          - { name: dongY, label: Câu đồng ý nhận thư, type: text }
+      - name: chan
+        label: "7. Chân trang"
+        type: object
+        fields:
+          - { name: chu, label: Một dòng giới thiệu kênh, type: text }
+      - name: thanhToan
+        label: "Chữ trên trang thanh toán của yeswithmay.com"
+        type: object
+        fields:
+          - { name: dongNho, label: "Dòng nhỏ trên tiêu đề", type: string }
+          - { name: tieuDe, label: "Tiêu đề", type: string }
+          - { name: chuaMo, label: "Lời khi chưa có số tài khoản", type: text }
+          - { name: oEmail, label: "Nhãn ô email", type: string }
+          - { name: ghiChuEmail, label: "Ghi chú dưới ô email", type: text }
+          - { name: dongY, label: "Câu đồng ý trước link Điều khoản và Chính sách bảo mật", type: string }
+          - { name: nutTiep, label: "Nút tiếp tục", type: string }
+          - { name: buoc1, label: "Bước 1", type: text }
+          - { name: buoc2, label: "Bước 2 (mã đơn hiện sau câu này)", type: string }
+          - { name: buoc3, label: "Bước 3", type: string }
+          - { name: dangCho, label: "Dòng khi đang chờ tiền", type: string }
+          - { name: chuaThay, label: "Lời khi chuyển rồi chưa thấy", type: text }
+          - { name: xongTieuDe, label: "Tiêu đề khi xong", type: string }
+          - { name: xongLoi, label: "Lời khi xong ({ngayChot} tự điền)", type: text }
+      - name: email
+        label: "Thư xác nhận đặt trước ({mon}, {gia}, {ma}, {ngayChot}, {ngayGiao}, {canDu} tự điền; xuống dòng = đoạn mới)"
+        type: object
+        fields:
+          - { name: datTruocTieuDe, label: Tiêu đề thư, type: string }
+          - { name: datTruocMoDau, label: Đoạn đầu, type: text }
+          - { name: datTruocGiua, label: Đoạn giữa (ngày chốt, ngày giao, hoàn tiền), type: text }
+          - { name: datTruocKet, label: Đoạn cuối, type: text }
+          - { name: chanThu, label: Dòng nhỏ dưới thư, type: string }
 
   - name: phong-hoc
     label: "🎓 Phòng học: video Emotion Course, file Soi Chiếu"

@@ -1,0 +1,185 @@
+---
+permalink: /yes/index.html
+title: Sổ 21 ngày hết sợ bị từ chối
+ogTitle: "Sổ 21 ngày hết sợ bị từ chối · Yes with May"
+bodyClass: y-ban
+---
+{%- set Y = ywm %}
+{%- set sp = banHang.sanPham | findBy("ma", Y.sanPham) %}
+{%- set dt = sp.datTruoc %}
+{%- set linkMua = "/thanh-toan/?sp=" + sp.ma %}
+{%- macro vach(n, lop="") -%}
+{#- Vạch đếm: mỗi nhóm 5 vạch, vạch thứ 5 gạch chéo -#}
+<svg class="y-vach {{ lop }}" viewBox="0 0 {{ (n / 5) | round(0, 'ceil') * 64 }} 48" aria-hidden="true" focusable="false">
+  {%- for i in range(0, n) %}
+  {%- set nhom = (i / 5) | round(0, 'floor') %}{%- set vi = i % 5 %}
+  {%- if vi < 4 %}
+  <path pathLength="1" d="M{{ nhom * 64 + 8 + vi * 11 }} {{ 6 + (i % 3) }} L{{ nhom * 64 + 7 + vi * 11 + (i % 2) }} {{ 42 - (i % 2) }}" style="--i:{{ i }}"/>
+  {%- else %}
+  <path pathLength="1" d="M{{ nhom * 64 + 1 }} 34 L{{ nhom * 64 + 50 }} 12" style="--i:{{ i }}"/>
+  {%- endif %}
+  {%- endfor %}
+</svg>
+{%- endmacro %}
+
+<main id="noi-dung">
+
+  {# 1. Câu mở #}
+  <section class="y-dau">
+    <div class="y-dau-chu">
+      <p class="y-nhan"><span class="y-cham" aria-hidden="true"></span>{{ Y.dau.nhan }}</p>
+      <h1>{{ Y.dau.tieuDe }}</h1>
+      <p class="y-dau-mo">{{ Y.dau.moTa }}</p>
+      <div class="y-dau-mua">
+        <a class="y-nut" href="{{ linkMua }}">{{ Y.dau.nut }} <span class="y-nut-gia" data-gia-cua="{{ sp.ma }}">{{ sp.gia | vnd }}</span></a>
+        {% if Y.dau.ghiChu %}<p class="y-ghi">{{ Y.dau.ghiChu | dienSp(sp) }}</p>{% endif %}
+      </div>
+    </div>
+
+    <div class="y-dt" data-dien-thoai data-sau-goi="{{ Y.dienThoai.sauGoi }}" data-sau-hoan="{{ Y.dienThoai.sauHoan }}">
+      <div class="y-dt-man">
+        <p class="y-dt-gio" aria-hidden="true">09:00</p>
+        <div class="y-dt-anh" aria-hidden="true"><span></span></div>
+        <p class="y-dt-ten">{{ Y.dienThoai.ten }}</p>
+        <p class="y-dt-phu">{{ Y.dienThoai.phu }} <b data-lan>1</b></p>
+        <p class="y-dt-loi" data-loi aria-live="polite">{{ Y.dienThoai.goiY }}</p>
+        <div class="y-dt-dem" aria-hidden="true">{{ vach(5, "y-vach-dt") }}</div>
+        <div class="y-dt-nut">
+          <button type="button" class="y-dt-do" data-hoan><span class="y-dt-tron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 15.5c5-4.7 13-4.7 18 0l-2.6 2.6-3.3-1.6v-2.6c-2.1-.7-4.1-.7-6.2 0v2.6l-3.3 1.6z"/></svg></span>{{ Y.dienThoai.nutDo }}</button>
+          <button type="button" class="y-dt-xanh" data-goi><span class="y-dt-tron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.3 15.3 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg></span>{{ Y.dienThoai.nutXanh }}</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {# 2. Ba tình huống #}
+  <section class="y-khoi y-nhatky" aria-labelledby="th-h">
+    <p class="y-nhan">{{ Y.tinhHuong.nhan }}</p>
+    <h2 id="th-h">{{ Y.tinhHuong.tieuDe }}</h2>
+    <ol class="y-cuoc">
+      {% for t in Y.tinhHuong.ds %}
+      <li>
+        <span class="y-cuoc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 5 9 15M9 8v7h7"/></svg></span>
+        <span class="y-cuoc-gio">{{ t.gio }}</span>
+        <span class="y-cuoc-nhan">{{ t.nhan }}</span>
+        <p class="y-cuoc-chu">{{ t.chu }}</p>
+      </li>
+      {% endfor %}
+    </ol>
+    <p class="y-loi-lon">{{ Y.tinhHuong.ket }}</p>
+  </section>
+
+  {# 3. Sổ có gì #}
+  <section class="y-khoi y-so" aria-labelledby="so-h">
+    <div class="y-so-dau">
+      <p class="y-nhan">{{ Y.so.nhan }}</p>
+      <h2 id="so-h">{{ Y.so.tieuDe }}</h2>
+      <p class="y-so-mo">{{ Y.so.moTa }}</p>
+    </div>
+    <div class="y-so-21" aria-hidden="true">
+      <span class="y-so-so">21</span>
+      {{ vach(21, "y-vach-lon") }}
+    </div>
+    <ol class="y-bt">
+      {% for b in Y.so.baiTap %}
+      <li>
+        <span class="y-bt-so">0{{ loop.index }}</span>
+        <h3>{{ b.ten }}</h3>
+        <p>{{ b.chu }}</p>
+      </li>
+      {% endfor %}
+    </ol>
+    <div class="y-so-duoi">
+      <ul class="y-dd">
+        {% for d in Y.so.dinhDang %}<li>{{ d }}</li>{% endfor %}
+      </ul>
+      <div class="y-khong">
+        <p class="y-nhan">{{ Y.so.khongCoNhan }}</p>
+        <ul>{% for k in Y.so.khongCo %}<li><s>{{ k }}</s></li>{% endfor %}</ul>
+        <p>{{ Y.so.khongCoKet }}</p>
+      </div>
+    </div>
+  </section>
+
+  {# 4. Câu chuyện của May #}
+  <section class="y-khoi y-may" aria-labelledby="may-h">
+    <div class="y-may-trong">
+      <p class="y-nhan">{{ Y.may.nhan }}</p>
+      <h2 id="may-h" class="y-may-trich">{{ Y.may.trichDan }}</h2>
+      <div class="y-may-than">
+        {% for d in Y.may.doan %}<p>{{ d }}</p>{% endfor %}
+      </div>
+      <ul class="y-may-so">
+        {% for s in Y.may.soLieu %}<li><b>{{ s.so }}</b><span>{{ s.chu }}</span></li>{% endfor %}
+      </ul>
+      <p class="y-ky">{{ Y.kyTen }}</p>
+    </div>
+  </section>
+
+  {# 5. Giá, ngày giao, hoàn tiền #}
+  <div class="y-gia-nen">
+  <section class="y-khoi y-gia" id="dat-truoc" aria-labelledby="gia-h">
+    <p class="y-nhan">{{ Y.gia.nhan }}</p>
+    <h2 id="gia-h">{{ Y.gia.tieuDe }}</h2>
+    <div class="y-gia-luoi">
+      <div class="y-gia-the">
+        <p class="y-gia-ten">{{ sp.ten }}</p>
+        <p class="y-gia-nhan">{{ Y.gia.nhanGia }}</p>
+        <p class="y-gia-so" data-gia-cua="{{ sp.ma }}">{{ sp.gia | vnd }}</p>
+        {% if sp.giaSau %}<p class="y-gia-sau"><s data-gia-sau-cua="{{ sp.ma }}">{{ sp.giaSau | vnd }}</s> {{ Y.gia.nhanGiaSau }}</p>{% endif %}
+        <a class="y-nut y-nut-to" href="{{ linkMua }}">{{ Y.gia.nut }} · {{ sp.gia | vnd }}</a>
+        <p class="y-ghi">{{ Y.gia.duoiNut }}</p>
+      </div>
+      <div class="y-gia-ben">
+        <ol class="y-lt">
+          {% for m in Y.gia.loTrinh %}
+          <li><span class="y-lt-moc">{{ m.moc | dienSp(sp) }}</span><span class="y-lt-chu">{{ m.chu | dienSp(sp) }}</span></li>
+          {% endfor %}
+        </ol>
+        <div class="y-camket">
+          <p class="y-camket-h">{{ Y.gia.camKetTieuDe | dienSp(sp) }}</p>
+          <p>{{ Y.gia.camKet | dienSp(sp) }}</p>
+        </div>
+        <p class="y-visao">{{ Y.gia.viSao }}</p>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  {# 6. Hỏi nhanh #}
+  <section class="y-khoi y-hoi" aria-labelledby="hoi-h">
+    <p class="y-nhan">{{ Y.hoi.nhan }}</p>
+    <h2 id="hoi-h">{{ Y.hoi.tieuDe }}</h2>
+    <div class="y-hoi-ds">
+      {% for h in Y.hoi.ds %}
+      <details>
+        <summary>{{ h.hoi }}</summary>
+        <p>{{ h.dap | dienSp(sp) }}</p>
+      </details>
+      {% endfor %}
+    </div>
+
+    <div class="y-cho">
+      <div>
+        <p class="y-cho-h">{{ Y.cho.tieuDe }}</p>
+        <p>{{ Y.cho.chu }}</p>
+      </div>
+      <div class="y-cho-form">
+        <form class="mform" method="post" action="/api/dang-ky" data-kit="{{ Y.kitFormId }}">
+          <label for="y-email" class="sr-only">{{ Y.cho.oEmail }}</label>
+          <input id="y-email" type="email" name="email" placeholder="{{ Y.cho.oEmail }}" autocomplete="email" required>
+          <input type="hidden" name="loai" value="sales">
+          <button class="y-nut y-nut-vien" type="submit">{{ Y.cho.nut }}</button>
+        </form>
+        <div class="form-msg" aria-live="polite"></div>
+        <p class="y-ghi">{{ Y.cho.dongY }} <a href="/chinh-sach-bao-mat/">{{ site.chu.chinhSach or "Chính sách bảo mật" }}</a></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+{# Nút đặt trước bám đáy màn hình điện thoại #}
+<div class="y-bam" data-bam hidden>
+  <span><b data-gia-cua="{{ sp.ma }}">{{ sp.gia | vnd }}</b> · {{ Y.gia.nhanGia | lower }}</span>
+  <a class="y-nut" href="{{ linkMua }}">{{ Y.gia.nut }}</a>
+</div>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+{#- Khung riêng của yeswithmay.com: màu, chữ, giọng khác hẳn mayphung.com -#}
+{%- set Y = ywm %}
+{%- set duongDan = page.url | replace("/yes/", "/") %}
+{%- set pageTitle = (title + " — " + Y.ten) if title else Y.ten %}
+{%- set pageDesc = description or Y.moTa %}
+<title>{{ pageTitle }}</title>
+<meta name="description" content="{{ pageDesc | striptags | truncate(170) }}">
+<link rel="canonical" href="{{ Y.url }}{{ duongDan }}">
+<meta property="og:site_name" content="{{ Y.ten }}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ ogTitle or title or Y.ten }}">
+<meta property="og:description" content="{{ pageDesc | striptags | truncate(170) }}">
+<meta property="og:url" content="{{ Y.url }}{{ duongDan }}">
+<meta property="og:image" content="{{ Y.url }}/assets/yes/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="vi_VN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#111318">
+{% if noindex %}<meta name="robots" content="noindex">{% endif %}
+<link rel="preload" href="/assets/yes/fonts/bricolage-grotesque-latin-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/yes/fonts/bricolage-grotesque-vietnamese-standard-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/yes/yes.css">
+<link rel="icon" href="/assets/yes/favicon.svg" type="image/svg+xml">
+</head>
+<body class="y {{ bodyClass }}">
+<a class="y-skip" href="#noi-dung">Bỏ qua, vào nội dung</a>
+<header class="y-top">
+  <a class="y-logo" href="/" aria-label="{{ Y.ten }}, về trang đầu">
+    <span class="y-logo-dau" aria-hidden="true"></span><span>yes<em>with</em>may</span>
+  </a>
+  {% if not anNutTren %}{% set spTop = banHang.sanPham | findBy("ma", Y.sanPham) %}{% if spTop %}<a class="y-nut y-nut-nho" href="/thanh-toan/?sp={{ spTop.ma }}">{{ Y.dau.nut }}</a>{% endif %}{% endif %}
+</header>
+{{ content | safe }}
+<footer class="y-chan">
+  <div class="y-chan-trong">
+    <p class="y-chan-ten"><span class="y-logo-dau" aria-hidden="true"></span> {{ Y.ten }}</p>
+    <p class="y-chan-chu">{{ Y.chan.chu }}</p>
+    <nav class="y-chan-link" aria-label="Thông tin">
+      {%- set lienHe = Y.contactEmail or site.contactEmail %}
+      {%- if lienHe %}<a href="mailto:{{ lienHe }}">{{ lienHe }}</a>{% endif %}
+      <a href="/chinh-sach-bao-mat/">{{ site.chu.chinhSach or "Chính sách bảo mật" }}</a>
+      <a href="/dieu-khoan/">{{ site.chu.dieuKhoan or "Điều khoản" }}</a>
+    </nav>
+  </div>
+</footer>
+<script src="/assets/js/site.js" defer></script>
+<script src="/assets/yes/yes.js" defer></script>
+</body>
+</html>

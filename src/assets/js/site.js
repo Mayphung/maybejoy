@@ -5,6 +5,23 @@
     set: function (k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
   };
 
+  /* ---------- Nguồn của lượt ghé (mã utm trên link quảng cáo) ----------
+     Chỉ giữ 4 mã utm, trong 7 ngày, trên máy người xem; gắn vào đơn nếu họ mua (xem Chính sách bảo mật, mục 7). */
+  var NGUON = 'mj-nguon';
+  try {
+    var qs = new URLSearchParams(location.search), ng = {}, co = false;
+    [['utm_source', 's'], ['utm_medium', 'm'], ['utm_campaign', 'c'], ['utm_content', 'n']].forEach(function (k) {
+      var v = (qs.get(k[0]) || '').slice(0, 60);
+      if (/^[\w.\-]+$/.test(v)) { ng[k[1]] = v; co = true; }
+    });
+    if (co) { ng.luc = Date.now(); localStorage.setItem(NGUON, JSON.stringify(ng)); }
+  } catch (e) {}
+  var nguon = function () {
+    var ng = store.get(NGUON);
+    if (!ng || !ng.luc || Date.now() - ng.luc > 7 * 86400000) return null;
+    return { s: ng.s, m: ng.m, c: ng.c, n: ng.n };
+  };
+
   /* ---------- Form nhận email ---------- */
   document.querySelectorAll('form.mform').forEach(function (f) {
     var msg = f.nextElementSibling && f.nextElementSibling.classList.contains('form-msg') ? f.nextElementSibling : null;
@@ -172,14 +189,15 @@
       document.getElementById('tt-qr').hidden = true;
       tt.hidden = true;
       document.getElementById('tt-xong').hidden = false;
-      document.getElementById('tt-vao').href = link;
+      var vao = document.getElementById('tt-vao');
+      if (link) { vao.href = link; vao.hidden = false; } else vao.hidden = true;
       try { sessionStorage.removeItem(KEY); } catch (e) {}
     };
     var poll = function (ma, n) {
       fetch('/api/don/' + ma, { cache: 'no-store' })
         .then(function (r) { return r.json(); })
         .then(function (r) {
-          if (r.ok && r.trangThai === 'da-nhan' && r.link) return showDone(r.link);
+          if (r.ok && r.trangThai === 'da-nhan' && (r.link || r.datTruoc)) return showDone(r.link);
           if (n < 450) setTimeout(function () { poll(ma, n + 1); }, 4000);
         })
         .catch(function () { if (n < 450) setTimeout(function () { poll(ma, n + 1); }, 8000); });
@@ -197,7 +215,7 @@
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { m.textContent = 'Email chưa đúng, bạn xem lại giúp May nhé.'; return; }
       var btn = tt.querySelector('button[type=submit]');
       btn.disabled = true; m.textContent = '';
-      fetch('/api/don', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ email: email, sp: sp }) })
+      fetch('/api/don', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ email: email, sp: sp, nguon: nguon() }) })
         .then(function (r) { return r.json(); })
         .then(function (r) {
           if (!r.ok) throw new Error(r.loi || '');
