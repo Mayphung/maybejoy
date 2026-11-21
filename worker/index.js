@@ -101,7 +101,7 @@ const EY = ywm.email || {};
 // Mỗi thương hiệu một kiểu thư: màu, lời ký, dòng chân thư, người gửi
 const THU = {
   may: { nen: "#F4EBE0", the: "#FFFDF8", chu: "#362A24", nut: "#6E2A34", nutChu: "#FBF6EE", phu: "#7A6C64", ky: () => E.kyTen || "bit by bit,\nMay", chan: "mayphung.com · Bạn trả lời thẳng email này là May đọc được.", tu: () => undefined },
-  yes: { nen: "#FFF6EA", the: "#FFFDF9", chu: "#2A1A14", nut: "#FF6A1F", nutChu: "#2A1A14", phu: "#7A6256", ky: () => ywm.kyTen || "May", chan: EY.chanThu || "yeswithmay.com", tu: () => ywm.emailGui || undefined },
+  yes: { nen: "#FAF6F0", the: "#FFFDFA", chu: "#2B1D17", nut: "#5E1A28", nutChu: "#FAF6F0", phu: "#7D6B60", ky: () => ywm.kyTen || "May", chan: EY.chanThu || "yeswithmay.com", tu: () => ywm.emailGui || undefined },
 };
 const thuCua = (sp) => (sp && sp.thuongHieu === "yes" ? THU.yes : THU.may);
 const dien = (mau, v) => String(mau || "").replace(/\{(\w+)\}/g, (m, k) => (k in v ? v[k] : m));
