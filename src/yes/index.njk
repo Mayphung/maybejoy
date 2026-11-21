@@ -28,7 +28,7 @@ bodyClass: y-ban
   <section class="y-dau">
     <div class="y-dau-chu">
       <p class="y-nhan"><span class="y-cham" aria-hidden="true"></span>{{ Y.dau.nhan }}</p>
-      <h1>{{ Y.dau.tieuDe }}</h1>
+      <h1>{{ Y.dau.tieuDe | mdInline | safe }}</h1>
       <p class="y-dau-mo">{{ Y.dau.moTa }}</p>
       <div class="y-dau-mua">
         <a class="y-nut" href="{{ linkMua }}">{{ Y.dau.nut }} <span class="y-nut-gia" data-gia-cua="{{ sp.ma }}">{{ sp.gia | vnd }}</span></a>

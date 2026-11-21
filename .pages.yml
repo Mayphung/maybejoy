@@ -551,7 +551,7 @@ content:
         type: object
         fields:
           - { name: nhan, label: Dòng nhỏ trên tiêu đề, type: string }
-          - { name: tieuDe, label: Câu mở lớn, type: string }
+          - { name: tieuDe, label: "Câu mở lớn (*chữ giữa hai dấu sao* thành màu cam)", type: string }
           - { name: moTa, label: Đoạn dưới câu mở, type: text }
           - { name: nut, label: Chữ trên nút đặt trước, type: string }
           - { name: ghiChu, label: "Dòng nhỏ dưới nút ({ngayGiao}, {ngayChot}, {canDu}, {gia} tự điền)", type: text }
