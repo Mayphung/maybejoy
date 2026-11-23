@@ -62,11 +62,16 @@ bodyClass: y-ban
         <span class="y-cuoc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M19 5 9 15M9 8v7h7"/></svg></span>
         <span class="y-cuoc-gio">{{ t.gio }}</span>
         <span class="y-cuoc-nhan">{{ t.nhan }}</span>
-        <p class="y-cuoc-chu">{{ t.chu }}</p>
+        <div class="y-cuoc-chu">{% for d in t.chu.split("\n") %}{% if d | trim %}<p>{{ d | trim }}</p>{% endif %}{% endfor %}</div>
       </li>
       {% endfor %}
     </ol>
-    <p class="y-loi-lon">{{ Y.tinhHuong.ket }}</p>
+    {% if Y.nhanDinh and Y.nhanDinh.tieuDe %}
+    <div class="y-nd">
+      <p class="y-loi-lon">{{ Y.nhanDinh.tieuDe }}</p>
+      <div class="y-nd-than">{% for d in Y.nhanDinh.doan %}<p>{{ d }}</p>{% endfor %}</div>
+    </div>
+    {% endif %}
   </section>
 
   {# 3. Sổ có gì #}
@@ -89,6 +94,13 @@ bodyClass: y-ban
       </li>
       {% endfor %}
     </ol>
+    {% if Y.so.sau and Y.so.sau.length %}
+    <div class="y-sau">
+      <p class="y-sau-h">{{ Y.so.sauTieuDe }}</p>
+      <ul>{% for x in Y.so.sau %}<li>{{ x }}</li>{% endfor %}</ul>
+      {% if Y.so.sauKet %}<p class="y-sau-ket">{{ Y.so.sauKet }}</p>{% endif %}
+    </div>
+    {% endif %}
     <div class="y-so-duoi">
       <ul class="y-dd">
         {% for d in Y.so.dinhDang %}<li>{{ d }}</li>{% endfor %}

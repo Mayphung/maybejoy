@@ -11,9 +11,9 @@
   "dau": {
     "nhan": "Sổ 21 ngày · đang nhận đặt trước",
     "tieuDe": "Số đã bấm sẵn. Chỉ còn *nút gọi*.",
-    "moTa": "Nếu bạn từng nhìn cái nút xanh ấy cả phút rồi lặng lẽ đặt điện thoại xuống, sổ này viết cho bạn. Mỗi ngày 10 phút, trong 21 ngày, để câu “không” của khách bớt nặng trên vai bạn.",
+    "moTa": "Kịch bản đã soạn xong, hồ sơ khách đã đọc kỹ, cà phê cũng pha rồi. Vậy mà ngón tay vẫn lưỡng lự mãi trên nút gọi. Nếu bạn từng như thế, sổ này viết cho bạn: 21 ngày, mỗi ngày 10 phút, để chữ “không” của khách bớt đè nặng lên bạn.",
     "nut": "Đặt trước sổ",
-    "ghiChu": "Giao bản PDF trước {ngayGiao}. Không đủ {canDu} người đặt, May hoàn tiền 100%."
+    "ghiChu": "Giao bản PDF trước {ngayGiao}. Không đủ {canDu} người đặt, mình hoàn tiền 100%."
   },
   "dienThoai": {
     "ten": "Khách hàng mới",
@@ -25,45 +25,66 @@
     "sauHoan": "Mai rồi lại mai…"
   },
   "tinhHuong": {
-    "nhan": "Nhật ký cuộc gọi",
-    "tieuDe": "Ba cảnh này, bạn gặp mấy cảnh rồi?",
+    "nhan": "Nhật ký một ngày",
+    "tieuDe": "Bạn thấy mình trong cảnh nào?",
     "ds": [
       {
         "gio": "08:47",
-        "nhan": "Né",
-        "chu": "Danh sách 50 số đã in sẵn. Bạn pha cà phê, lau bàn, đọc lại kịch bản lần thứ ba. Ngẩng lên đã 10 giờ, chưa gọi được số nào."
+        "nhan": "Lần lữa",
+        "chu": "Danh sách năm mươi số đã in sẵn. Bạn mở hồ sơ khách ra đọc lại, sửa câu chào trong kịch bản thêm một lần, rồi đi pha cà phê, tiện tay kiểm tra email luôn.\nTự nhủ uống xong ly này sẽ gọi. Ly cà phê cạn từ lâu, danh sách vẫn còn nguyên."
       },
       {
         "gio": "14:20",
         "nhan": "Bị từ chối",
-        "chu": "Khách bảo: “Em cứ gửi qua Zalo, anh xem sau.” Bạn biết sẽ không có “sau”. Câu đó theo bạn suốt buổi chiều, dù máy đã cúp từ lâu."
+        "chu": "Khách bảo: “Bên anh chưa có nhu cầu em ạ.” Bạn dạ vâng, cảm ơn anh, rồi cúp máy. Một cuộc gọi lịch sự, chẳng ai mất gì.\nVậy mà cả buổi chiều bạn cứ nghĩ mãi: mình nói sai chỗ nào, có làm phiền người ta không, hay mình không hợp nghề này. Khách chắc đã quên cuộc gọi ấy từ 14:21. Còn bạn thì chưa."
+      },
+      {
+        "gio": "16:35",
+        "nhan": "Ngại nhắn lại",
+        "chu": "Gửi báo giá đã ba hôm mà khách vẫn im lặng. Bạn mở Zalo, gõ: “Anh đã xem qua báo giá chưa ạ?”, đọc lại thấy sao sao, xoá đi viết câu khác, rồi lại xoá.\nBạn sợ khách thấy mình hối thúc. Nhưng không hỏi thì cũng chẳng bao giờ biết khách đang nghĩ gì."
       },
       {
         "gio": "22:15",
         "nhan": "Cạn pin",
-        "chu": "Cuối tháng, chỉ tiêu mới được một nửa. Bạn mở bảng số liệu, đóng lại, rồi mở ra lần nữa. Nằm xuống mà đầu vẫn chạy, sáng mai vẫn phải gọi tiếp."
+        "chu": "Cuối tháng, chỉ tiêu mới được một nửa. Bạn mở bảng số liệu ra, đóng lại, rồi lại mở. Nằm xuống mà đầu vẫn chạy qua những cuộc gọi chưa làm, những khách chưa trả lời.\nSáng mai vẫn phải gọi tiếp. Nhưng tối nay, bạn chỉ muốn nghỉ làm sales một chút."
       }
-    ],
-    "ket": "Không phải bạn kém. Kỹ thuật bán hàng thì ngoài kia đầy, nhiều chỗ còn miễn phí. Còn phần bên trong người bán, phần run tay, nhai lại, cạn pin, thì hầu như chưa ai ngồi xuống chỉ cho bạn. Nhất là khi bạn hướng nội, và mỗi cuộc gọi là một lần phải bước ra khỏi mình."
+    ]
+  },
+  "nhanDinh": {
+    "tieuDe": "Biết phải làm gì và làm được, nhiều khi là hai chuyện khác nhau.",
+    "doan": [
+      "Người ta dạy bạn cách tìm khách, đặt câu hỏi, xử lý từ chối, chốt đơn. Những kỹ năng ấy quan trọng, và bạn học được ở rất nhiều nơi, nhiều chỗ còn miễn phí.",
+      "Nhưng hiếm ai nói về phần còn lại: biết phải gọi mà vẫn lần lữa, biết khách từ chối đâu phải vì mình kém mà vẫn thấy mình kém, biết cần nhắn lại mà cứ sợ thành người làm phiền.",
+      "Đó cũng là một phần của nghề bán hàng, và nó học được. Không phải để bạn hết buồn, hết sợ, mà để những cảm xúc ấy thôi quyết định thay bạn."
+    ]
   },
   "so": {
     "nhan": "Trong sổ có gì",
     "tieuDe": "21 ngày. Mỗi ngày 10 phút.",
-    "moTa": "Mỗi ngày một trang: một chuyện ngắn May kể từ chính những cuộc gọi, những email, những lần bị từ chối của mình, rồi một bài tập để bạn làm ngay trên giấy. Đọc ba phút, làm bảy phút, rồi đi gọi.",
+    "moTa": "Mỗi ngày một trang. Đầu trang là một chuyện ngắn mình kể từ chính những cuộc gọi, những email và những lần bị từ chối của mình; có thể bạn sẽ thấy mình trong đó, hoặc ít ra cũng biết hoá ra không chỉ có bạn nghĩ vậy. Cuối trang là một bài tập để bạn làm ngay trên giấy. Đọc ba phút, làm bảy phút, rồi quay lại với công việc.",
     "baiTap": [
       {
         "ten": "Viết lại suy nghĩ",
-        "chu": "Khách nói “không”, đầu bạn lập tức kể một câu chuyện: mình dở, mình làm phiền người ta, mình không hợp nghề này. Bạn viết câu chuyện đó ra giấy, rồi viết lại cho đúng với sự thật hơn."
+        "chu": "Khách vừa nói “không”, đầu bạn đã kịp kể một câu chuyện: mình dở, mình làm phiền người ta, mình không hợp nghề này. Bạn viết câu chuyện ấy ra giấy, rồi tách xem đâu là chuyện thật, đâu là phần mình tự suy diễn."
       },
       {
         "ten": "Trấn an cơ thể trước cuộc gọi",
-        "chu": "Tim đập nhanh, tay lạnh, giọng hụt. Vài cách thở và đặt chân xuống sàn, làm ngay tại bàn, trong khoảng một phút trước khi bấm gọi."
+        "chu": "Tim đập nhanh, tay lạnh, giọng hụt hơi. Thay vì ngồi chờ hết run mới gọi, bạn tập vài cách thở và cảm nhận bàn chân trên sàn, làm ngay tại bàn trong khoảng một phút."
       },
       {
         "ten": "Đếm lần liên hệ, không đếm đơn",
-        "chu": "Khách có mua hay không thì không nằm trong tay bạn. Bạn có dám liên hệ hay không thì có. Mỗi lần liên hệ là một vạch, và bạn nhìn những vạch ấy dày dần."
+        "chu": "Khách có mua hay không thì không hoàn toàn nằm trong tay bạn, còn chủ động liên hệ hay không thì có. Mỗi lần liên hệ là một vạch. Doanh số vẫn quan trọng, chỉ là bạn thôi lấy những điều ngoài tầm tay ra để trách mình."
       }
     ],
+    "sauTieuDe": "Sau 21 ngày, mình mong bạn",
+    "sau": [
+      "nhận ra lúc nào mình đang lần lữa vì sợ",
+      "thôi coi một lời từ chối là thước đo giá trị của bản thân",
+      "có sẵn cách làm dịu mình trước một cuộc gọi khó",
+      "bớt nhai đi nhai lại những cuộc trò chuyện đã xong",
+      "vẫn nhắn lại, vẫn gọi tiếp, dù đôi lúc còn ngại"
+    ],
+    "sauKet": "Mình không hứa bạn sẽ hết hồi hộp. Mình chỉ mong bạn làm được ngay cả khi còn sợ.",
     "dinhDang": [
       "Bản PDF, in ra để viết tay",
       "Hợp với telesales, BD, bán hàng online, tư vấn",
@@ -81,9 +102,10 @@
     "nhan": "Người viết",
     "trichDan": "Hồi nhỏ, mình là đứa trẻ trốn sau lưng mẹ mỗi khi nhà có khách.",
     "doan": [
-      "Đi học bị gọi tên là đỏ mặt. Lớn lên, mình vẫn là người hướng nội: ở chỗ đông người lâu là cần một góc yên để thở lại.",
-      "Vậy mà đã năm năm nay, việc hằng ngày của mình là bán hàng B2B cho khách ở Mỹ và châu Âu. Viết cho những người chưa từng nghe tên mình. Gọi cho người lạ ở múi giờ khác. Nghe chữ “no” nhiều tới mức thôi không đếm nữa.",
-      "Mình không hết sợ. Mình học cách bấm gọi trong lúc vẫn còn sợ. Song song, mình học về cảm xúc nhiều năm: NLP, chánh niệm, làm việc với cơ thể. Sổ này gom lại những gì thật sự giúp được mình, thành 21 trang để bạn tự làm."
+      "Đi học bị gọi tên là đỏ mặt. Lớn lên mình vẫn hướng nội như thế, cứ ở chỗ đông người lâu một chút là phải tìm một góc yên để thở lại.",
+      "Vậy mà rồi mình lại chọn một công việc ngày nào cũng phải bắt chuyện với người lạ: bán hàng B2B cho khách ở Mỹ và châu Âu. Viết email cho những người chưa từng nghe tên mình, gọi cho khách ở múi giờ khác, theo đuổi những cơ hội chẳng biết bao giờ mới thành, và nghe chữ “no” nhiều tới mức thôi không đếm nữa.",
+      "Năm năm rồi, mình vẫn không thành người hướng ngoại, cũng chưa hết sợ bị từ chối. Vẫn có hôm một email không ai trả lời cũng đủ làm mình nghĩ ngợi, vẫn có lúc biết rõ cần nhắn lại mà cứ ngồi nhìn màn hình. Mình chỉ học được cách làm việc với những cảm xúc ấy tốt hơn: một phần nhờ chính những lần vấp ấy, một phần nhờ nhiều năm tìm hiểu về cảm xúc, NLP, chánh niệm và cách cơ thể phản ứng khi căng thẳng.",
+      "Mình không có công thức để bán được mọi đơn hàng. Có thì chắc mình đã viết một cuốn khác rồi. Cái mình có là một cuốn sổ giúp bạn đỡ phải giằng co với bản thân mỗi lần đi bán hàng."
     ],
     "soLieu": [
       {
@@ -108,20 +130,20 @@
     "loTrinh": [
       {
         "moc": "Hôm nay",
-        "chu": "Bạn đặt trước. Thư xác nhận vào email của bạn ngay khi May nhận được tiền."
+        "chu": "Bạn đặt trước. Thư xác nhận gửi vào email của bạn ngay khi tiền về."
       },
       {
         "moc": "{ngayChot}",
-        "chu": "May chốt số người đặt."
+        "chu": "Mình chốt số người đặt."
       },
       {
         "moc": "Trước {ngayGiao}",
-        "chu": "Đủ {canDu} người: sổ vào email của bạn, bản PDF in được."
+        "chu": "Đủ {canDu} người: sổ về email của bạn, bản PDF in được."
       }
     ],
     "camKetTieuDe": "Chưa đủ {canDu} người?",
-    "camKet": "May hoàn lại toàn bộ tiền trong 3 ngày làm việc sau ngày chốt, vào đúng tài khoản bạn đã chuyển. Bạn không cần viết thư đòi.",
-    "viSao": "Vì sao bán trước? Vì May muốn viết thứ người làm sales cần thật, và cách hỏi thật nhất là hỏi bằng việc đặt mua. Bạn đặt trước thì được giá thấp nhất, và May sẽ hỏi bạn một câu để viết sát với việc của bạn hơn.",
+    "camKet": "Mình hoàn lại toàn bộ tiền trong 3 ngày làm việc sau ngày chốt, vào đúng tài khoản bạn đã chuyển. Bạn không cần viết thư đòi.",
+    "viSao": "Vì sao bán trước? Vì mình muốn viết đúng thứ người làm sales cần, thay vì cặm cụi mấy tuần liền rồi mới đi hỏi có ai cần không. Bạn đặt trước thì được giá thấp nhất, và mình sẽ hỏi bạn một câu để viết sát với công việc của bạn hơn.",
     "nut": "Đặt trước",
     "duoiNut": "Chuyển khoản bằng mã QR · có thư xác nhận ngay"
   },
@@ -130,38 +152,42 @@
     "tieuDe": "Bạn có thể đang thắc mắc",
     "ds": [
       {
-        "hoi": "Mình mới vào nghề, có hợp không?",
-        "dap": "Hợp. Sổ không cần bạn biết kỹ thuật gì trước. Mới vào nghề mà tập được cách đi cùng nỗi sợ thì càng đỡ mang nó theo lâu."
+        "hoi": "Mình mới vào nghề, có dùng được không?",
+        "dap": "Dùng được. Sổ không đòi bạn biết trước kỹ thuật bán hàng hay kiến thức tâm lý nào. Mới vào nghề mà tập được cách đi cùng nỗi sợ thì càng đỡ phải mang nó theo lâu."
       },
       {
         "hoi": "Mình làm BD, chủ yếu viết email chứ ít gọi?",
-        "dap": "Vẫn dùng được. Bài tập nói về lúc bạn chuẩn bị liên hệ và lúc bị từ chối, dù qua điện thoại, email hay tin nhắn."
+        "dap": "Vẫn dùng được. Ngại tiếp cận, sợ bị từ chối, lo lắng khi phải nhắn lại không chỉ xảy ra trên điện thoại, mà cả lúc bạn viết email, gửi tin nhắn hay gửi báo giá."
+      },
+      {
+        "hoi": "Có phải người hướng nội mới hợp?",
+        "dap": "Không cần. Bạn không cần hướng nội, cũng không cần sợ gọi điện. Chỉ cần có những lúc nghề bán hàng làm bạn phải vật lộn với cảm xúc của chính mình."
       },
       {
         "hoi": "Sổ có dạy cách chốt sale không?",
-        "dap": "Không. Phần đó đã có nhiều người dạy hay. Sổ lo phần trước và sau cuộc gọi: lúc bạn ngại, lúc bạn bị từ chối, lúc bạn cạn sức."
+        "dap": "Không. Phần đó đã có nhiều người dạy hay. Sổ lo phần trước và sau những kỹ thuật ấy: lúc bạn ngại bắt đầu, lúc bị từ chối, và những ngày làm việc không như ý."
       },
       {
         "hoi": "Làm xong sổ, mình có bán được nhiều hơn không?",
-        "dap": "May không hứa doanh số. Điều May mong là bạn liên hệ được nhiều lần hơn mà đỡ mệt hơn. Còn bán được bao nhiêu thì tùy sản phẩm, thị trường và nhiều thứ khác."
+        "dap": "Mình không muốn hứa điều mình không chắc. Bán được bao nhiêu còn tuỳ sản phẩm, thị trường và nhiều thứ khác. Điều mình mong là bạn chủ động liên hệ được nhiều hơn mà ít kiệt sức hơn."
       },
       {
         "hoi": "Đây có phải trị liệu tâm lý không?",
-        "dap": "Không. Đây là bài tập tự làm, từ trải nghiệm của May. Nếu bạn quá tải kéo dài, mất ngủ nhiều hay thấy mình không ổn, hãy tìm tới chuyên gia tâm lý hoặc bác sĩ."
+        "dap": "Không. Đây là sổ tự thực hành, từ trải nghiệm của mình và những gì mình đã học. Nếu bạn quá tải kéo dài, mất ngủ nhiều hay thấy mình không ổn, hãy tìm tới chuyên gia tâm lý hoặc bác sĩ."
       },
       {
         "hoi": "Mình nhận sổ thế nào?",
-        "dap": "May gửi đường dẫn tải bản PDF vào email bạn dùng lúc đặt. Bạn in ra để viết tay, hoặc chép bài tập sang sổ riêng của mình."
+        "dap": "Mình gửi đường dẫn tải bản PDF vào email bạn dùng lúc đặt. Bạn in ra để viết tay, hoặc chép bài tập sang sổ riêng."
       },
       {
-        "hoi": "Nếu May giao trễ thì sao?",
-        "dap": "May báo bạn qua email trước ngày hẹn. Bạn chọn chờ thêm, hoặc nhận lại toàn bộ tiền."
+        "hoi": "Nếu sổ giao trễ thì sao?",
+        "dap": "Mình sẽ báo bạn qua email trước ngày hẹn. Bạn chọn chờ thêm, hoặc nhận lại toàn bộ tiền."
       }
     ]
   },
   "cho": {
     "tieuDe": "Chưa muốn đặt ngay?",
-    "chu": "Để lại email, May báo bạn khi sổ ra mắt.",
+    "chu": "Để lại email, mình báo bạn khi sổ ra mắt.",
     "oEmail": "Email của bạn",
     "nut": "Báo mình",
     "dongY": "Gửi email là bạn đồng ý nhận thư của May về bán hàng, hủy nhận lúc nào cũng được."
@@ -172,24 +198,24 @@
   "thanhToan": {
     "dongNho": "Đặt trước",
     "tieuDe": "Giữ chỗ của bạn",
-    "chuaMo": "May đang hoàn tất phần chuyển khoản. Bạn quay lại sau ít phút nhé.",
+    "chuaMo": "Mình đang hoàn tất phần chuyển khoản. Bạn quay lại sau ít phút nhé.",
     "oEmail": "Email để nhận sổ",
-    "ghiChuEmail": "Thư xác nhận và bản PDF đều gửi vào email này. Bạn gõ kỹ giúp May nhé.",
+    "ghiChuEmail": "Thư xác nhận và bản PDF đều gửi vào email này. Bạn gõ kỹ giúp mình nhé.",
     "dongY": "Bấm Tiếp tục là bạn đồng ý với",
     "nutTiep": "Tiếp tục",
     "buoc1": "Mở app ngân hàng, quét mã bên dưới. Số tiền và nội dung đã điền sẵn. Đang xem bằng điện thoại? Bạn chụp màn hình mã QR, rồi trong app ngân hàng chọn quét mã từ ảnh.",
     "buoc2": "Giữ nguyên nội dung chuyển khoản, để web nhận ra đơn của bạn:",
-    "buoc3": "Chuyển xong, bạn cứ để nguyên trang này. Vài giây sau, trang sẽ báo May đã nhận.",
+    "buoc3": "Chuyển xong, bạn cứ để nguyên trang này. Vài giây sau, trang sẽ báo mình đã nhận.",
     "dangCho": "đang chờ tiền về",
-    "chuaThay": "Chuyển rồi mà 15 phút sau chưa thấy gì? Bạn viết cho May, kèm mã đơn bên dưới. May xác nhận cho bạn ngay.",
-    "xongTieuDe": "May nhận được rồi. Cảm ơn bạn đã tin May từ lúc sổ còn chưa in!",
-    "xongLoi": "Thư xác nhận đã vào email của bạn (nhớ xem cả mục Quảng cáo). Ngày {ngayChot}, May báo bạn kết quả."
+    "chuaThay": "Chuyển rồi mà 15 phút sau vẫn chưa thấy gì? Bạn viết cho mình, kèm mã đơn bên dưới, mình xác nhận ngay.",
+    "xongTieuDe": "Mình nhận được rồi. Cảm ơn bạn đã tin mình từ lúc sổ còn chưa in!",
+    "xongLoi": "Thư xác nhận đã vào email của bạn (nhớ xem cả mục Quảng cáo). Ngày {ngayChot}, mình báo bạn kết quả."
   },
   "email": {
     "datTruocTieuDe": "Đã giữ chỗ: {mon}",
-    "datTruocMoDau": "Chào bạn,\nMay đã nhận {gia} đặt trước {mon} (mã đơn {ma}). Cảm ơn bạn đã tin May từ lúc sổ còn chưa in.",
-    "datTruocGiua": "Ngày {ngayChot}, May chốt số người đặt. Đủ {canDu} người, May viết và gửi sổ vào email này trước ngày {ngayGiao}. Chưa đủ, May hoàn lại toàn bộ {gia} vào tài khoản bạn đã chuyển, trong 3 ngày làm việc.",
-    "datTruocKet": "Trong lúc chờ, bạn trả lời thư này giúp May một câu thôi: lúc nào trong ngày bạn ngại bấm gọi nhất? May đọc hết, và viết sổ sát với việc của bạn hơn.",
+    "datTruocMoDau": "Chào bạn,\nMình đã nhận {gia} đặt trước {mon} (mã đơn {ma}). Cảm ơn bạn đã tin mình từ lúc sổ còn chưa in.",
+    "datTruocGiua": "Ngày {ngayChot}, mình chốt số người đặt. Đủ {canDu} người, mình viết xong và gửi sổ vào email này trước ngày {ngayGiao}. Chưa đủ, mình hoàn lại toàn bộ {gia} vào tài khoản bạn đã chuyển, trong 3 ngày làm việc.",
+    "datTruocKet": "Trong lúc chờ, bạn trả lời thư này giúp mình một câu thôi: lúc nào trong ngày bạn ngại bấm gọi nhất? Mình đọc hết, và sẽ viết sổ sát với công việc của bạn hơn.",
     "chanThu": "yeswithmay.com · Bạn trả lời thẳng email này là May đọc được."
   }
 }

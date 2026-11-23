@@ -567,7 +567,7 @@ content:
           - { name: sauGoi, label: Lời sau khi bấm nút xanh, type: string }
           - { name: sauHoan, label: Lời sau khi bấm nút đỏ, type: string }
       - name: tinhHuong
-        label: "2. Ba tình huống"
+        label: "2. Các tình huống trong ngày"
         type: object
         fields:
           - { name: nhan, label: Dòng nhỏ, type: string }
@@ -579,8 +579,13 @@ content:
             fields:
               - { name: gio, label: "Giờ (vd: 08:47)", type: string }
               - { name: nhan, label: Nhãn đỏ, type: string }
-              - { name: chu, label: Nội dung, type: text }
-          - { name: ket, label: Câu lớn sau ba tình huống, type: text }
+              - { name: chu, label: "Nội dung (xuống dòng = đoạn mới)", type: text }
+      - name: nhanDinh
+        label: "Đoạn nhận định sau các tình huống"
+        type: object
+        fields:
+          - { name: tieuDe, label: Câu lớn, type: text }
+          - { name: doan, label: Các đoạn, type: text, list: true }
       - name: so
         label: "3. Sổ có gì"
         type: object
@@ -595,6 +600,9 @@ content:
             fields:
               - { name: ten, label: Tên, type: string }
               - { name: chu, label: Nội dung, type: text }
+          - { name: sauTieuDe, label: "Tiêu đề khung Sau 21 ngày", type: string }
+          - { name: sau, label: "Những điều mong bạn có sau 21 ngày", type: string, list: true }
+          - { name: sauKet, label: "Câu cuối khung Sau 21 ngày", type: text }
           - { name: dinhDang, label: Dòng có dấu tích, type: string, list: true }
           - { name: khongCoNhan, label: Nhãn khung đen, type: string }
           - { name: khongCo, label: "Những thứ sổ không có (bị gạch)", type: string, list: true }

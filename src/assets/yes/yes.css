@@ -117,7 +117,18 @@ body.y{margin:0;background:var(--giay);color:var(--muc);font-family:var(--chu);f
 .y-cuoc-icon svg{width:22px;height:22px;fill:none;stroke:var(--do-do);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transform:translateY(4px)}
 .y-cuoc-gio{font-family:var(--mono);font-size:15px;color:var(--xam)}
 .y-cuoc-nhan{font-family:var(--serif);font-style:italic;font-weight:440;font-size:23px;color:var(--do-do);letter-spacing:-.01em}
-.y-cuoc-chu{font-size:clamp(18px,1.6vw,21px);line-height:1.5;color:var(--muc-2)}
+.y-cuoc-chu{font-size:clamp(18px,1.6vw,20px);line-height:1.55;color:var(--muc-2)}
+.y-cuoc-chu p + p{margin-top:10px}
+.y-nd{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px clamp(32px,6vw,88px);margin-top:72px;align-items:start}
+.y-nd .y-loi-lon{margin-top:0}
+.y-nd-than p{font-size:18px;line-height:1.65;color:var(--muc-2)}
+.y-nd-than p + p{margin-top:16px}
+.y-sau{grid-column:1/-1;margin-top:64px;background:var(--trang);border-radius:24px;padding:clamp(24px,3.4vw,40px);box-shadow:0 0 0 1px var(--vien)}
+.y-sau-h{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(26px,2.6vw,32px);color:var(--muc);margin-bottom:14px}
+.y-sau ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 40px}
+.y-sau li{position:relative;padding:10px 0 10px 30px;border-bottom:1px solid var(--giay-2);font-size:18px}
+.y-sau li::before{content:"";position:absolute;left:0;top:19px;width:14px;height:1.5px;background:var(--cam)}
+.y-sau-ket{margin-top:20px;font-size:18px;color:var(--muc-2)}
 .y-loi-lon{border-left:2px solid var(--vang);padding-left:clamp(18px,2.4vw,30px);font-size:clamp(23px,2.5vw,32px);font-stretch:95%;font-weight:420;line-height:1.3;letter-spacing:-.015em;max-width:940px;margin-top:56px;text-wrap:pretty}
 
 /* 3. sổ có gì */
@@ -274,7 +285,7 @@ body.y{margin:0;background:var(--giay);color:var(--muc);font-family:var(--chu);f
 @media (max-width:860px){
   .y-dau{grid-template-columns:1fr;padding-top:18px}
   .y-dt{width:min(244px,66vw);transform:rotate(2deg);margin-top:8px}
-  .y-so,.y-so-duoi,.y-gia-luoi,.y-may-trong,.y-cho{grid-template-columns:1fr}
+  .y-so,.y-so-duoi,.y-gia-luoi,.y-may-trong,.y-cho,.y-nd,.y-sau ul{grid-template-columns:1fr}
   .y-so-21{margin-top:40px;flex-direction:row;align-items:flex-end;gap:16px;flex-wrap:wrap}
   .y-vach-lon{width:min(60vw,300px)}
   .y-bt{grid-template-columns:1fr;gap:28px;margin-top:48px}
